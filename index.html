@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrow Land</title>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="src/css/index-style.css">
+    <link rel="stylesheet" href="src/css/index.css">
+    <script src="src/js/index.js"></script>
 </head>
 <body>
-  <div >
+  <div class="wrapper">
     <video autoplay loop muted>
       <source src="src/videos/index-video.mp4" type="video/mp4">
     </video>
-  </div>
     <header>
 			<div class="title">Borrow Land</div>
 			<form class="search" action="">
 				<div class="search-bar" >
-					<input type="text" class="search-text" autocomplete="off" placeholder="Search..">
+					<input type="text" id="search-text" autocomplete="off" placeholder="Search.." onclick="FontHandler();">
 					<button class="search-favicon" type="submit"><img src="src/images/icon.svg" alt=""></button>
 				</div>
       </form>
@@ -40,5 +40,6 @@
         COPYRIGHT © Borrow Land.All RIGHTS RESERVED<br>
       </div>
     </footer>
+  </div>
 </body>
 </html>
