@@ -1,7 +1,76 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
- 
+  html {
+    min-width: 100%;
+  }
+
+  body {
+    margin:0;
+    padding:0;
+    min-width: 100rem;
+  }
+
+  header {
+    min-width:100rem;
+    width:100%;
+    border:solid 1px;
+  }
+
+  .logo {
+    width:20%;
+    /* float:left; */
+    border:solid 1px;
+    display:inline-block;
+  }
+
+  nav {
+    display:inline-block;
+    width:50%;
+    border : solid 1px;
+    margin:0;
+  }
+
+  nav ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+    /* border : solid 1px; */
+  }
+
+  nav li {
+    display:inline-block;
+    
+  }
+
+  .user {
+    width:10%;
+    border:solid 1px;
+    /* float:left; */
+    display:inline-block;
+  }
+  
+  /* .favicon-bar {
+    display:inline-block;
+  } */
+  
+  .favicon {
+    display:inline-block;
+    width: 1rem;
+  }
+  .grade {
+    display:inline-block;
+    
+  }
+  
+  .user-name {
+    display:inline-block;
+    
+  }
+
+
+
 }
+
 /* 모바일 뷰 css */
 @media all and (max-width:550px){
     *:focus { 
