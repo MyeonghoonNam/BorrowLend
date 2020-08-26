@@ -1,0 +1,35 @@
+/* PC 뷰 css */
+@media all and (max-width:1920px){
+    html {
+      min-width: 100%;
+    }
+  
+    body {
+      margin:0;
+      padding:0;
+      min-width: 100rem;
+    }
+    
+    .main-login {
+      overflow: visible;
+      text-align: center;
+      margin: 0 auto;
+      width:30%;
+      font-family: 'Alata', sans-serif;
+      color: #1d60b8;
+      margin-top: 5%;
+    }
+
+    #title{
+        font-size:4rem;
+        margin-bottom: 5%; 
+      }
+
+    #ment{
+      font-size:1rem; 
+    }
+
+    .form{
+        text-align: center;
+    }
+ }
