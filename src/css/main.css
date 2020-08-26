@@ -102,7 +102,7 @@
     color:darkgray;
     padding-left:0.5rem;
   }
-  
+} 
   /* .e-mail {
     order:5;
     border:solid 1px;
@@ -125,7 +125,7 @@
     font-size:0.95rem;
     color:red;
   }  */
-}
+
 
 /* 모바일 뷰 css */
 @media all and (max-width:550px){
