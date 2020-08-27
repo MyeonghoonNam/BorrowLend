@@ -1,0 +1,48 @@
+@media all and (max-width:1920px){ 
+  #footer {
+    /* position: absolute; */
+    background-color: #303030;
+    width:100%;
+    height:9rem;
+    min-height:9rem;
+    /* margin-top:12%; */
+    color:rgba(255, 255, 255, 0.7);
+    min-width:100rem;
+    /* border:solid 1px; */
+  }
+
+  .copyright-title {
+    font-style:italic;
+    font-size : 350%;
+    width:20.3%;
+    float:left;
+    position:relative;
+    padding-top:1.5%;
+    padding-bottom:1%;
+    left:18%;
+    /* border: solid 1px; */
+  }
+
+  .copyright-content {
+    position:relative;
+    left:20%;
+    padding-top: 0.95%;
+    width:70rem;
+    text-align:left;
+    min-width:70rem;
+    /* border: solid 1px; */
+  }
+}
+
+@media all and (max-width:550px){
+  *:focus { 
+    outline:none; 
+  }
+
+  body {
+      margin:0;
+  }
+  #footer {
+    background-color:red;
+  }
+}

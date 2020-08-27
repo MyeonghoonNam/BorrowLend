@@ -1,20 +1,6 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
-  *:focus { 
-      outline:none; 
-  }
-
-  html {
-    min-width:100%;
-  }
-
-  body {
-    margin:0;
-    padding:0;
-    min-width:100rem;
-  }
-
-  header {
+  .index-header {
       font-family : 'Black Han Sans';
       text-align : center;
       font-size : 500%;
@@ -24,7 +10,7 @@
       width:100%;
   }
 
-  video {
+  .index-video {
     position:fixed;
     left:0;
     width:100%;
@@ -57,65 +43,29 @@
     height:30px;
   }
 
-  section {
+  .index-article {
     font-family : 'Black Han Sans';
     font-size : 450%;
     color:white;
     padding-top:8%;
     padding-left:33%;
     width:50rem;
+    height:23.1rem;
     min-width:50rem;
     /* border:solid 1px; */
   }
-
-  footer {
-    /* position: absolute; */
-    background-color: #303030;
-    width:100%;
-    height:9rem;
-    min-height:9rem;
-    margin-top:12%;
-    color:rgba(255, 255, 255, 0.7);
-    min-width:100rem;
-    /* border:solid 1px; */
-  }
-
-  .copyright-title {
-    font-style:italic;
-    font-size : 350%;
-    width:20.3%;
-    float:left;
-    position:relative;
-    padding-top:1.5%;
-    padding-bottom:1%;
-    left:18%;
-    /* border: solid 1px; */
-  }
-
-  .copyright-content {
-    position:relative;
-    left:20%;
-    padding-top: 0.95%;
-    width:70rem;
-    text-align:left;
-    min-width:70rem;
-    /* border: solid 1px; */
-  }
 }
+
 /* 모바일 뷰 css */
 @media all and (max-width:550px){
-    *:focus { 
-      outline:none; 
-    }
+  *:focus { 
+    outline:none; 
+  }
 
-    body {
-        margin:0;
-    }
-    header {
-      text-align : center;
-      font-size : 500%;
-      color:white;
-      padding-top:13%;
-      float:left;
+  body {
+      margin:0;
+  }
+  #footer {
+    background-color:red;
   }
 }

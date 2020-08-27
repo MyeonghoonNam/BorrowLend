@@ -1,0 +1,27 @@
+/* PC 뷰 css */
+@import "index.css";
+@import "header.css";
+@import "footer.css";
+@import "main.css";
+
+@media all and (max-width:1920px){
+  *:focus { 
+    outline:none; 
+  }
+
+  html {
+    min-width:100%;
+  }
+
+  body {
+    margin:0;
+    padding:0;
+    min-width:100rem;
+  }
+  
+}
+
+/* 모바일 뷰 css */
+@media all and (max-width:550px){
+    
+}
