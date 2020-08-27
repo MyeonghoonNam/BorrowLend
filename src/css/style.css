@@ -3,6 +3,8 @@
 @import "header.css";
 @import "footer.css";
 @import "main.css";
+@import "goodsclick.css";
+@import "search.css";
 
 @media all and (max-width:1920px){
   *:focus { 
