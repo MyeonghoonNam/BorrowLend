@@ -118,5 +118,29 @@
 
 /* 모바일 뷰 css */
 @media all and (max-width:550px){
+   
+  #header {
+    font-size:2rem;
+    margin-left: 5%;
+    padding-top: 1;
+  }
   
+  
+  .logo{
+    width:30%;
+    font-family: 'Alata', sans-serif;
+    font-size:2rem;
+    text-align:center;
+    height:10%;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .userwrap {
+    display: none;
+  }
+
+
 }
