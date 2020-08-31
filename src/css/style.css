@@ -25,5 +25,15 @@
 
 /* 모바일 뷰 css */
 @media all and (max-width:550px){
-    
+    *:focus { 
+    outline:none; 
+  }
+
+  html, body {
+    margin:0;
+    padding:0;
+    min-width:100%;
+    max-width:100%
+  }
+
 }

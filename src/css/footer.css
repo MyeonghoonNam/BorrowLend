@@ -35,14 +35,45 @@
 }
 
 @media all and (max-width:550px){
-  *:focus { 
-    outline:none; 
+  #footer {
+    /* position: absolute; */
+    background-color: #303030;
+    height:9rem;
+    /* margin-top:12%; */
+    color:rgba(255, 255, 255, 0.7);
+    /* border:solid 1px; */
+    margin:0;
+    padding:0;
+    min-width:100%;
+    max-width:100%;
+    display:flex;
   }
 
-  body {
-      margin:0;
+  .copyright-title {
+    order:1;
+    font-style:italic;
+    font-size : 215%;
+    width:20%;
+    float:left;
+    position:relative;
+    padding-top:3%;
+    padding-bottom:1%;
+    left:5%;
+    /* border: solid 1px; */
   }
-  #footer {
-    background-color:red;
+
+  .copyright-content {
+    order:2;
+    position:relative;
+    font-size : 70%;
+    left:20%;
+    text-align:left;
+    /* border: solid 1px; */
+    margin:0;
+    padding:0;
+    min-width:55%;
+    max-width:55%;
+    height:100px;
+    padding-top:30px;
   }
 }
