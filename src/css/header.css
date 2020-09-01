@@ -98,9 +98,7 @@
     display: none;
   }
 
-  #menuicon{
-    display:none;
-  }
+
   
   /* .e-mail {
     order:5;
@@ -160,6 +158,7 @@
 
 
   .userwrap {
+    display: none;
     order:2;
     font-size:0.5rem;
     border-bottom: 1px solid;
@@ -215,6 +214,7 @@
 
 
   .nav {
+    display: none;
     order:3;
     width:203.5px;
     padding-top: 0;
@@ -240,5 +240,5 @@
   .nav li:hover {
     background-color:gray;
   }
-
+  
 }
