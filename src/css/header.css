@@ -98,6 +98,10 @@
     display: none;
   }
 
+  .menubar2{
+    display: none;
+  }
+
 
   
   /* .e-mail {
@@ -129,7 +133,7 @@
    
   #header {
     font-size:2rem;
-    padding-top: 1;
+    padding-top: 0;
     display:flex;
     flex-direction: column;
     width:100%;
@@ -154,15 +158,29 @@
     left:0.6rem;
     font-size:10px;
     width:30px;
+    cursor:pointer;
+  }
+
+  .menubar2{
+    order:2;
+    position: relative;
+    display: block;
+    left:85%;
+    text-decoration:none;
+    cursor:pointer;
   }
 
 
   .userwrap {
+    position: fixed;
     display: none;
     order:2;
     font-size:0.5rem;
     border-bottom: 1px solid;
     width:37%;
+    z-index:5;
+    margin-top:10%;
+    transition: width 2s;
   }
 
   .favicon {
@@ -170,8 +188,8 @@
     float:left;
     border:solid 1px;
     border-radius:50%;
-    margin-top:20%;
-    margin-bottom:5%;
+    margin-top:0%;
+    margin-bottom:3%;
     margin-left:2%;
   }
 
@@ -180,7 +198,7 @@
     flex-wrap: wrap;
     width:80%;
     font-family: 'Noto Sans KR', sans-serif;
-    padding-top:21%;
+    padding-top:1.5%;
     line-height: 3;
     margin-left:4%;
   }
@@ -215,10 +233,15 @@
 
   .nav {
     display: none;
+    position:fixed;
     order:3;
     width:203.5px;
     padding-top: 0;
     text-align:left;
+    height: 100%;
+    background-color:#5e94ca;
+    z-index:5;
+    transition: width 2s;
   }
 
   .nav ul {
@@ -226,6 +249,7 @@
     flex-direction: column;
     align-items: flex-start;
     line-height: 3;
+    margin-top:27%;
   }
 
   .nav li {
@@ -238,7 +262,7 @@
   }
 
   .nav li:hover {
-    background-color:gray;
+    background-color:white;
   }
   
 }
