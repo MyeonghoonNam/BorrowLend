@@ -1,0 +1,38 @@
+/* PC 뷰 css */
+@media all and (max-width:1920px){
+  .small-header{
+    width:70%;
+    margin: 0 auto;
+    display: flex;
+    /* border:solid 1px; */
+  }
+
+
+  .small-home{
+    order:1;
+    font-size:1.7rem;
+    padding-right:0.5rem;
+    color:darkgray;
+  }
+
+  .mark{
+    order:2;
+    font-size:1.7rem;
+    padding-right:0.5rem;
+    color:darkgray;
+  }
+
+  .small-market{
+    order:3; 
+    font-size:1.7rem;
+    color:black;
+  }
+
+}
+    
+
+    
+/* 모바일 뷰 css */
+@media all and (max-width:550px){
+    
+}
