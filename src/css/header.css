@@ -29,27 +29,62 @@
     padding:0;
   }
   
-  .nav li {
+  .menu > li {
     display:inline-block;
     font-size:1.7rem;
     padding-right:1rem;
     font-family: 'Noto Sans KR', sans-serif;
   }
-  .menu li a {
+
+  .menu > li > a {
+    display:inline-block;
     text-decoration:none;
     color:black;
   }
+
+  .sub-menu {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.15s ease-in;
+    background: #F2F2F2;
+    border:solid 1px;
+    border-radius:5%;
+    font-size:1rem;
+  }
+
+  #service-menu {
+    width:4.5rem;
+  }
+
+  #customersupport-menu {
+    width:6.2rem;
+  }
+
+  .sub-menu > li {
+    padding:0.15rem 0.3rem;
+  }
+
+  .sub-menu > li > a {
+    text-decoration:none;
+    color:black;
+  }
+
   .menu li a:hover {
     color:#DD4E4E;
     cursor:pointer;
+    text-decoration: underline;
   }
-  
+
+  .menu > li:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
   .userwrap {
     order:3;
     width:25%;
   }
-
-
 
   .user {
     display:flex;
@@ -59,7 +94,7 @@
     margin:0;
     padding-top:2.4rem;
   }
-  
+
   .user div {
     height:1.7rem;
   }
