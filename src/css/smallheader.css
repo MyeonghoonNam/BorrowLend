@@ -4,32 +4,38 @@
     width:70%;
     margin: 0 auto;
     display: flex;
+    font-family: 'Noto Sans KR', sans-serif;
     /* border:solid 1px; */
   }
 
+  .small-header div {
+    font-size:1.7rem;
+    padding-right:0.5rem;
+  }
 
   .small-home{
     order:1;
-    font-size:1.7rem;
-    padding-right:0.5rem;
     color:darkgray;
   }
 
-  .mark{
+  .mark1 {
     order:2;
-    font-size:1.7rem;
-    padding-right:0.5rem;
-    color:darkgray;
   }
 
-  .small-market{
+  .small-item1 {
     order:3; 
-    font-size:1.7rem;
-    color:black;
+  }
+  .mark2 {
+    order:4; 
+  }
+
+  .small-item2 {
+    order:5; 
   }
 
 }
     
+
     
 /* 모바일 뷰 css */
 @media all and (max-width:550px){

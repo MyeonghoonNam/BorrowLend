@@ -5,10 +5,11 @@
 /* PC 뷰 css */
 @import "index.css";
 @import "header.css";
+@import "smallheader.css";
 @import "footer.css";
 @import "main.css";
-@import "store.css";
-@import "search.css";
+/* @import "store.css"; */
+
 
 @media all and (max-width:1920px){
   *:focus { 
