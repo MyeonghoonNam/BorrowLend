@@ -4,22 +4,30 @@ $(document).ready(() => {
 
 
 function menuopen(){
-  if($(".nav").css("display") == "none"){
     $(".nav").show();
-  }
-  if($(".userwrap").css("display") == "none"){
+    $(".nav").animate({
+      left:0
+    });
   $(".userwrap").show();
-  }
+  $(".userwrap").animate({
+    left:0
+  });
 }
 function  menuclose(){
-  if($(".nav").css("display") == "block"){
     $(".nav").hide();
-  }
-  if($(".userwrap").css("display") == "block"){
+    $(".nav").animate({
+      left:'-' + 40 + '%'
+    });
   $(".userwrap").hide();
-  }
+  $(".userwrap").animate({
+    left:'-' + 40 + '%'
+  });
 }
 
-
+$(document).ready(function(){
+  $(".menu > li > a").click(function(){
+    $("#service-menu").append();
+  });
+});
 
 

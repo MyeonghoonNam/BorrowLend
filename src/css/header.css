@@ -192,7 +192,7 @@
   .logo{
     order:1;
     width:100%;
-    font-family : 'Black Han Sans';    
+    font-family: 'Alata', sans-serif;
     color: #5e94ca;
     font-size:2.5rem;
     text-align:center;
@@ -220,12 +220,12 @@
 
 
   .userwrap {
-    position: fixed;
-    display: none;
+    position: absolute;
     order:2;
     font-size:0.5rem;
     border-bottom: 1px solid;
-    width:37%;
+    width:39%;
+    left:-40%;
     z-index:5;
     margin-top:10%;
   }
@@ -242,12 +242,11 @@
 
   .user {
     display:flex;
-    flex-wrap: wrap;
     width:80%;
     font-family: 'Noto Sans KR', sans-serif;
     padding-top:1.5%;
     line-height: 3;
-    margin-left:4%;
+    margin-right:0%;
   }
 
   .grade {
@@ -267,7 +266,7 @@
 
   .user-info {
     order:3;
-   margin-left:1.5rem;
+   margin-left:1rem;
     padding-right:0.5rem;
     color:darkgray; 
     
@@ -279,14 +278,15 @@
 
 
   .nav {
-    display: none;
-    position:fixed;
+    display: block;
+    position: absolute;
     order:3;
-    width:203.5px;
+    width:40%;
+    left:-40%;
     padding-top: 0;
     text-align:left;
     height: 100%;
-    background-color:#5e94ca;
+    background-color:#3d3c3c;
     z-index:5;
   }
 
@@ -302,8 +302,8 @@
     display: block;
     font-size:1rem;
     font-family: 'Noto Sans KR', sans-serif;
-    text-align:start;
-    width:93%;
+    text-align:center;
+    width:90%;
     border-bottom:1px solid;
   }
 
@@ -311,4 +311,46 @@
     background-color:white;
   }
   
+  .sub-menu {
+    background: #3d3c3c;
+    font-size:1rem;
+    width:100%;
+    border:none;
+    border-radius:none;
+  }
+
+  #service-menu {
+    display: none;
+    position: relative;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align:center;
+    margin-top: 0%;
+    width:103.3%;
+  }
+
+  #customersupport-menu {
+    display: none;
+    position: relative;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align:center;
+    margin-top: 0%;
+    width:103.3%;
+  }
+
+
+  .sub-menu > li {
+    display: block;
+    background-color:#3d3c3c;
+    width: 100%;
+    cursor:pointer;
+  }
+
+  .menu > li > a:hover {
+    color:#DD4E4E;
+    cursor:pointer;
+    text-decoration: underline;
+  }
+
+
+
 }
