@@ -177,7 +177,7 @@
 }
 
 /* 모바일 뷰 css */
-@media all and (max-width:550px){
+@media all and (max-width:480px){
    
   #header {
     font-size:2rem;
@@ -227,11 +227,11 @@
     width:39%;
     left:-40%;
     z-index:5;
-    margin-top:10%;
+    margin-top:13%;
   }
 
   .favicon {
-    width: 2rem;
+    width: 1.5rem;
     float:left;
     border:solid 1px;
     border-radius:50%;
@@ -244,8 +244,8 @@
     display:flex;
     width:80%;
     font-family: 'Noto Sans KR', sans-serif;
-    padding-top:1.5%;
-    line-height: 3;
+    padding-top:0%;
+    line-height: 2;
     margin-right:0%;
   }
 
@@ -261,13 +261,14 @@
 
   .user-name {
     order:2;
-    margin-left:0.5rem;
+    padding-top:0.2rem;
   }
 
   .user-info {
     order:3;
    margin-left:1rem;
     padding-right:0.5rem;
+    padding-top:0.2rem;
     color:darkgray; 
     
   }

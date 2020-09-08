@@ -57,7 +57,7 @@
 }
 
 /* 모바일 뷰 css */
-@media all and (max-width:550px){
+@media all and (max-width:480px){
 
   .index-header {
     font-family : 'Black Han Sans';

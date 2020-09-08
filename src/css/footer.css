@@ -34,7 +34,7 @@
   }
 }
 
-@media all and (max-width:550px){
+@media all and (max-width:480px){
   #footer {
     /* position: absolute; */
     background-color: #303030;
@@ -52,7 +52,7 @@
   .copyright-title {
     order:1;
     font-style:italic;
-    font-size : 215%;
+    font-size : 220%;
     width:20%;
     float:left;
     position:relative;
@@ -73,7 +73,7 @@
     padding:0;
     min-width:55%;
     max-width:55%;
-    height:100px;
-    padding-top:30px;
+    height:100%;
+    padding-top:2%;
   }
 }
