@@ -24,10 +24,10 @@ function  menuclose(){
   });
 }
 
-$(document).ready(function(){
-  $(".menu > li > a").click(function(){
-    $("#service-menu").append();
-  });
-});
+function  submenu1(){
+  $("#service-menu").toggle();
+}
 
-
+function  submenu2(){
+  $("#customersupport-menu").toggle();
+}

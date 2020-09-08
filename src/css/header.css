@@ -312,34 +312,36 @@
   }
   
   .sub-menu {
+    display: block;
     background: #3d3c3c;
     font-size:1rem;
     width:100%;
+    margin-right:0%;
     border:none;
-    border-radius:none;
+    border-radius:0%;
   }
+
 
   #service-menu {
     display: none;
-    position: relative;
+    position: static;
     font-family: 'Noto Sans KR', sans-serif;
     text-align:center;
     margin-top: 0%;
-    width:103.3%;
+    width:103.1%;
   }
 
   #customersupport-menu {
     display: none;
-    position: relative;
+    position: static;
     font-family: 'Noto Sans KR', sans-serif;
     text-align:center;
     margin-top: 0%;
-    width:103.3%;
+    width:103.1%;
   }
 
 
   .sub-menu > li {
-    display: block;
     background-color:#3d3c3c;
     width: 100%;
     cursor:pointer;
