@@ -39,5 +39,38 @@
     
 /* 모바일 뷰 css */
 @media all and (max-width:480px){
-    
+  .small-header{
+    width:70%;
+    margin-left:3%;
+    display: flex;
+    font-family: 'Noto Sans KR', sans-serif;
+    /* border:solid 1px; */
+  }
+
+  .small-header div {
+    font-size:1rem;
+    padding-right:0.5rem;
+  }
+
+  .small-home{
+    display: none;
+    order:1;
+    color:darkgray;
+  }
+
+  .mark1 {
+    display: none;
+    order:2;
+  }
+
+  .small-item1 {
+    order:3; 
+  }
+  .mark2 {
+    order:4; 
+  }
+
+  .small-item2 {
+    order:5; 
+  }
 }

@@ -194,3 +194,7 @@ if(filename == 'customer-notice' || 'customer-q&a') {
       l_layout(mainname, subname);
     }
 }
+
+if($('.small-item1').css('display') == 'none'){
+  $(".mark2").hide()
+}
