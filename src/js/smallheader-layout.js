@@ -157,6 +157,34 @@ function l_layout(m, s){
   });
 };
 
+function f_layout(n){
+  var mark1 = document.getElementsByClassName('mark1')[0]
+  var item1 = document.getElementsByClassName('small-item1')[0]
+  var mark2 = document.getElementsByClassName('mark2')[0]
+  var item2 = document.getElementsByClassName('small-item2')[0]
+  var name = n;
+
+  mark1.innerHTML = '>';
+
+  $(mark1).css({
+    color:'darkgray'
+  });
+
+  item1.innerHTML = name;
+
+  $(item1).css({
+    display:'none'
+  });
+
+  $(mark2).css({
+    display:'none'
+  });
+  
+  $(item2).css({
+    color:'black'
+  });
+};
+
 var filename = Page_Title();
 
 if(filename == 'store' || 'message' || 'honor'){
@@ -195,6 +223,24 @@ if(filename == 'customer-notice' || 'customer-q&a') {
     }
 }
 
-if($('.small-item1').css('display') == 'none'){
-  $(".mark2").hide()
-}
+if(filename == 'service-rent' || 'service-like') {
+  if(filename == 'service-rent'){
+    var name = '대여물품';
+    f_layout(name);
+  } else if(filename == 'service-like'){
+    var subname = '관심물품';
+    f_layout(name);
+  }
+} 
+
+if(filename == 'customer-notice' || 'customer-q&a') {
+  if(filename == 'customer-notice'){
+    var name = '공지사항';
+    f_layout(name);
+  } else if(filename == 'customer-q&a'){
+    var subname = 'Q&A';
+    f_layout(name);
+  }
+} 
+
+

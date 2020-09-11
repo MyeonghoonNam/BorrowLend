@@ -7,12 +7,6 @@
     
 /* 모바일 뷰 css */
 @media all and (max-width:480px){
-    .small-item1 {
-        display: none;
-        order:3; 
-      }
-      .mark2 {
-        display: none;
-        order:4; 
-      }
+
+
 }
