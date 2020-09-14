@@ -150,6 +150,14 @@
     display: none;
   }
 
+  .service-menu1{
+    display: none;
+  }
+  
+  .service-menu2{
+    display: none;
+  }
+
 
   
   /* .e-mail {
@@ -352,6 +360,18 @@
     color:#DD4E4E;
     cursor:pointer;
     text-decoration: underline;
+  }
+
+  .service-menu1{
+    display: inline-block;
+    position: relative;
+    left:35%;
+  }
+
+  .service-menu2{
+    display: inline-block;
+    position: relative;
+    left:31%;
   }
 
 }
