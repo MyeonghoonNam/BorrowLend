@@ -1,6 +1,6 @@
 @media all and (max-width:1920px){ 
   #footer {
-    /* position: absolute; */
+    /* position: relative; */
     background-color: #303030;
     width:100%;
     height:9rem;
