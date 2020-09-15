@@ -1,8 +1,47 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
-  
+    ul,li{
+        list-style:none;
+    }
+    .slide{
+        width:1000px;
+        height:500px;
+        margin-top:1%;
+        margin-left:5%;
+        border:1px solid;
+        overflow:hidden;
+    }
+    .slideimg{
+        position: absolute;
+        width: 100%; 
+        height: auto;
+    }
+    .slide ul{
+        margin-top:0%;
+    }
+
+    .header-message{
+        display: inline-block;
+        margin-left: 5%;
+        margin-bottom:1%;
+    }
+
 }
 /* 모바일 뷰 css */
 @media all and (max-width:480px){
+    .slide{
+        width:420px;
+        height:210px;
+        margin: 0 auto;
+        border:1px solid;
+        overflow:hidden;
+    }
+
+    .header-message{
+        display: inline-block;
+        font-size: 10px;
+        margin-left: 5%;
+        margin-bottom:1%;
+    }
     
 }
