@@ -188,96 +188,156 @@
 @media all and (max-width:480px){
    
   #header {
-    font-size:2rem;
-    padding-top: 0;
-    display:flex;
-    flex-direction: column;
-    width:100%;
+    padding-top:0;
+    width:60%;
+    vertical-align: middle;
+    margin: 0 auto;
+    display: flex;
   }
   
-  
-  
-  .logo{
-    order:1;
+  .logo {
     width:100%;
     font-family: 'Alata', sans-serif;
-    color:white;
     font-size:2.5rem;
-    text-align:center;
-    height:10%;
+    text-align: center;
   }
-
-  .menubar{
-    position: relative;
-    display: block;
-    top:2.4rem;
-    left:0.6rem;
-    font-size:10px;
-    width:30px;
-    cursor:pointer;
-  }
-
-  .menubar2{
-    order:2;
-    position: relative;
-    display: block;
-    left:85%;
+  
+  .logo a {
     text-decoration:none;
+    color:black;
+  }
+  .nav {
+    order:2;
+    position: absolute;
+    padding-top:2rem;
+    width:40%;
+    left:-40%;
+    margin:0;
+    padding-top: 0;
+    text-align:center;
+    background-color:#3d3c3c;
+    z-index: 2; 
+    height: 100%;
+  }
+  
+  .nav ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+    margin-top:28%;
+  }
+  
+  .menu > li {
+    display:block;
+    font-size:1.5rem;
+    padding:0;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  .menu li a {
+    /* display:inline-block; */
+    text-decoration:none;
+    color:black;
+  }
+
+  .sub-menu {
+    position: relative;
+    opacity: 0;
+    transition: all 0.15s ease-in;
+    background: #3d3c3c;
+    border:none;
+    font-size:1rem;
+  }
+
+  #service-menu {
+    display: none;
+    margin-top: 0%;
+    width:100%;
+  }
+
+  #customersupport-menu {
+    display: none;
+    margin-top: 0%;
+    width:100%;
+  }
+
+  .sub-menu > li {
+    padding:0.15rem 0.3rem;
+  }
+
+  .sub-menu > li > a:hover {
+    text-decoration:none;
+    color:#DD4E4E;
     cursor:pointer;
   }
 
+  .menu > li > a:hover {
+    color:#DD4E4E;
+    cursor:pointer;
+    text-decoration: none;
+  }
+
+  .menu > li:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+  }
 
   .userwrap {
+    order:1;
     position: absolute;
-    order:2;
-    font-size:0.5rem;
-    border-bottom: 1px solid;
-    width:39%;
+    top:5%;
+    width:39.5%;
     left:-40%;
-    z-index:5;
-    margin-top:13%;
-  }
-
-  .favicon {
-    width: 1.7rem;
-    float:left;
-    border:solid 1px;
-    border-radius:50%;
-    margin-top:0%;
-    margin-bottom:3%;
-    margin-left:2%;
+    z-index: 2;
+    border-bottom: 2px solid black;
   }
 
   .user {
     display:flex;
+    flex-wrap: wrap;
     width:80%;
     font-family: 'Noto Sans KR', sans-serif;
-    padding-top:0%;
-    line-height: 2;
-    margin-right:0%;
+    font-size:0.7rem;
+    margin:0;
+    padding-top:2.1rem;
   }
 
+  .user div {
+    height:1rem;
+  }
+
+  .favicon {
+    width: 1.7rem;
+    left:1%;
+    margin-top:1.7rem;
+    margin-left:0.3rem;
+    margin-bottom: 0.2rem;
+    float:left;
+    border:solid 1px;
+    border-radius:50%;
+  }
+  
   .grade {
     order:1;
     border-radius:5px;
     background-color: darkgray;
     color:white;
     text-align:center;
+    vertical-align:middle;
     margin-left:0.5rem;
-    width:1.5rem;
+    width:2rem;
   }
-
+  
   .user-name {
     order:2;
-    padding-top:0.2rem;
+    margin-left:0.5rem;
   }
 
   .user-info {
     order:3;
-   margin-left:1rem;
-    padding-right:0.5rem;
-    padding-top:0.2rem;
-    color:darkgray; 
+    margin-left:0.5rem;
+    padding-right:0rem;
+    color:darkgray;
     
   }
   
@@ -285,93 +345,34 @@
     display: none;
   }
 
-
-  .nav {
+  .menubar{
+    position: relative;
     display: block;
-    position: absolute;
-    order:3;
-    width:40%;
-    left:-40%;
-    padding-top: 0;
-    text-align:left;
-    height: 100%;
-    background-color:#3d3c3c;
-    z-index:5;
+    cursor:pointer;
+    right:24%;
+    padding-top: 1rem;
+
   }
 
-  .nav ul {
-    display: block;
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 3;
-    margin-top:27%;
-  }
-
-  .nav li {
-    display: block;
-    font-size:1rem;
-    font-family: 'Noto Sans KR', sans-serif;
-    text-align:center;
-    width:90%;
-    border-bottom:1px solid;
-  }
-
-  .nav li:hover {
-    background-color:white;
-  }
-  
-  .sub-menu {
-    display: block;
-    background: #3d3c3c;
-    font-size:1rem;
-    width:100%;
-    margin-right:0%;
-    border:none;
-    border-radius:0%;
-  }
-
-
-  #service-menu {
-    display: none;
-    position: static;
-    font-family: 'Noto Sans KR', sans-serif;
-    text-align:center;
-    margin-top: 0%;
-    width:104%;
-  }
-
-  #customersupport-menu {
-    display: none;
-    position: static;
-    font-family: 'Noto Sans KR', sans-serif;
-    text-align:center;
-    margin-top: 0%;
-    width:104%;
-  }
-
-
-  .sub-menu > li {
-    background-color:#3d3c3c;
-    width: 100%;
+  .menubar2{
+    position: relative;
+    display: inline-block;
+    left:40%;
+    font-size: 2rem;
+    text-decoration:none;
     cursor:pointer;
   }
-
-  .menu > li > a:hover {
-    color:#DD4E4E;
-    cursor:pointer;
-    text-decoration: underline;
-  }
-
   .service-menu1{
     display: inline-block;
+    font-size: 1.2rem;
     position: relative;
-    left:35%;
+    left:21%;
   }
 
   .service-menu2{
     display: inline-block;
+    font-size: 1.2rem;
     position: relative;
-    left:31%;
+    left:15%;
   }
-
 }
