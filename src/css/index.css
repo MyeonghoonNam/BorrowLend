@@ -96,13 +96,11 @@
 
 
   .index-video {
-    position: fixed;
-    left:-120%;
-    width:300%;
-    height:100%;
-    min-width:300%;
-    min-height:100%;
-    bottom:15%;
+    position: absolute;
+    width:100%;
+    min-width:100%;
+    z-index:-100;
+    top:50%;
   }
 
 
@@ -133,17 +131,16 @@
   }
 
   .index-article {
-    display: table-cell;
     font-family : 'Black Han Sans';
     font-size : 250%;
     color:white;
+    height: 25rem;
     min-width:100%;
     max-width:100%;
     margin:0;
     padding:0;
     padding-top:20%;
     text-align: center;
-    line-height: 150%;
     /* border:solid 1px; */
   }
 
