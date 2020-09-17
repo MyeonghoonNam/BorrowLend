@@ -36,44 +36,38 @@
 
 @media all and (max-width:480px){
   #footer {
-    /* position: absolute; */
+    /* position: relative; */
     background-color: #303030;
+    width:100%;
     height:9rem;
+    min-height:9rem;
     /* margin-top:12%; */
     color:rgba(255, 255, 255, 0.7);
+    min-width:100%;
+    display: flex;
     /* border:solid 1px; */
-    margin:0;
-    padding:0;
-    min-width:100%;
-    min-width:100%;
-    display:flex;
   }
 
   .copyright-title {
-    order:1;
     font-style:italic;
-    font-size : 220%;
-    width:20%;
+    font-size : 170%;
+    width:35%;
     float:left;
+    left:1rem;
     position:relative;
-    padding-top:3%;
+    padding-top:8%;
     padding-bottom:1%;
-    left:5%;
     /* border: solid 1px; */
   }
 
   .copyright-content {
-    order:2;
     position:relative;
-    font-size : 70%;
-    left:20%;
+    font-size: 0.6rem;
+    left:8%;
+    padding-top: 6%;
+    width:17rem;
     text-align:left;
+    min-width:17rem;
     /* border: solid 1px; */
-    margin:0;
-    padding:0;
-    min-width:55%;
-    max-width:55%;
-    height:100%;
-    padding-top:2%;
   }
 }
