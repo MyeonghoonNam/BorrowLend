@@ -4,15 +4,12 @@
         list-style:none;
     }
     .slide{
-        width:1000px;
-        height:500px;
-        margin-top:1%;
+        width:60%;
+        height:30rem;
         margin-left:5%;
-        border:1px solid;
         overflow:hidden;
     }
     .slideimg{
-        position: absolute;
         width: 100%; 
         height: auto;
     }
@@ -23,26 +20,29 @@
     .header-message{
         display: inline-block;
         margin-left: 5%;
-        margin-bottom:1%;
     }
 
 }
 /* 모바일 뷰 css */
-@media all and (max-width:480px){
+@media all and (max-width:375px){
     .slide{
-        width:420px;
-        height:210px;
+        width:90%;
+        height:10rem;
         margin: 0 auto;
         border:1px solid;
         overflow:hidden;
     }
 
+
+    .slideimg{
+        width: 100%; 
+        height: auto;
+    }
+
     .header-message{
         display: inline-block;
-        font-size: 10px;
-        margin-left: 5%;
-        margin-bottom:1%;
-        color:white;
+        font-size: 0.3rem;
+        color:black;
     }
     
 }
