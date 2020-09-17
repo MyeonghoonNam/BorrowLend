@@ -8,25 +8,231 @@
     <script src="src/js/index.js"></script>
     <script src="src/js/footer.js"></script>
     <link rel="stylesheet" href="src/css/style.css">
+    <style>
+      a {
+    color: #333;
+    text-decoration: none;
+}
+input {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 0px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+#modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+.login_tistory{
+    position: relative;
+    width: 320px;
+    margin:17% auto;
+    /* border:solid 1px black; */
+    background-color: #fff;
+    }
+.screen_out {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    line-height: 0;
+    text-indent: -9999px;    
+}
+input{
+    font-size: 13px;
+    line-height: 1.5;
+    /* 언어 부드럽게 랜더링 button */
+    -webkit-font-smoothing: antialiased; 
+}    
+fieldset {
+    border: 0;
+}
+.login_tistory .box_login {
+    margin: 1rem 0 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.login_tistory .inp_text {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 18px 19px 19px;
+    box-sizing: border-box;
+}
+.login_tistory .inp_text+.inp_text {
+    border-top: 1px solid #ddd;
+}
+.inp_text input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    color: #000;
+    border: none;
+    outline: 0;
+    -webkit-appearance: none;
+    background-color: transparent;
+}
+.btn_login {
+    margin: 20px 0 0;
+    width: 100%;
+    height: 48px;
+    border-radius: 3px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+}
+.login_append {
+    overflow: hidden;
+    padding: 15px 0 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.inp_chk {
+    display: inline-block;
+    position: relative;
+    margin-bottom: -1px;
+}
+.login_append .inp_chk {
+    float: left;
+}
+
+.inp_chk .lab_g {
+    display: inline-block;
+    margin-right: 19px;
+    color: #909090;
+    font-size: 13px;
+    /* line-height: 19px; */
+    vertical-align: top;
+}
+
+.inp_chk .txt_lab {
+    vertical-align: top;
+}
+.login_append .txt_find {
+    float: right;
+    color: #909090;
+    font-size: 13px;
+}
+.login_append .link_find {
+  color: #909090;
+  font-size: 13px;
+}
+.close{
+  color: #aaa;
+  float: right;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin:0;
+  /* border:solid 1px black; */
+  line-height: 0;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+    </style>
 </head>
 <body>
   <div class="wrapper">
     <video class="index-video" autoplay loop muted>
       <source src="src/videos/index-video.mp4" type="video/mp4">
     </video>
+
     <header class="index-header">
-			<div class="title">Borrow Land</div>
-			<form class="btn-form" action="">
-				<button class="btn">Login</button>
-      </form>
-		</header>
+      <div class="title">Borrow Land</div>
+      
+      <button class="btn">Login</button>
+    </header>
+
+    <div id="modal">
+      <div class="login_tistory">
+        <form method="post" id="authForm" action="https://www.tistory.com/auth/login">
+          <fieldset>
+            <span class="close">&times;</span>
+
+            <div class="box_login">
+              <div class="inp_text">
+                <label for="loginId" class="screen_out">아이디</label>
+                <input type="email" id="loginId" name="loginId" placeholder="ID" >
+              </div>
+              <div class="inp_text">
+                <label for="loginPw" class="screen_out">비밀번호</label>
+                <input type="password" id="loginPw" name="password" placeholder="Password" >
+              </div>
+            </div>
+
+            <button type="submit" class="btn_login" disabled>로그인</button>
+
+            <div class="login_append">
+              <div class="inp_chk"> 
+                <label for="keepLogin" class="lab_g">
+                  <span class="txt_lab">회원가입</span>
+                </label>
+              </div>
+
+              <span class="txt_find">
+                <a href="/member/find/loginId" class="link_find">아이디</a>
+                  / 
+                <a href="/member/find/password" class="link_find">비밀번호 찾기</a>
+              </span>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    
     <article class="index-article">
       <div>
         사람과 사람을 연결하다<br>
         바로랜드.
       </div>
     </article>
+
 		<footer id="footer"></footer>
   </div>
+  <script>
+    var modal = document.getElementById('modal');
+    var btn = document.getElementsByClassName("btn")[0];
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
