@@ -34,7 +34,7 @@
   }
 }
 
-@media all and (max-width:425px){
+@media all and (max-width:480px){
   #footer {
     /* position: relative; */
     background-color: #303030;
@@ -49,22 +49,22 @@
 
   .copyright-title {
     font-style:italic;
-    font-size : 120%;
-    width:31%;
+    font-size : 140%;
+    width:32%;
     float:left;
-    left:1rem;
+    left:0.5rem;
     position:relative;
-    padding-top:15%;
+    padding-top:12%;
     padding-bottom:1%;
     /* border: solid 1px; */
   }
 
   .copyright-content {
     position:relative;
-    font-size: 0.1rem;
+    font-size: 0.7rem;
     float:left;
     left:4%;
-    padding-top: 8%;
+    padding-top: 7%;
     width:16.5rem;
     text-align:left;
     min-width:16.5rem;
