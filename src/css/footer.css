@@ -34,7 +34,7 @@
   }
 }
 
-@media all and (max-width:480px){
+@media all and (max-width:425px){
   #footer {
     /* position: relative; */
     background-color: #303030;
@@ -44,30 +44,30 @@
     /* margin-top:12%; */
     color:rgba(255, 255, 255, 0.7);
     min-width:100%;
-    display: flex;
     /* border:solid 1px; */
   }
 
   .copyright-title {
     font-style:italic;
-    font-size : 170%;
-    width:35%;
+    font-size : 120%;
+    width:31%;
     float:left;
     left:1rem;
     position:relative;
-    padding-top:8%;
+    padding-top:15%;
     padding-bottom:1%;
     /* border: solid 1px; */
   }
 
   .copyright-content {
     position:relative;
-    font-size: 0.6rem;
-    left:8%;
-    padding-top: 6%;
-    width:17rem;
+    font-size: 0.1rem;
+    float:left;
+    left:4%;
+    padding-top: 8%;
+    width:16.5rem;
     text-align:left;
-    min-width:17rem;
+    min-width:16.5rem;
     /* border: solid 1px; */
   }
 }

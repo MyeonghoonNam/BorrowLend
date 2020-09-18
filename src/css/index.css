@@ -240,7 +240,7 @@
 }
 
 /* 모바일 뷰 css */
-@media all and (max-width:480px){
+@media all and (max-width:425px){
 
   .body{
     background-color: black;
@@ -249,7 +249,7 @@
   .index-header {
     font-family : 'Black Han Sans';
     /* text-align : center; */
-    font-size : 300%;
+    font-size : 200%;
     color:white;
     padding-top:15%;
     min-width:100%;
@@ -261,7 +261,7 @@
 .index-header .title {
   margin: 0 auto;
   /* border:solid 1px white; */
-  width:30rem;
+  width:22rem;
   text-align: center;
 }
 
@@ -269,7 +269,8 @@
   position: fixed;
   width:100%;
   min-width:100%;
-  top: 40%;
+  top:40%;
+
 }
 
   .index-article {
@@ -289,4 +290,14 @@
     width:20rem;
   }
 
+  .login_tistory{
+    position: relative;
+    width: 320px;
+    margin:60% auto;
+    /* border:solid 1px black; */
+    background-color: #fff;
+    }
+
 } 
+
+
