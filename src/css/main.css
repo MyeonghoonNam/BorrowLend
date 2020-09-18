@@ -25,7 +25,7 @@
 
 }
 /* 모바일 뷰 css */
-@media all and (max-width:375px) and (orientation: portrait){
+@media all and (max-width:425px) and (orientation: portrait){
     .slide{
         width:90%;
         height:10rem;
@@ -53,7 +53,7 @@
 
 
 /* 모바일 가로뷰 css */
-@media all and (max-width:812px) and (orientation: landscape){
+@media all and (max-width:850px) and (orientation: landscape){
     .slide{
         width:90%;
         height:40rem;

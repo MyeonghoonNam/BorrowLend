@@ -181,7 +181,7 @@
 }
 
 /* 모바일 세로뷰 css */
-@media all and (max-width:375px) and (orientation: portrait){
+@media all and (max-width:425px) and (orientation: portrait){
    
   #header {
     padding-top:0;
@@ -410,7 +410,7 @@
 }
 
 /* 모바일 가로뷰 css */
-@media all and (max-width:812px) and (orientation: landscape){
+@media all and (max-width:850px) and (orientation: landscape){
    
   #header {
     padding-top:0;
@@ -442,7 +442,7 @@
     text-align:center;
     background-color:#3d3c3c;
     z-index: 2; 
-    height: 280%;
+    height: 250%;
   }
   
   .nav ul {

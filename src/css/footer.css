@@ -34,7 +34,7 @@
   }
 }
 
-@media all and (max-width:480px){
+@media all and (max-width:425px){
   #footer {
     /* position: relative; */
     background-color: #303030;
@@ -49,10 +49,10 @@
 
   .copyright-title {
     font-style:italic;
-    font-size : 100%;
-    width:25%;
+    font-size : 120%;
+    width:31%;
     float:left;
-    left:0.3rem;
+    left:1rem;
     position:relative;
     padding-top:15%;
     padding-bottom:1%;
@@ -61,7 +61,7 @@
 
   .copyright-content {
     position:relative;
-    font-size: 0.1em;
+    font-size: 0.1rem;
     float:left;
     left:4%;
     padding-top: 8%;
