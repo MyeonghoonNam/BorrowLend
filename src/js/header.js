@@ -4,25 +4,28 @@ $(document).ready(() => {
 
 
 function menuopen(){
+  if($("input:checkbox[id='hamburger']").is(":checked") == true){
     $(".nav").show();
     $(".nav").animate({
       left:0
     });
-  $(".userwrap").show();
-  $(".userwrap").animate({
-    left:0
-  });
-}
-function  menuclose(){
+    $(".userwrap").show();
+    $(".userwrap").animate({
+      left:0
+    });
+  }
+  else if($("input:checkbox[id='hamburger']").is(":checked") == false){
     $(".nav").hide();
     $(".nav").animate({
       left:'-' + 40 + '%'
     });
-  $(".userwrap").hide();
-  $(".userwrap").animate({
-    left:'-' + 40 + '%'
-  });
+    $(".userwrap").hide();
+    $(".userwrap").animate({
+      left:'-' + 40 + '%'
+    });
+  }
 }
+
 
 function  servicemenu1(){
   $("#service-menu").toggle();
@@ -43,3 +46,5 @@ function  servicemenu2(){
     $(".service-menu2").text("▼");
   }
 }
+
+

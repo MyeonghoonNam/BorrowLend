@@ -158,6 +158,14 @@
     width:20rem;
   }
 
+  .login_tistory{
+    position: relative;
+    width: 320px;
+    margin:60% auto;
+    /* border:solid 1px black; */
+    background-color: #fff;
+    }
+
 } 
 
 
