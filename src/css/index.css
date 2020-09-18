@@ -1,5 +1,5 @@
 /* PC 뷰 css */
-@media all and (max-width:1920px){
+@media all and (max-width:1980px){
   .index-header {
       font-family : 'Black Han Sans';
       /* text-align : center; */
@@ -107,13 +107,14 @@
     top: 0;
     width: 100%; 
     height: 100%;
-    overflow: auto; 
+    min-width:100%;
+    min-height:100%; 
     background-color: rgba(0,0,0,0.4); 
 }
   .login_tistory{
     position: relative;
-    width: 320px;
-    margin:18% auto;
+    width: 20rem;
+    margin:20.5rem auto;
     border-radius: 3px;
     background-color: #fff;
 }
