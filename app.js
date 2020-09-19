@@ -35,7 +35,7 @@ function connectDB(){
   console.log('Try connect to db');
 
   mongoose.Promise = global.Promise;
-  mongoose.connect(databaseUrl);
+  mongoose.connect(databaseUrl, {useNewUrlParser:true, useUnifiedTopology:true});
   database = mongoose.connection;
 
   database.on('error', console.log.bind(console, 'mongoose connection error'));
@@ -107,10 +107,38 @@ app.get('/', function(req,res){
 
     res.end(data);
   });
-})
+});
+
+app.post('/main', function(req,res){
+  console.log('Access to login louter');
+
+  var paramId = req.body.id;
+  var paramPassword = req.body.password;
+
+  if(database){
+    authUser(database, paramId, paramPassword, function(err, docs){
+      if(err) throw err;
+
+      if(docs){
+        fs.readFile('./pages/main.html', function(err, data){
+          if(err) throw err;
+
+          res.end(data);
+        });
+      }
+    });
+  } else {  
+		res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+		res.write('<h2>데이터베이스 연결 실패</h2>');
+		res.write('<div><p>데이터베이스에 연결하지 못했습니다.</p></div>');
+    res.end();
+  }
+});
 
 app.use(static(__dirname));
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Connecting Server..');
+
+  connectDB();
 })
