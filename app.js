@@ -6,12 +6,14 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var static = require('serve-static');
 var fs = require('fs');
+var ejs = require('ejs');
 
 var expressSession = require('express-session');
 
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -35,7 +37,7 @@ function connectDB(){
   console.log('Try connect to db');
 
   mongoose.Promise = global.Promise;
-  mongoose.connect(databaseUrl, {useNewUrlParser:true, useUnifiedTopology:true});
+  mongoose.connect(databaseUrl, {useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex:true});
   database = mongoose.connection;
 
   database.on('error', console.log.bind(console, 'mongoose connection error'));
@@ -44,19 +46,35 @@ function connectDB(){
     console.log('db connect Success : ' + databaseUrl);
 
     UserSchema = mongoose.Schema({
-      id : String,
-      name : String,
-      passwod : String
+      id : {type : String, required : true, unique : true},
+      password : {type : String, required : true, unique : true},
+      name : {type : String, required : true, unique : true},
+      gender : {type : String, required : true, unique : true},
+      school : {type : String, required : true, unique : true},
+      tel : {type : String, required : true, unique : true},
+      created_at: {type: Date, index: {unique: false}, 'default': Date.now}
     });
 
     UserSchema.static('findById', function(id, callback){
       return this.find({id:id}, callback);
-    })
+    });
 
-    console.log('UserSchema Definition');
+    SchoolSchema = mongoose.Schema({
+      name: {type : String, required : true, unique : true}
+    });
 
+    SchoolSchema.static('findAll', function(callback){
+      return this.find({}, callback);
+    });
+
+    console.log('UserSchema Define');
+    console.log('SchoolSchema Define');
+    
     UserModel = mongoose.model('users', UserSchema);
-    console.log('UserModel Definition');
+    SchoolModel = mongoose.model('schools', SchoolSchema);
+
+    console.log('UserModel Define');
+    console.log('SchoolModel Define');
   });
 
   database.on('disconnected', function(){
@@ -99,6 +117,25 @@ var authUser = function(database, id, password, callback){
 };
 //
 
+// User 등록
+var addUser = function(database, id, password, name, gender, school, tel, callback){
+  var user = new UserModel({
+    "id":id,
+    "password":password,
+    "name":name,
+    "gender":gender,
+    "school":school,
+    "tel":tel
+  });
+
+  user.save(function(err){
+    if(err) throw err;
+
+    callback(null, user);
+  });
+};
+//
+
 app.get('/', function(req,res){
   res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
 
@@ -133,6 +170,47 @@ app.post('/main', function(req,res){
 		res.write('<div><p>데이터베이스에 연결하지 못했습니다.</p></div>');
     res.end();
   }
+});
+
+app.get('/pages/signup.html', function(req,res){
+  fs.readFile('./pages/signup.html', 'utf-8', function(err,data){
+    if(err) throw err;
+
+    if(database){
+      SchoolModel.findAll(function(err,results){
+        if(err) throw err;
+
+        if(results) {
+          res.end(ejs.render(data, {
+            results:results
+          }));
+        }
+      });
+    }
+  });
+});
+
+app.post('/signup', function(req,res){
+  var paramId = req.body.id;
+  var paramPassword = req.body.password;
+  var paramName = req.body.name;
+  var paramGender = req.body.gender;
+  var paramSchool = req.body.school;
+  var paramTel = req.body.tel;
+
+  if(database) {
+    addUser(database, paramId, paramPassword, paramName, paramGender, paramSchool, paramTel, function(err, docs){
+      if(err) throw err;
+
+      if(docs){
+        fs.readFile('./pages/main.html', function(err, data){
+          if(err) throw err;
+
+          res.end(data);
+        })
+      }
+    });
+  };
 });
 
 app.use(static(__dirname));

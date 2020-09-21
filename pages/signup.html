@@ -16,24 +16,37 @@
 
     <!-- wrapper -->
     <div id="wrapper">
-      <form action="" autocomplete="off">
+      <form method="post" action="/signup" autocomplete="off">
         <!-- content-->
         <div id="content">
+            <!-- SCHOOL -->
+            <div>
+              <h3 class="join_title"><label for="school">학교</label></h3>
+              <span class="box school_code">
+                  <select id="school" class="sel" name="school" >
+                        <option class="choice" selected>(선택)</option>
+                    <% for(var i = 0 ; i < results.length ; i++) { %>
+                        <option><%=results[i]._doc.name%></option>
+                    <% } %>
+                  </select>                            
+              </span>
+            </div>
+
             <!-- ID -->
             <div>
                 <h3 class="join_title">
                     <label for="id">아이디</label>
                 </h3>
                 <span class="box int_id">
-                    <input type="text" id="id" class="int" maxlength="20" spellcheck="false" placeholder="아이디 입력">
+                    <input type="text" id="id" class="int" name="id" maxlength="20" spellcheck="false" placeholder="아이디 입력">
                 </span>
             </div>
-
+            
             <!-- PW1 -->
             <div>
                 <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                 <span class="box int_pass">
-                    <input type="password" id="pswd1" class="int" maxlength="20" placeholder="비밀번호 입력">
+                    <input type="password" id="pswd1" class="int" name="pswd1" maxlength="20" placeholder="비밀번호 입력">
                 </span>
             </div>
 
@@ -41,7 +54,7 @@
             <div>
                 <h3 class="join_title"><label for="pswd2">비밀번호 재입력</label></h3>
                 <span class="box int_pass_check">
-                    <input type="password" id="pswd2" class="int" maxlength="20" placeholder="비밀번호 재입력">
+                    <input type="password" id="pswd2" class="int" name="pswd2" maxlength="20" placeholder="비밀번호 재입력">
                 </span>
             </div>
 
@@ -49,7 +62,7 @@
             <div>
                 <h3 class="join_title"><label for="name">이름</label></h3>
                 <span class="box int_name">
-                    <input type="text" id="name" class="int" maxlength="20" spellcheck="false" placeholder="이름 입력">
+                    <input type="text" id="name" class="int" name="name" maxlength="20" spellcheck="false" placeholder="이름 입력">
                 </span>
             </div>
 
@@ -57,19 +70,21 @@
             <div>
                 <h3 class="join_title"><label for="gender">성별</label></h3>
                 <span class="box gender_code">
-                    <select id="gender" class="sel">
-                        <option>성별</option>
+                    <select id="gender" class="sel" name="gender">
+                        <option class="choice" selected>(선택)</option>
                         <option value="M">남자</option>
                         <option value="F">여자</option>
                     </select>                            
                 </span>
             </div>
 
+            
+
             <!-- MOBILE -->
             <div>
                 <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
                 <span class="box int_mobile">
-                    <input type="tel" id="mobile" class="int" maxlength="16" placeholder="휴대번호 입력">
+                    <input type="text" id="tel" class="int" name="tel" maxlength="16" placeholder="휴대번호 입력( '-' 빼고 입력 )">
                 </span> 
             </div>
 
