@@ -1,0 +1,190 @@
+/* PC 뷰 css */
+@media all and (max-width:1920px){
+
+.find-id {
+    width:20rem;
+    font-family : 'Black Han Sans';
+    font-size: 2rem;
+}  
+
+.sub_contents{
+    width:60rem;
+    margin: 0 auto; 
+    font-family : 'Noto Sans KR', sans-serif;
+
+}
+
+
+.cf_area .xst5 {
+    width: 50rem;
+    height: 8rem;
+    background: url(//res.afreecatv.com/images/account/bg_step_05.gif) no-repeat;
+}
+
+.cf_area .info_txt1 {
+    padding: 0 0;
+    font-size: 1.5rem;
+    color: #7f7f7f;
+}
+
+
+.cf_area dt {
+    font-size: 1.3rem;
+    
+}
+
+
+.cf_area dd {
+    padding: 2rem 0;
+    color: #7f7f7f;
+    line-height: 130%;
+    
+}
+
+
+.cf_area dl dd.number_form {
+    padding-top: 0;
+    
+}
+
+.number_form{
+    display: none;
+}
+
+.name_form {
+    display: none;
+    
+}
+
+.account_area input.txt {
+    width: 20rem;
+    padding: 0.5rem 0.1rem;
+    line-height: 0.1rem;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+
+.account_area button {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.btn_next {
+    width: 5rem;
+    height: 2.5rem;
+    color: #fff;
+    font-size: 1.3rem;
+    background: #2d6bff;
+}
+button {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    background: none;
+    font-family: 'NG', sans-serif;
+}
+}
+
+/* 모바일 세로뷰 css */
+@media all and (max-width:425px) and (orientation: portrait){
+    .find-id {
+        width:10rem;
+        font-family : 'Black Han Sans';
+        font-size: 2rem;
+        margin: 0 auto;
+    }  
+    
+    .sub_contents{
+        width:20rem;
+        margin: 0 auto; 
+        font-family : 'Noto Sans KR', sans-serif;
+    
+    }
+    
+    
+    .cf_area .xst5 {
+        width: 100%;
+        height: 8rem;
+        background: url(//res.afreecatv.com/images/account/bg_step_05.gif) no-repeat;
+    }
+    
+    .cf_area .info_txt1 {
+        padding: 0 0;
+        font-size: 1.5rem;
+        color: #7f7f7f;
+    }
+    
+    
+    .cf_area dt {
+        font-size: 1.3rem;
+        
+    }
+    
+    
+    .cf_area dd {
+        padding: 0 0;
+        color: #7f7f7f;
+        line-height: 120%;
+        
+    }
+    
+    
+    .number_form{
+        margin: 0 auto;
+        font-size: 1rem;
+        display: none;
+    }
+    
+    .name_form {
+        font-size: 1rem;
+        margin: 0 auto;
+        display: none;
+        
+    }
+    
+    .account_area input.txt {
+        width: 15rem;
+        padding: 0.5rem 0.1rem;
+        line-height: 0.1rem;
+        border: 1px solid #bbb;
+        border-radius: 5px;
+        font-size: 1rem;
+        vertical-align: middle;
+    }
+    
+
+    .btn_c{
+        width:5rem;
+        margin: 0 auto;
+    }
+    
+    .account_area button {
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        border-radius: 5px;
+    }
+    
+    .btn_next {
+        width: 5rem;
+        height: 2.5rem;
+        color: #fff;
+        font-size: 1.3rem;
+        background: #2d6bff;
+    }
+    button {
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        border: 0 none;
+        background: none;
+        font-family: 'NG', sans-serif;
+    }
+
+}

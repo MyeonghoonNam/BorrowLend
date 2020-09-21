@@ -118,7 +118,7 @@ a{
 .header {
     font-family : 'Black Han Sans';
     /* text-align : center; */
-    font-size : 500%;
+    font-size : 340%;
     padding-top:4%;
     min-width:100%;
     width:100%;
@@ -129,7 +129,8 @@ a{
 .header .title {
   margin: 0 auto;
   /* border:solid 1px white; */
-  width:35rem;
+  width:25rem;
+  text-align: center;
 }
 
 
@@ -137,7 +138,7 @@ a{
     position: relative;
     left: 50%;
     transform: translate(-50%);
-    width: 28rem;
+    width: 25rem;
 }
 
 /* 입력폼 */
