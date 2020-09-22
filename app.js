@@ -47,11 +47,11 @@ function connectDB(){
 
     UserSchema = mongoose.Schema({
       id : {type : String, required : true, unique : true},
-      password : {type : String, required : true, unique : true},
-      name : {type : String, required : true, unique : true},
-      gender : {type : String, required : true, unique : true},
-      school : {type : String, required : true, unique : true},
-      tel : {type : String, required : true, unique : true},
+      password : {type : String, required : true},
+      name : {type : String, required : true},
+      gender : {type : String, required : true},
+      school : {type : String, required : true},
+      tel : {type : String, required : true},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now}
     });
 
@@ -202,13 +202,7 @@ app.post('/signup', function(req,res){
     addUser(database, paramId, paramPassword, paramName, paramGender, paramSchool, paramTel, function(err, docs){
       if(err) throw err;
 
-      if(docs){
-        fs.readFile('./pages/main.html', function(err, data){
-          if(err) throw err;
-
-          res.end(data);
-        })
-      }
+      //signup.html에서 알림창 확인 후 인덱스 페이지 이동.
     });
   };
 });

@@ -105,6 +105,11 @@ a{
     font-weight: bold;
     font-family : 'NanumBarunGothic', 'serif';
 }
+
+.swal-footer {
+  text-align: center;
+}
+
 }
 
 
