@@ -1,0 +1,148 @@
+/* PC 뷰 css */
+@media all and (max-width:1920px){
+
+    .sub_contents{
+        width:50rem;
+        margin: 0 auto; 
+        font-family : 'Noto Sans KR', sans-serif;
+    
+    }
+
+    .find-ps {
+        width:20rem;
+        font-family : 'Black Han Sans';
+        font-size: 2rem;
+    } 
+
+    .pass_cf_area {
+        text-align: center;
+    }
+
+    .pass_cf_area h3.pass_find {
+        display: block;
+        width: 16rem;
+        height: 5rem;
+        margin: 2rem 17rem 0;
+        text-indent: -9999px;
+        background: url(//res.afreecatv.com/images/account/txt_pass_find.gif) no-repeat;
+    }
+
+
+    .pass_cf_area .txt_info {
+        font-family: 'NGB';
+        font-size: 1rem;
+        color: #888;
+        text-align: center;
+        line-height: 150%;
+        letter-spacing: -1px;
+    }
+
+    .pass_cf_area .txt_info span {
+        color: #2e6afd;
+    }
+
+    .pass_cf_area fieldset {
+        position: relative;
+        display: inline-block;
+        border: none;
+        padding: 0;
+        margin: 2rem;
+    }
+
+    .account_area input.txt {
+        width: 15rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid #bbb;
+        color: #333;
+        border-radius: 2px;
+        font-size: 1.2rem;
+        vertical-align: middle;
+        font-family: arial, '돋움'
+    }
+
+
+    .pass_cf_area fieldset button.next {
+        width: 3rem;
+        height: 2rem;
+        font-size: 18px;
+        background: #2d6bff;
+        color: #fff;
+    }
+    
+    }
+    
+    /* 모바일 세로뷰 css */
+    @media all and (max-width:425px) and (orientation: portrait){
+        .sub_contents{
+            width:24rem;
+            margin: 0 auto; 
+            font-family : 'Noto Sans KR', sans-serif;
+        
+        }
+    
+        .find-ps {
+            width:20rem;
+            font-family : 'Black Han Sans';
+            font-size: 2rem;
+            margin: 0 auto;
+            text-align: center;
+        } 
+    
+        .pass_cf_area {
+            text-align: center;
+        }
+    
+        .pass_cf_area h3.pass_find {
+            display: block;
+            width: 16rem;
+            height: 5rem;
+            margin: 0 auto;
+            margin-top: 2rem;
+            text-indent: -9999px;
+            background: url(//res.afreecatv.com/images/account/txt_pass_find.gif) no-repeat;
+        }
+    
+    
+        .pass_cf_area .txt_info {
+            font-family: 'NGB';
+            font-size: 1rem;
+            color: #888;
+            text-align: center;
+            line-height: 150%;
+            letter-spacing: -1px;
+        }
+    
+        .pass_cf_area .txt_info span {
+            color: #2e6afd;
+        }
+    
+        .pass_cf_area fieldset {
+            position: relative;
+            display: inline-block;
+            border: none;
+            padding: 0;
+            margin: 2rem;
+        }
+    
+        .account_area input.txt {
+            width: 10rem;
+            padding: 1rem auto;
+            line-height: 1.5;
+            border: 1px solid #bbb;
+            color: #333;
+            border-radius: 2px;
+            font-size: 1rem;
+            vertical-align: middle;
+            font-family: arial, '돋움', dotum;
+        }
+    
+    
+        .pass_cf_area fieldset button.next {
+            width: 3rem;
+            height: 2rem;
+            font-size: 18px;
+            background: #2d6bff;
+            color: #fff;
+        }
+        
+        }

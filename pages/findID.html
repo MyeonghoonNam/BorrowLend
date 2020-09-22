@@ -28,17 +28,17 @@
             <dt><input type="radio" id="phone" name="findtype" value="1" onchange = "setDisplay1()"/><label for="phone">휴대전화 인증</label></dt>
             <dd class="number_form">
                 <p>borrowland 사이트에 가입된 휴대전화번호가 동일해야 본인 확인이 가능합니다.<br/>정확한 입력 후 사용하실 수 있습니다.</p>
-                <input type="text" name="name1" class="txt" placeholder="휴대폰번호" title="휴대폰" />
+                <input type="text" id="id1" name="name1" class="txt" placeholder="휴대폰번호" title="휴대폰" />
             </dd>
             </dl>
             <dl class="find_set">
             <dt><input type="radio" id="name" name="findtype" value="2" onchange = "setDisplay2()"/><label for="email">이름인증</label></dt>
             <dd class="name_form">
                 <p>borrowland 사이트에 가입된 이름과 일치해야 본인 확인이 가능합니다.<br/>정확한 입력 후 사용하실 수 있습니다.</p>
-                <input type="text" name="name1" class="txt" placeholder="이름" title="이름" />
+                <input type="text" id="id2" name="name1" class="txt" placeholder="이름" title="이름" />
             </dd>
             </dl>
-            <div class="btn_c"><button type="button" class="btn_next" id="btnFindID">다음</button></div>
+            <div class="btn_c"><button type="button" class="btn_next" id="btnFindID" onclick="KoCheck()" >다음</button></div>
         </div>
 
     </div>
@@ -55,5 +55,21 @@
 
     <footer id="footer"></footer>
   </div>
+  <!--한글입력 시 오류창 뜸 -->
+  <script>
+    function KoCheck(e){
+        var lang = document.getElementById('id1').value;
+        var lang2 = document.getElementById('id2').value;
+         var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+         var check2 = /[a-z0-9]/;
+         if(check.test(lang)){
+            alert("제대로 된 양식으로 입력 바랍니다.");
+         }else if(check2.test(lang2)){
+            alert("제대로 된 양식으로 입력 바랍니다.");
+         }
+    }
+
+
+  </script>
 </body>
 </html>
