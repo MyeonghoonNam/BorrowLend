@@ -66,6 +66,10 @@ function connectDB(){
       return this.find({id:id}, callback);
     });
 
+    UserSchema.static('findById2', function(name, callback){
+      return this.find({name:name}, callback);
+    });
+
     SchoolSchema = mongoose.Schema({
       name: {type : String, required : true, unique : true}
     });
@@ -232,3 +236,57 @@ http.createServer(app).listen(app.get('port'), function(){
 
   connectDB();
 })
+
+
+//-------------------------------------------------------------//
+// 아이디찾기
+var findID = function(database, name, callback){
+  console.log('호출 : ' + name);
+
+  UserModel.findById2(name, function(err, results) {
+		if (err) {
+			callback(err, null);
+			return;
+		}
+		
+		console.log('번호로 [%s]로 사용자 검색결과', name);
+		console.dir(results);
+		
+		if (results.length > 0) {
+			console.log('아이디와 일치하는 사용자 찾음.');
+		} else {
+	    	console.log("아이디와 일치하는 사용자를 찾지 못함.");
+	    	callback(null, null);
+	    }
+		
+	});
+};
+//
+
+app.get('/pages/findID.html', function(req,res){
+  fs.readFile('./pages/findID.html', function(err,data){
+    if(err) throw err;
+
+        res.end(data);
+    });
+  });
+
+app.post('/findID', function(req,res){
+  res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+  var paramName = req.body.name;
+
+  if(database) {
+    findID(database, paramName, function(err,doc){
+      if(err) throw err;
+
+      if(doc){
+        fs.readFile('./pages/findID.html', function(err, data){
+          if(err) throw err;
+
+          res.end(data);
+        });
+      };
+    });
+  } 
+});
+//------------------------------------------------------------//
