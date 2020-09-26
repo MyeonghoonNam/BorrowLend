@@ -178,7 +178,7 @@ app.post('/main', function(req,res){
             res.render('./pages/main.html', {user:req.session.user});
           }
         });
-      } else {  
+      } else {
         res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
         res.write('<h2>데이터베이스 연결 실패</h2>');
         res.write('<div><p>데이터베이스에 연결하지 못했습니다.</p></div>');
