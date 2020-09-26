@@ -1,36 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <style>
-    div {
-      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    }
-  </style>
 </head>
 <body>
-    <div class="btn_area">
-      <button type="submit" id="btnJoin" onclick="swal({
-        title: 'Request Delivered',
-        text: 'You can continue with your search.',
-        type: 'success'
-      }).then(function() {
-          window.location.href = 'index.html';
-      })">
-          <span>가입하기</span>
-      </button>
-    
-  </div>
-  <!-- <script>swal({
-    title: 'Request Delivered',
-    text: 'You can continue with your search.',
-    type: 'success'
-  }).then(function() {
-      window.location.href = 'index.html';
-  })
-  </script> -->
+  <%- include ("./views/header.html")%> 
+  <h1><%=title %></h1>
+  <p>Welcome to <%=title %></p>
 </body>
 </html>

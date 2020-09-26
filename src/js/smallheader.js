@@ -1,3 +1,3 @@
 $(document).ready(() => {
-  $("#s-header").load("../../pages/smallheader.html");
+  $("#s-header").load("../../views/common/smallheader.html");
 });

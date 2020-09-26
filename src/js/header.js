@@ -1,6 +1,7 @@
-$(document).ready(() => {
-  $("#header").load("../../pages/header.html");
-})
+// $(document).ready(() => {
+//   $("#header").load("../../pages/header.html");
+
+// })
 
 
 function menuopen(){

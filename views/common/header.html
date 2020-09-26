@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="logo">
-    <a href="./main.html">Borrow Land</a>
+    <a href="../pages/main.html">Borrow Land</a>
   </div>
   <input type="checkbox" id="hamburger" onClick = "menuopen()"/>
     <label for="hamburger">
@@ -21,31 +21,31 @@
       <li>
         <a>서비스</a><a class="service-menu1" onClick ="servicemenu1()">▼</a>
         <ul class="sub-menu" id="service-menu">
-          <li><a href="./service-rent.html">대여내역</a></li>
-          <li><a href="./service-like.html">관심물품</a></li>
+          <li><a href="../pages/service-rent.html">대여내역</a></li>
+          <li><a href="../pages/service-like.html">관심물품</a></li>
         </ul>
       </li>
-      <li><a href="./message.html">쪽지</a></li>
+      <li><a href="../pages/message.html">쪽지</a></li>
       <li>
         <a>고객지원</a><a class="service-menu2" onClick = "servicemenu2()">▼</a>
         <ul class="sub-menu" id="customersupport-menu">
-          <li><a href="./customer-notice.html">공지사항</a></li>
-          <li><a href="./customer-q&a.html">Q & A</a></li>
+          <li><a href="../pages/customer-notice.html">공지사항</a></li>
+          <li><a href="../pages/customer-q&a.html">Q & A</a></li>
         </ul>
       </li>
-      <li><a href="./honor.html">명예의 전당</a></li>
+      <li><a href="../pages/honor.html">명예의 전당</a></li>
     </ul>
   </nav>
   <div class="userwrap">
-    <img class="favicon" src="../src/images/user.svg" alt="Profile">
+    <img class="favicon" src="../../src/images/user.svg" alt="Profile">
     
     <div class="user">
       <div class="grade">
-        백작       
+        <%=user[0]._doc.grade%>      
       </div>
 
       <div class="user-name">
-        audgns0822
+        <%=user[0]._doc.id%>
       </div>
 
       <div class="user-info">
