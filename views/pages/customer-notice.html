@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="no-js">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +12,18 @@
   </head>
 <body>
   <div class="wrapper">
-    <header id="header"></header>
+    <header id="header">
+      <%- include ("../common/header.html")%>
+    </header>
 
     <div id="s-header"></div>
 
     <footer id="footer"></footer>
+
+    <script>
+      $(function(){
+        $('html').removeClass('no-js');
+      });
+    </script>
 </body>
 </html>

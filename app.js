@@ -152,6 +152,10 @@ app.get('/', function(req,res){
   res.render('./index.html');
 });
 
+app.get('/main', function(req,res){
+  res.render('./pages/main.html', {user:req.session.user});
+});
+
 app.post('/main', function(req,res){
   console.log('Access to login louter');
 
@@ -220,7 +224,30 @@ app.post('/signup', function(req,res){
 
 app.get('/store', function(req,res){
   res.render('./pages/store.html', {user:req.session.user});
-})
+});
+
+app.get('/service-rent', function(req,res){
+  res.render('./pages/service-rent.html', {user:req.session.user});
+});
+
+app.get('/service-like', function(req,res){
+  res.render('./pages/service-like.html', {user:req.session.user});
+});
+app.get('/message', function(req,res){
+  res.render('./pages/message.html', {user:req.session.user});
+});
+
+app.get('/customer-notice', function(req,res){
+  res.render('./pages/customer-notice.html', {user:req.session.user});
+});
+
+app.get('/customer-q&a', function(req,res){
+  res.render('./pages/customer-q&a.html', {user:req.session.user});
+});
+
+app.get('/honor', function(req,res){
+  res.render('./pages/honor.html', {user:req.session.user});
+});
 
 app.use(static(__dirname));
 
