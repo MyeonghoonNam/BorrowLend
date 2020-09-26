@@ -147,14 +147,9 @@ var addUser = function(database, id, password, name, gender, school, tel, callba
 };
 //
 
+
 app.get('/', function(req,res){
-  res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-
-  fs.readFile('./views/index.html', function(err, data){
-    if(err) throw err;
-
-    res.end(data);
-  });
+  res.render('./index.html');
 });
 
 app.post('/main', function(req,res){
@@ -174,12 +169,13 @@ app.post('/main', function(req,res){
             req.session.user = {
               id:docs[0]._doc.id,
               name:docs[0]._doc.name,
+              grade:docs[0]._doc.grade,
               authorized:true
             }
 
             console.log(docs[0]._doc.name);
             
-            res.render('./pages/main.html', {user:docs});
+            res.render('./pages/main.html', {user:req.session.user});
           }
         });
       } else {  
@@ -191,24 +187,17 @@ app.post('/main', function(req,res){
   }
 });
 
-app.get('/views/pages/signup.html', function(req,res){
-  res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+app.get('/signup', function(req,res){
+  if(database){
+    SchoolModel.findAll(function(err,results){
 
-  fs.readFile('./views/pages/signup.html', 'utf-8', function(err,data){
-    if(err) throw err;
+      if(err) throw err;
 
-    if(database){
-      SchoolModel.findAll(function(err,results){
-        if(err) throw err;
-
-        if(results) {
-          res.end(ejs.render(data, {
-            results:results
-          }));
-        }
-      });
-    }
-  });
+      if(results){
+        res.render('./pages/signup.html', {results:results});
+      }
+    });
+  }
 });
 
 app.post('/signup', function(req,res){
@@ -228,6 +217,10 @@ app.post('/signup', function(req,res){
     });
   };
 });
+
+app.get('/store', function(req,res){
+  res.render('./pages/store.html', {user:req.session.user});
+})
 
 app.use(static(__dirname));
 

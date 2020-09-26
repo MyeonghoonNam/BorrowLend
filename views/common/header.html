@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="logo">
-    <a href="../pages/main.html">Borrow Land</a>
+    <a href="/">Borrow Land</a>
   </div>
   <input type="checkbox" id="hamburger" onClick = "menuopen()"/>
     <label for="hamburger">
@@ -17,7 +17,7 @@
     </label>
   <nav class="nav">
     <ul class="menu">
-      <li><a href="../pages/store.html">장터</a></li>
+      <li><a href="/store">장터</a></li>
       <li>
         <a>서비스</a><a class="service-menu1" onClick ="servicemenu1()">▼</a>
         <ul class="sub-menu" id="service-menu">
@@ -41,11 +41,11 @@
     
     <div class="user">
       <div class="grade">
-        <%=user[0]._doc.grade%>      
+        <%=user.grade%>      
       </div>
 
-      <div class="user-name">
-        <%=user[0]._doc.id%>
+      <div class="user-id">
+        <%=user.id%>
       </div>
 
       <div class="user-info">

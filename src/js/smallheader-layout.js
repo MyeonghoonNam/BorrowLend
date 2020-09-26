@@ -1,7 +1,5 @@
 function Page_Title(){
-  var thisfilefullname = document.URL.substring(document.URL.lastIndexOf('/') + 1, document.URL.length);
-
-  var thisfilename = thisfilefullname.substring(thisfilefullname.lastIndexOf('.'), 0);
+  var thisfilename = document.URL.substring(document.URL.lastIndexOf('/') + 1, document.URL.length);
 
   console.log(thisfilename);
 
