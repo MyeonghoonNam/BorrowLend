@@ -19,8 +19,3 @@ const slide = _ => {
 window.onload = function () {
   slide()
 }
-
-$(document).ready(() => {
-  document.getElementsByClassName("grade")[0].innerHTML = user._doc.grade;
-
-})

@@ -6,6 +6,7 @@
     vertical-align: middle;
     margin: 0 auto;
     display:flex;
+    /* border:solid 1px black; */
   }
   
   .logo {

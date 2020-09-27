@@ -1,28 +1,31 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
-    ul,li{
-        list-style:none;
-    }
-    .slide{
-        width:60%;
-        height:30rem;
-        margin-top:1rem;
-        margin-left:5%;
-        overflow:hidden;
-    }
-    .slideimg{
-        width: 100%; 
-        height: auto;
-    }
-    .slide ul{
-        margin-top:0%;
-    }
+  .article-wrap {
+    width:70%;
+    margin:0 auto;
+    /* border:solid 1px black; */
+  }
+  .slide{
+    width:60%;
+    height:25rem;
+    overflow:hidden;
+    /* border:solid 1px black; */
+  }
+  .slide ul,
+  .slide li{
+    margin:0;
+    list-style:none;
+  }
+  .slideimg{
+    width: 100%; 
+    height: auto;
+  }
+  .header-message{
+    display: inline-block;
+    width:60%;
+    /* border:solid 1px black; */
 
-    .header-message{
-        display: inline-block;
-        margin-left: 5%;
-    }
-
+  }
 }
 /* 모바일 뷰 css */
 @media all and (max-width:425px) and (orientation: portrait){
