@@ -149,11 +149,19 @@ var addUser = function(database, id, password, name, gender, school, tel, callba
 
 
 app.get('/', function(req,res){
-  res.render('./index.html');
+  if(req.session.user){
+    res.redirect('/main');
+  } else{
+    res.render('./index.html');
+  }
 });
 
 app.get('/main', function(req,res){
-  res.render('./pages/main.html', {user:req.session.user});
+  if(req.session.user){
+    res.render('./pages/main.html', {user:req.session.user});
+  } else {
+    res.redirect('/');
+  }
 });
 
 app.post('/main', function(req,res){
@@ -192,15 +200,19 @@ app.post('/main', function(req,res){
 });
 
 app.get('/signup', function(req,res){
-  if(database){
-    SchoolModel.findAll(function(err,results){
-
-      if(err) throw err;
-
-      if(results){
-        res.render('./pages/signup.html', {results:results});
-      }
-    });
+  if(req.session.user){
+    res.redirect('./main');
+  } else{
+    if(database){
+      SchoolModel.findAll(function(err,results){
+  
+        if(err) throw err;
+  
+        if(results){
+          res.render('./pages/signup.html', {results:results});
+        }
+      });
+    }
   }
 });
 
@@ -223,30 +235,80 @@ app.post('/signup', function(req,res){
 });
 
 app.get('/store', function(req,res){
-  res.render('./pages/store.html', {user:req.session.user});
+  if(req.session.user){
+    res.render('./pages/store.html', {user:req.session.user});
+  } else{
+    res.redirect('/');
+  }
 });
 
 app.get('/service-rent', function(req,res){
-  res.render('./pages/service-rent.html', {user:req.session.user});
+  if(req.session.user){
+    res.render('./pages/service-rent.html', {user:req.session.user});
+  } else{
+    res.redirect('/');
+  }
 });
 
 app.get('/service-like', function(req,res){
-  res.render('./pages/service-like.html', {user:req.session.user});
+  if(req.session.user){
+    res.render('./pages/service-like.html', {user:req.session.user});
+  } else{
+    res.redirect('/');
+  }
 });
 app.get('/message', function(req,res){
-  res.render('./pages/message.html', {user:req.session.user});
+  if(req.session.user){
+    res.render('./pages/message.html', {user:req.session.user});
+  } else{
+    res.redirect('/');
+  }
 });
 
 app.get('/customer-notice', function(req,res){
-  res.render('./pages/customer-notice.html', {user:req.session.user});
+  if(req.session.user){
+    res.render('./pages/customer-notice.html', {user:req.session.user});
+  } else{
+    res.redirect('/');
+  }
 });
 
 app.get('/customer-q&a', function(req,res){
-  res.render('./pages/customer-q&a.html', {user:req.session.user});
+  if(req.session.user){
+    res.render('./pages/customer-q&a.html', {user:req.session.user});
+  } else{
+    res.redirect('/');
+  }
 });
 
 app.get('/honor', function(req,res){
-  res.render('./pages/honor.html', {user:req.session.user});
+  if(req.session.user){
+    res.render('./pages/honor.html', {user:req.session.user});
+  } else{
+    res.redirect('/');
+  }
+});
+
+app.get('/userinfo', function(req,res){
+  if(req.session.user){
+
+  } else{
+    res.redirect('/');
+}
+});
+
+app.get('/logout', function(req,res){
+  if(req.session.user){
+    req.session.destroy(function(err){
+      if(err) throw err;
+
+      console.log('Success Logout');
+
+      res.redirect('/');
+    })
+  } else{
+    res.redirect('/');
+  }
 });
 
 app.use(static(__dirname));

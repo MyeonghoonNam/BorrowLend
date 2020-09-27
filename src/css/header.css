@@ -134,14 +134,25 @@
     order:3;
     margin-left:1.5rem;
     padding-right:0.5rem;
+  }
+
+  .user-info a{
     color:darkgray;
-    
+  }
+  .user-info a:hover{
+    color:black;
   }
   
-  .logout {
+  .logout{
     order:4;
-    color:darkgray;
     padding-left:0.5rem;
+  }
+  
+  .logout a{
+    color:darkgray;
+  }
+  .logout a:hover{
+    color:black;
   }
 
   .service-menu1{
