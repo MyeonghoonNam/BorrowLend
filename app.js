@@ -34,6 +34,7 @@ app.use(expressSession({
 // DB 정의 및 연결
 var database;
 var mongoose = require('mongoose');
+const { response } = require('express');
 var UserSchema;
 var UserModel;
 
@@ -66,9 +67,13 @@ function connectDB(){
       return this.find({id:id}, callback);
     });
 
-    UserSchema.static('findById2', function(name, callback){
-      return this.find({name:name}, callback);
+    UserSchema.static('findById2', function(tel, callback){
+      return this.find({tel:tel}, callback);
     });
+
+    UserSchema.static('findById3', function(name, callback){
+      return this.find({name:name}, callback);
+    })
 
     SchoolSchema = mongoose.Schema({
       name: {type : String, required : true, unique : true}
@@ -319,56 +324,71 @@ http.createServer(app).listen(app.get('port'), function(){
   connectDB();
 })
 
+//------------------------------------------------------//
+// 아이디찾기 - 휴대전화버전
+var findID = function(database, tel, callback){
+  console.log('findID호출 : ' + tel);
 
-//-------------------------------------------------------------//
-// 아이디찾기
-var findID = function(database, name, callback){
-  console.log('호출 : ' + name);
-
-  UserModel.findById2(name, function(err, results) {
+  UserModel.findById2(tel, function(err, results) {
 		if (err) {
 			callback(err, null);
 			return;
 		}
 		
-		console.log('번호로 [%s]로 사용자 검색결과', name);
+		console.log('휴대폰번호로 [%s]로 사용자 검색결과', tel);
 		console.dir(results);
 		
 		if (results.length > 0) {
-			console.log('아이디와 일치하는 사용자 찾음.');
+			console.log('휴대폰번호와 일치하는 사용자 찾음.');
 		} else {
-	    	console.log("아이디와 일치하는 사용자를 찾지 못함.");
+	    	console.log("휴대폰번호와 일치하는 사용자를 찾지 못함.");
+        callback(null, null);
+	    }
+		
+	});
+};
+
+
+// 아이디찾기 - 이름버전
+var findID2 = function(database, name, callback){
+  console.log('이름호출 : ' + name);
+
+  UserModel.findById3(name, function(err, results) {
+		if (err) {
+			callback(err, null);
+			return;
+		}
+		
+		console.log('이름으로 [%s]로 사용자 검색결과', name);
+		console.dir(results);
+		
+		if (results.length > 0) {
+			console.log('이름과 일치하는 사용자 찾음.');
+		} else {
+	    	console.log("이름과 일치하는 사용자를 찾지 못함.");
 	    	callback(null, null);
 	    }
 		
 	});
 };
-//
 
-app.get('/pages/findID.html', function(req,res){
-  fs.readFile('./pages/findID.html', function(err,data){
-    if(err) throw err;
+app.post('/find', function(req,res){
+  console.log('Access to login louter');
 
-        res.end(data);
-    });
-  });
-
-app.post('/findID', function(req,res){
-  res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+  var paramTel = req.body.tel;
   var paramName = req.body.name;
 
-  if(database) {
-    findID(database, paramName, function(err,doc){
-      if(err) throw err;
-
-      if(doc){
-        fs.readFile('./pages/findID.html', function(err, data){
-          if(err) throw err;
-
-          res.end(data);
-        });
-      };
+  if(paramTel.length > 0) {
+    findID(database, paramTel, function(err, docs){
+      console.log('인증완료');  
     });
-  } 
+  }else
+  {
+    findID2(database, paramName, function(err, docs){
+      console.log('이름인증완료');
+    });
+  }
 });
-//------------------------------------------------------------//
+
+
+//--------------------------------------------------------//
