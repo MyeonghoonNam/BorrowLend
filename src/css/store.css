@@ -1,11 +1,81 @@
 /* PC 뷰 css */
-@media all and (max-width:1980px){
-  .store-article {
-    width:70%;
-    /* margin:0 auto; */
-    border:solid 1px black;
-    text-align:center;
+@media all and (max-width:1980px){ 
+  .store-search-form {
+    position: absolute;
+    top:28%;
+    left:50%;
+    width: 15rem;
+    height: 2.5rem;
+    border-radius: 40px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translate(-50%, -50%);
+    background: #fff;
+    transition: all 0.3s ease;
+    border:solid 2px #5a6674;
+    font-family: 'Roboto', sans-serif;
   }
+  
+  .store-search-input {
+    position: relative;
+    top: 0.1rem;
+    left: 1rem;
+    font-size: 1rem;
+    background: none;
+    color: #5a6674;
+    width: 12rem;
+    border: none;
+    appearance: none;
+    outline: none;
+    font-size:1rem;
+  }
+  
+  .store-submit-button {
+    position: relative;
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    outline: none!important;
+    cursor: pointer;
+    display:inline;
+  }
+  
+  .store-search-button{
+     width:1.5rem;
+     height:1.5rem;
+     fill: #5a6674;
+   }
+
+  .article-store {
+    width:70rem;
+    margin:0 auto;
+    
+  }
+
+  .article-store ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  .article-store ul > li {
+    display:inline-block;
+    font-size:1.3rem;
+    border-left: solid 1px;
+    margin: 5px 0;
+    padding: 0 10px;
+  }
+
+  .article-store ul > li:first-child {
+    border-left: none;
+    }
+  .store-product{
+    border:solid 1px #c8c8c8;
+    border-radius: 5px;
+  }
+  
 }
     
 

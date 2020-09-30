@@ -4,10 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    article {
+      border:solid 1px black;
+      width:70%;
+      margin:0 auto;
+    }
+    form {
+      position: relative;
+      /* top:50%; */
+      left:30%;
+    }
+  </style>
 </head>
 <body>
-  <%- include ("./views/header.html")%> 
-  <h1><%=title %></h1>
-  <p>Welcome to <%=title %></p>
+  <article>
+    <form action="">
+      <input type="text" placeholder="hi">
+    </form>
+  </article>
 </body>
 </html>
