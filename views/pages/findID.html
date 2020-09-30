@@ -20,49 +20,35 @@
 <br>
 <div class="sub_contents">
     <div class="account_area">
+      <form method="post" action="/find" autocomplete="off">
         <div class="cf_area" id="divFindID">
             <div class="find-id">아이디 찾기</div>
+             <!--그림-->
             <div class="xst5"></div>
-            <form method="post" action="/findID" autocomplete="off">
               <p class="info_txt1">본인 인증 수단을 선택해주세요</p>
               <dl class="find_set">
+              <!--라디오버튼-->
               <dt><input type="radio" id="phone" name="findtype" value="1" onchange = "setDisplay1()"/><label for="phone">휴대전화 인증</label></dt>
               <dd class="number_form">
                 <p>borrowland 사이트에 가입된 휴대전화번호가 동일해야 본인 확인이 가능합니다.<br/>정확한 입력 후 사용하실 수 있습니다.</p>
-                <input type="text" id="id1" name="name1" class="txt" placeholder="휴대폰번호" title="휴대폰" />
+                  <input class="input" type="text" id="number" name="tel" placeholder="휴대전화" >
               </dd>
-              </dl>
-              <dl class="find_set">
+              <!--라디오버튼-->
               <dt><input type="radio" id="name" name="findtype" value="2" onchange = "setDisplay2()"/><label for="email">이름인증</label></dt>
               <dd class="name_form">
                 <p>borrowland 사이트에 가입된 이름과 일치해야 본인 확인이 가능합니다.<br/>정확한 입력 후 사용하실 수 있습니다.</p>
-                <input type="text" id="id2" name="name1" class="txt" placeholder="이름" title="이름" />
+                  <input class="input" type="text" id="findname" name="name" placeholder="이름" >
               </dd>
               </dl>
-            <div class="btn_c"><button type="submit" class="btn_next" id="btnFindID" onclick="KoCheck()" >다음</button></div>
-            </form>
+                <div class="btn_c">
+                <button type="submit" class="btn_next" id="btnFindID" onclick="KoCheck()" >다음</button></div>
         </div>
-
+      </form>  
     </div>
 </div>
 <!--//컨텐츠 끝 -->
 
-<!--정보 입력 후 아이디 띄움 -->
-<div id="modal">
-  <div class="ID_tistory">
-      <fieldset class="fieldset">
-        <span class="close">&times;</span>
-        <div class="check_id">
-          <div class="inp_text">
-            <label for="user_id" class="screen_out">비밀번호</label>
-            <input class="input" type="ID" id="userID" name="ID" >
-          </div>
-        </div>
-        <button type="submit" class="btn_check">확인</button>
-      </fieldset>
-  </div>
-</div>
-</div>
+
 
 <hr>
 

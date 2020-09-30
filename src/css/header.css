@@ -364,7 +364,7 @@
   }
   
   .logout {
-    display: none;
+    display: block;
   }
 
   .service-menu1{
