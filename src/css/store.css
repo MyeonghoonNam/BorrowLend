@@ -1,6 +1,11 @@
 /* PC 뷰 css */
-@media all and (max-width:1920px){
-  
+@media all and (max-width:1980px){
+  .store-article {
+    width:70%;
+    /* margin:0 auto; */
+    border:solid 1px black;
+    text-align:center;
+  }
 }
     
 

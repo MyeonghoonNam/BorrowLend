@@ -12,7 +12,7 @@
 @import "signup.css";
 @import "findID.css";
 @import "findPS.css";
-/* @import "store.css"; */
+@import "store.css";
 
 .no-js { display:none; }
 
@@ -29,6 +29,14 @@
     margin:0;
     padding:0;
     min-width:100rem;
+  }
+
+  .article-wrap {
+    width:70%;
+    margin:0 auto;
+    min-width:85rem;
+    
+    /* border:solid 1px black; */
   }
   
 }

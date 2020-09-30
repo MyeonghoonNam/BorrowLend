@@ -1,17 +1,24 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){ 
+  .wrapper {
+    min-width:100%;
+    /* text-align:center; */
+  }
+
   #header {
     padding-top:2rem;
     width:70%;
+    min-width:85rem;
     vertical-align: middle;
     margin: 0 auto;
     display:flex;
-    /* border:solid 1px black; */
+    border:solid 1px black;
   }
   
   .logo {
     order:1;
     width:30%;
+    /* min-width:30%; */
     font-family: 'Alata', sans-serif;
     font-size:4rem;
   }
@@ -24,6 +31,7 @@
     order:2;
     padding-top:2rem;
     width:45%;
+    min-width:45%;
     margin:0;
     text-align:center;
   }
@@ -90,6 +98,7 @@
   .userwrap {
     order:3;
     width:25.5%;
+    min-width:25.5%;
   }
 
   .user {
@@ -103,6 +112,7 @@
 
   .user div {
     height:1.7rem;
+    min-height:1.7rem;
   }
 
   .favicon {

@@ -1,16 +1,13 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
-  .article-wrap {
-    width:70%;
-    margin:0 auto;
-    /* border:solid 1px black; */
-  }
   .slide{
     width:60%;
     height:25rem;
     overflow:hidden;
+    margin-top:5rem;
     /* border:solid 1px black; */
   }
+  
   .slide ul,
   .slide li{
     margin:0;
