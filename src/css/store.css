@@ -51,6 +51,7 @@
   .article-store {
     width:70rem;
     margin:0 auto;
+    margin-top:10rem;
     
   }
 
@@ -71,6 +72,7 @@
   .article-store ul > li:first-child {
     border-left: none;
     }
+
   .store-product{
     border:solid 1px #c8c8c8;
     border-radius: 5px;
