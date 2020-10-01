@@ -247,6 +247,14 @@ app.get('/store', function(req,res){
   }
 });
 
+app.get('/product-upload', function(req,res){
+  if(req.session.user){
+    res.render('./pages/product-upload.html', {user:req.session.user});
+  } else{
+    res.redirect('/');
+  }
+});
+
 app.get('/service-rent', function(req,res){
   if(req.session.user){
     res.render('./pages/service-rent.html', {user:req.session.user});

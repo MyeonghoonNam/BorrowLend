@@ -12,7 +12,8 @@
 @import "signup.css";
 @import "findID.css";
 @import "findPS.css";
-/* @import "store.css"; */
+@import "store.css";
+@import "product-upload.css";
 
 .no-js { display:none; }
 
