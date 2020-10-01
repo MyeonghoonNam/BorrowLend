@@ -113,14 +113,18 @@ if(filename == 'store' || 'message' || 'honor'){
   } 
 } 
 
-if(filename == 'service-rent' || 'service-like') {
-    var mainname = '서비스';
-
+if(filename == 'product-upload' || 'service-rent' || 'service-like') {
+  var mainname = '서비스';
     if(filename == 'service-rent'){
       var subname = '대여물품';
       l_layout(mainname, subname);
     } else if(filename == 'service-like'){
+      // var mainname = '서비스';
       var subname = '관심물품';
+      l_layout(mainname, subname);
+    } else if(filename == 'product-upload'){
+      // var mainname = '서비스';
+      var subname = '물품등록';
       l_layout(mainname, subname);
     }
 } 
@@ -136,24 +140,24 @@ if(filename == 'customer-notice' || 'customer-q&a') {
     }
 }
 
-if(filename == 'service-rent' || 'service-like') {
-  if(filename == 'service-rent'){
-    var name = '대여물품';
-    f_layout(name);
-  } else if(filename == 'service-like'){
-    var subname = '관심물품';
-    f_layout(name);
-  }
-} 
+// if(filename == 'service-rent' || 'service-like') {
+//   if(filename == 'service-rent'){
+//     var name = '대여물품';
+//     f_layout(name);
+//   } else if(filename == 'service-like'){
+//     var subname = '관심물품';
+//     f_layout(name);
+//   }
+// } 
 
-if(filename == 'customer-notice' || 'customer-q&a') {
-  if(filename == 'customer-notice'){
-    var name = '공지사항';
-    f_layout(name);
-  } else if(filename == 'customer-q&a'){
-    var subname = 'Q&A';
-    f_layout(name);
-  }
-} 
+// if(filename == 'customer-notice' || 'customer-q&a') {
+//   if(filename == 'customer-notice'){
+//     var name = '공지사항';
+//     f_layout(name);
+//   } else if(filename == 'customer-q&a'){
+//     var subname = 'Q&A';
+//     f_layout(name);
+//   }
+// } 
 
 
