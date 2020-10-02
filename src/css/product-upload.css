@@ -8,11 +8,12 @@
     padding-top:1.5rem;
     padding-bottom:1.5rem;
     display:flex;
+    flex-wrap:wrap;
   }
   
   .product-upload-left {
     order:1;
-    width:50%;
+    width:49%;
     padding-top:1rem;
     padding-bottom:1rem;
     border-right:solid 2px  #c8c8c8;
@@ -21,12 +22,16 @@
   
   .product-upload-right {
     order:2;
-    width:50%;
+    width:49%;
     padding-top:1rem;
     padding-bottom:1rem;
     /* border:solid 1px black; */
   }
 
+  .product-upload-bottom {
+    order:3;
+    width:100%;
+  }
   .title-wrap {
     /* border:solid 1px black; */
     padding-left:2.5rem;

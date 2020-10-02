@@ -19,32 +19,37 @@
     <div id="s-header"></div>
 
     <div class="article-wrap">
-      <div class="article-product-upload">
-        <article class="product-upload-left">
-          <div class="title-wrap">
-            <div class="title-box">제목</div>
-            <input class="title-input" type="text" placeholder="제목을 입력해주세요.">
-          </div>
-          <div class="price-wrap">
-            <div class="price-box">가격</div>
-            <input class="price-input" type="text" placeholder="제목을 입력해주세요.">
-            <div class="price-checks">
-              <input type="checkbox" id="price-check">
-              <label for="price-check">가격 제안받기</label>
+      <form method="post" action="/product-upload" enctype="multipart/form-data" autocomplete="off">
+        <div class="article-product-upload">
+          <article class="product-upload-left">
+            <div class="title-wrap">
+              <div class="title-box">제목</div>
+              <input class="title-input" type="text" name="title" placeholder="제목을 입력해주세요.">
             </div>
-          </div>
-          <!-- <div class="ptitle-box">카테고리</div>
-          <input class="ptitle-input" type="text" placeholder="제목을 입력해주세요."> -->
-        </article>
+            <div class="price-wrap">
+              <div class="price-box">가격</div>
+              <input class="price-input" type="text" name="price" placeholder="제목을 입력해주세요.">
+              <div class="price-checks">
+                <input type="checkbox" id="price-check">
+                <label for="price-check">가격 제안받기</label>
+              </div>
+            </div>
+            <!-- <div class="ptitle-box">카테고리</div>
+            <input class="ptitle-input" type="text" placeholder="제목을 입력해주세요."> -->
+          </article>
+  
+          <article class="product-upload-right">
+            <div>
+              <input type="file" name="photo">
+            </div>
+          </article>
+  
+          <article class="product-upload-bottom">
+            <input type="submit" value="등록">
+          </article>
 
-        <article class="product-upload-right">
-          <div>hi</div>
-        </article>
-
-        <article class="product-upload-bottom">
-
-        </article>
-      </div>
+        </div>
+      </form>
     </div>
 
     <footer id="footer"></footer>
