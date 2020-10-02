@@ -5,8 +5,13 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var static = require('serve-static');
+
 var fs = require('fs');
+var multer = require('multer');
+var cors = require('cors');
+
 var ejs = require('ejs');
+
 
 var expressSession = require('express-session');
 
@@ -18,11 +23,9 @@ app.set('views', path.join(__dirname,'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine','html');
 
-
-
-
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+
 app.use(cookieParser());
 
 app.use(expressSession({
@@ -31,12 +34,36 @@ app.use(expressSession({
   saveUninitialized:true
 }));
 
+app.use(cors());
+
+//multer 설정
+var storage = multer.diskStorage({
+  destination:function(req, file, callback){
+    callback(null, './src/uploads')
+  },
+  filename:function(req, file, callback){
+    callback(null, Date.now() + file.originalname);
+  }
+});
+
+var upload = multer({
+  storage:storage,
+  limits:{
+    files:5,
+    fileSize:10*1024*1024
+  }
+});
+//
+
 // DB 정의 및 연결
 var database;
 var mongoose = require('mongoose');
-const { response } = require('express');
 var UserSchema;
 var UserModel;
+var SchoolSchema;
+var SchoolModel;
+var ProductSchema;
+var ProductModel;
 
 function connectDB(){
   var databaseUrl = 'mongodb://localhost:27017/local';
@@ -60,7 +87,8 @@ function connectDB(){
       school : {type : String, required : true},
       tel : {type : String, required : true},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now},
-      grade : {type : String, 'default':'시민'}
+      grade : {type : String, 'default':'시민'},
+      // product : [ProductSchema]
     });
 
     UserSchema.static('findById', function(id, callback){
@@ -83,14 +111,27 @@ function connectDB(){
       return this.find({}, callback);
     });
 
+    ProductSchema = mongoose.Schema({
+      title:{type : String, required : true},
+      price:{type : String, required : true},
+      list:[new mongoose.Schema({name:{type : String, required : true, unique : true}})]
+    });
+
+    ProductSchema.static('findAll', function(callback){
+      return this.find({}, callback);
+    })
+
     console.log('UserSchema Define');
     console.log('SchoolSchema Define');
+    console.log('ProductSchema Define');
     
     UserModel = mongoose.model('users', UserSchema);
     SchoolModel = mongoose.model('schools', SchoolSchema);
+    ProductModel = mongoose.model('product', ProductSchema);
 
     console.log('UserModel Define');
     console.log('SchoolModel Define');
+    console.log('ProductModel Define');
   });
 
   database.on('disconnected', function(){
@@ -152,6 +193,33 @@ var addUser = function(database, id, password, name, gender, school, tel, callba
 };
 //
 
+// 물품 조회
+// var authProduct = function(database, callback){
+//   ProductModel.findAll(function(err, results){
+//     if(err) throw err;
+
+//     if(resluts){
+//       callback(null, results);
+//     }
+//   });
+// }
+//
+
+// 물품 등록
+var addProduct = function(database, title, price, list, callback){
+  var product = new ProductModel({
+    "title":title,
+    "price":price,
+    "list":list
+  });
+
+  product.save(function(err){
+    if(err) throw err;
+
+    callback(null, product);
+  });
+};
+//
 
 app.get('/', function(req,res){
   if(req.session.user){
@@ -187,6 +255,7 @@ app.post('/main', function(req,res){
               id:docs[0]._doc.id,
               name:docs[0]._doc.name,
               grade:docs[0]._doc.grade,
+              // product:docs[0]._doc.product,
               authorized:true
             }
 
@@ -241,9 +310,18 @@ app.post('/signup', function(req,res){
 
 app.get('/store', function(req,res){
   if(req.session.user){
-    res.render('./pages/store.html', {user:req.session.user});
+    ProductModel.findAll(function(err,results){
+      if(err) throw err;
+
+      if(results){
+        res.render('./pages/store.html', {
+          user:req.session.user,
+          product:results
+        });
+      }
+    });
   } else{
-    res.redirect('/');
+      res.redirect('/');
   }
 });
 
@@ -253,6 +331,36 @@ app.get('/product-upload', function(req,res){
   } else{
     res.redirect('/');
   }
+});
+
+app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
+  var title = req.body.title;
+  var price = req.body.price;
+  var list = new Array();
+
+  var files = req.files;
+  var originalname = '';
+  var filename = '';
+  var mimetype = '';
+  var size = 0;
+
+  if(Array.isArray(files)){
+    for(var index = 0; index < files.length; index++){
+      originalname = files[index].originalname;
+      filename = files[index].filename;
+      mimetype = files[index].mimetype;
+      size = files[index].size;
+      list[index] = {name:filename};
+    }
+
+    addProduct(database, title, price, list, function(err, docs){
+      res.render('./pages/store.html', {
+        user:req.session.user,
+        product:docs
+      });
+    });
+  }
+
 });
 
 app.get('/service-rent', function(req,res){
@@ -325,6 +433,7 @@ app.get('/logout', function(req,res){
 });
 
 app.use(static(__dirname));
+// app.use('/uploads', static(path.join(__dirname + '/src', 'uploads')));
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Connecting Server..');
