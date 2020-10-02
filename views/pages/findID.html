@@ -20,7 +20,7 @@
 <br>
 <div class="sub_contents">
     <div class="account_area">
-      <form method="post" action="/find" autocomplete="off">
+      <form method="post" action="/findID" autocomplete="off">
         <div class="cf_area" id="divFindID">
             <div class="find-id">아이디 찾기</div>
              <!--그림-->
@@ -41,51 +41,20 @@
               </dd>
               </dl>
                 <div class="btn_c">
-                <button type="submit" class="btn_next" id="btnFindID" onclick="KoCheck()" >다음</button></div>
+                <button type="submit" class="btn_next" id="btnFindID">다음</button></div>
         </div>
       </form>  
     </div>
 </div>
 <!--//컨텐츠 끝 -->
 
-
-
 <hr>
-
 
     <article>
 
     </article>
-
-    <footer id="footer"></footer>
+  <footer id="footer"></footer>
   </div>
   <!--한글입력 시 오류창 뜸 -->
-  <script>
-    function KoCheck(e){
-        var lang = document.getElementById('id1').value;
-        var lang2 = document.getElementById('id2').value;
-         var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-         var check2 = /[a-z0-9]/;
-         if(check.test(lang)){
-            alert("제대로 된 양식으로 입력 바랍니다.");
-         }else if(check2.test(lang2)){
-            alert("제대로 된 양식으로 입력 바랍니다.");
-         }else if(check2.test(lang2)){
-            alert("제대로 된 양식으로 입력 바랍니다.");
-         }else{
-          var modal = document.getElementById('modal');
-          var span = document.getElementsByClassName("close")[0];
-          modal.style.display = "block";
-          span.onclick = function() {
-          modal.style.display = "none";
-          }
-          window.onclick = function(event) {
-            if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-         }
-    }
-  </script>
 </body>
 </html>

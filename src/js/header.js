@@ -18,11 +18,11 @@ function menuopen(){
   else if($("input:checkbox[id='hamburger']").is(":checked") == false){
     $(".nav").hide();
     $(".nav").animate({
-      left:'-' + 40 + '%'
+      left:'-' + 45 + '%'
     });
     $(".userwrap").hide();
     $(".userwrap").animate({
-      left:'-' + 40 + '%'
+      left:'-' + 45 + '%'
     });
   }
 }

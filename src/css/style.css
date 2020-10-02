@@ -58,4 +58,15 @@
     max-width:100%;
   }
 
+  .article-wrap {
+    width:100%;
+    margin:0 auto;
+    /* margin-top:10rem; */
+    /* margin-bottom:2rem; */
+    min-width:100%;
+    /* border:solid 1px #c8c8c8; */
+    border-radius: 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
 }
