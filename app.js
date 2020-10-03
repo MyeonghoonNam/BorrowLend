@@ -457,7 +457,7 @@ var findID = function(database, tel, callback){
 		console.dir(results);
 		
 		if (results.length > 0) {
-			console.log('휴대폰번호와 일치하는 사용자 찾음.');
+      console.log('휴대폰번호와 일치하는 사용자 찾음.');
 		} else {
 	    	console.log("휴대폰번호와 일치하는 사용자를 찾지 못함.");
         callback(null, null);
@@ -481,7 +481,7 @@ var findID2 = function(database, name, callback){
 		console.dir(results);
 		
 		if (results.length > 0) {
-			console.log('이름과 일치하는 사용자 찾음.');
+      console.log('이름과 일치하는 사용자 찾음.'); 
 		} else {
 	    	console.log("이름과 일치하는 사용자를 찾지 못함.");
 	    	callback(null, null);
@@ -490,22 +490,26 @@ var findID2 = function(database, name, callback){
 	});
 };
 
-app.post('/find', function(req,res){
+
+app.get('/findID', function(req,res){
+    res.render('./pages/findID.html');
+});
+
+app.post('/findID', function(req,res){
   console.log('Access to login louter');
 
   var paramTel = req.body.tel;
   var paramName = req.body.name;
 
-  if(paramTel.length > 0) {
+  if(database) {
     findID(database, paramTel, function(err, docs){
-      console.log('인증완료');  
+      console.log(docs[0]._doc.id);  
     });
-  }else
-  {
+  }else{
     findID2(database, paramName, function(err, docs){
       console.log('이름인증완료');
     });
-  }
+  } 
 });
 
 

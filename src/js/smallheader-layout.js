@@ -129,7 +129,7 @@ if(filename == 'product-upload' || 'service-rent' || 'service-like') {
     }
 } 
 
-if(filename == 'customer-notice' || 'customer-q&a') {
+if(filename == 'product-upload' ||'customer-notice' || 'customer-q&a') {
     var mainname = '고객지원';
     if(filename == 'customer-notice'){
       var subname = '공지사항';
@@ -140,24 +140,32 @@ if(filename == 'customer-notice' || 'customer-q&a') {
     }
 }
 
-// if(filename == 'service-rent' || 'service-like') {
-//   if(filename == 'service-rent'){
-//     var name = '대여물품';
-//     f_layout(name);
-//   } else if(filename == 'service-like'){
-//     var subname = '관심물품';
-//     f_layout(name);
-//   }
-// } 
+// 모바일 화면에서 small-header 나타내기-------------------
+if($(window).width() < 500){
+  if(filename == 'product-upload' || 'service-rent' || 'service-like') {
+    if(filename == 'product-upload'){
+      var name = '대여물품';
+      f_layout(name);
+    }else if(filename == 'service-rent'){
+      var name = '관심물품';
+      f_layout(name);
+    } else if(filename == 'service-like'){
+      var name = '물픔등록';
+      f_layout(name);
+    }
+  }
+} 
 
-// if(filename == 'customer-notice' || 'customer-q&a') {
-//   if(filename == 'customer-notice'){
-//     var name = '공지사항';
-//     f_layout(name);
-//   } else if(filename == 'customer-q&a'){
-//     var subname = 'Q&A';
-//     f_layout(name);
-//   }
-// } 
-
+ 
+if($(window).width() < 500){
+ if(filename == 'customer-notice' || 'customer-q&a') {
+   if(filename == 'customer-notice'){
+     var name = '공지사항';
+     f_layout(name);
+   } else if(filename == 'customer-q&a'){
+     var subname = 'Q&A';
+     f_layout(name);
+   }
+ } 
+}
 
