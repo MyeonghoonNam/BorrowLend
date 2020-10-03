@@ -28,6 +28,14 @@
     /* border:solid 1px black; */
   }
 
+  .img_wrap {
+    width:600px;
+  }
+
+  .img_wrap img {
+    max-width:200%;
+  }
+
   .product-upload-bottom {
     order:3;
     width:100%;
