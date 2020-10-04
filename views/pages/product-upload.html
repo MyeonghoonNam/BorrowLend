@@ -19,7 +19,7 @@
     <div id="s-header"></div>
 
     <div class="article-wrap">
-      <form method="post" action="/product-upload" enctype="multipart/form-data" autocomplete="off">
+      <form id="prtupload_form" method="post" action="/product-upload" enctype="multipart/form-data" autocomplete="off">
         <div class="article-product-upload">
           <article class="product-upload-left">
             <div class="title-wrap">
@@ -39,10 +39,11 @@
           </article>
   
           <article class="product-upload-right">
-            <input type="file" id="input_img" name="photo" multiple>
-            <div class="img_wrap">
-
+            <div class="imgbtn_wrap">
+              <img src="src/images/camera.png" alt="" onclick="handleImgAdd()">
             </div>
+            
+            <div class="img_wrap"> </div>
           </article>
   
           <article class="product-upload-bottom">
@@ -60,13 +61,31 @@
         $('html').removeClass('no-js');
       });
 
+      var img_count = 0;
+      
+      function handleImgAdd(e){
+        var prtupload_form = document.getElementById("prtupload_form");
+        var prtupload_input = document.createElement('input');
+        
+        prtupload_input.setAttribute("type", "file");
+        prtupload_input.setAttribute("name", "photo");
+        prtupload_input.setAttribute("class", "prtupload_imgs");
+        prtupload_input.setAttribute("style", "display:none");
+        prtupload_input.setAttribute("multiple", "");
+        
+        prtupload_form.appendChild(prtupload_input);
+        
+        $(document).ready(function(){
+          $(".prtupload_imgs").on("change", handleImgPreview);
+        });
+        
+        document.getElementsByClassName("prtupload_imgs")[img_count].click();
+        img_count++;
+      }
+      
       var sel_files = [];
-
-      $(document).ready(function(){
-        $("#input_img").on("change", handleImgFileSelect);
-      });
-
-      function handleImgFileSelect(e) {
+      
+      function handleImgPreview(e) {
         var files = e.target.files;
         var filesArr = Array.prototype.slice.call(files);
 
@@ -87,6 +106,5 @@
         });
       }
     </script>
-
 </body>
 </html>
