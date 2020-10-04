@@ -354,11 +354,11 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
     }
 
     addProduct(database, title, price, list, function(err, docs){
-      // res.render('./pages/store.html', {
-      //   user:req.session.user,
-      //   product:docs
-      // });
-      res.redirect('/store');
+      if(err) throw err;
+
+      if(docs) {
+        res.redirect('/store');
+      }
     });
   }
 

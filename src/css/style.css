@@ -33,6 +33,7 @@
   }
 
   .article-wrap {
+    /* position: relative; */
     width:70%;
     margin:0 auto;
     /* margin-top:10rem; */

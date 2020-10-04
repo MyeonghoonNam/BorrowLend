@@ -149,23 +149,52 @@
     cursor:pointer;
   }
 
-  .img_wrap {
-    text-align:center;
+  .prtupload_imgwrap {
+    /* text-align:center; */
     width:100%;
     border:solid 1px black;
+    position: relative;
+    animation: fade 1.5s;
   }
 
-  .img_wrap img {
+  .prtupload_imgwrap img {
     width:30%;
     height:30%;
+    margin:0 auto;
   }
 
+  .prtupload_imgwrap a {
+    display:none;
+    position:absolute;
+    color:black;
+    font-size:5em;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: 0.6s ease;
+  }
+
+  .prt_prevbtn{
+    top:20%;
+  }
+
+  .prt_nextbtn{
+    top:20%;
+    right:0;
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0.4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
   .product-upload-bottom {
     order:3;
     width:100%;
   }
-  
-  
 }
     
 /* 모바일 뷰 css */

@@ -40,10 +40,13 @@
   
           <article class="product-upload-right">
             <div class="imgbtn_wrap">
-              <img src="src/images/camera.png" alt="" onclick="handleImgAdd()">
+              <img src="src/images/camera.png" onclick="handleImgAdd()">
             </div>
-            
-            <div class="img_wrap"> </div>
+
+            <div class="prtupload_imgwrap">
+              <a class="prt_prevbtn" onclick="Previewbtn_Click(-1)">&#10094</a>
+              <a class="prt_nextbtn" onclick="Previewbtn_Click(1)">&#10095</a>
+            </div>
           </article>
   
           <article class="product-upload-bottom">
@@ -61,29 +64,31 @@
         $('html').removeClass('no-js');
       });
 
-      var img_count = 0;
+      var prtinput_count = 0;
       
       function handleImgAdd(e){
-        var prtupload_form = document.getElementById("prtupload_form");
+        var prtupload_inputlist = document.getElementsByClassName("prtupload_imgwrap")[0];
+
         var prtupload_input = document.createElement('input');
         
         prtupload_input.setAttribute("type", "file");
         prtupload_input.setAttribute("name", "photo");
-        prtupload_input.setAttribute("class", "prtupload_imgs");
+        prtupload_input.setAttribute("class", "prtupload_input");
         prtupload_input.setAttribute("style", "display:none");
         prtupload_input.setAttribute("multiple", "");
         
-        prtupload_form.appendChild(prtupload_input);
+        prtupload_inputlist.appendChild(prtupload_input);
+        prtinput_count++;
         
-        $(document).ready(function(){
-          $(".prtupload_imgs").on("change", handleImgPreview);
-        });
         
-        document.getElementsByClassName("prtupload_imgs")[img_count].click();
-        img_count++;
+        document.getElementsByClassName("prtupload_input")[prtinput_count-1].click();
+        
+        $(".prtupload_input").on("change", handleImgPreview);
+      
       }
       
       var sel_files = [];
+      let currSlide = 1;
       
       function handleImgPreview(e) {
         var files = e.target.files;
@@ -99,12 +104,43 @@
 
           var reader = new FileReader();
           reader.onload = function(e) {
-            var img_html = "<img src=\"" + e.target.result + "\" />";
-            $(".img_wrap").append(img_html);
+            var img_html = "<img class=\"prtupload_img\" src=\"" + e.target.result + "\" />";
+            $(".prtupload_imgwrap").append(img_html);
+            
+            handleImgSlider(currSlide);
           }
           reader.readAsDataURL(f);
         });
       }
+      
+      function handleImgSlider(num){
+        var slides = document.querySelectorAll(".prtupload_img");
+        let prtimg_count = slides.length;
+
+        if(prtimg_count>1){
+          
+          $(".prt_prevbtn").css("display","inline");
+          $(".prt_nextbtn").css("display","inline");
+          
+        }
+
+        if(num>slides.length){
+          currSlide = 1;
+        } if(num<1){
+          currSlide = slides.length;
+        }
+
+        for(let i=0; i<slides.length; i++){
+          slides[i].style.display="none";
+        }
+
+        slides[currSlide-1].style.display="block";
+      }
+
+      function Previewbtn_Click(num){
+        handleImgSlider((currSlide+=num));
+      }
+
     </script>
 </body>
 </html>
