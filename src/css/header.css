@@ -149,6 +149,7 @@
 
   .user-info a{
     color:darkgray;
+    text-decoration: none;
   }
   .user-info a:hover{
     color:black;
@@ -161,7 +162,9 @@
   
   .logout a{
     color:darkgray;
+    text-decoration: none;
   }
+  
   .logout a:hover{
     color:black;
   }
