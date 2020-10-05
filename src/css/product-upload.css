@@ -273,7 +273,7 @@
   .product-upload-bottom {
     order:3;
     width:100%;
-    border:solid 1px black;
+    /* border:solid 1px black; */
     margin:0;
     padding:0;
     
@@ -281,7 +281,7 @@
 
   .prtupload_btnbox {
     /* text-align:center; */
-    border:solid 1px black;
+    /* border:solid 1px black; */
     width:30%;
   }
 
