@@ -83,7 +83,7 @@
   .price-checks {
     order:3;
     margin-top:0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .price-checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
