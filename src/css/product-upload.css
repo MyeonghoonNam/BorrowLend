@@ -198,6 +198,218 @@
 }
     
 /* 모바일 뷰 css */
-@media all and (max-width:480px){
+@media all and (max-width:425px) and (orientation: portrait){
+
+  .article-product-upload{
+    width:25rem;
+    margin:0 auto;
+    border:solid 2px #c8c8c8;
+    margin-top:1rem;
+    padding-top:0rem;
+    padding-bottom:1.5rem;
+    display:flex;
+    flex-wrap:wrap;
+  }
+
+  .article-product-left{
+    width:30rem;
+    display: absolute;
+    order:2
+  }
+  
+  .article-product-right{
+    width:30rem;
+    display: absolute;
+    order:1;
+  }
+
+
+  .product-upload-left {
+    order:2;
+    width:100%;
+    border-right: none;
+    /* border:solid 1px black; */
+  }
+  
+  .title-wrap {
+    /* border:solid 1px black; */
+    padding-left:1rem;
+    display: flex;
+  }
+  
+  .title-box {
+    width:3rem;
+    height:2rem;
+    margin:1rem 1rem; 
+    background: #c8c8c8;
+    font-size:1rem;
+    text-align:center;
+    line-height: 2rem;
+    border-radius: 5px;
+    /* margin:0; */
+    /* border:solid 1px black; */
+  }
+  
+  .title-input{
+    border:solid 1px #c8c8c8;
+    outline:none;
+    margin:1rem 1rem;
+    width:50%;
+    height:1.5rem;
+    border-radius: 5px;
+    padding-left:0.5rem;
+  }
+
+  .price-wrap {
+    /* border:solid 1px black; */
+    padding-left:1rem;
+    display:flex;
+    flex-wrap:wrap;
+  }
+
+  .price-box {
+    order:1;
+    width:3rem;
+    height:2rem;
+    background: #c8c8c8;
+    font-size:1rem;
+    margin:1rem 1rem;
+    text-align:center;
+    line-height: 2rem;
+    border-radius: 5px;
+    /* margin:0; */
+    /* border:solid 1px black; */
+  }
+  
+  .price-input{
+    order:2;
+    border:solid 1px #c8c8c8;
+    outline:none;
+    margin:1rem 1rem;
+    width:12rem;
+    height:1.5rem;
+    border-radius: 5px;
+    padding-left:0.5rem;
+  }
+  
+  .price-checks {
+    order:3;
+    margin-top:0.5rem;
+    margin-left:1rem;
+  }
+
+  .price-checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0
+  }
+
+  .price-checks input[type="checkbox"] + label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  .price-checks input[type="checkbox"] + label:before {  /* 가짜 체크박스 */
+    content: ' ';
+    display: inline-block;
+    width: 1.5rem;  
+    height: 1.5rem; 
+    line-height: 1.5rem; 
+    margin: -2px 8px 0 0;
+    text-align: center; 
+    vertical-align: middle;
+    background: #fafafa;
+    border: 1px solid #cacece;
+    border-radius : 3px;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+  }
+  .price-checks input[type="checkbox"] + label:active:before,
+  .price-checks input[type="checkbox"]:checked + label:active:before {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .price-checks input[type="checkbox"]:checked + label:before {  /* 체크박스를 체크했을때 */ 
+    content: '\2714';  /* 체크표시 유니코드 사용 */
+    color: #99a1a7;
+    text-shadow: 1px 1px #fff;
+    background: #e9ecee;
+    border-color: #adb8c0;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+  }
+
+  .product-upload-right {
+    order:1;
+    width:100%;
+    /* padding-top:1rem; */
+    padding-bottom:0rem;
+    /* border:solid 1px black; */
+    /* text-align:center; */
+  }
+
+  .imgbtn_wrap {
+    padding-left:2.5rem;
+    padding-top:1rem;
+  }
+
+  .imgbtn_wrap img {
+    width:15%;
+    height:15%;
+    cursor:pointer;
+  }
+
+  .prtupload_imgwrap {
+    /* text-align:center; */
+    width:100%;
+    border:solid 1px black;
+    position: relative;
+    animation: fade 1.5s;
+  }
+
+  .prtupload_imgwrap img {
+    width:30%;
+    height:30%;
+    margin:0 auto;
+  }
+
+  .prtupload_imgwrap a {
+    display:none;
+    position:absolute;
+    color:black;
+    font-size:5em;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: 0.6s ease;
+  }
+
+  .prt_prevbtn{
+    top:20%;
+  }
+
+  .prt_nextbtn{
+    top:20%;
+    right:0;
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0.4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .product-upload-bottom {
+    order:3;
+    width:100%;
+  }
     
 }
