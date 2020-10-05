@@ -1,12 +1,14 @@
 /* PC 뷰 css */
 @media all and (max-width:1980px){ 
   .article-product-upload {
-    width:70rem;
+    width:85rem;
+    min-width:85rem;
     margin:0 auto;
     border:solid 2px #c8c8c8;
     margin-top:3rem;
+    margin-bottom: 3rem;
     padding-top:1.5rem;
-    padding-bottom:1.5rem;
+    /* padding-bottom:1.5rem; */
     display:flex;
     flex-wrap:wrap;
   }
@@ -41,7 +43,7 @@
     border:solid 1px #c8c8c8;
     outline:none;
     margin:1rem 0;
-    width:90%;
+    width:93%;
     height:2rem;
     border-radius: 5px;
     padding-left:0.5rem;
@@ -81,6 +83,7 @@
   .price-checks {
     order:3;
     margin-top:0.5rem;
+    margin-bottom: 1rem;
   }
 
   .price-checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
@@ -130,17 +133,43 @@
     box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
   }
 
+  .content-wrap {
+    padding-left:2.5rem;
+  }
+
+  .content-box {
+    width:5.5rem;
+    height:2.5rem;
+    background: #c8c8c8;
+    font-size:1.4rem;
+    text-align:center;
+    line-height: 2.5rem;
+    border-radius: 5px;
+  }
+
+  .content-input {
+    border:solid 1px #c8c8c8;
+    outline:none;
+    margin-top:1rem;
+    width:93%;
+    height:19rem;
+    border-radius: 5px;
+    padding-left:0.5rem;
+  }
+
   .product-upload-right {
     order:2;
     width:49.5%;
     /* padding-top:1rem; */
-    padding-bottom:1rem;
+    /* padding-bottom:1rem; */
+    /* margin-left:2.5rem; */
     /* border:solid 1px black; */
     /* text-align:center; */
+    /* padding-right:0.5rem; */
   }
 
   .imgbtn_wrap {
-    padding-left:2.5rem;
+    padding-left:1.5rem;
   }
 
   .imgbtn_wrap img {
@@ -151,36 +180,86 @@
 
   .prtupload_imgwrap {
     /* text-align:center; */
-    width:100%;
-    border:solid 1px black;
-    position: relative;
-    animation: fade 1.5s;
+    width:90%;
+    height:29rem;
+    border:solid 2px #c8c8c8;
+    border-radius: 5%;
+    position:relative;
+    overflow:hidden;
+    /* padding-left:2.5rem; */
+    margin:0 auto;
+    margin-top:1rem;
+    margin-bottom:1rem;
+    /* background-color: gray; */
   }
 
-  .prtupload_imgwrap img {
-    width:30%;
-    height:30%;
-    margin:0 auto;
+  .prtupload_imgwrap_default{
+    position: relative;
+    top:30%;
+    text-align:center;
+    color:gray;
+    font-size:2rem;
+  }
+  .prt_defaulticon{
+    font-size:3rem;
+  }
+  .prtupload_img {
+    width:80%;
+    height:25rem;
+    margin:2rem auto;
+    animation: fade 1.5s;
+    object-fit: contain;
   }
 
   .prtupload_imgwrap a {
     display:none;
     position:absolute;
-    color:black;
-    font-size:5em;
+    /* color:black; */
+    font-size:4em;
     cursor: pointer;
+    top:50%;
+    /* width:4.5rem;
+    height:4.5rem; */
+    border-radius: 100%;
     transform: translateY(-50%);
     transition: 0.6s ease;
+    color:  #c8c8c8;
+    z-index:10;
+    /* text-align:center; */
+    background-color: none;
   }
 
   .prt_prevbtn{
-    top:20%;
+    left:2.5%;
+    /* line-height: 4.5rem; */
   }
 
   .prt_nextbtn{
-    top:20%;
-    right:0;
+    right:2.5%;
+    /* line-height: 4.5rem;; */
   }
+
+  .prt_deletebtn{
+    display:none;
+    color:  #c8c8c8;
+    z-index:10;
+    font-size:3em;
+    position:absolute;
+    top:0;
+    right:2%;
+    transition: 0.6s ease;
+    z-index:10;
+  }
+  .prt_deletebtn::before{
+    content:"\e921";
+    font-family: xeicon;
+  }
+
+  .prt_prevbtn:hover,
+  .prt_nextbtn:hover,
+  .prt_deletebtn:hover {
+    color: rgba(0, 0, 0, 0.8);
+}
 
   @keyframes fade {
     from {
@@ -190,11 +269,37 @@
       opacity: 1;
     }
   }
-  
+
   .product-upload-bottom {
     order:3;
     width:100%;
+    /* border:solid 1px black; */
+    margin:0;
+    padding:0;
+    
   }
+
+  .prtupload_btnbox {
+    /* text-align:center; */
+    /* border:solid 1px black; */
+    width:30%;
+  }
+
+  /* .prtupload_btnbox button {
+    width:8rem;
+    font-family: inherit;
+    font-size:1em;
+  
+  }
+
+  .btn-primary {
+    margin-right:5rem;
+  }
+
+  .btn-secondary {
+    margin-right:1rem;
+  } */
+  
 }
     
 /* 모바일 뷰 css */

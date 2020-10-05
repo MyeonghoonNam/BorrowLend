@@ -9,6 +9,8 @@
     <script src="../../src/js/smallheader.js"></script>
     <script src="../../src/js/footer.js"></script>
     <link rel="stylesheet" href="../../src/css/style.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
   </head>
 <body>
   <div class="wrapper">
@@ -28,11 +30,15 @@
             </div>
             <div class="price-wrap">
               <div class="price-box">가격</div>
-              <input class="price-input" type="text" name="price" placeholder="제목을 입력해주세요.">
+              <input class="price-input" type="text" name="price" placeholder="금액을 입력해주세요.">
               <div class="price-checks">
                 <input type="checkbox" id="price-check">
                 <label for="price-check">가격 제안받기</label>
               </div>
+            </div>
+            <div class="content-wrap">
+              <div class="content-box">내용</div>
+              <textarea class="content-input" name="content" placeholder="내용을 입력해주세요." style="resize: none;"></textarea>
             </div>
             <!-- <div class="ptitle-box">카테고리</div>
             <input class="ptitle-input" type="text" placeholder="제목을 입력해주세요."> -->
@@ -46,11 +52,20 @@
             <div class="prtupload_imgwrap">
               <a class="prt_prevbtn" onclick="Previewbtn_Click(-1)">&#10094</a>
               <a class="prt_nextbtn" onclick="Previewbtn_Click(1)">&#10095</a>
+              <button class="prt_deletebtn"></button>
+              <div class="prtupload_imgwrap_default">
+                <p>
+                  <i class="xi-emoticon-smiley-o prt_defaulticon"></i><br>
+                  물품 이미지를 첨부해주세요.
+                </p>
+              </div>
             </div>
           </article>
   
           <article class="product-upload-bottom">
-            <input type="submit" value="등록">
+            <div class="prtupload_btnbox">
+              
+            </div>
           </article>
 
         </div>
@@ -106,6 +121,7 @@
           reader.onload = function(e) {
             var img_html = "<img class=\"prtupload_img\" src=\"" + e.target.result + "\" />";
             $(".prtupload_imgwrap").append(img_html);
+            $(".prtupload_imgwrap_default").css("display","none");
             
             handleImgSlider(currSlide);
           }
@@ -116,9 +132,10 @@
       function handleImgSlider(num){
         var slides = document.querySelectorAll(".prtupload_img");
         let prtimg_count = slides.length;
+        
+        $(".prt_deletebtn").css("display","inline");
 
         if(prtimg_count>1){
-          
           $(".prt_prevbtn").css("display","inline");
           $(".prt_nextbtn").css("display","inline");
           
