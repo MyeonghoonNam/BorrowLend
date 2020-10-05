@@ -179,6 +179,7 @@
 }
 
   .login_append .sign_up {
+    text-decoration: none;
     float: left;
     color: #909090;
     font-size: 13px;

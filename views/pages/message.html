@@ -18,6 +18,27 @@
 
     <div id="s-header"></div>
 
+    <div class="message-wrap">
+      <form id="message_form" method="post" action="/message" autocomplete="off">
+        <div class="message-transfer">
+          <article class="message-transfer-left">
+            <div class="mgfriends">쪽지함</div>
+          </article>
+
+          <article class="message-transfer-right">
+            <div class="mgtitle-wrap">
+              <div class="mgtitle-box">제목</div>
+              <input class="mgtitle-input" type="text" name="title" placeholder="제목을 입력해주세요.">
+            </div>
+            <div class="mgcontent-wrap">
+              <div class="mgcontent-box">내용</div>
+              <input class="mgcontent-input" type="text" name="content" placeholder="내용을 입력해 주세요.">
+            </div>
+          </article>
+        </div>
+      </form>
+    </div>
+
     <footer id="footer"></footer>
 
     <script>

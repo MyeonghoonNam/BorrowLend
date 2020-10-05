@@ -14,6 +14,7 @@
 @import "findPS.css";
 @import "store.css";
 @import "product-upload.css";
+@import "message.css";
 
 .no-js { display:none; }
 
@@ -47,7 +48,7 @@
 }
 
 /* 모바일 뷰 css */
-@media all and (max-width:425px){
+@media all and (max-width:425px) and (orientation: portrait){
     *:focus { 
     outline:none; 
   }
@@ -71,3 +72,4 @@
   }
 
 }
+

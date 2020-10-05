@@ -1,7 +1,99 @@
 /* PC 뷰 css */
 @media all and (max-width:1980px){ 
-  
-  
+    .message-transfer {
+        width:70rem;
+        margin:0 auto;
+        border:solid 2px #c8c8c8;
+        margin-top:3rem;
+        padding-top:1rem;
+        padding-bottom:1.5rem;
+        display:flex;
+        flex-wrap:wrap;
+      }
+
+      
+      .message-transfer-left {
+        order:1;
+        width:30%;
+        padding-bottom:1rem;
+        border-right:solid 2px  #c8c8c8;
+        /* border:solid 1px black; */
+      }
+      
+
+      .mgfriends{
+        margin-left:1rem;
+        font-size:1.7rem;
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+
+
+
+      .mgtitle-wrap {
+        /* border:solid 1px black; */
+        padding-left:2.5rem;
+      }
+      
+      .mgtitle-box {
+        width:5.5rem;
+        height:2.5rem;
+        background: #c8c8c8;
+        font-size:1.4rem;
+        text-align:center;
+        line-height: 2.5rem;
+        border-radius: 5px;
+        /* margin:0; */
+        /* border:solid 1px black; */
+      }
+      
+      .mgtitle-input{
+        border:solid 1px #c8c8c8;
+        outline:none;
+        margin:1rem 0;
+        width:60%;
+        height:2rem;
+        border-radius: 5px;
+        padding-left:0.5rem;
+      }
+    
+      .mgcontent-wrap {
+        /* border:solid 1px black; */
+        padding-left:2.5rem;
+        flex-wrap:wrap;
+      }
+      
+    
+      .mgcontent-box {
+        width:5.5rem;
+        height:2.5rem;
+        background: #c8c8c8;
+        font-size:1.4rem;
+        text-align:center;
+        line-height: 2.5rem;
+        border-radius: 5px;
+        /* margin:0; */
+        /* border:solid 1px black; */
+      }
+      
+      .mgcontent-input{
+        border:solid 1px #c8c8c8;
+        outline:none;
+        margin:1rem 0;
+        width:20rem;
+        height:10rem;
+        border-radius: 5px;
+        padding-left:0.5rem;
+      }
+      
+      .message-transfer-right {
+        order:2;
+        width:49.5%;
+        /* padding-top:1rem; */
+        padding-bottom:1rem;
+        /* border:solid 1px black; */
+        /* text-align:center; */
+      }
+      
 }
     
 
