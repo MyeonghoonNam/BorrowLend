@@ -114,6 +114,7 @@ function connectDB(){
     ProductSchema = mongoose.Schema({
       title:{type : String, required : true},
       price:{type : String, required : true},
+      content:{type : String, required : true},
       list:[new mongoose.Schema({name:{type : String, required : true, unique : true}})]
     });
 
@@ -206,10 +207,11 @@ var addUser = function(database, id, password, name, gender, school, tel, callba
 //
 
 // 물품 등록
-var addProduct = function(database, title, price, list, callback){
+var addProduct = function(database, title, price, content, list, callback){
   var product = new ProductModel({
     "title":title,
     "price":price,
+    "content":content,
     "list":list
   });
 
@@ -336,6 +338,8 @@ app.get('/product-upload', function(req,res){
 app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
   var title = req.body.title;
   var price = req.body.price;
+  var content = req.body.content;
+
   var list = new Array();
 
   var files = req.files;
@@ -353,7 +357,7 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
       list[index] = {name:filename};
     }
 
-    addProduct(database, title, price, list, function(err, docs){
+    addProduct(database, title, price, content, list, function(err, docs){
       if(err) throw err;
 
       if(docs) {
