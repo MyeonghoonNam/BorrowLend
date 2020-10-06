@@ -1,14 +1,12 @@
 /* PC 뷰 css */
 @media all and (max-width:1980px){ 
   .store-search-form {
-    position: absolute;
-    top:28%;
-    left:50%;
+    position: relative;
+    margin:3rem auto;
     width: 15rem;
     height: 2.5rem;
     border-radius: 40px;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    transform: translate(-50%, -50%);
     background: #fff;
     transition: all 0.3s ease;
     border:solid 2px #5a6674;
@@ -51,8 +49,8 @@
   .article-store {
     width:70rem;
     margin:0 auto;
-    margin-top:10rem;
-    
+    /* margin-top:10rem; */
+    /* border:solid 1px black; */
   }
 
   .article-store ul{
@@ -73,10 +71,28 @@
     border-left: none;
     }
 
+  .store-listorder a {
+    text-decoration: none;
+    color:black;
+  }
+
   .store-product{
     border:solid 1px #c8c8c8;
     border-radius: 5px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    /* justify-content:space-around; */
+    padding: 4rem 4rem;
   }
+  .store-product-element {
+    border:solid 1px #c8c8c8;
+    width:15.5rem;
+    height:15.5rem;
+    margin-bottom:3rem;
+    /* border-radius: 10%; */
+  }
+  
   
 }
     
