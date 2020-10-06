@@ -52,7 +52,7 @@
             <div class="prtupload_imgwrap">
               <a class="prt_prevbtn" onclick="Previewbtn_Click(-1)">&#10094</a>
               <a class="prt_nextbtn" onclick="Previewbtn_Click(1)">&#10095</a>
-              <button class="prt_deletebtn"></button>
+              <button type="button" class="prt_deletebtn" onclick="ResetImgbtn()"></button>
               <div class="prtupload_imgwrap_default">
                 <p>
                   <i class="xi-emoticon-smiley-o prt_defaulticon"></i><br>
@@ -159,6 +159,17 @@
         handleImgSlider((currSlide+=num));
       }
 
+      function ResetImgbtn(){
+        $('.prtupload_input').remove();
+        $('.prtupload_img').remove();
+        sel_files.splice(0, sel_files.length);
+        prtinput_count = 0;
+        // $('.prtupload_img').remove();
+        $(".prtupload_imgwrap_default").css("display","block");
+        $(".prt_prevbtn").css("display","none");
+        $(".prt_nextbtn").css("display","none");
+        $(".prt_deletebtn").css("display","none");
+      }
     </script>
 </body>
 </html>
