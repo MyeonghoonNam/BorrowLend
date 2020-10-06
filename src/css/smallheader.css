@@ -53,13 +53,11 @@
   }
 
   .small-home{
-    display: none;
     order:1;
     color:darkgray;
   }
 
   .mark1 {
-    display: none;
     order:2;
   }
 

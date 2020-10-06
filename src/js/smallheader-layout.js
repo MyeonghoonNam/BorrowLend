@@ -70,33 +70,6 @@ function l_layout(m, s){
   });
 };
 
-function f_layout(n){
-  var mark1 = document.getElementsByClassName('mark1')[0]
-  var item1 = document.getElementsByClassName('small-item1')[0]
-  var mark2 = document.getElementsByClassName('mark2')[0]
-  var item2 = document.getElementsByClassName('small-item2')[0]
-  var name = n;
-
-  mark1.innerHTML = '>';
-
-  $(mark1).css({
-    color:'darkgray'
-  });
-
-  item1.innerHTML = name;
-
-  $(item1).css({
-    display:'none'
-  });
-
-  $(mark2).css({
-    display:'none'
-  });
-  
-  $(item2).css({
-    color:'black'
-  });
-};
 
 var filename = Page_Title();
 
@@ -140,32 +113,4 @@ if(filename == 'product-upload' ||'customer-notice' || 'customer-q&a') {
     }
 }
 
-// 모바일 화면에서 small-header 나타내기-------------------
-if($(window).width() < 500){
-  if(filename == 'product-upload' || 'service-rent' || 'service-like') {
-    if(filename == 'product-upload'){
-      var name = '대여물품';
-      f_layout(name);
-    }else if(filename == 'service-rent'){
-      var name = '관심물품';
-      f_layout(name);
-    } else if(filename == 'service-like'){
-      var name = '물픔등록';
-      f_layout(name);
-    }
-  }
-} 
-
- 
-if($(window).width() < 500){
- if(filename == 'customer-notice' || 'customer-q&a') {
-   if(filename == 'customer-notice'){
-     var name = '공지사항';
-     f_layout(name);
-   } else if(filename == 'customer-q&a'){
-     var subname = 'Q&A';
-     f_layout(name);
-   }
- } 
-}
 

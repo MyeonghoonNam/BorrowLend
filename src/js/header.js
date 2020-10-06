@@ -50,4 +50,24 @@ function  servicemenu2(){
   }
 }
 
+function  servicemenu3(){
+  $("#service-menu").toggle();
+  if($(".service-menu1").text() == "﹀"){
+    $(".service-menu1").text("︿");
+  }
+  else if($(".service-menu1").text() == "︿"){
+    $(".service-menu1").text("﹀");
+  }
+}
+
+function  servicemenu4(){
+  $("#customersupport-menu").toggle();
+  if($(".service-menu2").text() == "﹀"){
+    $(".service-menu2").text("︿");
+  }
+  else if($(".service-menu2").text() == "︿"){
+    $(".service-menu2").text("﹀");
+  }
+}
+
 

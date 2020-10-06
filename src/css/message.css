@@ -1,5 +1,6 @@
 /* PC 뷰 css */
 @media all and (max-width:1980px){ 
+
     .message-transfer {
         width:70rem;
         margin:0 auto;
@@ -14,7 +15,7 @@
       
       .message-transfer-left {
         order:1;
-        width:30%;
+        width:35%;
         padding-bottom:1rem;
         border-right:solid 2px  #c8c8c8;
         /* border:solid 1px black; */
@@ -87,11 +88,42 @@
       
       .message-transfer-right {
         order:2;
-        width:49.5%;
+        width:45%;
         /* padding-top:1rem; */
         padding-bottom:1rem;
         /* border:solid 1px black; */
         /* text-align:center; */
+      }
+
+      .message-transfer-farright {
+        order:3;
+        display:flex;
+        width:13%;
+        /* padding-top:1rem; */
+        padding-bottom:1rem;
+        /* border:solid 1px black; */
+        /* text-align:center; */
+      }
+
+
+      .imgbtn_trash {
+        width:4rem;
+        cursor:pointer;
+      }
+    
+      .imgbtn_trash img {
+        width:3rem;
+        cursor:pointer;
+      }
+
+      .imgbtn_report {
+        width:4rem;
+        cursor:pointer;
+      }
+
+      .imgbtn_report img {
+        width:3rem;
+        cursor:pointer;
       }
       
 }
