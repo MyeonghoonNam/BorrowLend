@@ -327,6 +327,12 @@ app.get('/store', function(req,res){
   }
 });
 
+// app.get('/store/1', function(req,res){
+//   if(req.session.user){
+//     res.render('./pages/product-upload.html', {user:req.session.user});
+//   }
+// });
+
 app.get('/product-upload', function(req,res){
   if(req.session.user){
     res.render('./pages/product-upload.html', {user:req.session.user});

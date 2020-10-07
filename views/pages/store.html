@@ -45,36 +45,14 @@
         </article>
   
         <article class="store-product">
+        <% for(var i = 0; i < product.length; i++){ %>
+          <% var j = 0; %>
           <div class="store-product-element">
-            <div class="element_img"></div>
-            <div class="element_title">아이폰1</div>
-            <div class="element_price"></div>
+            <img class="element_img"src="../../src/uploads/<%=product[i].list[j].name%>" alt="">
+            <div class="element_title"><%=product[i].title%></div>
+            <div class="element_price"><%=product[i].price%></div>
           </div>
-          <div class="store-product-element">
-            <div class="element_img"></div>
-            <div class="element_title">아이폰2</div>
-            <div class="element_price"></div>
-          </div>
-          <div class="store-product-element">
-            <div class="element_img"></div>
-            <div class="element_title">아이폰3</div>
-            <div class="element_price"></div>
-          </div> 
-          <div class="store-product-element">
-            <div class="element_img"></div>
-            <div class="element_title">아이폰4</div>
-            <div class="element_price"></div>
-          </div>
-          <!-- <div class="store-product-element">
-            <div class="element_img"></div>
-            <div class="element_title">아이폰5</div>
-            <div class="element_price"></div>
-          </div>
-          <div class="store-product-element">
-            <div class="element_img"></div>
-            <div class="element_title">아이폰6</div>
-            <div class="element_price"></div>
-          </div> -->
+        <% } %>
         </article>
       </div>
     </div>
