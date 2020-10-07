@@ -1,0 +1,28 @@
+/* PC 뷰 css */
+@media all and (max-width:1980px){ 
+  .article-product {
+    border:solid 2px #c8c8c8;
+    width:60rem;
+    margin: 0 auto;
+  }
+  
+  .slider{
+    width:60rem;
+    height:30rem;
+    border:solid 1px #c8c8c8;
+  }
+
+  .slider_img{
+    /* width:50%; */
+    /* height:100%;
+    object-fit: contain; */
+  }
+
+}
+    
+
+    
+/* 모바일 뷰 css */
+@media all and (max-width:480px){
+    
+}

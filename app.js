@@ -135,6 +135,10 @@ function connectDB(){
       increment:1
     });
 
+    ProductSchema.static('findByKey', function(key, callback){
+      return this.find({key:key}, callback);
+    });
+
     ProductSchema.static('findAll', function(callback){
       return this.find({}, callback);
     });
@@ -210,18 +214,6 @@ var addUser = function(database, id, password, name, gender, school, tel, callba
     callback(null, user);
   });
 };
-//
-
-// 물품 조회
-// var authProduct = function(database, callback){
-//   ProductModel.findAll(function(err, results){
-//     if(err) throw err;
-
-//     if(resluts){
-//       callback(null, results);
-//     }
-//   });
-// }
 //
 
 // 물품 등록
@@ -346,10 +338,20 @@ app.get('/store', function(req,res){
 });
 
 app.post('/product', function(req,res){
-  
+
+  var index = req.body.element_token;
+
   if(req.session.user){
-    res.render('./pages/product.html', {
-      user:req.session.user
+    ProductModel.findByKey(index, function(err, result){
+      if(err) throw err;
+      
+      if(result){
+        console.log(result);
+        res.render('./pages/product.html', {
+          user:req.session.user,
+          product:result
+        });
+      }
     });
   }
 });
