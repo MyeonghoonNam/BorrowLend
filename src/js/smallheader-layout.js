@@ -73,8 +73,8 @@ function l_layout(m, s){
 
 var filename = Page_Title();
 
-if(filename == 'store' || 'message' || 'honor'){
-  if(filename == 'store'){
+if(filename == 'store' || 'product' || 'message' || 'honor'){
+  if(filename == 'store' || 'product'){
     var name = '장터';
     s_layout(name);
   } else if (filename == 'message') {

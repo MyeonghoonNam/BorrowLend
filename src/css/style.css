@@ -37,6 +37,7 @@
     /* position: relative; */
     width:85rem;
     margin:0 auto;
+    margin-bottom:2rem;
     /* margin-top:10rem; */
     /* margin-bottom:2rem; */
     min-width:85rem;
@@ -71,6 +72,5 @@
     border-radius: 5px;
     font-family: 'Noto Sans KR', sans-serif;
   }
-
 }
 

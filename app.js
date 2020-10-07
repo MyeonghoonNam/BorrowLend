@@ -58,11 +58,14 @@ var upload = multer({
 // DB 정의 및 연결
 var database;
 var mongoose = require('mongoose');
+var autoIncrement = require('mongoose-auto-increment');
+
 var UserSchema;
-var UserModel;
 var SchoolSchema;
-var SchoolModel;
 var ProductSchema;
+
+var UserModel;
+var SchoolModel;
 var ProductModel;
 
 function connectDB(){
@@ -71,13 +74,19 @@ function connectDB(){
   console.log('Try connect to db');
 
   mongoose.Promise = global.Promise;
-  mongoose.connect(databaseUrl, {useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex:true});
+  mongoose.connect(databaseUrl, {
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
+    useCreateIndex:true,
+    useFindAndModify:false
+  });
   database = mongoose.connection;
+  autoIncrement.initialize(database);
 
   database.on('error', console.log.bind(console, 'mongoose connection error'));
 
   database.on('open', function(){
-    console.log('db connect Success : ' + databaseUrl);
+    console.log('DB connect Success : ' + databaseUrl);
 
     UserSchema = mongoose.Schema({
       id : {type : String, required : true, unique : true},
@@ -112,15 +121,23 @@ function connectDB(){
     });
 
     ProductSchema = mongoose.Schema({
+      key:{type : Number, unique : true, 'default':0},
       title:{type : String, required : true},
       price:{type : String, required : true},
       content:{type : String, required : true},
       list:[new mongoose.Schema({name:{type : String, required : true, unique : true}})]
     });
 
+    ProductSchema.plugin(autoIncrement.plugin, {
+      model:'ProductModel',
+      field: 'key',
+      startAt:1,
+      increment:1
+    });
+
     ProductSchema.static('findAll', function(callback){
       return this.find({}, callback);
-    })
+    });
 
     console.log('UserSchema Define');
     console.log('SchoolSchema Define');
@@ -129,10 +146,11 @@ function connectDB(){
     UserModel = mongoose.model('users', UserSchema);
     SchoolModel = mongoose.model('schools', SchoolSchema);
     ProductModel = mongoose.model('product', ProductSchema);
-
+    
     console.log('UserModel Define');
     console.log('SchoolModel Define');
     console.log('ProductModel Define');
+
   });
 
   database.on('disconnected', function(){
@@ -327,11 +345,14 @@ app.get('/store', function(req,res){
   }
 });
 
-// app.get('/store/1', function(req,res){
-//   if(req.session.user){
-//     res.render('./pages/product-upload.html', {user:req.session.user});
-//   }
-// });
+app.post('/product', function(req,res){
+  
+  if(req.session.user){
+    res.render('./pages/product.html', {
+      user:req.session.user
+    });
+  }
+});
 
 app.get('/product-upload', function(req,res){
   if(req.session.user){
