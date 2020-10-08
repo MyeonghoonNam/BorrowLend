@@ -15,6 +15,7 @@ function menuopen(){
       left:0
     });
     $(".logo a").css({color: "white"});
+    $('html, body').css({'overflow': 'hidden', 'height': '100%'});
   }
   else if($("input:checkbox[id='hamburger']").is(":checked") == false){
     $(".nav").hide();
@@ -26,6 +27,7 @@ function menuopen(){
       left:'-' + 100 + '%'
     });
     $(".logo a").css({color: "black"});
+    $('html, body').css({'overflow': '', 'height': ''});
   }
 }
 

@@ -127,5 +127,126 @@
     
 /* 모바일 뷰 css */
 @media all and (max-width:480px){
-    
+  .store-search-form {
+    position: relative;
+    margin:1rem auto;
+    width: 12rem;
+    height: 2rem;
+    border-radius: 40px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    transition: all 0.3s ease;
+    border:solid 2px #5a6674;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .store-search-input {
+    position: relative;
+    top: 0rem;
+    left: 1rem;
+    font-size: 1rem;
+    background: none;
+    color: #5a6674;
+    width: 8rem;
+    border: none;
+    appearance: none;
+    outline: none;
+    font-size:1rem;
+  }
+  
+  .store-submit-button {
+    position: relative;
+    top: 0.4rem;
+    left: 0.5rem;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    outline: none!important;
+    cursor: pointer;
+    display:inline;
+  }
+  
+  .store-search-button{
+     width:1.4rem;
+     height:1.4rem;
+     fill: #5a6674;
+   }
+
+  .article-store {
+    width:25rem;
+    margin:0 auto;
+    /* margin-top:10rem; */
+    /* border:solid 1px black; */
+  }
+
+  .article-store ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  .article-store ul > li {
+    display:inline-block;
+    font-size:1rem;
+    border-left: solid 1px;
+    margin: 2px 0;
+    padding: 0 3px;
+  }
+
+  .article-store ul > li:first-child {
+    border-left: none;
+    }
+
+  .store-listorder a {
+    text-decoration: none;
+    color:black;
+  }
+
+  .store-product{
+    border:solid 2px #c8c8c8;
+    border-radius: 5px;
+    display:flex;
+    /* justify-content:space-around; */
+    padding: 0 1rem;
+  }
+  .store-product-element {
+    /* border:solid 1px #c8c8c8; */
+    width:22rem;
+    height:7rem;
+    padding:0;
+    cursor: pointer;
+    margin-bottom:0rem;
+    border-bottom:solid 2px #c8c8c8;
+  }
+
+  .element_img {
+    width:5rem;
+    height:5rem;
+    /* min-height:65%; */
+    /* margin:0 auto; */
+    margin-top:1rem;
+    border-radius:5%;
+    /* border:solid 1px #c8c8c8; */
+    object-fit: content;
+  }
+  
+  .element_title {
+    display: inline-block;
+    vertical-align: 2rem;
+    margin-left:2rem;
+    width:5rem;
+    /* border:solid 1px #c8c8c8; */
+    font-size:1rem;
+    /* margin-top:0.5rem; */
+  }
+  .element_price {
+    display: inline-block;
+    vertical-align: 2rem;
+    margin-left:2rem;
+    width:4rem;
+    font-size:1rem;
+    color: #ff8a3d;
+    /* border:solid 1px #c8c8c8; */
+  }  
 }
