@@ -108,9 +108,9 @@ function connectDB(){
       return this.find({tel:tel}, callback);
     });
 
-    UserSchema.static('findById3', function(name, callback){
-      return this.find({name:name}, callback);
-    })
+    UserSchema.static('findAll', function(callback){
+      return this.find({}, callback);
+    });
 
     SchoolSchema = mongoose.Schema({
       name: {type : String, required : true, unique : true}
@@ -477,8 +477,8 @@ http.createServer(app).listen(app.get('port'), function(){
 
 //------------------------------------------------------//
 // 아이디찾기 - 휴대전화버전
-var findID = function(database, tel, callback){
-  console.log('findID호출 : ' + tel);
+var authUser2 = function(database, tel, name, callback){
+  console.log('authUser 호출 : ' + tel, + ', ' + name);
 
   UserModel.findById2(tel, function(err, results) {
 		if (err) {
@@ -486,37 +486,22 @@ var findID = function(database, tel, callback){
 			return;
 		}
 		
-		console.log('휴대폰번호로 [%s]로 사용자 검색결과', tel);
+		console.log('전화번호 [%s]로 사용자 검색결과', tel);
 		console.dir(results);
 		
 		if (results.length > 0) {
-      console.log('휴대폰번호와 일치하는 사용자 찾음.');
+			console.log('전화번호와 일치하는 사용자 찾음.');
+			
+			if (results[0]._doc.name === name) {
+				console.log('이름 일치함');
+				callback(null, results);
+			} else {
+				console.log('이름 일치하지 않음');
+				callback(null, null);
+			}
+			
 		} else {
-	    	console.log("휴대폰번호와 일치하는 사용자를 찾지 못함.");
-        callback(null, null);
-	    }
-		
-	});
-};
-
-
-// 아이디찾기 - 이름버전
-var findID2 = function(database, name, callback){
-  console.log('이름호출 : ' + name);
-
-  UserModel.findById3(name, function(err, results) {
-		if (err) {
-			callback(err, null);
-			return;
-		}
-		
-		console.log('이름으로 [%s]로 사용자 검색결과', name);
-		console.dir(results);
-		
-		if (results.length > 0) {
-      console.log('이름과 일치하는 사용자 찾음.'); 
-		} else {
-	    	console.log("이름과 일치하는 사용자를 찾지 못함.");
+	    	console.log("전화번호와 일치하는 사용자를 찾지 못함.");
 	    	callback(null, null);
 	    }
 		
@@ -525,8 +510,13 @@ var findID2 = function(database, name, callback){
 
 
 app.get('/findID', function(req,res){
+  if(req.session.user){
+    res.redirect('/findIDresult');
+  } else{
     res.render('./pages/findID.html');
+  }
 });
+
 
 app.post('/findID', function(req,res){
   console.log('Access to login louter');
@@ -534,15 +524,43 @@ app.post('/findID', function(req,res){
   var paramTel = req.body.tel;
   var paramName = req.body.name;
 
-  if(database) {
-    findID(database, paramTel, function(err, docs){
-      console.log(docs[0]._doc.id);  
-    });
-  }else{
-    findID2(database, paramName, function(err, docs){
-      console.log('이름인증완료');
-    });
-  } 
+  if(req.session.user) {
+    
+  } else{
+      if(database){
+        authUser2(database, paramTel, paramName, function(err, docs){
+          if(err) throw err;
+    
+          if(docs){
+            req.session.user = {
+              id:docs[0]._doc.id,
+              name:docs[0]._doc.name,
+              grade:docs[0]._doc.grade,
+              tel:docs[0]._doc.tel,
+              // product:docs[0]._doc.product,
+              authorized:true
+            }
+
+            console.log(docs[0]._doc.name);
+            
+            res.render('./pages/findIDresult.html', {user:req.session.user});
+          }
+        });
+      } else {
+        res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+        res.write('<h2>데이터베이스 연결 실패</h2>');
+        res.write('<div><p>데이터베이스에 연결하지 못했습니다.</p></div>');
+        res.end();
+      }  
+  }
+});
+
+app.get('/findIDresult', function(req,res){
+  if(req.session.user){
+    res.render('./pages/findIDresult.html', {user:req.session.user});
+  } else{
+    res.redirect('/findID');
+  }
 });
 
 
