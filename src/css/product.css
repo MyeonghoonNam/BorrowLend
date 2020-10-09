@@ -70,6 +70,7 @@
     text-align:center;
     list-style-type: none;
     padding:0;
+    
   }
 
   .slider .slick-dots li {
@@ -88,6 +89,7 @@
     cursor: pointer;
     background:#5dbfeb;
     border-radius: 50%;
+    border:none;
   }
   .slider .slick-dots li.slick-active button {
     background: #186086;
@@ -103,6 +105,8 @@
     display: inline-block;
     text-indent: -9999px;
     font: normal normal normal 14px/1 FontAwesome;
+    background-color: transparent !important;
+    border:none;
   }
 
   .slider .slick-prev::before {
@@ -121,6 +125,8 @@
     display: inline-block;
     text-indent: -9999px;
     font: normal normal normal 14px/1 FontAwesome;
+    background-color: transparent !important;
+    border:none;
 }
 .slider .slick-next::before { 
     content:"\f054";

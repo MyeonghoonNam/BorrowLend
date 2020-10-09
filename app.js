@@ -100,6 +100,10 @@ function connectDB(){
       // product : [ProductSchema]
     });
 
+    UserSchema.static('findByOid', function(oid, callback){
+      return this.find({_id:oid}, callback);
+    });
+
     UserSchema.static('findById', function(id, callback){
       return this.find({id:id}, callback);
     });
@@ -125,7 +129,8 @@ function connectDB(){
       title:{type : String, required : true},
       price:{type : String, required : true},
       content:{type : String, required : true},
-      list:[new mongoose.Schema({name:{type : String, required : true, unique : true}})]
+      list:[new mongoose.Schema({name:{type : String, required : true, unique : true}})],
+      userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'}
     });
 
     ProductSchema.plugin(autoIncrement.plugin, {
@@ -198,6 +203,7 @@ var authUser = function(database, id, password, callback){
 //
 
 // User 등록
+
 var addUser = function(database, id, password, name, gender, school, tel, callback){
   var user = new UserModel({
     "id":id,
@@ -217,19 +223,26 @@ var addUser = function(database, id, password, name, gender, school, tel, callba
 //
 
 // 물품 등록
-var addProduct = function(database, title, price, content, list, callback){
-  var product = new ProductModel({
-    "title":title,
-    "price":price,
-    "content":content,
-    "list":list
+var addProduct = function(database, title, price, content, list, userid, callback){
+
+  UserModel.findById(userid, function(err, result){
+    var userinfo = result;
+
+    var product = new ProductModel({
+      "title":title,
+      "price":price,
+      "content":content,
+      "list":list,
+      "userinfo":userinfo[0]._id
+    });
+    
+    product.save(function(err){
+      if(err) throw err;
+          
+      callback(null, product);
+    });
   });
 
-  product.save(function(err){
-    if(err) throw err;
-
-    callback(null, product);
-  });
 };
 //
 
@@ -346,12 +359,18 @@ app.post('/product', function(req,res){
       if(err) throw err;
       
       if(result){
-        console.log(result);
-        res.render('./pages/product.html', {
-          user:req.session.user,
-          product:result
-        });
+        console.log(result[0].userinfo)
+        UserModel.findByOid(result[0].userinfo, function(err, doc){
+          console.log(doc);
+
+          res.render('./pages/product.html', {
+            user:req.session.user,
+            product:result,
+            userinfo:doc
+          });
+        })
       }
+      
     });
   }
 });
@@ -368,9 +387,9 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
   var title = req.body.title;
   var price = req.body.price;
   var content = req.body.content;
-
   var list = new Array();
-
+  var userid = req.session.user.id;
+  
   var files = req.files;
   var originalname = '';
   var filename = '';
@@ -385,8 +404,10 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
       size = files[index].size;
       list[index] = {name:filename};
     }
+    
+    
 
-    addProduct(database, title, price, content, list, function(err, docs){
+    addProduct(database, title, price, content, list, userid, function(err, docs){
       if(err) throw err;
 
       if(docs) {
