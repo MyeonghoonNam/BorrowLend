@@ -1,0 +1,67 @@
+@media all and (max-width:1920px){
+.findIDresult-wrap{
+    width:60rem;
+    margin: 0 auto;
+    border:solid 2px #c8c8c8;
+    padding: 2rem 2rem; 
+    font-family : 'Noto Sans KR', sans-serif;
+
+}
+
+.findIDresult-title {
+    width:20rem;
+    font-family : 'Black Han Sans';
+    font-size: 2rem;
+}
+
+.findIDresult-image {
+    width: 46rem;
+    height: 8rem;
+    margin:0 auto;
+    background: url(//res.afreecatv.com/images/account/bg_step_05.gif) no-repeat;
+    background-position: 0 -122px;
+}
+
+
+.findIDresult-list{
+    font-size: 1.8rem;
+    
+}
+
+
+.findIDresult-list-content{
+    width:35rem;
+    color: #7f7f7f;
+    line-height: 130%;
+    margin: 0 auto;
+}
+
+.findIDresult-id{
+    width:10rem;
+    font-size: 2rem;
+    margin: 0 auto;
+}
+
+.findID-check{
+    width:5rem;
+    font-size: 2rem;
+    margin: 1rem auto;
+    text-decoration: none;
+}
+
+.findID-check a{
+    font-size: 1rem;
+    box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+    background-color:#3d94f6;
+    border-radius:6px;
+    border:1px solid #337fed;
+    display:inline-block;
+    cursor:pointer; 
+    color:#ffffff;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1570cd;
+}
+
+}
