@@ -4,20 +4,130 @@
     border:solid 2px #c8c8c8;
     width:60rem;
     margin: 0 auto;
+    margin-top:2rem;
+    border-radius: 5px;
   }
-  
+  .product_userinfo{
+    display:flex;
+    width:80%;
+    margin:0 auto;
+    margin-top:1rem;
+    margin-bottom:1rem;
+  }
+
+  .userinfo_img{
+    order:1;
+    width: 2.7rem;
+    border:solid 1px black;
+    border-radius:50%;
+  }
+
+  .userinfo_grade{
+    order:2;
+    border-radius:5px;
+    background-color: darkgray;
+    color:white;
+    text-align:center;
+    vertical-align:middle;
+    margin:auto 0;
+    margin-left:0.5rem;
+    width:2.3rem;
+    height:1.8rem;
+    line-height: 1.8rem;
+    padding-right:0.05rem;
+    /* border:solid 1px black; */
+  }
+
+  .userinfo_name{
+    order:3;
+    /* border:solid 1px black; */
+    height:1.8rem;
+    margin:auto 0;
+    margin-left:0.5rem;
+  }
+
+  /* .product_hr1 {
+    border-width:2px;
+  } */
+
   .slider{
-    width:60rem;
-    height:30rem;
-    border:solid 1px #c8c8c8;
+    width:80%;
+    margin:0 auto;
+    margin-top:2rem;
   }
 
-  .slider_img{
-    /* width:50%; */
-    /* height:100%;
-    object-fit: contain; */
+  .slider div img {
+    width:100%;
+    height:35rem;
+    border-radius:5%;
+    object-fit:content;
+    /* margin:0 auto; */
   }
 
+  .slider .slick-dots {
+    display:block;
+    width:100%;
+    text-align:center;
+    list-style-type: none;
+    padding:0;
+  }
+
+  .slider .slick-dots li {
+    display:inline-block;
+    width:15px;
+    height:15px;
+    margin:5px;
+  }
+
+  .slider .slick-dots li button {
+    font-size:0;
+    line-height:0;
+    display:block;
+    width:15px;
+    height:15px;
+    cursor: pointer;
+    background:#5dbfeb;
+    border-radius: 50%;
+  }
+  .slider .slick-dots li.slick-active button {
+    background: #186086;
+  }
+
+  .slider .slick-prev {
+    position: absolute; 
+    left: 0; 
+    bottom: 0; 
+    z-index: 1000;
+    width: 30px; 
+    height: 30px;
+    display: inline-block;
+    text-indent: -9999px;
+    font: normal normal normal 14px/1 FontAwesome;
+  }
+
+  .slider .slick-prev::before {
+    content:"\f053";
+    color: #5dbfeb;
+    text-indent: 0;
+    position: absolute; left: 9px; top: 8px;
+}
+.slider .slick-next {
+    position: absolute; 
+    right: 0; 
+    bottom: 0; 
+    z-index: 1000;
+    width: 30px; 
+    height: 30px;
+    display: inline-block;
+    text-indent: -9999px;
+    font: normal normal normal 14px/1 FontAwesome;
+}
+.slider .slick-next::before { 
+    content:"\f054";
+    color: #5dbfeb;
+    text-indent: 0;
+    position: absolute; left: 11px; top: 8px;
+}
 }
     
 

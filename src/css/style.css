@@ -64,6 +64,11 @@
     min-width:100%;
   }
 
+  /* 버튼초기화 */
+  button {
+    border:0
+  }
+
   .article-wrap {
     width:100%;
     margin:0 auto;
