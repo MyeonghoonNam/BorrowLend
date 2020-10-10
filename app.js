@@ -96,8 +96,7 @@ function connectDB(){
       school : {type : String, required : true},
       tel : {type : String, required : true},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now},
-      grade : {type : String, 'default':'시민'},
-      // product : [ProductSchema]
+      grade : {type : String, 'default':'시민'}
     });
 
     UserSchema.static('findByOid', function(oid, callback){
@@ -130,7 +129,9 @@ function connectDB(){
       price:{type : String, required : true},
       content:{type : String, required : true},
       list:[new mongoose.Schema({name:{type : String, required : true, unique : true}})],
-      userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'}
+      userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
+      like:{type : Number, 'default':0},
+      created_at: {type: Date, index: {unique: false}, 'default': Date.now}
     });
 
     ProductSchema.plugin(autoIncrement.plugin, {

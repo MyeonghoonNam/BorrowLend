@@ -13,6 +13,8 @@
     margin:0 auto;
     margin-top:1rem;
     margin-bottom:1rem;
+    /* border:solid 1px black; */
+    position: relative;
   }
 
   .userinfo_img{
@@ -46,9 +48,18 @@
     margin-left:0.5rem;
   }
 
-  /* .product_hr1 {
-    border-width:2px;
-  } */
+  .product_likebtn {
+    order:4;
+    position: absolute;
+    right:0;
+    cursor: pointer;
+  }
+
+  .fas {
+    color:#DA4949;
+    display:none;
+    /* border:solid 1px; */
+  }
 
   .slider{
     width:80%;
@@ -114,8 +125,8 @@
     color: #5dbfeb;
     text-indent: 0;
     position: absolute; left: 9px; top: 8px;
-}
-.slider .slick-next {
+  }
+  .slider .slick-next {
     position: absolute; 
     right: 0; 
     bottom: 0; 
@@ -127,13 +138,63 @@
     font: normal normal normal 14px/1 FontAwesome;
     background-color: transparent !important;
     border:none;
-}
-.slider .slick-next::before { 
+  }
+  .slider .slick-next::before { 
     content:"\f054";
     color: #5dbfeb;
     text-indent: 0;
     position: absolute; left: 11px; top: 8px;
-}
+  }
+
+  .product_info {
+    width:80%;
+    margin:0 auto;
+  }
+
+  .info_title {
+    font-size: 1.8rem;
+  }
+  
+  .info_price {
+    font-size: 1.5rem;
+    color: #ff8a3d;
+    margin-bottom:1rem;
+  }
+  
+  .info_content {
+    white-space:pre;
+    width:81%;
+    /* border:solid 1px black; */
+    /* font-size: 1.5rem; */
+  }
+
+  .product_callbtn {
+    box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+    background-color:#3d94f6;
+    border-radius:6px;
+    border:1px solid #337fed;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1570cd;
+    margin-left:44%;
+    margin-right:5rem;
+    margin-top:2rem;
+    margin-bottom:2rem;
+  }
+
+  .product_callbtn:hover {
+    background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+    background-color:#1e62d0;
+  }
+  
+  .product_callbtn:active {
+    position:relative;
+    top:1px;
+  }
 }
     
 

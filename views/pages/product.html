@@ -9,10 +9,12 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../src/css/style.css">
     <script src="../../src/js/header.js"></script>
     <script src="../../src/js/smallheader.js"></script>
     <script src="../../src/js/footer.js"></script>
+    <script src="../../src/js/product.js"></script>
   </head>
 <body>
   <div class="wrapper">
@@ -28,12 +30,29 @@
           <img class="userinfo_img" src="../../src/images/user.svg">
           <div class="userinfo_grade">시민</div>
           <div class="userinfo_name"><%=userinfo[0]._doc.id%></div>
+          <i class="product_likebtn far fa-heart fa-3x" onclick="Product_Like()"></i>
+          <i class="product_likebtn fas fa-heart fa-3x" onclick="Product_LikeCancle()"></i>
         </div>
-        <hr class="product_hr1">
+
+        <hr>
+
         <div class="slider">
           <% for(var i = 0; i < product[0].list.length; i++){ %>
             <div><img src="../../src/uploads/<%=product[0].list[i].name%>"></div>
           <% } %>
+        </div>
+
+        <hr>
+
+        <div class="product_info">
+          <div class="info_title"><%=product[0].title%></div>
+          <div class="info_price"><%=product[0].price%></div>
+          <div class="info_content"><%=product[0].content%></div>
+        </div>
+
+        <div class="product_callbtn">
+          연락하기
+          <i class="far fa-comment-dots"></i>
         </div>
       </article>
     </div>
