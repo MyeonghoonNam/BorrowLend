@@ -102,96 +102,111 @@
 }
 /* 모바일 세로뷰 css */
 @media all and (max-width:425px) and (orientation: portrait){
-    .find-id {
-        width:8rem;
-        font-family : 'Black Han Sans';
-        font-size: 1.8rem;
-        margin: 0 auto;
-    }  
-    
-    .sub_contents{
-        width:5rem;
+    .findID-wrap{
+        width:21rem;
         margin: 0 auto;
         border:solid 2px #c8c8c8;
-        padding: 1rem 0.5rem; 
+        padding: 4rem 2rem; 
         font-family : 'Noto Sans KR', sans-serif;
     
     }
+
     
-    
-    .cf_area .xst5 {
-        width: 100%;
-        height: 8rem;
-        background: url(//res.afreecatv.com/images/account/bg_step_05.gif) no-repeat;
+    .findID-title {
+        width:9rem;
+        margin: 0 auto;
+        font-family : 'Black Han Sans';
+        font-size: 2rem;
     }
     
-    .cf_area .info_txt1 {
-        padding: 0 0;
-        font-size: 1.5rem;
+    .findID-image {
+        width: 20rem;
+        height: 8rem;
+        margin:0 auto;
+        background: url(//res.afreecatv.com/images/account/bg_step_05.gif) no-repeat;
+        background-position: -25px 0;
+    }
+    
+    .findID-small-title {
+        font-size: 1.3rem;
+        margin: 1rem auto 0;
+        text-align: center;
         color: #7f7f7f;
     }
     
-    
-    .cf_area dt {
-        font-size: 1rem;
-        
-    }
-    
-    
-    .cf_area dd {
+    .findID-list{
         padding-top: 0;
-        padding-left: 0.3rem;
         color: #7f7f7f;
         line-height: 130%;
         
     }
     
     
-    .number_form{
-        font-size: 0.7rem;
+    .findID-list-content{
+        width:20rem;
+        font-size: 0.8rem;
+        color: #7f7f7f;
+        line-height: 130%;
         margin: 0 auto;
-        display: none;
-    }
-    
-    .name_form {
-        font-size: 0.7rem;
-        margin: 0 auto;
-        display: none;
-        
     }
 
-    .input {
-        width: 15rem;
-        padding: 0 auto;
-        margin-left:3.8rem;
+    .findID-list-smallcontent{
+        width:19rem;
+        font-size: 0.6rem;
+        color: #7f7f7f;
+        line-height: 130%;
+        margin: 0 auto;
+    }
+
+
+
+    .findID-list-input{
+        width:12rem;
+        margin: 0 auto;
+    }
+    
+    #findtel{
+        width: 12rem;
+        padding: 0.5rem 0.1rem;
         line-height: 0.1rem;
         border: 1px solid #bbb;
         border-radius: 5px;
         font-size: 1rem;
-        vertical-align: middle;
+        margin-bottom: 0.5rem;
     }
     
-    .btn_findID{
-        width:5rem;
-        margin: 0 auto;
-    }
-    
-    
-    .btn_findID2 {
-        width: 5rem;
-        height: 2.5rem;
-        margin: 0 auto;
-        color: #fff;
-        font-size: 1.3rem;
-        background: #2d6bff;
-    }
-    
-    .account_area button {
-        display: inline-block;
-        vertical-align: middle;
-        text-align: center;
+    #findname{
+        width: 12rem;
+        padding: 0.5rem 0.1rem;
+        line-height: 0.1rem;
+        border: 1px solid #bbb;
         border-radius: 5px;
-        cursor: pointer;
+        font-size: 1rem;
+    }
+    
+    .findID_button_class{
+        width:5rem;
+        margin: 2rem auto 0rem;
+    }
+    
+    
+    .findID-button {
+        box-shadow:inset 0px 1px 0px 0px #97c4fe;
+        background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+        background-color:#3d94f6;
+        border-radius:6px;
+        border:1px solid #337fed;
+        display:inline-block;
+        cursor:pointer; 
+        color:#ffffff;
+        padding:6px 24px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #1570cd;
+    }
+    
+    .findID-button:hover {
+        background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+        background-color:#1e62d0;
     }
     
 }
