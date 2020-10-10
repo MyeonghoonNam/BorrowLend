@@ -1,0 +1,136 @@
+@media all and (max-width:1920px){
+    .findPSresult-wrap{
+        width:60rem;
+        margin: 0 auto;
+        border:solid 2px #c8c8c8;
+        padding: 2rem 2rem; 
+        font-family : 'Noto Sans KR', sans-serif;
+    
+    }
+    
+    .findPSresult-title {
+        width:20rem;
+        font-family : 'Black Han Sans';
+        font-size: 2rem;
+    }
+    
+    .findPSresult-image {
+        width: 46rem;
+        height: 8rem;
+        margin:0 auto;
+        background: url(//res.afreecatv.com/images/account/bg_step_05.gif) no-repeat;
+        background-position: 0 -122px;
+    }
+    
+    
+    .findPSresult-list{
+        font-size: 1.8rem;
+        
+    }
+    
+    
+    .findPSresult-list-content{
+        width:36rem;
+        color: #7f7f7f;
+        line-height: 130%;
+        margin: 0 auto;
+    }
+    
+    .findPSresult-ps{
+        width:8rem;
+        font-size: 2rem;
+        margin: 0 auto;
+    }
+    
+    .findPS-check{
+        width:6rem;
+        font-size: 2rem;
+        margin: 1rem auto;
+        text-decoration: none;
+    }
+    
+    .findPS-check a{
+        font-size: 1rem;
+        box-shadow:inset 0px 1px 0px 0px #97c4fe;
+        background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+        background-color:#3d94f6;
+        border-radius:6px;
+        border:1px solid #337fed;
+        display:inline-block;
+        cursor:pointer; 
+        color:#ffffff;
+        padding:6px 24px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #1570cd;
+    }
+    
+    }
+
+    @media all and (max-width:425px) and (orientation: portrait){
+        .findPSresult-wrap{
+            width:21rem;
+            margin: 0 auto;
+            border:solid 2px #c8c8c8;
+            padding: 2rem 2rem; 
+            font-family : 'Noto Sans KR', sans-serif;
+        
+        }
+        
+        .findPSresult-title {
+            width:10rem;
+            margin: 0 auto;
+            font-family : 'Black Han Sans';
+            font-size: 2rem;
+        }
+        
+        .findPSresult-image {
+            width: 20rem;
+            height: 8rem;
+            margin:0 auto;
+            background: url(//res.afreecatv.com/images/account/bg_step_05.gif) no-repeat;
+            background-position: -390px -122px;
+        }
+        
+        
+        .findPSresult-list{
+            font-size: 1.1rem;
+            
+        }
+        
+        
+        .findPSresult-list-content{
+            width:22rem;
+            color: #7f7f7f;
+            line-height: 130%;
+            margin: 0 auto;
+        }
+        
+        .findPSresult-ps{
+            width:8rem;
+            font-size: 2rem;
+            margin: 0 auto;
+        }
+        
+        .findPS-check{
+            width:6rem;
+            font-size: 2rem;
+            margin: 1rem auto;
+            text-decoration: none;
+        }
+        
+        .findPS-check a{
+            font-size: 1rem;
+            box-shadow:inset 0px 1px 0px 0px #97c4fe;
+            background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+            background-color:#3d94f6;
+            border-radius:6px;
+            border:1px solid #337fed;
+            display:inline-block;
+            cursor:pointer; 
+            color:#ffffff;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #1570cd;
+        }
+    
+    }

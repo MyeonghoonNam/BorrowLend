@@ -1,148 +1,215 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
 
-    .sub_contents{
+    .findPS-wrap{
         width:50rem;
+        border:solid 2px #c8c8c8;
         margin: 0 auto; 
+        padding: 4rem 2rem; 
         font-family : 'Noto Sans KR', sans-serif;
     
     }
 
-    .find-ps {
+    .findPS-title {
         width:20rem;
         font-family : 'Black Han Sans';
         font-size: 2rem;
     } 
 
-    .pass_cf_area {
+
+    .findPS-image {
+        width: 46rem;
+        height: 8rem;
+        margin:0 auto;
+        background: url(//res.afreecatv.com/images/account/bg_step_05.gif) no-repeat;
+    }
+
+    .findPS-small-title {
+        font-size: 1.5rem;
+        margin: 1rem auto 0;
         text-align: center;
+        color: #7f7f7f;
     }
 
-    .pass_cf_area h3.pass_find {
-        display: block;
-        width: 16rem;
-        height: 5rem;
-        margin: 2rem 17rem 0;
-        text-indent: -9999px;
-        background: url(//res.afreecatv.com/images/account/txt_pass_find.gif) no-repeat;
+    
+    .findPS-list{
+        padding-top: 0;
+        color: #7f7f7f;
+        line-height: 130%;
+        
+    }
+    
+    
+    .findPS-list-content{
+        width:21rem;
+        color: #7f7f7f;
+        line-height: 130%;
+        margin: 0 auto;
     }
 
 
-    .pass_cf_area .txt_info {
-        font-family: 'NGB';
-        font-size: 1rem;
-        color: #888;
-        text-align: center;
-        line-height: 150%;
-        letter-spacing: -1px;
-    }
+    
 
-    .pass_cf_area .txt_info span {
-        color: #2e6afd;
+    .findPS-list-input{
+        width:17rem;
+        margin: 0 auto;
     }
-
-    .pass_cf_area fieldset {
-        position: relative;
-        display: inline-block;
-        border: none;
-        padding: 0;
-        margin: 2rem;
-    }
-
-    .account_area input.txt {
+    
+    #findid{
         width: 15rem;
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.1rem;
+        line-height: 0.1rem;
         border: 1px solid #bbb;
-        color: #333;
-        border-radius: 2px;
-        font-size: 1.2rem;
-        vertical-align: middle;
-        font-family: arial, '돋움'
+        border-radius: 5px;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
     }
-
-
-    .pass_cf_area fieldset button.next {
-        width: 3rem;
-        height: 2rem;
-        font-size: 18px;
-        background: #2d6bff;
-        color: #fff;
+    
+    #findname2{
+        width: 15rem;
+        padding: 0.5rem 0.1rem;
+        line-height: 0.1rem;
+        border: 1px solid #bbb;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+    
+    .findPS_button_class{
+        width:7rem;
+        margin: 2rem auto 0rem;
+    }
+    
+    
+    .findPS-button {
+        box-shadow:inset 0px 1px 0px 0px #97c4fe;
+        background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+        background-color:#3d94f6;
+        border-radius:6px;
+        border:1px solid #337fed;
+        display:inline-block;
+        cursor:pointer; 
+        color:#ffffff;
+        padding:6px 24px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #1570cd;
+    }
+    
+    .findPS-button:hover {
+        background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+        background-color:#1e62d0;
     }
     
     }
     
     /* 모바일 세로뷰 css */
     @media all and (max-width:425px) and (orientation: portrait){
-        .sub_contents{
-            width:24rem;
+        .findPS-wrap{
+            width:21rem;
             margin: 0 auto; 
+            border:solid 2px #c8c8c8;
+            padding: 4rem 2rem;
             font-family : 'Noto Sans KR', sans-serif;
         
         }
     
-        .find-ps {
-            width:20rem;
+        .findPS-title {
+            width:10rem;
+            margin: 0 auto;
             font-family : 'Black Han Sans';
             font-size: 2rem;
-            margin: 0 auto;
-            text-align: center;
         } 
     
-        .pass_cf_area {
-            text-align: center;
+    
+        .findPS-image {
+            width: 20rem;
+            height: 8rem;
+            margin:0 auto;
+            background: url(//res.afreecatv.com/images/account/bg_step_05.gif) no-repeat;
+            background-position: -25px 0;
         }
     
-        .pass_cf_area h3.pass_find {
-            display: block;
-            width: 16rem;
-            height: 5rem;
+        .findPS-small-title {
+            font-size: 1.3rem;
+            margin: 1rem auto 0;
+            text-align: center;
+            color: #7f7f7f;
+        }
+    
+        
+        .findPS-list{
+            padding-top: 0;
+            color: #7f7f7f;
+            line-height: 130%;
+            
+        }
+        
+        
+        .findPS-list-content{
+            width:21rem;
+            font-size: 0.8rem;
+            color: #7f7f7f;
+            line-height: 130%;
             margin: 0 auto;
-            margin-top: 2rem;
-            text-indent: -9999px;
-            background: url(//res.afreecatv.com/images/account/txt_pass_find.gif) no-repeat;
+        }
+
+        .findPS-list-smallcontent{
+            width:13.5rem;
+            font-size: 0.6rem;
+            color: #7f7f7f;
+            line-height: 130%;
+            margin: 1rem auto;
         }
     
     
-        .pass_cf_area .txt_info {
-            font-family: 'NGB';
-            font-size: 1rem;
-            color: #888;
-            text-align: center;
-            line-height: 150%;
-            letter-spacing: -1px;
-        }
+        
     
-        .pass_cf_area .txt_info span {
-            color: #2e6afd;
+        .findPS-list-input{
+            width:12rem;
+            margin: 0 auto;
         }
-    
-        .pass_cf_area fieldset {
-            position: relative;
-            display: inline-block;
-            border: none;
-            padding: 0;
-            margin: 2rem;
-        }
-    
-        .account_area input.txt {
-            width: 10rem;
-            padding: 1rem auto;
-            line-height: 1.5;
+        
+        #findid{
+            width: 12rem;
+            padding: 0.5rem 0.1rem;
+            line-height: 0.1rem;
             border: 1px solid #bbb;
-            color: #333;
-            border-radius: 2px;
+            border-radius: 5px;
             font-size: 1rem;
-            vertical-align: middle;
-            font-family: arial, '돋움', dotum;
+            margin-bottom: 0.5rem;
         }
-    
-    
-        .pass_cf_area fieldset button.next {
-            width: 3rem;
-            height: 2rem;
-            font-size: 18px;
-            background: #2d6bff;
-            color: #fff;
+        
+        #findname2{
+            width: 12rem;
+            padding: 0.5rem 0.1rem;
+            line-height: 0.1rem;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .findPS_button_class{
+            width:5rem;
+            margin: 2rem auto 0rem;
+        }
+        
+        
+        .findPS-button {
+            box-shadow:inset 0px 1px 0px 0px #97c4fe;
+            background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+            background-color:#3d94f6;
+            border-radius:6px;
+            border:1px solid #337fed;
+            display:inline-block;
+            cursor:pointer; 
+            color:#ffffff;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #1570cd;
+        }
+        
+        .findPS-button:hover {
+            background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+            background-color:#1e62d0;
         }
         
         }
