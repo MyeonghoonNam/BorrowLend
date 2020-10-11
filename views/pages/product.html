@@ -30,8 +30,11 @@
           <img class="userinfo_img" src="../../src/images/user.svg">
           <div class="userinfo_grade">시민</div>
           <div class="userinfo_name"><%=userinfo[0]._doc.id%></div>
-          <i class="product_likebtn far fa-heart fa-3x" onclick="Product_Like()"></i>
-          <i class="product_likebtn fas fa-heart fa-3x" onclick="Product_LikeCancle()"></i>
+          <% if(SetLikecount === 0) { %>
+            <i class="product_likebtn far fa-heart fa-3x" value="0"></i>
+          <% } else { %>
+            <i class="product_likebtn fas fa-heart fa-3x" value="1"></i>
+          <% } %>
         </div>
 
         <hr>
@@ -45,6 +48,8 @@
         <hr>
 
         <div class="product_info">
+          <input class="info_uid" type="hidden" value="<%=user.id%>">
+          <input class="info_pid" type="hidden" value="<%=product[0]._id%>">
           <div class="info_title"><%=product[0].title%></div>
           <div class="info_price"><%=product[0].price%></div>
           <div class="info_content"><%=product[0].content%></div>
@@ -54,6 +59,8 @@
           연락하기
           <i class="far fa-comment-dots"></i>
         </div>
+
+        <p id="post_test" value="0"></p>
       </article>
     </div>
     
@@ -71,6 +78,34 @@
         slidesToScroll: 1,
       }).on('setPosition', function (event, slick) {
         slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+      });
+
+      $(document).ready(function(){
+        var btn = document.getElementsByClassName('product_likebtn')[0];
+        var token = document.getElementsByClassName('info_pid')[0];
+        var uid = document.getElementsByClassName('info_uid')[0];
+        
+        $('.product_likebtn').click(function(){
+          $.ajax({
+            url:'/product_like',
+            dataType:'json',
+            type:'POST',
+            data:{count:btn.getAttribute("value"),
+                  key:token.getAttribute("value"),
+                  uid:uid.getAttribute("value")
+            },
+            success:function(result){
+                $("i").remove(".product_likebtn");
+                if(result.count === "1"){
+                  var likebtn = "<i class=\"product_likebtn fas fa-heart fa-3x\" value=\"1\">";
+                  $(".product_userinfo").append(likebtn);
+                } else {
+                  var likebtn = "<i class=\"product_likebtn far fa-heart fa-3x\" value=\"0\">";
+                  $(".product_userinfo").append(likebtn);
+                }
+            }
+          });
+        });
       });
     </script>
 </body>

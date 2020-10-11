@@ -55,10 +55,12 @@
     cursor: pointer;
   }
 
+  .fa-heart {
+    color:#DA4949;
+  }
+  
   .fas {
     color:#DA4949;
-    display:none;
-    /* border:solid 1px; */
   }
 
   .slider{

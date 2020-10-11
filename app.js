@@ -96,7 +96,8 @@ function connectDB(){
       school : {type : String, required : true},
       tel : {type : String, required : true},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now},
-      grade : {type : String, 'default':'시민'}
+      grade : {type : String, 'default':'시민'},
+      LikeProduct:[{type:mongoose.Schema.Types.ObjectId, ref:'product'}]
     });
 
     UserSchema.static('findByOid', function(oid, callback){
@@ -126,8 +127,8 @@ function connectDB(){
       content:{type : String, required : true},
       list:[new mongoose.Schema({name:{type : String, required : true, unique : true}})],
       userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
-      like:{type : Number, 'default':0},
-      created_at: {type: Date, index: {unique: false}, 'default': Date.now}
+      created_at: {type: Date, index: {unique: false}, 'default': Date.now},
+      LikeCount:{type : Number, 'default':0}
     });
 
     ProductSchema.plugin(autoIncrement.plugin, {
@@ -277,7 +278,7 @@ app.post('/main', function(req,res){
               id:docs[0]._doc.id,
               name:docs[0]._doc.name,
               grade:docs[0]._doc.grade,
-              // product:docs[0]._doc.product,
+              LikeProduct:docs[0]._doc.LikeProduct,
               authorized:true
             }
 
@@ -347,6 +348,14 @@ app.get('/store', function(req,res){
   }
 });
 
+// app.get('/product', function(req,res){
+//   var btn = req.body.data;
+
+//   console.log(btn.value);
+//   var result = "hi"
+//   res.send({result:result});
+// });
+
 app.post('/product', function(req,res){
 
   var index = req.body.element_token;
@@ -360,16 +369,74 @@ app.post('/product', function(req,res){
         UserModel.findByOid(result[0].userinfo, function(err, doc){
           console.log(doc);
 
-          res.render('./pages/product.html', {
-            user:req.session.user,
-            product:result,
-            userinfo:doc
+          UserModel.findById(req.session.user.id, function(err, doc2){
+            var count = 0;
+            if(doc2[0]._doc.LikeProduct.includes(result[0]._id)){
+              count = 1;
+            }
+  
+            res.render('./pages/product.html', {
+              user:req.session.user,
+              product:result,
+              userinfo:doc,
+              SetLikecount:count
+            });
           });
         })
       }
       
     });
   }
+});
+
+app.post('/product_like', function(req,res){
+  var btn = req.body.count;
+  var token = req.body.key;
+  var uid = req.body.uid;
+
+  console.log(btn);
+  console.log(token);
+
+  UserModel.findById(uid, function(err, doc1){
+    ProductModel.find({_id:token}, function(err, doc2){
+      if(btn === "0"){
+        var query = {_id:doc1[0]._id};
+        var update = {$push:{LikeProduct:doc2[0]._id}};
+  
+        UserModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
+          console.log(result);
+        });
+  
+        var query2 = {_id:doc2[0]._id};
+        var update2 = {LikeCount:doc2[0].LikeCount + 1};
+
+        ProductModel.findOneAndUpdate(query2, update2, {new:true, upsert: true}, function(err, result){
+          console.log(result);
+        });
+        
+        btn = "1";
+        res.send({count:btn});
+      } else {
+        var query = {_id:doc1[0]._id};
+        var update = {$pull:{LikeProduct:doc2[0]._id}};
+        
+  
+        UserModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
+          console.log(result);
+        });
+  
+        var query2 = {_id:doc2[0]._id};
+        var update2 = {LikeCount:doc2[0].LikeCount - 1};
+
+        ProductModel.findOneAndUpdate(query2, update2, {new:true, upsert: true}, function(err, result){
+          console.log(result);
+        });
+
+        btn ="0";
+        res.send({count:btn});
+      }
+    });
+  });
 });
 
 app.get('/product-upload', function(req,res){
