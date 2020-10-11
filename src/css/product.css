@@ -120,6 +120,7 @@
     font: normal normal normal 14px/1 FontAwesome;
     background-color: transparent !important;
     border:none;
+    cursor: pointer;
   }
 
   .slider .slick-prev::before {
@@ -140,6 +141,7 @@
     font: normal normal normal 14px/1 FontAwesome;
     background-color: transparent !important;
     border:none;
+    cursor: pointer;
   }
   .slider .slick-next::before { 
     content:"\f054";
