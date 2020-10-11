@@ -39,10 +39,14 @@
 
       <div class="article-store">
         <article class="store-listorder">
-          <ul>
-            <li><a href="">최신순</a></li>
-            <li><a href="">인기순</a></li>
-          </ul>
+          <form method="post" action="/store">
+            <ul>
+              <li class="orderlist orderbydate" onclick="OrderByDate()">최신순</li>
+              <li class="orderlist orderbylike" onclick="OrderByLike()">인기순</li>
+              <input type="hidden" name="store_ordertoken" value="<%=setToken%>">
+              <input type="submit" class="orderlist_btn" style="display:none">
+            </ul>
+          </form>
         </article>
   
         <article class="store-product">

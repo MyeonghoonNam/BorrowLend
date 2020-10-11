@@ -305,6 +305,7 @@ app.get('/signup', function(req,res){
   
         if(err) throw err;
   
+        results = results.solt({created_at:1});
         if(results){
           res.render('./pages/signup.html', {results:results});
         }
@@ -333,28 +334,41 @@ app.post('/signup', function(req,res){
 
 app.get('/store', function(req,res){
   if(req.session.user){
-    ProductModel.findAll(function(err,results){
-      if(err) throw err;
-
+    ProductModel.find().sort({created_at:-1}).exec(function(err,results){
       if(results){
+        var setToken = "0"
         res.render('./pages/store.html', {
           user:req.session.user,
-          product:results
+          product:results,
+          setToken:setToken
         });
+      } else {
+        res.redirect('/');
       }
-    });
-  } else{
-      res.redirect('/');
+    })
   }
 });
 
-// app.get('/product', function(req,res){
-//   var btn = req.body.data;
+app.post('/store', function(req,res){
+  if(req.session.user){
+    var token = req.body.store_ordertoken;
 
-//   console.log(btn.value);
-//   var result = "hi"
-//   res.send({result:result});
-// });
+    if(token == "1"){
+      ProductModel.find().sort({LikeCount:-1, created_at:-1}).exec(function(err,results){
+        if(results){
+          var setToken = "1"
+          res.render('./pages/store.html', {
+            user:req.session.user,
+            product:results,
+            setToken:setToken
+          });
+        }
+      })
+    } else if(token == "0"){
+      res.redirect('/store');
+    }
+  }
+});
 
 app.post('/product', function(req,res){
 

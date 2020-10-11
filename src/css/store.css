@@ -62,7 +62,7 @@
   .article-store ul > li {
     display:inline-block;
     font-size:1.3rem;
-    border-left: solid 1px;
+    border-left: solid 1px black;
     margin: 5px 0;
     padding: 0 10px;
   }
@@ -71,8 +71,23 @@
     border-left: none;
     }
 
-  .store-listorder a {
-    text-decoration: none;
+  .orderlist {
+    cursor: pointer;
+  }
+
+  /* .orderbydate {
+    color:black;
+  } */
+
+  /* .orderbydate:hover {
+    color:black;
+  } */
+
+  .orderbylike {
+    color:darkgray;
+  }
+
+  .orderbylike:hover {
     color:black;
   }
 

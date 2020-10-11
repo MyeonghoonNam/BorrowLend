@@ -74,7 +74,10 @@ function l_layout(m, s){
 var filename = Page_Title();
 
 if(filename == 'store' || 'product' || 'message' || 'honor'){
-  if(filename == 'store' || 'product'){
+  if(filename == 'store'){
+    var name = '장터';
+    s_layout(name);
+  } else if(filename == 'product'){
     var name = '장터';
     s_layout(name);
   } else if (filename == 'message') {
@@ -89,7 +92,7 @@ if(filename == 'store' || 'product' || 'message' || 'honor'){
 if(filename == 'product-upload' || 'service-rent' || 'service-like') {
   var mainname = '서비스';
     if(filename == 'service-rent'){
-      var subname = '대여물품';
+      var subname = '대여내역';
       l_layout(mainname, subname);
     } else if(filename == 'service-like'){
       // var mainname = '서비스';
