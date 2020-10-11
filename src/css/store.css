@@ -87,6 +87,7 @@
   }
   .store-product-element {
     /* border:solid 1px #c8c8c8; */
+    position: relative;
     width:15.5rem;
     height:20.5rem;
     padding:0;
@@ -113,14 +114,31 @@
     /* margin-top:0.5rem; */
   }
   .element_price {
-    width:100%;
+    width:50%;
     height:auto;
     font-size:1.3rem;
     color: #ff8a3d;
+    display:inline-block;
     /* border:solid 1px #c8c8c8; */
   }
+  .element_likebox {
+    display:inline-block;
+    height:31px;
+    line-height: 31px;
+    /* border:solid 1px black; */
+    position: absolute;
+    right:5px;
+
+  }
+  .element_icon {
+    display:inline-block;
+    
+  }
   
-  
+  .element_count {
+    display:inline-block;
+    
+  }
 }
     
 
