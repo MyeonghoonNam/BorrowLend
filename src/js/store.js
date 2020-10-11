@@ -12,6 +12,7 @@ $(document).ready(function(){
     layoutbox.setAttribute("style", "display:block");
     storebox.appendChild(layoutbox);
     ProductList[ProductList.length-1].style.border="none";
+    ProductList[ProductList.length-1].style.cursor="default";
   }
 
   var orderbylikebtn = document.getElementsByClassName('orderbylike')[0];
