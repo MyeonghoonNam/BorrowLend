@@ -281,5 +281,25 @@
     font-size:1rem;
     color: #ff8a3d;
     /* border:solid 1px #c8c8c8; */
+  }
+  
+  .element_likebox {
+    display:inline-block;
+    height:31px;
+    line-height: 31px;
+    /* border:solid 1px black; */
+    position: absolute;
+    margin-top: 2.6rem;
+    right:5px;
+
+  }
+  .element_icon {
+    display:inline-block;
+    
+  }
+  
+  .element_count {
+    display:inline-block;
+    
   }  
 }
