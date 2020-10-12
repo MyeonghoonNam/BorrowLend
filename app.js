@@ -126,6 +126,7 @@ function connectDB(){
       key:{type : Number, unique : true, 'default':0},
       title:{type : String, required : true},
       price:{type : String, required : true},
+      price_check:{type : String, 'default':'0'},
       content:{type : String, required : true},
       list:[new mongoose.Schema({name:{type : String, required : true, unique : true}})],
       userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
@@ -223,7 +224,7 @@ var addUser = function(database, id, password, name, gender, school, tel, callba
 //
 
 // 물품 등록
-var addProduct = function(database, title, price, content, list, userid, callback){
+var addProduct = function(database, title, price, content, list, userid, check, callback){
 
   UserModel.findById(userid, function(err, result){
     var userinfo = result;
@@ -233,7 +234,8 @@ var addProduct = function(database, title, price, content, list, userid, callbac
       "price":price,
       "content":content,
       "list":list,
-      "userinfo":userinfo[0]._id
+      "userinfo":userinfo[0]._id,
+      "price_check":check
     });
     
     product.save(function(err){
@@ -338,7 +340,8 @@ app.get('/store', function(req,res){
   if(req.session.user){
     ProductModel.find().sort({created_at:-1}).exec(function(err,results){
       if(results){
-        var setToken = "0"
+        var setToken = "0";
+        
         res.render('./pages/store.html', {
           user:req.session.user,
           product:results,
@@ -486,6 +489,9 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
   var content = req.body.content;
   var list = new Array();
   var userid = req.session.user.id;
+  var check = req.body.price_check;
+
+  console.log(check);
   
   var files = req.files;
   var originalname = '';
@@ -504,7 +510,7 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
     
     
 
-    addProduct(database, title, price, content, list, userid, function(err, docs){
+    addProduct(database, title, price, content, list, userid, check, function(err, docs){
       if(err) throw err;
 
       if(docs) {

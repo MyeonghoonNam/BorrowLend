@@ -128,14 +128,25 @@
     font-size:1.5rem;
     /* margin-top:0.5rem; */
   }
-  .element_price {
+
+  .element_check {
     width:50%;
+    font-size:1rem;
+    color:#c8c8c8;
+    border:solid 1px #c8c8c8;
+    display:inline-block;
+  }
+
+  .element_price {
+    width:90%;
     height:auto;
     font-size:1.3rem;
     color: #ff8a3d;
     display:inline-block;
     /* border:solid 1px #c8c8c8; */
   }
+
+  
   .element_likebox {
     display:inline-block;
     height:31px;

@@ -33,12 +33,12 @@
           <% var j = 0; %>
           <div class="servicelike-product-element" onclick="ProductClick(this)">
             <form method="post" action="/product">
-              <img class="element_img"src="../../src/uploads/<%=product[i].list[j].name%>" alt="">
-              <div class="element_title"><%=product[i].title%></div>
-              <div class="element_price"><%=product[i].price%></div>
-              <div class="element_likebox">
-                <i class="element_icon fas fa-heart"></i>
-                <div class="element_count"><%=product[i].LikeCount%></div>
+              <img class="srv_element_img"src="../../src/uploads/<%=product[i].list[j].name%>" alt="">
+              <div class="srv_element_title"><%=product[i].title%></div>
+              <div class="srv_element_price"><%=product[i].price%></div>
+              <div class="srv_element_likebox">
+                <i class="srv_element_icon fas fa-heart"></i>
+                <div class="srv_element_count"><%=product[i].LikeCount%></div>
               </div>
               <input type="hidden" name="element_token" value="<%=product[i].key%>">
               <input type="submit" class="element_btn" style="display:none;">

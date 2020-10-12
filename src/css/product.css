@@ -164,7 +164,11 @@
     color: #ff8a3d;
     margin-bottom:1rem;
   }
-  
+  .info_pricecheck {
+    font-size: 1rem;
+    color: gray;
+  }
+
   .info_content {
     white-space:pre;
     width:81%;

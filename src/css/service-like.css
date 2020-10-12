@@ -32,7 +32,7 @@
     margin-bottom:2rem;
   }
 
-  .element_img {
+  .srv_element_img {
     width:100%;
     height:15rem;
     /* min-height:65%; */
@@ -43,14 +43,14 @@
     object-fit: content;
   }
   
-  .element_title {
+  .srv_element_title {
     width:100%;
     height:auto;
     /* border:solid 1px #c8c8c8; */
     font-size:1.5rem;
     /* margin-top:0.5rem; */
   }
-  .element_price {
+  .srv_element_price {
     width:50%;
     height:auto;
     font-size:1.3rem;
@@ -58,7 +58,7 @@
     display:inline-block;
     /* border:solid 1px #c8c8c8; */
   }
-  .element_likebox {
+  .srv_element_likebox {
     display:inline-block;
     height:31px;
     line-height: 31px;
@@ -67,12 +67,12 @@
     right:5px;
     
   }
-  .element_icon {
+  .srv_element_icon {
     display:inline-block;
     
   }
   
-  .element_count {
+  .srv_element_count {
     display:inline-block;
     
   }
