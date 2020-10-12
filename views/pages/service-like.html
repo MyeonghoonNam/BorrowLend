@@ -8,6 +8,9 @@
     <script src="../../src/js/header.js"></script>
     <script src="../../src/js/smallheader.js"></script>
     <script src="../../src/js/footer.js"></script>
+    <script src="../../src/js/service-like.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" href="../../src/css/style.css">
   </head>
 <body>
@@ -18,7 +21,47 @@
 
     <div id="s-header"></div>
 
+    <div class="article-wrap">
+
+      <div class="article-servicelike">
+        <article class="servielike_tagbox">
+          <div class="servielike_tag">좋아요</div>
+        </article>
+  
+        <article class="servicelike-product">
+        <% for(var i = 0; i < product.length; i++){ %>
+          <% var j = 0; %>
+          <div class="servicelike-product-element" onclick="ProductClick(this)">
+            <form method="post" action="/product">
+              <img class="element_img"src="../../src/uploads/<%=product[i].list[j].name%>" alt="">
+              <div class="element_title"><%=product[i].title%></div>
+              <div class="element_price"><%=product[i].price%></div>
+              <div class="element_likebox">
+                <i class="element_icon fas fa-heart"></i>
+                <div class="element_count"><%=product[i].LikeCount%></div>
+              </div>
+              <input type="hidden" name="element_token" value="<%=product[i].key%>">
+              <input type="submit" class="element_btn" style="display:none;">
+            </form>
+          </div>
+        <% } %>
+          
+        <% if(product.length==0){ %>
+          <div class="servicelike_default">
+            <p>
+              <i class="xi-emoticon-smiley-o prt_defaulticon"></i><br>
+              좋아하시는 관심물품이 없습니다.
+            </p>
+          </div>
+        <% } %>
+        </article>
+  
+      </div>
+    </div>
+
     <footer id="footer"></footer>
+  </div>
+
 
     <script>
       $(function(){
