@@ -72,22 +72,22 @@ function l_layout(m, s){
 
 
 var filename = Page_Title();
-
-if(filename == 'store' || 'product' || 'message' || 'honor'){
-  if(filename == 'store'){
-    var name = '장터';
-    s_layout(name);
-  } else if(filename == 'product'){
-    var name = '장터';
-    s_layout(name);
-  } else if (filename == 'message') {
-    var name = '쪽지';
-    s_layout(name);
-  } else if (filename == 'honor'){
-    var name = '명예의 전당';
-    s_layout(name);
-  } 
-} 
+    if(filename == 'store'){
+      var name = '장터';
+      s_layout(name);
+    } else if(filename == 'product'){
+      var name = '장터';
+      s_layout(name);
+    } else if (filename == 'message') {
+      var name = '쪽지';
+      s_layout(name);
+    } else if (filename == 'honor'){
+      var name = '명예의 전당';
+      s_layout(name);
+    } else if (filename.startsWith('search')){
+      var name = '장터';
+      s_layout(name);
+    }
 
 if(filename == 'product-upload' || 'service-rent' || 'service-like') {
   var mainname = '서비스';

@@ -55,6 +55,8 @@ var upload = multer({
 });
 //
 
+app.use(static(__dirname));
+
 // DB 정의 및 연결
 var database;
 var mongoose = require('mongoose');
@@ -349,12 +351,29 @@ app.get('/store', function(req,res){
   }
 });
 
+app.get('/store/search', function(req,res){
+  var word = req.query.search_word;
+  
+  ProductModel.find({title:{$regex:word}}).exec(function(err, results){
+    if(results){
+      var setToken = "3"
+        res.render('./pages/store.html', {
+          user:req.session.user,
+          product:results,
+          setToken:setToken
+        });
+    } else {
+      res.redirect('/');
+    }
+  })
+});
+
 app.post('/store', function(req,res){
   if(req.session.user){
     var token = req.body.store_ordertoken;
 
     if(token == "1"){
-      ProductModel.find().sort({LikeCount:-1, created_at:-1}).exec(function(err,results){
+      ProductModel.find({}).sort({LikeCount:-1, created_at:-1}).exec(function(err,results){
         if(results){
           var setToken = "1"
           res.render('./pages/store.html', {
@@ -565,7 +584,7 @@ app.get('/logout', function(req,res){
   }
 });
 
-app.use(static(__dirname));
+// app.use(static(__dirname));
 // app.use('/uploads', static(path.join(__dirname + '/src', 'uploads')));
 
 http.createServer(app).listen(app.get('port'), function(){

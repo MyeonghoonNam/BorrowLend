@@ -29,6 +29,12 @@ $(document).ready(function(){
       $(orderbydatebtn).css("color", "darkgray");
     });
   }
+
+  if(setToken == "3") {
+    $(orderbylikebtn).css("display", "none");
+    $(orderbydatebtn).css("color", "black");
+    $(orderbydatebtn).text("검색결과");
+  }
 });
 
 function ProductClick(element){

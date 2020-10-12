@@ -22,8 +22,8 @@
     
     <div class="article-wrap">
       <div class="article-searchbox">
-        <form class="store-search-form">
-          <input type="text" placeholder="Search" class="store-search-input">
+        <form method="get" action="/store/search" class="store-search-form">
+          <input type="text" name="search_word" placeholder="Search" class="store-search-input" autocomplete="off">
           <button type="submit" class="store-submit-button">
             <svg class="store-search-button">
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
