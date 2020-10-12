@@ -1,6 +1,90 @@
 /* PC 뷰 css */
-@media all and (max-width:1920px){
+@media all and (max-width:1980px){ 
+  .article-servicelike {
+    width:70rem;
+    margin:0 auto;
+    /* margin-top:10rem; */
+    /* border:solid 1px black; */
+  }
+  .servielike_tag{
+    font-size:1.3rem;
+    margin-top:2rem;
+    margin-left:0.5rem;
+  }
+  .servicelike-product{
+    border:solid 2px #c8c8c8;
+    /* height:40rem; */
+    border-radius: 5px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    /* justify-content:space-around; */
+    padding: 3rem 4rem 1rem 4rem;
+  }
+
+  .servicelike-product-element {
+    /* border:solid 1px #c8c8c8; */
+    position: relative;
+    width:15.5rem;
+    height:20.5rem;
+    padding:0;
+    cursor: pointer;
+    margin-bottom:2rem;
+  }
+
+  .element_img {
+    width:100%;
+    height:15rem;
+    /* min-height:65%; */
+    /* margin:0 auto; */
+    margin-top:0.7rem;
+    border-radius:5%;
+    /* border:solid 1px #c8c8c8; */
+    object-fit: content;
+  }
   
+  .element_title {
+    width:100%;
+    height:auto;
+    /* border:solid 1px #c8c8c8; */
+    font-size:1.5rem;
+    /* margin-top:0.5rem; */
+  }
+  .element_price {
+    width:50%;
+    height:auto;
+    font-size:1.3rem;
+    color: #ff8a3d;
+    display:inline-block;
+    /* border:solid 1px #c8c8c8; */
+  }
+  .element_likebox {
+    display:inline-block;
+    height:31px;
+    line-height: 31px;
+    /* border:solid 1px black; */
+    position: absolute;
+    right:5px;
+    
+  }
+  .element_icon {
+    display:inline-block;
+    
+  }
+  
+  .element_count {
+    display:inline-block;
+    
+  }
+  
+  .servicelike_default {
+    /* border:solid 1px black; */
+    text-align: center;
+    color: gray;
+    font-size: 2rem;
+    margin:auto auto;
+
+}
 }
     
     
