@@ -34,7 +34,7 @@
   }
 }
 
-@media all and (max-width:480px){
+@media all and (max-width:425px) and (min-height:250px){
   #footer {
     /* position: relative; */
     background-color: #303030;
