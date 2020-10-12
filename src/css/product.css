@@ -204,7 +204,7 @@
 
     
 /* 모바일 뷰 css */
-@media all and (max-width:480px){
+@media all and (max-width:425px) and (min-height:250px){
   .article-product {
     border:solid 2px #c8c8c8;
     width:25rem;
