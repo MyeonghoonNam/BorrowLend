@@ -207,7 +207,7 @@
 }
 
 /* 모바일 세로뷰 css */
-@media all and (max-width:425px) and (orientation: portrait){
+@media all and (max-width:425px) and (min-height:250px){
    
   #header {
     padding-top:0;
