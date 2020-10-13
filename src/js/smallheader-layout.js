@@ -87,6 +87,9 @@ var filename = Page_Title();
     } else if (filename.startsWith('search')){
       var name = '장터';
       s_layout(name);
+    } else if (filename.startsWith('product')) {
+      var name = '장터';
+      s_layout(name);
     }
 
 if(filename == 'product-upload' || 'service-rent' || 'service-like') {

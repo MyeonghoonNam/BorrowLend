@@ -14,6 +14,13 @@ $(document).ready(function(){
     ProductList[ProductList.length-1].style.border="none";
     ProductList[ProductList.length-1].style.cursor="default";
   }
+
+  var div_box = document.getElementsByClassName('servicelike-product')[0];
+  var div_default = document.getElementsByClassName('servicelike_default')[0];
+  
+  if(div_default){
+    div_box.style.height = "25rem";
+  }
 });
 
 function ProductClick(element){

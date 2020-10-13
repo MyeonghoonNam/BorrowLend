@@ -53,7 +53,7 @@
         <% for(var i = 0; i < product.length; i++){ %>
           <% var j = 0; %>
           <div class="store-product-element" onclick="ProductClick(this)">
-            <form method="post" action="/product">
+            <form method="get" action="/product">
               <img class="element_img"src="../../src/uploads/<%=product[i].list[j].name%>" alt="">
               <div class="element_title"><%=product[i].title%></div>
               <div class="element_price"><%=product[i].price%></div>

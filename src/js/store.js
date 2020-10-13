@@ -1,5 +1,12 @@
+// if(document.referrer){
+//   location.htef('/store');
+// }
+
+
 // 동적 상품리스트 레이아웃 구현
 $(document).ready(function(){
+  // window.location.reload();
+
   var ProductList = [];
   ProductList = document.getElementsByClassName("store-product-element");
   

@@ -32,7 +32,7 @@
         <% for(var i = 0; i < product.length; i++){ %>
           <% var j = 0; %>
           <div class="servicelike-product-element" onclick="ProductClick(this)">
-            <form method="post" action="/product">
+            <form method="get" action="/product">
               <img class="srv_element_img"src="../../src/uploads/<%=product[i].list[j].name%>" alt="">
               <div class="srv_element_title"><%=product[i].title%></div>
               <div class="srv_element_price"><%=product[i].price%></div>
@@ -48,10 +48,10 @@
           
         <% if(product.length==0){ %>
           <div class="servicelike_default">
-            <p>
+            <div class="servicelike_default_content">
               <i class="xi-emoticon-smiley-o prt_defaulticon"></i><br>
               좋아하시는 관심물품이 없습니다.
-            </p>
+            </div>
           </div>
         <% } %>
         </article>

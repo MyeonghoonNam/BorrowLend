@@ -392,9 +392,9 @@ app.post('/store', function(req,res){
   }
 });
 
-app.post('/product', function(req,res){
+app.get('/product', function(req,res){
 
-  var index = req.body.element_token;
+  var index = req.query.element_token;
 
   if(req.session.user){
     ProductModel.findByKey(index, function(err, result){
