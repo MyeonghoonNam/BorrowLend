@@ -30,7 +30,7 @@
           <img class="userinfo_img" src="../../src/images/user.svg">
           <div class="userinfo_grade">시민</div>
           <div class="userinfo_name"><%=userinfo[0]._doc.id%></div>
-          <% if(SetLikecount === 0) { %>
+          <% if(SetLikecount == 0) { %>
             <i class="product_likebtn far fa-heart fa-3x" value="0"></i>
           <% } else { %>
             <i class="product_likebtn fas fa-heart fa-3x" value="1"></i>
@@ -51,9 +51,11 @@
           <input class="info_uid" type="hidden" value="<%=user.id%>">
           <input class="info_pid" type="hidden" value="<%=product[0]._id%>">
           <div class="info_title"><%=product[0].title%></div>
+          <%if(product[0].price_check==1){%>
           <div class="info_pricecheck" value="<%=product[0].price_check%>">
             <i class="info_pricecheck fas fa-check"> 가격 제안가능</i>
           </div>
+          <%}%>
           <div class="info_price"><%=product[0].price%></div>
           <div class="info_content"><%=product[0].content%></div>
         </div>
@@ -71,6 +73,8 @@
       $(function(){
         $('html').removeClass('no-js');
       });
+
+      
     </script>
 </body>
 </html>

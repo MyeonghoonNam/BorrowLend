@@ -55,7 +55,7 @@ var upload = multer({
 });
 //
 
-app.use(static(__dirname));
+// app.use(static(__dirname));
 
 // DB 정의 및 연결
 var database;
@@ -99,7 +99,7 @@ function connectDB(){
       tel : {type : String, required : true},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now},
       grade : {type : String, 'default':'시민'},
-      LikeProduct:[new mongoose.Schema({_id:{type:mongoose.Schema.Types.ObjectId, ref:'product'}})]
+      LikeProduct:[{type:mongoose.Schema.Types.ObjectId, ref:'product'}]
     });
 
     UserSchema.static('findByOid', function(oid, callback){
@@ -399,12 +399,10 @@ app.get('/product', function(req,res){
   if(req.session.user){
     ProductModel.findByKey(index, function(err, result){
       if(err) throw err;
-      
       if(result){
         console.log(result[0].userinfo)
         UserModel.findByOid(result[0].userinfo, function(err, doc){
           console.log(doc);
-
           UserModel.findById(req.session.user.id, function(err, doc2){
             var count = 0;
             if(doc2[0]._doc.LikeProduct.includes(result[0]._id)){
@@ -429,7 +427,7 @@ app.post('/product_like', function(req,res){
   var btn = req.body.count;
   var token = req.body.key;
   var uid = req.body.uid;
-  console.log("hi");
+  
   UserModel.findById(uid, function(err, doc1){
     ProductModel.find({_id:token}, function(err, doc2){
       if(btn === "0"){
@@ -448,9 +446,8 @@ app.post('/product_like', function(req,res){
         });
         
         btn = "1";
-        res.send({count:btn});
-      } else if( btn === "1" ) {
-        console.log("fail");
+        res.send({btn:btn});
+      } else {
         var query = {_id:doc1[0]._id};
         var update = {$pull:{LikeProduct:doc2[0]._id}};
         
@@ -465,9 +462,8 @@ app.post('/product_like', function(req,res){
         ProductModel.findOneAndUpdate(query2, update2, {new:true, upsert: true}, function(err, result){
           console.log(result);
         });
-        console.log("삭제완료");
         btn ="0";
-        res.send({count:btn});
+        res.send({btn:btn});
       }
     });
   });
@@ -597,7 +593,7 @@ app.get('/logout', function(req,res){
   }
 });
 
-// app.use(static(__dirname));
+app.use(static(__dirname));
 // app.use('/uploads', static(path.join(__dirname + '/src', 'uploads')));
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -8,30 +8,28 @@ $(document).ready(function(){
     slick.$slides.css('height', slick.$slideTrack.height() + 'px');
   });
 
-  var check = document.getElementsByClassName('info_pricecheck')[0];
+  // var check = document.getElementsByClassName('info_pricecheck')[0];
 
-  if(check.value == "0") {
-    check.style.display = "none";
-  } else {
-    check.style.display = "block";
-  }
-
-  var btn = document.getElementsByClassName('product_likebtn')[0];
-  var token = document.getElementsByClassName('info_pid')[0];
-  var uid = document.getElementsByClassName('info_uid')[0];
-  
-  $('.product_likebtn').click(function(){
+  // if(check.value == "0") {
+  //   check.style.display = "none";
+  // } else {
+  //   check.style.display = "block";
+  // }
+  $(document).on('click', '.product_likebtn', function(){
+    var btn = document.getElementsByClassName('product_likebtn')[0];
+    var token = document.getElementsByClassName('info_pid')[0];
+    var uid = document.getElementsByClassName('info_uid')[0];
     $.ajax({
       url:'/product_like',
       dataType:'json',
-      type:'POST',
+      type:'post',
       data:{count:btn.getAttribute("value"),
             key:token.getAttribute("value"),
             uid:uid.getAttribute("value")
       },
       success:function(result){
           $("i").remove(".product_likebtn");
-          if(result.count === "1"){
+          if(result.btn === "1"){
             var likebtn = "<i class=\"product_likebtn fas fa-heart fa-3x\" value=\"1\">";
             $(".product_userinfo").append(likebtn);
           } else {
@@ -41,4 +39,6 @@ $(document).ready(function(){
       }
     });
   });
+  
+  
 });
