@@ -526,7 +526,7 @@ app.get('/service-rent', function(req,res){
 app.get('/service-like', function(req,res){
   if(req.session.user){
     UserModel.find({id:req.session.user.id}, function(err, doc){
-      ProductModel.find({_id:doc[0].LikeProduct._id}, function(err, results){
+      ProductModel.find({_id:doc[0].LikeProduct}, function(err, results){
         console.log(results);
         res.render('./pages/service-like.html',{
           user:req.session.user,
