@@ -99,7 +99,7 @@ function connectDB(){
       tel : {type : String, required : true},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now},
       grade : {type : String, 'default':'시민'},
-      LikeProduct:[{type:mongoose.Schema.Types.ObjectId, ref:'product'}]
+      LikeProduct:[new mongoose.Schema({_id:{type:mongoose.Schema.Types.ObjectId, ref:'product'}, liked_at:{type: Date, index: {unique: false}, 'default': Date.now}})]
     });
 
     UserSchema.static('findByOid', function(oid, callback){
@@ -407,10 +407,13 @@ app.get('/product', function(req,res){
 
           UserModel.findById(req.session.user.id, function(err, doc2){
             var count = 0;
-            if(doc2[0]._doc.LikeProduct.includes(result[0]._id)){
+            var prt = doc2[0]._doc.LikeProduct;
+            if(prt.includes(prt.find(function(item, idx){
+              return item._id == result[0]._id;
+            }))){
               count = 1;
-            }
-  
+            } 
+            console.log(count);
             res.render('./pages/product.html', {
               user:req.session.user,
               product:result,
@@ -429,15 +432,12 @@ app.post('/product_like', function(req,res){
   var btn = req.body.count;
   var token = req.body.key;
   var uid = req.body.uid;
-
-  console.log(btn);
-  console.log(token);
-
+  console.log("hi");
   UserModel.findById(uid, function(err, doc1){
     ProductModel.find({_id:token}, function(err, doc2){
       if(btn === "0"){
         var query = {_id:doc1[0]._id};
-        var update = {$push:{LikeProduct:doc2[0]._id}};
+        var update = {$push:{LikeProduct:{_id:doc2[0]._id}}};
   
         UserModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
           console.log(result);
@@ -452,11 +452,12 @@ app.post('/product_like', function(req,res){
         
         btn = "1";
         res.send({count:btn});
-      } else {
+      } else if( btn === "1" ) {
+        console.log("fail");
         var query = {_id:doc1[0]._id};
-        var update = {$pull:{LikeProduct:doc2[0]._id}};
+        var update = {$pull:{LikeProduct:{_id:doc2[0]._id}}};
         
-  
+        
         UserModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
           console.log(result);
         });
@@ -467,7 +468,7 @@ app.post('/product_like', function(req,res){
         ProductModel.findOneAndUpdate(query2, update2, {new:true, upsert: true}, function(err, result){
           console.log(result);
         });
-
+        console.log("삭제완료");
         btn ="0";
         res.send({count:btn});
       }
@@ -532,7 +533,7 @@ app.get('/service-rent', function(req,res){
 app.get('/service-like', function(req,res){
   if(req.session.user){
     UserModel.find({id:req.session.user.id}, function(err, doc){
-      ProductModel.find({_id:doc[0].LikeProduct}, function(err, results){
+      ProductModel.find({_id:doc[0].LikeProduct._id}, function(err, results){
         console.log(results);
         res.render('./pages/service-like.html',{
           user:req.session.user,
