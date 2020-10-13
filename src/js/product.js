@@ -8,9 +8,6 @@ $(document).ready(function(){
     slick.$slides.css('height', slick.$slideTrack.height() + 'px');
   });
 
-  var btn = document.getElementsByClassName('product_likebtn')[0];
-  var token = document.getElementsByClassName('info_pid')[0];
-  var uid = document.getElementsByClassName('info_uid')[0];
   var check = document.getElementsByClassName('info_pricecheck')[0];
 
   if(check.value == "0") {
@@ -19,6 +16,10 @@ $(document).ready(function(){
     check.style.display = "block";
   }
 
+  var btn = document.getElementsByClassName('product_likebtn')[0];
+  var token = document.getElementsByClassName('info_pid')[0];
+  var uid = document.getElementsByClassName('info_uid')[0];
+  
   $('.product_likebtn').click(function(){
     $.ajax({
       url:'/product_like',

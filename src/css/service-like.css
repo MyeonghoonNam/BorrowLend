@@ -90,5 +90,96 @@
     
 /* 모바일 뷰 css */
 @media all and (max-width:480px){
+  .article-servicelike {
+    width:25rem;
+    margin:0 auto;
+    /* margin-top:10rem; */
+    /* border:solid 1px black; */
+  }
+  .servielike_tag{
+    font-size:1rem;
+    margin-top:1.5rem;
+    margin-left:0.2rem;
+  }
+  .servicelike-product{
+    border:solid 2px #c8c8c8;
+    /* height:40rem; */
+    border-radius: 5px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    /* justify-content:space-around; */
+    padding: 1rem 1rem;
+  }
+
+  .servicelike-product-element {
+    /* border:solid 1px #c8c8c8; */
+    position: relative;
+    width:22rem;
+    height:7rem;
+    padding:0;
+    cursor: pointer;
+    margin-bottom:0;
+    border-bottom:solid 2px #c8c8c8;
+  }
+
+  .srv_element_img {
+    width:5rem;
+    height:5rem;
+    /* min-height:65%; */
+    /* margin:0 auto; */
+    margin-top:0.7rem;
+    border-radius:5%;
+    /* border:solid 1px #c8c8c8; */
+    object-fit: content;
+  }
   
+  .srv_element_title {
+    width:5rem;
+    height:auto;
+    display: inline-block;
+    /* border:solid 1px #c8c8c8; */
+    vertical-align: 2rem;
+    margin-left:2rem;
+    font-size:1rem;
+    /* margin-top:0.5rem; */
+  }
+  .srv_element_price {
+    width:4rem;
+    height:auto;
+    display: inline-block;
+    font-size:1rem;
+    vertical-align: 2rem;
+    color: #ff8a3d;
+    display:inline-block;
+    /* border:solid 1px #c8c8c8; */
+  }
+  .srv_element_likebox {
+    display:inline-block;
+    height:31px;
+    line-height: 31px;
+    /* border:solid 1px black; */
+    position: absolute;
+    margin-top: 2.3rem;
+    right:5px;
+    
+  }
+  .srv_element_icon {
+    display:inline-block;
+    
+  }
+  
+  .srv_element_count {
+    display:inline-block;
+    
+  }
+  
+  .servicelike_default {
+    /* border:solid 1px black; */
+    text-align: center;
+    color: gray;
+    font-size: 2rem;
+    margin:auto auto;
+
+}
 }
