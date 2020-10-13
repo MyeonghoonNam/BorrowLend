@@ -101,7 +101,7 @@
 
 }
 /* 모바일 세로뷰 css */
-@media all and (max-width:425px) and (orientation: portrait){
+@media all and (max-width:425px) and (min-height:250px){
     .findID-wrap{
         width:21rem;
         margin: 0 auto;
