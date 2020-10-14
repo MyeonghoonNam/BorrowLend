@@ -57,6 +57,11 @@
         /* margin-top:0.5rem; */
       }
 
+      .qa-element-form{
+        width:100%;
+        display: flex;
+      }
+
       .board-element-number {
         width:10%;
         height:auto;

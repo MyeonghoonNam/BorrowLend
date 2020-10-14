@@ -628,15 +628,39 @@ app.get('/customer-q&a', function(req,res){
   if(req.session.user){
     BoardModel.find().sort({created_at:-1}).exec(function(err,results){
       if(results){
-        
+        var setToken = "0";
+
         res.render('./pages/customer-q&a.html', {
           user:req.session.user,
           board:results,
+          setToken:setToken
         });
       } else {
         res.redirect('/');
       }
     })
+  }
+});
+
+app.get('/q&a-element', function(req,res){
+  
+  var index2 = req.query.board_element_token;
+
+  if(req.session.user){
+    BoardModel.findByKey(index2, function(err, result){
+      if(err) throw err;
+      if(result){
+        console.log(result[0].userinfo)
+        UserModel.findByOid(result[0].userinfo, function(err, doc){
+          console.log(doc);
+          res.render('./pages/q&a-element.html', {
+              user:req.session.user,
+              board:result,
+              userinfo:doc
+          });
+        })
+      } 
+    });
   }
 });
 
@@ -661,6 +685,7 @@ app.post('/customer-write', function(req,res){
     }
   });
 });
+
 
 app.get('/honor', function(req,res){
   if(req.session.user){
