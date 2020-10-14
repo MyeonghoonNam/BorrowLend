@@ -65,10 +65,12 @@ var autoIncrement = require('mongoose-auto-increment');
 var UserSchema;
 var SchoolSchema;
 var ProductSchema;
+var BoardSchema;
 
 var UserModel;
 var SchoolModel;
 var ProductModel;
+var BoardModel;
 
 function connectDB(){
   var databaseUrl = 'mongodb://localhost:27017/local';
@@ -149,17 +151,53 @@ function connectDB(){
       return this.find({}, callback);
     });
 
+
+    BoardSchema = mongoose.Schema({
+      key:{type : Number, unique : true, 'default':0},
+      number:{type : Number, 'default':0, max:50},
+      title:{type : String, required : true},
+      content:{type : String, required : true},
+      usid:{type : String, required : true},
+      userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
+      created_at: {type: Date, index: {unique: false}, 'default': Date.now}
+    });
+
+    BoardSchema.plugin(autoIncrement.plugin, {
+      model:'BoardModel',
+      field: 'key',
+      startAt:1,
+      increment:1
+    });
+
+    BoardSchema.plugin(autoIncrement.plugin, {
+      model:'BoardModel',
+      field: 'number',
+      startAt:1,
+      increment:1
+    });
+
+    BoardSchema.static('findByKey', function(key, callback){
+      return this.find({key:key}, callback);
+    });
+
+    BoardSchema.static('findAll', function(callback){
+      return this.find({}, callback);
+    });
+
     console.log('UserSchema Define');
     console.log('SchoolSchema Define');
     console.log('ProductSchema Define');
+    console.log('BoardSchema Define');
     
     UserModel = mongoose.model('users', UserSchema);
     SchoolModel = mongoose.model('schools', SchoolSchema);
     ProductModel = mongoose.model('product', ProductSchema);
+    BoardModel = mongoose.model('Board', BoardSchema);
     
     console.log('UserModel Define');
     console.log('SchoolModel Define');
     console.log('ProductModel Define');
+    console.log('BoardModel Define');
 
   });
 
@@ -242,6 +280,29 @@ var addProduct = function(database, title, price, content, list, userid, check, 
       if(err) throw err;
           
       callback(null, product);
+    });
+  });
+
+};
+//
+
+// 게시판 등록
+var addBoard = function(database, title, content, userid, callback){
+
+  UserModel.findById(userid, function(err, result){
+    var userinfo = result;
+
+    var board = new BoardModel({
+      "title":title,
+      "content":content,
+      "userinfo":userinfo[0]._id,
+      "usid":userinfo[0].id
+    });
+    
+    board.save(function(err){
+      if(err) throw err;
+          
+      callback(null, board);
     });
   });
 
@@ -557,10 +618,40 @@ app.get('/customer-notice', function(req,res){
 
 app.get('/customer-q&a', function(req,res){
   if(req.session.user){
-    res.render('./pages/customer-q&a.html', {user:req.session.user});
+    BoardModel.find().sort({created_at:-1}).exec(function(err,results){
+      if(results){
+        
+        res.render('./pages/customer-q&a.html', {
+          user:req.session.user,
+          board:results,
+        });
+      } else {
+        res.redirect('/');
+      }
+    })
+  }
+});
+
+app.get('/customer-write', function(req,res){
+  if(req.session.user){
+    res.render('./pages/customer-write.html', {user:req.session.user});
   } else{
     res.redirect('/');
   }
+});
+
+app.post('/customer-write', function(req,res){
+  var title = req.body.title;
+  var content = req.body.content;
+  var userid = req.session.user.id;
+
+  addBoard(database, title, content, userid, function(err, docs){
+    if(err) throw err;
+
+    if(docs) {
+      res.redirect('customer-q&a');
+    }
+  });
 });
 
 app.get('/honor', function(req,res){

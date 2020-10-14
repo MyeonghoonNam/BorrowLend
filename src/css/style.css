@@ -19,6 +19,8 @@
 @import "product-upload.css";
 @import "message.css";
 @import "service-like.css";
+@import "customer-write.css";
+@import "customer-q&a.css";
 
 .no-js { display:none; }
 

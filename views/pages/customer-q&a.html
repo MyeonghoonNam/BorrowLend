@@ -17,7 +17,31 @@
     </header>
 
     <div id="s-header"></div>
+    <div class="article-wrap">
+      <div class="board-wrap">
+        <article class="board-list">
+          <div class="board-first-element">
+          <div class="board-first-number">번호</div>
+          <div class="board-first-title">제목</div>
+          <div class="board-first-id">아이디</div>
+          </div>
+          <% for(var i = 0; i < board.length; i++){ %>
+            <% var j = 0; %>
+            <div class="board-list-element" onclick="ProductClick(this)">
+                <div class="board-element-number"><%=board[i].number%></div>
+                <div class="board-element-title"><%=board[i].title%></div>
+                <div class="board-element-id"><%=board[i].usid%></div>
+            </div>
+          <% } %>
+        </article>        
+      </div>
 
+      <div class="board-write-bottom">
+        <div class="board_writebox">
+          <button type="submit" class="boardwrite_btn" onclick="location.href='/customer-write'">글작성</button>
+        </div>
+      </div> 
+    </div>
     <footer id="footer"></footer>
 
     <script>
