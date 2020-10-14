@@ -514,9 +514,27 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
 
 });
 
+app.get('/product_update', function(req,res){
+  var uptoken = req.query.element_uptoken;
+
+  ProductModel.findByKey(uptoken, function(err,doc){
+    res.render('./pages/product_update.html', {
+      user:req.session.user,
+      product:doc
+    })
+  })
+});
+
+app.post('/product_imgdelete', function(req,res){
+  var token = req.body.token;
+  var deleteimg = req.body.deleteimg;
+  console.log(deleteimg);
+  res.send({result:'hi'});
+})
+
 app.get('/service-rent', function(req,res){
   if(req.session.user){
-    ProductModel.find({userinfo:req.session.user._id}, function(err, results){
+    ProductModel.find({userinfo:req.session.user._id}).sort({created_at:-1}).exec(function(err,results){
       if(err) throw err;
 
       if(results){

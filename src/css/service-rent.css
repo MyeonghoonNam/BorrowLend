@@ -168,6 +168,10 @@
     margin-top:0.5rem;
   }
 
+  .srvr_element_udform {
+    display:inline-block;
+  }
+
   .srvr_element_update {
     box-shadow:inset 0px 1px 0px 0px #a4e271;
     background:linear-gradient(to bottom, #1acc35 5%, #379c0f 100%);

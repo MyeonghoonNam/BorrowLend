@@ -42,8 +42,8 @@
           </div>
         <% for(var i = 0; i < product.length; i++){ %>
           <% var j = 0; %>
-          <div class="servicerent-product-element" onclick="ProductClick(this)">
-            <form method="get" action="/product">
+          <div class="servicerent-product-element">
+            <form method="get" action="/product" onclick="ProductClick(this)">
               <img class="srvr_element_img"src="../../src/uploads/<%=product[i].list[j].name%>" alt="">
               <div class="srvr_element_title"><%=product[i].title%></div>
               <div class="srvr_element_price"><%=product[i].price%></div>
@@ -51,13 +51,20 @@
                 <i class="srvr_element_icon fas fa-heart"></i>
                 <div class="srvr_element_count"><%=product[i].LikeCount%></div>
               </div>
-              <div class="srvr_element_btn">
-                <div class="srvr_element_update">수정</div>
-                <div class="srvr_element_delete">삭제</div>
-              </div>
               <input type="hidden" name="element_token" value="<%=product[i].key%>">
               <input type="submit" class="element_btn" style="display:none;">
             </form>
+            <div class="srvr_element_btn">
+              <form class="srvr_element_udform" method="get" action="/product_update" onclick="UpbtnClick(this)">
+                <div class="srvr_element_update">수정</div>
+                <input type="hidden" name="element_uptoken" value="<%=product[i].key%>">
+                <input type="submit" class="element_upbtn" style="display:none;">
+              </form>
+              <form class="srvr_element_udform" action="" style="display:inline-block;">
+                <div class="srvr_element_delete">삭제</div>
+                <input type="hidden" name="element_deltoken" value="<%=product[i].key%>">
+              </form>
+            </div>
           </div>
         <% } %>
           

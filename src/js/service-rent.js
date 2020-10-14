@@ -30,3 +30,10 @@ function ProductClick(element){
 
   product[0].click();
 }
+
+function UpbtnClick(element){
+  var product = $(element).find(".element_upbtn")
+  
+  product[0].click();
+}
+

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrow Land</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="../../src/js/header.js"></script>
+    <script src="../../src/js/smallheader.js"></script>
+    <script src="../../src/js/footer.js"></script>
+    <link rel="stylesheet" href="../../src/css/style.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+  </head>
+<body>
+  <div class="wrapper">
+    <header id="header">
+      <%- include ("../common/header.html")%>
+    </header>
+
+    <div id="s-header"></div>
+
+    <div class="article-wrap">
+      <form id="prtupload_form" method="post" action="/product-upload" enctype="multipart/form-data" autocomplete="off">
+        <div class="article-product-upload">
+          <article class="product-upload-left">
+            <div class="title-wrap">
+              <div class="title-box">제목</div>
+              <input class="title-input" type="text" name="title" placeholder="제목을 입력해주세요." value="<%=product[0].title%>">
+            </div>
+            <div class="price-wrap">
+              <div class="price-box">가격</div>
+              <input class="price-input" type="text" name="price" placeholder="금액을 입력해주세요." value="<%=product[0].price%>">
+              <div class="price-checks">
+              <% if(product[0].price_check == "0") { %>
+                <input type="checkbox" id="price-check" name="price_check" value="1">
+                <label for="price-check">가격 제안받기</label>
+              <% } else {%>
+                <input type="checkbox" id="price-check" name="price_check" value="1" checked="checked">
+                <label for="price-check">가격 제안받기</label>
+              <% } %>
+              </div>
+            </div>
+            <div class="content-wrap">
+              <div class="content-box">내용</div>
+              <textarea class="content-input" name="content" placeholder="내용을 입력해주세요." wrap="hard" style="resize: none;"><%=product[0].content%></textarea>
+            </div>
+            <!-- <div class="ptitle-box">카테고리</div>
+            <input class="ptitle-input" type="text" placeholder="제목을 입력해주세요."> -->
+          </article>
+  
+          <article class="product-upload-right">
+            <div class="imgbtn_wrap">
+              <img src="src/images/camera.png" onclick="handleImgAdd()">
+            </div>
+
+            <div class="prtupload_imgwrap">
+              <a class="prt_prevbtn" onclick="Previewbtn_Click(-1)">&#10094</a>
+              <a class="prt_nextbtn" onclick="Previewbtn_Click(1)">&#10095</a>
+              <button type="button" class="prt_deletebtn"></button>
+            
+              <div class="prtupload_imgwrap_default">
+                <p>
+                  <i class="xi-emoticon-smiley-o prt_defaulticon"></i><br>
+                  물품 이미지를 첨부해주세요.
+                </p>
+              </div>
+          
+              <% for(var i=0; i<product[0].list.length; i++) { %>
+                <img class="prtupload_img" src="../../src/uploads/<%=product[0].list[i].name%>">
+                <% } %>  
+                <input type="hidden" class="prtupload_imgname" name="">
+            </div>
+          </article>
+  
+          <article class="product-upload-bottom">
+            <div class="prtupload_btnbox">
+              <button type="submit" class="prtupload_btn">완료</button>
+              <button type="button" class="prtcancle_btn" onclick="location.href='/main'">취소</button>
+            </div>
+            <div class="test">test</div>
+          </article>
+
+        </div>
+      </form>
+    </div>
+    
+    <footer id="footer"></footer>
+
+    <script>
+      $(function(){
+        $('html').removeClass('no-js');
+      });
+
+      
+      var prtinput_count = 0;
+      
+      function handleImgAdd(e){
+        var prtupload_inputlist = document.getElementsByClassName("prtupload_imgwrap")[0];
+
+        var prtupload_input = document.createElement('input');
+        
+        prtupload_input.setAttribute("type", "file");
+        prtupload_input.setAttribute("name", "photo");
+        prtupload_input.setAttribute("class", "prtupload_input");
+        prtupload_input.setAttribute("style", "display:none");
+        prtupload_input.setAttribute("multiple", "");
+        
+        prtupload_inputlist.appendChild(prtupload_input);
+        prtinput_count++;
+        
+        
+        document.getElementsByClassName("prtupload_input")[prtinput_count-1].click();
+        
+        $(".prtupload_input").on("change", handleImgPreview);
+      
+      }
+      
+      var sel_files = [];
+      let currSlide = 1;
+
+      var img = document.getElementsByClassName('prtupload_img')[0];
+
+      if(img){
+        $(".prtupload_imgwrap_default").css("display","none");
+      }
+
+      handleImgSlider(currSlide);
+
+      function handleImgPreview(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+
+        filesArr.forEach(function(f) {
+          if(!f.type.match("image.*")){
+            //이미지파일만 허용하는 경고 구현하기
+            return;
+          }
+
+          sel_files.push(f);
+
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var img_html = "<img class=\"prtupload_img\" src=\"" + e.target.result + "\" />";
+            $(".prtupload_imgwrap").append(img_html);
+            $(".prtupload_imgwrap_default").css("display","none");
+            
+            handleImgSlider(currSlide);
+          }
+          reader.readAsDataURL(f);
+        });
+      }
+      
+      function handleImgSlider(num){
+        $( '.prtupload_img' ).attr( 'value', '0' );
+        var slides = document.querySelectorAll(".prtupload_img");
+        let prtimg_count = slides.length;
+        
+        $(".prt_deletebtn").css("display","inline");
+        
+        if(prtimg_count>1){
+          $(".prt_prevbtn").css("display","inline");
+          $(".prt_nextbtn").css("display","inline");
+        }
+        
+        if(num>slides.length){
+          currSlide = 1;
+        } if(num<1){
+          currSlide = slides.length;
+        }
+        
+        for(let i=0; i<slides.length; i++){
+          slides[i].style.display="none";
+        }
+
+        slides[currSlide-1].style.display="block";
+        slides[currSlide-1].setAttribute("value", "1")
+        // $('.prtupload_imgname').attr( 'value',  );
+        
+      }
+
+      function Previewbtn_Click(num){
+        handleImgSlider((currSlide+=num));
+      }
+
+      // function ResetImgbtn(){
+      //   $('.prtupload_input').remove();
+      //   $('.prtupload_img').remove();
+      //   sel_files.splice(0, sel_files.length);
+      //   prtinput_count = 0;
+      //   // $('.prtupload_img').remove();
+      //   $(".prtupload_imgwrap_default").css("display","block");
+      //   $(".prt_prevbtn").css("display","none");
+      //   $(".prt_nextbtn").css("display","none");
+      //   $(".prt_deletebtn").css("display","none");
+      // }
+
+      $(document).on('click', '.prt_deletebtn', function(){
+  
+      var token = document.getElementsByClassName('info_pid')[0];
+      var btn = $('img[value*="1"]');
+      console.log(btn);
+      var deleteimg = btn[0].getAttribute("src").substring(btn[0].getAttribute("src").lastIndexOf('/') + 1, btn[0].getAttribute("src").length);
+
+      $.ajax({
+        url:'/product_imgdelete',
+        dataType:'json',
+        type:'post',
+        data:{token:token,
+              deleteimg:deleteimg
+        },
+        success:function(result){
+            document.getElementsByClassName('test')[0].style.color="red";
+        }
+      });
+    });
+    </script>
+</body>
+</html>
