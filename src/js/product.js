@@ -8,13 +8,6 @@ $(document).ready(function(){
     slick.$slides.css('height', slick.$slideTrack.height() + 'px');
   });
 
-  // var check = document.getElementsByClassName('info_pricecheck')[0];
-
-  // if(check.value == "0") {
-  //   check.style.display = "none";
-  // } else {
-  //   check.style.display = "block";
-  // }
   $(document).on('click', '.product_likebtn', function(){
     var btn = document.getElementsByClassName('product_likebtn')[0];
     var token = document.getElementsByClassName('info_pid')[0];

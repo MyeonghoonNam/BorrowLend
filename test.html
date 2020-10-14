@@ -15,63 +15,7 @@
 </head>
 <body>
     <form id="myform" action="" enctype="multipart/form-data">
-      
-      <img src="src/images/camera.png" alt="" onclick="handleImgAdd()">
-      <div class="img_wrap"></div>
-      
+      <input type="text" value="hi">
     </form>
-  <script>
-    
-    var img_count = 0;
-    
-    function handleImgAdd(e){
-      var form = document.getElementById("myform");
-      var input = document.createElement('input');
-      
-      input.setAttribute("type", "file");
-      input.setAttribute("name", "photo");
-      input.setAttribute("class", "imgs");
-      input.setAttribute("style", "display:none");
-      input.setAttribute("multiple", "");
-      
-      form.appendChild(input);
-      
-      $(document).ready(function(){
-        $(".imgs").on("change", handleImgPreview);
-      });
-      
-      document.getElementsByClassName("imgs")[img_count].click();
-      img_count++;
-    }
-    
-    var sel_files = [];
-    
-    function handleImgPreview(e) {
-      var files = e.target.files;
-      var filesArr = Array.prototype.slice.call(files);
-
-      filesArr.forEach(function(f) {
-        if(!f.type.match("image.*")){
-          //이미지파일만 허용하는 경고 구현하기
-          return;
-        }
-
-        sel_files.push(f);
-
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          var img_html = "<div><img src=\"" + e.target.result + "\"></div>";
-          $(".img_wrap").append(img_html);
-          $('.img_wrap').slick();
-        }
-        reader.readAsDataURL(f);
-        $(".slider").not('.slick-initialized').slick()
-      });
-
-      // $('.img_wrap').slick();
-    }
-
-    // $('.img_wrap').slick();
-  </script>
 </body>
 </html>

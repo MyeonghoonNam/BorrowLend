@@ -1,6 +1,230 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
+  .article-servicerent {
+    width:70rem;
+    margin:0 auto;
+    /* margin-top:10rem; */
+    /* border:solid 1px black; */
+  }
   
+  .servicerent_array {
+    display:flex;
+    width:90%;
+    margin:0 auto;
+    margin-top:5rem;
+    margin-bottom:0.5rem;
+    /* border:solid 1px black; */
+  }
+  
+  .srvr_productlist {
+    order:1;
+    width:10%;
+    text-align: center;
+    font-size:1.5rem;
+    cursor: pointer;
+    border-right:solid 2px black;
+    
+  }
+
+  .srvr_productlist:hover {
+    color:#f76707;
+  }
+  
+  .srvr_reveiwlist {
+    order:2;
+    width:10%;
+    text-align: center;
+    font-size:1.5rem;
+    cursor: pointer;
+    /* border:solid 1px black; */
+  }
+
+  .srvr_reveiwlist:hover {
+    color:#f76707;
+  }
+  
+  .servicerent-product{
+    border:solid 2px #c8c8c8;
+    /* height:40rem; */
+    border-radius: 5px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    /* justify-content:space-around; */
+    padding: 3rem 4rem 1rem 4rem;
+  }
+
+  .servicerent_topbox{
+    display:flex;
+    width:100%;
+    border:solid 1px black;
+  }
+
+  .servicerent_userinfo{
+    order:1;
+    display:flex;
+    width:50%;
+    /* margin:0 auto; */
+    margin-top:1rem;
+    margin-bottom:1rem;
+    border:solid 1px black;
+    position: relative;
+  }
+
+  .srvr_userinfo_img{
+    order:1;
+    width: 2.7rem;
+    border:solid 1px black;
+    border-radius:50%;
+  }
+
+  .srvr_userinfo_grade{
+    order:2;
+    border-radius:5px;
+    background-color: darkgray;
+    color:white;
+    text-align:center;
+    vertical-align:middle;
+    margin:auto 0;
+    margin-left:0.5rem;
+    width:2.3rem;
+    height:1.8rem;
+    line-height: 1.8rem;
+    padding-right:0.05rem;
+    /* border:solid 1px black; */
+  }
+  
+  .srvr_userinfo_name{
+    order:3;
+    /* border:solid 1px black; */
+    height:1.8rem;
+    margin:auto 0;
+    margin-left:0.5rem;
+  }
+  
+  .servicerent_userbtn{
+    order:2;
+    border:solid 1px black;
+    width:50%;
+  }
+
+  .servicerent-product-element {
+    /* border:solid 1px #c8c8c8; */
+    position: relative;
+    width:15.5rem;
+    /* height:20.5rem; */
+    padding:0;
+    cursor: pointer;
+    margin-bottom:2rem;
+  }
+
+  .srvr_element_img {
+    width:100%;
+    height:15rem;
+    /* min-height:65%; */
+    /* margin:0 auto; */
+    margin-top:0.7rem;
+    border-radius:5%;
+    /* border:solid 1px #c8c8c8; */
+    object-fit: content;
+  }
+  
+  .srvr_element_title {
+    width:100%;
+    height:auto;
+    /* border:solid 1px #c8c8c8; */
+    font-size:1.5rem;
+    /* margin-top:0.5rem; */
+  }
+  .srvr_element_price {
+    width:50%;
+    height:auto;
+    font-size:1.3rem;
+    color: #ff8a3d;
+    display:inline-block;
+    /* border:solid 1px #c8c8c8; */
+  }
+  .srvr_element_likebox {
+    display:inline-block;
+    height:31px;
+    line-height: 31px;
+    /* border:solid 1px black; */
+    position: absolute;
+    right:5px;
+    
+  }
+  .srvr_element_icon {
+    display:inline-block;
+    
+  }
+  
+  .srvr_element_count {
+    display:inline-block;
+  }
+  
+  .srvr_element_btn {
+    /* border:solid 1px black; */
+    text-align:center;
+    margin-top:0.5rem;
+  }
+
+  .srvr_element_update {
+    box-shadow:inset 0px 1px 0px 0px #a4e271;
+    background:linear-gradient(to bottom, #1acc35 5%, #379c0f 100%);
+    background-color:#1acc35;
+    border-radius:12px;
+    border:1px solid #74b807;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:1rem;
+    padding:2px 13px;
+    text-shadow:0px 1px 0px #528009;
+    margin-right:0.5rem;
+  }
+
+  .srvr_element_update:hover {
+    background:linear-gradient(to bottom, #379c0f 5%, #1acc35 100%);
+    background-color:#379c0f;
+  }
+
+  .srvr_element_update:active {
+    position:relative;
+    top:1px;
+  }
+
+  .srvr_element_delete {
+    box-shadow:inset 0px 1px 0px 0px #f5978e;
+    background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
+    background-color:#f24537;
+    border-radius:12px;
+    border:1px solid #d02718;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:1rem;
+    padding:2px 13px;
+    text-shadow:0px 1px 0px #810e05;
+    margin-left:0.5rem;
+    
+  }
+  .srvr_element_delete:hover {
+    background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+    background-color:#c62d1f;
+  }
+  .srvr_element_delete:active {
+    position:relative;
+    top:1px;
+  }
+
+  .servicerent_default {
+    /* border:solid 1px black; */
+    text-align: center;
+    color: gray;
+    font-size: 2rem;
+    height:7rem;
+    margin:auto auto;
+  }
 
 }
     

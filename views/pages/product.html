@@ -28,7 +28,7 @@
       <article class="article-product">
         <div class="product_userinfo">
           <img class="userinfo_img" src="../../src/images/user.svg">
-          <div class="userinfo_grade">시민</div>
+          <div class="userinfo_grade"><%=userinfo[0]._doc.grade%></div>
           <div class="userinfo_name"><%=userinfo[0]._doc.id%></div>
           <% if(SetLikecount == 0) { %>
             <i class="product_likebtn far fa-heart fa-3x" value="0"></i>
