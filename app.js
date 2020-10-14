@@ -279,6 +279,7 @@ app.post('/main', function(req,res){
     
           if(docs){
             req.session.user = {
+              _id:docs[0]._doc._id,
               id:docs[0]._doc.id,
               name:docs[0]._doc.name,
               grade:docs[0]._doc.grade,
@@ -502,8 +503,6 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
       list[index] = {name:filename};
     }
     
-    
-
     addProduct(database, title, price, content, list, userid, check, function(err, docs){
       if(err) throw err;
 
@@ -517,7 +516,16 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
 
 app.get('/service-rent', function(req,res){
   if(req.session.user){
-    res.render('./pages/service-rent.html', {user:req.session.user});
+    ProductModel.find({userinfo:req.session.user._id}, function(err, results){
+      if(err) throw err;
+
+      if(results){
+        res.render('./pages/service-rent.html',{
+          user:req.session.user,
+          product:results
+        })
+      }
+    })
   } else{
     res.redirect('/');
   }

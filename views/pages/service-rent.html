@@ -8,6 +8,9 @@
     <script src="../../src/js/header.js"></script>
     <script src="../../src/js/smallheader.js"></script>
     <script src="../../src/js/footer.js"></script>
+    <script src="../../src/js/service-rent.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" href="../../src/css/style.css">
   </head>
 <body>
@@ -18,10 +21,60 @@
 
     <div id="s-header"></div>
 
-    
+    <div class="article-wrap">
+      <div class="article-servicerent">
+        
+        <article class="servicerent_array">
+          <div class="srvr_productlist">등록물품</div>
+          <div class="srvr_reveiwlist">거래후기</div>
+        </article>
+        
+        <article class="servicerent-product">
+          <div class="servicerent_topbox">
+            <article class="servicerent_userinfo">
+              <img class="srvr_userinfo_img" src="../../src/images/user.svg">
+              <div class="srvr_userinfo_grade"><%=user.grade%></div>
+              <div class="srvr_userinfo_name"><%=user.id%></div>
+            </article>
+            <article class="servicerent_userbtn">
+
+            </article>
+          </div>
+        <% for(var i = 0; i < product.length; i++){ %>
+          <% var j = 0; %>
+          <div class="servicerent-product-element" onclick="ProductClick(this)">
+            <form method="get" action="/product">
+              <img class="srvr_element_img"src="../../src/uploads/<%=product[i].list[j].name%>" alt="">
+              <div class="srvr_element_title"><%=product[i].title%></div>
+              <div class="srvr_element_price"><%=product[i].price%></div>
+              <div class="srvr_element_likebox">
+                <i class="srvr_element_icon fas fa-heart"></i>
+                <div class="srvr_element_count"><%=product[i].LikeCount%></div>
+              </div>
+              <div class="srvr_element_btn">
+                <div class="srvr_element_update">수정</div>
+                <div class="srvr_element_delete">삭제</div>
+              </div>
+              <input type="hidden" name="element_token" value="<%=product[i].key%>">
+              <input type="submit" class="element_btn" style="display:none;">
+            </form>
+          </div>
+        <% } %>
+          
+        <% if(product.length==0){ %>
+          <div class="servicerent_default">
+            <div>
+              <i class="xi-emoticon-smiley-o prt_defaulticon"></i><br>
+              등록하신 물품이 없습니다.
+            </div>
+          </div>
+        <% } %>
+        </article>
+      </div>
+    </div>
 
     <footer id="footer"></footer>
-
+  </div>
     <script>
       $(function(){
         $('html').removeClass('no-js');
