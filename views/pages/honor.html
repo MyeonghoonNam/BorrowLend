@@ -17,7 +17,24 @@
     </header>
 
     <div id="s-header"></div>
-
+    <div class="article-wrap">
+      <div class="honor-wrap">
+        <article class="honor-list">
+          <% for(var i = 0; i < honor.length; i++){ %>
+            <% var j = 0; %>
+            <div class="honor-list-element" onclick="BoardClick(this)">
+              <form method="get" action="/q&a-element" class="qa-element-form">
+                <div class="honor-element-id"><%=honor[i].id%></div>
+                <div class="honor-element-name"><%=honor[i].name%></div>
+                <div class="honor-element-grade"><%=honor[i].grade%></div>
+                <input type="hidden" name="honor_element_token" value="<%=honor[i].key%>">
+                <input type="submit" class="honor_element_btn" style="display:none;">
+              </form>
+            </div>
+          <% } %>
+        </article>        
+      </div>
+    </div>
     <footer id="footer"></footer>
 
     <script>

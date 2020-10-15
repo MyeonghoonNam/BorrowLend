@@ -777,9 +777,17 @@ app.post('/customer-write', function(req,res){
 
 app.get('/honor', function(req,res){
   if(req.session.user){
-    res.render('./pages/honor.html', {user:req.session.user});
-  } else{
-    res.redirect('/');
+    UserModel.find().sort({created_at:-1}).exec(function(err,results){
+      if(results){
+
+        res.render('./pages/honor.html', {
+          user:req.session.user,
+          honor:results,
+        });
+      } else {
+        res.redirect('/');
+      }
+    })
   }
 });
 

@@ -1,6 +1,51 @@
 /* PC 뷰 css */
 @media all and (max-width:1980px){ 
-  
+    .honor-list{
+        border:solid 2px #c8c8c8;
+        border-radius: 5px;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:space-between;
+        /* justify-content:space-around; */
+        padding: 3rem 4rem 1rem 4rem;
+      }
+
+      .honor-list-element {
+        /* border:solid 1px #c8c8c8; */
+        display: flex;
+        width:100%;
+        padding:0;
+        cursor: pointer;
+        border-bottom:solid 2px #c8c8c8;
+        margin-bottom:1rem;
+      }  
+
+      .honor-element-id {
+        width:10%;
+        height:auto;
+        /* border:solid 1px #c8c8c8; */
+        font-size:1.5rem;
+        /* margin-top:0.5rem; */
+      }
+
+
+      .honor-element-name {
+        width:30%;
+        height:auto;
+        margin-left:29rem;
+        /* border:solid 1px #c8c8c8; */
+        font-size:1.5rem;
+        /* margin-top:0.5rem; */
+      }
+      
+      .honor-element-grade {
+        width:10%;
+        height:auto;
+        margin-left:20rem;
+        /* border:solid 1px #c8c8c8; */
+        font-size:1.5rem;
+        /* margin-top:0.5rem; */
+      }
   
 }
     
