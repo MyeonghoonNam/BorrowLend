@@ -9,9 +9,9 @@
   
   .servicerent_array {
     display:flex;
-    width:90%;
+    width:97%;
     margin:0 auto;
-    margin-top:5rem;
+    margin-top:3rem;
     margin-bottom:0.5rem;
     /* border:solid 1px black; */
   }
