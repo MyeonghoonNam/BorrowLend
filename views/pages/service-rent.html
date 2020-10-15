@@ -60,9 +60,10 @@
                 <input type="hidden" name="element_uptoken" value="<%=product[i].key%>">
                 <input type="submit" class="element_upbtn" style="display:none;">
               </form>
-              <form class="srvr_element_udform" action="" style="display:inline-block;">
+              <form class="srvr_element_udform" method="post" action="/product_delete" onclick="DelbtnClick(this)">
                 <div class="srvr_element_delete">삭제</div>
                 <input type="hidden" name="element_deltoken" value="<%=product[i].key%>">
+                <input type="submit" class="element_delbtn" style="display:none;">
               </form>
             </div>
           </div>

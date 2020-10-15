@@ -513,7 +513,6 @@ app.post('/product_like', function(req,res){
         var query = {_id:doc1[0]._id};
         var update = {$pull:{LikeProduct:doc2[0]._id}};
         
-        
         UserModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
           console.log(result);
         });
@@ -546,8 +545,6 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
   var list = new Array();
   var userid = req.session.user.id;
   var check = req.body.price_check;
-
-  console.log(check);
   
   var files = req.files;
   var originalname = '';
@@ -586,12 +583,85 @@ app.get('/product_update', function(req,res){
   })
 });
 
-app.post('/product_imgdelete', function(req,res){
-  var token = req.body.token;
-  var deleteimg = req.body.deleteimg;
-  console.log(deleteimg);
-  res.send({result:'hi'});
-})
+app.post('/product_update', upload.array('photo', 5), function(req,res){
+  var uptoken = req.body.prtup_token;
+  var title = req.body.title;
+  var price = req.body.price;
+  var content = req.body.content;
+  var check = req.body.price_check;
+  
+  if(check == null){
+    check = "0";
+  }
+
+  var list = new Array();
+  
+  var files = req.files;
+  
+  if(!files){
+    var upquery = {_id:uptoken};
+    var proupdate = {
+      title:title,
+      price:price,
+      price_check:check,
+      content:content,
+    };
+    
+    ProductModel.findOneAndUpdate(upquery, proupdate, {new:true, upsert: true}, function(err, result){
+      console.log(result);
+      res.redirect('/service-rent');
+    });
+  } else {
+    var originalname = '';
+    var filename = '';
+    var mimetype = '';
+    var size = 0;
+
+    for(var index = 0; index < files.length; index++){
+      originalname = files[index].originalname;
+      filename = files[index].filename;
+      mimetype = files[index].mimetype;
+      size = files[index].size;
+      list[index] = {name:filename};
+    }
+
+    var upquery = {_id:uptoken};
+    var proupdate = {
+      title:title,
+      price:price,
+      price_check:check,
+      content:content,
+      list:list
+    };
+
+    ProductModel.findOneAndUpdate(upquery, proupdate, {new:true, upsert: true}, function(err, result){
+      console.log(result);
+      res.redirect('/service-rent');
+    });
+  }
+});
+
+app.post('/product_delete', function(req,res){
+  if(req.session.user){
+    var deltoken = req.body.element_deltoken;
+
+    ProductModel.findByKey(deltoken, function(err, doc){
+      console.log(doc[0]._id);
+      ProductModel.deleteOne({_id:doc[0]._id}, function(err, results){
+        UserModel.find({}, function(err, docs){
+          for(var i=0; i<docs.length; i++){
+            var query = {_id:docs[i]._id};
+            var update = {$pull:{LikeProduct:doc[0]._id}};
+            
+            UserModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
+            });
+          }
+          res.redirect('/service-rent');
+        });
+      });
+    });
+  }
+});
 
 app.get('/service-rent', function(req,res){
   if(req.session.user){

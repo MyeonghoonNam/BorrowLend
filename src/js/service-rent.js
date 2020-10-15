@@ -37,3 +37,9 @@ function UpbtnClick(element){
   product[0].click();
 }
 
+function DelbtnClick(element){
+  var product = $(element).find(".element_delbtn")
+  
+  product[0].click();
+}
+
