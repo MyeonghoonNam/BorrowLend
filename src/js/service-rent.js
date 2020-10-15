@@ -16,10 +16,12 @@ $(document).ready(function(){
   }
 
   var div_box = document.getElementsByClassName('servicerent-product')[0];
+  var div_topbox = document.getElementsByClassName('servicerent_topbox')[0];
   var div_default = document.getElementsByClassName('servicerent_default')[0];
   
   if(div_default){
-    div_box.style.height = "25rem";
+    div_box.style.height="25rem";
+    div_topbox.style.display="none";
   }
 });
 
@@ -37,9 +39,28 @@ function UpbtnClick(element){
   product[0].click();
 }
 
-function DelbtnClick(element){
-  var product = $(element).find(".element_delbtn")
-  
-  product[0].click();
+function DelbtnClick(){
+  swal({
+    title:'삭제하시겠습니까?',
+    icon: 'warning',
+    closeOnClickOutside:false,
+    closeOnEsc:false,
+    buttons : {
+      confirm : {
+        text:"확인",
+        value:true,
+        className:'product_delete_alert_confirm'
+      },
+      cancle : {
+        text:"취소",
+        value:false,
+        className:'product_delete_alert_cancle'
+      }
+    }
+  }).then(function(result) {
+    if(result) {
+      $("#srvr_element_deleteform").submit();
+    }
+  })
 }
 

@@ -9,6 +9,7 @@
     <script src="../../src/js/smallheader.js"></script>
     <script src="../../src/js/footer.js"></script>
     <script src="../../src/js/service-rent.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" href="../../src/css/style.css">
@@ -60,10 +61,10 @@
                 <input type="hidden" name="element_uptoken" value="<%=product[i].key%>">
                 <input type="submit" class="element_upbtn" style="display:none;">
               </form>
-              <form class="srvr_element_udform" method="post" action="/product_delete" onclick="DelbtnClick(this)">
+              <form class="srvr_element_udform" id="srvr_element_deleteform" method="post" action="/product_delete" onclick="DelbtnClick()">
                 <div class="srvr_element_delete">삭제</div>
                 <input type="hidden" name="element_deltoken" value="<%=product[i].key%>">
-                <input type="submit" class="element_delbtn" style="display:none;">
+                <!-- <input type="submit" class="element_delbtn" style="display:none;"> -->
               </form>
             </div>
           </div>

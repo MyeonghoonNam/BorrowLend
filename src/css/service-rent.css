@@ -198,6 +198,7 @@
   }
 
   .srvr_element_delete {
+    font-family: inherit;
     box-shadow:inset 0px 1px 0px 0px #f5978e;
     background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
     background-color:#f24537;
@@ -229,6 +230,17 @@
     height:7rem;
     margin:auto auto;
   }
+
+  .product_delete_alert_confirm {
+    font-size:1.2rem;
+    margin-right:0.5rem;
+  }
+  
+  .product_delete_alert_cancle {
+    font-size:1.2rem;
+    margin-left:0.5rem;
+  }
+
 
 }
     

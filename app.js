@@ -371,7 +371,7 @@ app.get('/signup', function(req,res){
   
         if(err) throw err;
   
-        results = results.solt({created_at:1});
+        // results = results.solt({created_at:1});
         if(results){
           res.render('./pages/signup.html', {results:results});
         }
@@ -646,7 +646,6 @@ app.post('/product_delete', function(req,res){
     var deltoken = req.body.element_deltoken;
 
     ProductModel.findByKey(deltoken, function(err, doc){
-      console.log(doc[0]._id);
       ProductModel.deleteOne({_id:doc[0]._id}, function(err, results){
         UserModel.find({}, function(err, docs){
           for(var i=0; i<docs.length; i++){
