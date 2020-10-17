@@ -678,8 +678,8 @@
 
 @media screen and (max-width:900px) and (orientation: landscape){
   .article-product-update {
-    width:52rem;
-    min-width:52rem;
+    width:48rem;
+    min-width:48rem;
     margin:0 auto;
     border:solid 2px #c8c8c8;
     margin-top:3rem;
@@ -859,7 +859,7 @@
   .prtupdate_imgwrap {
     /* text-align:center; */
     width:90%;
-    height:29rem;
+    height:25rem;
     border:solid 2px #c8c8c8;
     border-radius: 5%;
     position:relative;
@@ -964,7 +964,7 @@
     /* border:solid 1px black; */
     width:50%;
     /* text-align: center; */
-    margin-left:39.5%;
+    margin-left:32%;
     /* padding-right:0.5rem; */
   }
 

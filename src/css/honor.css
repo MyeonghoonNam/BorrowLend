@@ -52,6 +52,115 @@
 
     
 /* 모바일 뷰 css */
-@media all and (max-width:480px){
-    
+@media all and (max-width:425px){
+  .honor-wrap{
+    width:25rem;
+    margin: 0 auto;
+  }
+
+  .honor-list{
+    border:solid 2px #c8c8c8;
+    border-radius: 5px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    /* justify-content:space-around; */
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  
+
+  .honor-list-element {
+    /* border:solid 1px #c8c8c8; */
+    display: flex;
+    width:100%;
+    padding:0;
+    cursor: pointer;
+    border-bottom:solid 2px #c8c8c8;
+    margin-bottom:1rem;
+  } 
+
+
+  .honor-element-id {
+    width:10%;
+    height:auto;
+    /* border:solid 1px #c8c8c8; */
+    font-size:0.8rem;
+    /* margin-top:0.5rem; */
+  }
+
+
+  .honor-element-name {
+    width:30%;
+    height:auto;
+    margin-left:8rem;
+    /* border:solid 1px #c8c8c8; */
+    font-size:0.8rem;
+    /* margin-top:0.5rem; */
+  }
+  
+  .honor-element-grade {
+    width:10%;
+    height:auto;
+    margin-left:5rem;
+    /* border:solid 1px #c8c8c8; */
+    font-size:0.8rem;
+    /* margin-top:0.5rem; */
+  } 
+}
+
+
+@media screen and (max-width:900px) and (orientation: landscape){
+  .honor-wrap{
+    width:45rem;
+    margin: 0 auto;
+  }
+
+  .honor-list{
+    border:solid 2px #c8c8c8;
+    border-radius: 5px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    /* justify-content:space-around; */
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  
+
+  .honor-list-element {
+    /* border:solid 1px #c8c8c8; */
+    display: flex;
+    width:100%;
+    padding:0;
+    cursor: pointer;
+    border-bottom:solid 2px #c8c8c8;
+    margin-bottom:1rem;
+  } 
+
+
+  .honor-element-id {
+    width:10%;
+    height:auto;
+    /* border:solid 1px #c8c8c8; */
+    font-size:1rem;
+    /* margin-top:0.5rem; */
+  }
+
+
+  .honor-element-name {
+    width:30%;
+    height:auto;
+    margin-left:16rem;
+    /* border:solid 1px #c8c8c8; */
+    font-size:1rem;
+    /* margin-top:0.5rem; */
+  }
+  
+  .honor-element-grade {
+    width:10%;
+    height:auto;
+    margin-left:10rem;
+    /* border:solid 1px #c8c8c8; */
+    font-size:1rem;
+    /* margin-top:0.5rem; */
+  } 
 }
