@@ -217,14 +217,6 @@
     min-width:100rem;
   }
 
-  .swal-overlay{
-    min-width:100rem;
-  }
-
-  .swal-modal {
-    width:26%;
-  }
-
   .message_imgtag img{
     width:10%;
     height:10%;
@@ -692,14 +684,6 @@
 
   .jquery-modal {
     min-width:100%;
-  }
-
-  .swal-overlay{
-    min-width:100rem;
-  }
-
-  .swal-modal {
-    width:26%;
   }
 
   .modal {

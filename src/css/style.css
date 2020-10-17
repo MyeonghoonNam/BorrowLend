@@ -40,7 +40,7 @@
   }
   
   .wrapper{ 
-    display: flex; min-height: 100vh; flex-direction: column; 
+    display: flex; min-height: 100vh; flex-direction: column;
   }
 
   .article-wrap {
@@ -57,6 +57,7 @@
     flex:1
   }
   
+  
 }
 
 /* 모바일 뷰 css */
@@ -64,6 +65,8 @@
     *:focus { 
     outline:none; 
   }
+
+  
 
   html, body {
     margin:0;
@@ -88,6 +91,15 @@
     border-radius: 5px;
     font-family: 'Noto Sans KR', sans-serif;
   }
+
+  /* .swal-overlay{
+    width:100%;
+    min-width:100rem;
+  }
+
+  .swal-modal {
+    width:26%;
+  } */
 }
 
 
