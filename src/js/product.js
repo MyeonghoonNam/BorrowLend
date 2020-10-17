@@ -21,15 +21,6 @@ $(document).ready(function(){
     slidesToScroll: 1,
   });
 
-  // 쪽지 모달
-  $('a[href="#ex1"]').click(function(event) {
-    event.preventDefault();
-    
-    // $(this).modal({
-    //   fadeDuration: 250
-    // });
-  });
-
   // 좋아요 기능
   $(document).on('click', '.product_likebtn', function(){
     var btn = document.getElementsByClassName('product_likebtn')[0];

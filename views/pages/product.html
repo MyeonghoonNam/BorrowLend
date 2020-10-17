@@ -113,7 +113,7 @@
       var MessageImg_Inputcount = 0;
       
       function handleImgAdd(e){
-        var MessageImg_inputlist = document.getElementsByClassName("message_img")[0];
+        var MessageImg_inputlist = document.getElementsByClassName("message_slide")[0];
 
         var MessageImg_input = document.createElement('input');
         
@@ -189,17 +189,22 @@
         handleImgSlider((currSlide+=num));
       }
 
+      function Previewbtn_Click(num){
+        handleImgSlider((currSlide+=num));
+      }
+
       function ResetImgbtn(){
         $('.MessageImg_input').remove();
         $('.message_slide_img').remove();
         $('.Message_form').removeAttr("enctype");
         sel_files.splice(0, sel_files.length);
-        prtinput_count = 0;
+        MessageImg_Inputcount = 0;
         $(".messageImg_prevbtn").css("display","none");
         $(".messageImg_nextbtn").css("display","none");
         $(".messageImg_deletebtn").css("display","none");
         $(".message_slide").css("display","none");
       }
+
     </script>
 </body>
 </html>
