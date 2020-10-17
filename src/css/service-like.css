@@ -152,8 +152,8 @@
   }
   .srv_element_price {
     width:4rem;
-    height:auto;
     display: inline-block;
+    margin-left:1rem;
     font-size:1rem;
     vertical-align: 2rem;
     color: #ff8a3d;

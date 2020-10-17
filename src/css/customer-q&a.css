@@ -146,18 +146,22 @@
        
 /* 모바일 뷰 css */
 @media all and (max-width:425px){
+  
   .board-list{
+    width:25em;
+    min-width:25rem;
+    margin:1rem auto;
     border:solid 2px #c8c8c8;
-    border-radius: 5px;
+    padding: 0 0;
     display:flex;
-    /* justify-content:space-around; */
-    padding: 0 1rem;
+    flex-wrap:wrap;
   }
 
   .board-list-element {
     /* border:solid 1px #c8c8c8; */
-    width:22rem;
+    width:90%;
     padding:0;
+    margin: 0 auto;
     cursor: pointer;
     border-bottom:solid 2px #c8c8c8;
     margin-bottom:1rem;
@@ -170,32 +174,30 @@
     padding:0;
     cursor: pointer;
     border-bottom:solid 2px #c8c8c8;
-    margin-bottom:1rem;
+    margin-bottom:0.5rem;
   }
 
   .board-first-number {
-    width:10rem;
+    width:3rem;
     /* border:solid 1px #c8c8c8; */
     font-size:1rem;
+    margin-left:1rem;
     /* margin-top:0.5rem; */
   }
 
 
   .board-first-title {
-    width:10rem;
+    width:3rem;
     /* border:solid 1px #c8c8c8; */
+    margin-left:6rem;
     font-size:1rem;
     /* margin-top:0.5rem; */
   }
 
-  .qa-element-form{
-    width:100%;
-    display: flex;
-  }
-  
   .board-first-id {
-    width:10rem;
+    width:3rem;
     /* border:solid 1px #c8c8c8; */
+    margin-left:6.5rem;
     font-size:1rem;
     /* margin-top:0.5rem; */
   }
@@ -209,7 +211,7 @@
     width:10%;
     height:auto;
     /* border:solid 1px #c8c8c8; */
-    font-size:1.5rem;
+    font-size:0.8rem;
     /* margin-top:0.5rem; */
   }
 
@@ -217,9 +219,9 @@
   .board-element-title {
     width:30%;
     height:auto;
-    margin-left:29rem;
+    margin-left:6rem;
     /* border:solid 1px #c8c8c8; */
-    font-size:1.5rem;
+    font-size:0.8rem;
     /* margin-top:0.5rem; */
   }
   
@@ -228,9 +230,9 @@
   .board-element-id {
     width:10%;
     height:auto;
-    margin-left:20rem;
+    margin-left:3rem;
     /* border:solid 1px #c8c8c8; */
-    font-size:1.5rem;
+    font-size:0.8rem;
     /* margin-top:0.5rem; */
   }
   
@@ -245,16 +247,16 @@
   .board_writebox {
     /* text-align:center; */
     /* border:solid 1px black; */
-    width:13%;
+    width:24%;
     /* text-align: center; */
     margin: 0 auto;
     /* padding-right:0.5rem; */
   }
 
   .board_writebox button {
-    width:7rem;
+    width:6rem;
     font-family: inherit;
-    font-size:1.2em;
+    font-size:0.8em;
     margin-top:1rem;
     margin-bottom:1rem;
   }
