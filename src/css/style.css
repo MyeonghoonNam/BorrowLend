@@ -124,7 +124,9 @@ button {
 }
 }
 
-@media all and (max-height:350px) and (orientation: landscape){
+
+/* 입력시 화면 깨짐 방지 */
+@media all and(max-width:425px) and (orientation: landscape){
   *:focus { 
   outline:none; 
 }
