@@ -1,13 +1,36 @@
 $(document).ready(function(){
+  // 이미지 뷰
+
+  // 백업용
+  // $(".slider").slick({
+  //   dots:true,
+  //   arrows:true,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  // }).on('setPosition', function (event, slick) {
+  //   slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+  //   if(slick.$slideTrack.width()==1600){
+  //     slick.$slides.css('height', '288px');
+  //   }
+  // });
+
   $(".slider").slick({
     dots:true,
     arrows:true,
     slidesToShow: 1,
     slidesToScroll: 1,
-  }).on('setPosition', function (event, slick) {
-    slick.$slides.css('height', slick.$slideTrack.height() + 'px');
   });
 
+  // 쪽지 모달
+  $('a[href="#ex1"]').click(function(event) {
+    event.preventDefault();
+    
+    // $(this).modal({
+    //   fadeDuration: 250
+    // });
+  });
+
+  // 좋아요 기능
   $(document).on('click', '.product_likebtn', function(){
     var btn = document.getElementsByClassName('product_likebtn')[0];
     var token = document.getElementsByClassName('info_pid')[0];
@@ -32,6 +55,11 @@ $(document).ready(function(){
       }
     });
   });
-  
-  
 });
+
+function MessageModalOpen(element){
+  var btn = $(element).find('.test');
+  $(btn).attr("href", "#ex1");
+  $(btn).attr("rel", "modal:open");
+  btn.click();
+}

@@ -8,8 +8,11 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" href="../../src/css/style.css">
     <script src="../../src/js/header.js"></script>
     <script src="../../src/js/smallheader.js"></script>
@@ -60,21 +63,143 @@
           <div class="info_content"><%=product[0].content%></div>
         </div>
 
-        <div class="product_callbtn">
-          연락하기
-          <i class="far fa-comment-dots"></i>
+        <div>
+
+          <a class="product_callbtn" href="#ex1" rel="modal:open">연락하기 <i class="far fa-comment-dots"></i></a>
+        </div>
+        
+        <div id="ex1" class="modal">
+          <form class="Message_form" action="" method="post" autocomplete="off">
+            <div class="message_wrap">
+              <div class="message_img">
+                <div class="message_viewimg">
+                  <img src="src/images/camera.png" onclick="handleImgAdd()">
+                </div>
+
+                <div class="message_slide">
+                  <a class="messageImg_prevbtn" onclick="Previewbtn_Click(-1)">&#10094</a>
+                  <a class="messageImg_nextbtn" onclick="Previewbtn_Click(1)">&#10095</a>
+                  <button type="button" class="messageImg_deletebtn" onclick="ResetImgbtn()"></button>
+                </div>
+              </div>
+  
+              <div class="message_recv">
+                <div class="message_recv_span">받는이</div>
+                <img class="recv_img" src="../../src/images/user.svg">
+                <div class="recv_grade"><%=userinfo[0]._doc.grade%></div>
+                <div class="recv_name"><%=userinfo[0]._doc.id%></div>
+              </div>
+  
+              <div class="message_title">제목</div>
+              <input class="message_title_input" type="text" name="title" placeholder="제목을 입력해주세요.">
+              <div class="message_content">내용</div>
+              <textarea class="message_content_input" name="content" placeholder="내용을 입력해주세요." wrap="hard" style="resize: none;"></textarea>
+              
+              <button type="button" class="message_sendbtn">전송 <i class="far fa-envelope"></i></button>
+
+            </div>
+          </form>
         </div>
       </article>
     </div>
-    
-    <footer id="footer"></footer>
 
+    <footer id="footer"></footer>
+  </div>
     <script>
       $(function(){
         $('html').removeClass('no-js');
       });
 
+      var MessageImg_Inputcount = 0;
       
+      function handleImgAdd(e){
+        var MessageImg_inputlist = document.getElementsByClassName("message_img")[0];
+
+        var MessageImg_input = document.createElement('input');
+        
+        MessageImg_input.setAttribute("type", "file");
+        MessageImg_input.setAttribute("name", "photo");
+        MessageImg_input.setAttribute("class", "MessageImg_input");
+        MessageImg_input.setAttribute("style", "display:none");
+        MessageImg_input.setAttribute("multiple", "");
+        
+        MessageImg_inputlist.appendChild(MessageImg_input);
+        MessageImg_Inputcount++;
+        
+        
+        document.getElementsByClassName("MessageImg_input")[MessageImg_Inputcount-1].click();
+        
+        $(".MessageImg_input").on("change", handleImgPreview);
+      }
+
+      var sel_files = [];
+      let currSlide = 1;
+
+      function handleImgPreview(e) {
+        $('.Message_form').attr("enctype", "multipart/form-data");
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+
+        filesArr.forEach(function(f) {
+          if(!f.type.match("image.*")){
+            //이미지파일만 허용하는 경고 구현하기
+            return;
+          }
+
+          sel_files.push(f);
+
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var img_html = "<img class=\"message_slide_img\" src=\"" + e.target.result + "\" />";
+            $(".message_slide").append(img_html);
+            $(".message_slide").css("display","block");
+            
+            handleImgSlider(currSlide);
+          }
+          reader.readAsDataURL(f);
+        });
+      }
+
+      function handleImgSlider(num){
+        var slides = document.querySelectorAll(".message_slide_img");
+        let messageimg_count = slides.length;
+        
+        $(".messageImg_deletebtn").css("display","inline");
+
+        if(messageimg_count>1){
+          $(".messageImg_prevbtn").css("display","inline");
+          $(".messageImg_nextbtn").css("display","inline");
+          
+        }
+
+        if(num>slides.length){
+          currSlide = 1;
+        } if(num<1){
+          currSlide = slides.length;
+        }
+
+        for(let i=0; i<slides.length; i++){
+          slides[i].style.display="none";
+        }
+
+        slides[currSlide-1].style.display="block";
+      }
+
+      function Previewbtn_Click(num){
+        handleImgSlider((currSlide+=num));
+      }
+
+      function ResetImgbtn(){
+        $('.MessageImg_input').remove();
+        $('.message_slide_img').remove();
+        $('.Message_form').removeAttr("enctype");
+        sel_files.splice(0, sel_files.length);
+        prtinput_count = 0;
+        $(".messageImg_prevbtn").css("display","none");
+        $(".messageImg_nextbtn").css("display","none");
+        $(".messageImg_deletebtn").css("display","none");
+        $(".message_slide").css("display","none");
+      }
     </script>
 </body>
 </html>
