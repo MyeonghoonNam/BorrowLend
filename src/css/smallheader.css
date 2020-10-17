@@ -38,7 +38,7 @@
 
     
 /* 모바일 뷰 css */
-@media all and (max-width:480px){
+@media all and (max-width:425px){
   .small-header{
     width:70%;
     margin-left:3%;

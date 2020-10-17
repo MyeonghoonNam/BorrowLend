@@ -207,7 +207,7 @@
 }
 
 /* 모바일 세로뷰 css */
-@media all and (max-width:425px) and (min-height:250px){
+@media all and (max-width:425px){
    
   #header {
     padding-top:0;
@@ -692,4 +692,246 @@
   }
 
   
+}
+
+/* 모바일 입력 시 화면 깨짐 방지 */
+@media all and (max-height:425px){
+  #header {
+    padding-top:0;
+    width:100%;
+    min-width: 100%;
+    vertical-align: middle;
+    margin: 0 auto;
+    display: flex;
+  }
+  
+  .logo {
+    width:78%;
+    font-family: 'Alata', sans-serif;
+    font-size:2rem;
+    text-align: center;
+    z-index: 3;
+  }
+  
+  .logo a {
+    text-decoration:none;
+    color:black;
+  }
+  .nav {
+    order:2;
+    position: absolute;
+    padding-top:2rem;
+    width:100%;
+    left:-100%;
+    height:130%;
+    margin:0;
+    padding-top: 0;
+    text-align:center;
+    background-color:black;
+    z-index: 2; 
+  }
+  
+  .nav ul {
+    list-style:none;
+    text-align: left;
+    width:25rem;
+    line-height: 3rem;
+    margin:0 auto;
+    padding:0;
+    margin-top:37%;
+  }
+  
+  .menu > li {
+    display:block;
+    font-size:1.8rem;
+    border-bottom: 2px solid white;
+    padding:0;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  .menu li a {
+    /* display:inline-block; */
+    text-decoration:none;
+    color:white;
+  }
+
+  .sub-menu {
+    position: relative;
+    opacity: 0;
+    transition: all 0.15s ease-in;
+    background: black;
+    border:none;
+    font-size:1rem;
+  }
+
+  #service-menu {
+    display: none;
+    margin-top: 0%;
+    width:100%;
+  }
+
+  #customersupport-menu {
+    display: none;
+    margin-top: 0%;
+    width:100%;
+  }
+
+  .sub-menu > li {
+    padding:0.15rem 0.3rem;
+    line-height: 2rem;
+  }
+
+  .sub-menu > li > a:hover {
+    text-decoration:none;
+    color:#DD4E4E;
+    cursor:pointer;
+  }
+
+  .menu > li > a:hover {
+    color:#DD4E4E;
+    cursor:pointer;
+    text-decoration: none;
+  }
+
+  .menu > li:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .userwrap {
+    order:1;
+    position: absolute;
+    top:10%;
+    width:100%;
+    left:-100%;
+    z-index: 2;
+    border-bottom: 2px solid white;
+  }
+
+  .user {
+    display:flex;
+    flex-wrap: wrap;
+    width:65%;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size:1rem;
+    margin:0;
+    margin-bottom:0.2rem;
+    padding-top:0.8rem;
+  }
+
+  .user div {
+    height:1rem;
+  }
+
+  .favicon {
+    width: 2rem;
+    left:1%;
+    margin-top:0.7rem;
+    margin-left:4rem;
+    margin-bottom: 0.5rem;
+    float:left;
+    border:solid 1px;
+    border-radius:50%;
+  }
+  
+  .grade {
+    order:1;
+    border-radius:5px;
+    background-color: darkgray;
+    color:white;
+    text-align:center;
+    vertical-align:middle;
+    margin-left:0.5rem;
+    margin-bottom:0.1rem;
+    width:2rem;
+  }
+  
+  .user-name {
+    order:2;
+    margin-left:0.5rem;
+  }
+
+  .user-id {
+    color:white;
+  }
+
+  .user-info {
+    order:3;
+    margin-left:0.5rem;
+    padding-right:0rem;
+    color:darkgray;
+    
+  }
+  
+  .logout {
+    display: block;
+  }
+
+  .service-menu1{
+    display: inline-block;
+    font-size: 1rem;
+    position: relative;
+    left:75%;
+  }
+
+  .service-menu2{
+    display: inline-block;
+    font-size: 1rem;
+    position: relative;
+    left:68.5%;
+  }
+
+
+  /* 메뉴바*/
+  
+  input[id="hamburger"] {
+    display: none;
+  }
+  input[id="hamburger"] + label {
+    display: block;
+    width: 2.3rem;
+    height: 1.8rem;
+    position: relative;
+    cursor: pointer;
+    margin-left:2%;
+    margin-top:2.5%;
+    z-index: 3;
+  }
+  input[id="hamburger"] + label span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 0.3rem;
+    border-radius: 30px;
+    background: #000;
+    transition: all 0.35s;
+    z-index: 3
+  }
+  input[id="hamburger"] + label span:nth-child(1) {
+    top: 0;
+  }
+  input[id="hamburger"] + label span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  input[id="hamburger"] + label span:nth-child(3) {
+    bottom: 0;
+  }
+  input[id="hamburger"]:checked + label {
+    z-index: 3;
+  }
+  input[id="hamburger"]:checked + label span {
+    background: white;
+  }
+  input[id="hamburger"]:checked + label span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  input[id="hamburger"]:checked + label span:nth-child(2) {
+    opacity: 0;
+  }
+  input[id="hamburger"]:checked + label span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
 }

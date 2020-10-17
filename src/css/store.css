@@ -170,7 +170,7 @@
 
     
 /* 모바일 뷰 css */
-@media all and (max-width:480px){
+@media all and (max-width:425px){
   .store-search-form {
     position: relative;
     margin:1rem auto;
