@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    
     <link rel="stylesheet" href="../../src/css/style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../../src/js/header.js"></script>
     <script src="../../src/js/smallheader.js"></script>
     <script src="../../src/js/footer.js"></script>
@@ -69,10 +71,10 @@
         </div>
         
         <div id="ex1" class="modal">
-          <form class="Message_form" action="" method="post" autocomplete="off">
+          <form class="Message_form" action="product_message" method="post" autocomplete="off">
             <div class="message_wrap">
               <div class="message_img">
-                <div class="message_viewimg">
+                <div class="message_imgtag">
                   <img src="src/images/camera.png" onclick="handleImgAdd()">
                 </div>
 
@@ -88,6 +90,7 @@
                 <img class="recv_img" src="../../src/images/user.svg">
                 <div class="recv_grade"><%=userinfo[0]._doc.grade%></div>
                 <div class="recv_name"><%=userinfo[0]._doc.id%></div>
+                <input type="hidden" name="recv_id" value="<%=userinfo[0]._doc.id%>">
               </div>
   
               <div class="message_title">제목</div>
@@ -95,8 +98,13 @@
               <div class="message_content">내용</div>
               <textarea class="message_content_input" name="content" placeholder="내용을 입력해주세요." wrap="hard" style="resize: none;"></textarea>
               
-              <button type="button" class="message_sendbtn">전송 <i class="far fa-envelope"></i></button>
-
+              <button type="submit" class="message_sendbtn" onclick="swal({
+                title: '전송완료',
+                text: '쪽지함에서 확인하세요.',
+                icon: 'success'
+              }).then(function() {
+                  window.location.href = '/message';
+              })">전송 <i class="far fa-envelope"></i></button>
             </div>
           </form>
         </div>
@@ -113,7 +121,7 @@
       var MessageImg_Inputcount = 0;
       
       function handleImgAdd(e){
-        var MessageImg_inputlist = document.getElementsByClassName("message_img")[0];
+        var MessageImg_inputlist = document.getElementsByClassName("message_slide")[0];
 
         var MessageImg_input = document.createElement('input');
         
@@ -122,6 +130,7 @@
         MessageImg_input.setAttribute("class", "MessageImg_input");
         MessageImg_input.setAttribute("style", "display:none");
         MessageImg_input.setAttribute("multiple", "");
+        MessageImg_input.setAttribute("accept", "image/*");
         
         MessageImg_inputlist.appendChild(MessageImg_input);
         MessageImg_Inputcount++;
@@ -136,7 +145,7 @@
       let currSlide = 1;
 
       function handleImgPreview(e) {
-        $('.Message_form').attr("enctype", "multipart/form-data");
+        // $('.Message_form').attr("enctype", "multipart/form-data");
         var files = e.target.files;
         var filesArr = Array.prototype.slice.call(files);
 
@@ -151,7 +160,9 @@
           var reader = new FileReader();
           reader.onload = function(e) {
             var img_html = "<img class=\"message_slide_img\" src=\"" + e.target.result + "\" />";
+            var input_html = "<input type=\"hidden\" class=\"message_Imglist\" name=\"message_Imglist\" value=\"" + e.target.result + "\" />";
             $(".message_slide").append(img_html);
+            $(".message_slide").append(input_html);
             $(".message_slide").css("display","block");
             
             handleImgSlider(currSlide);
@@ -189,17 +200,23 @@
         handleImgSlider((currSlide+=num));
       }
 
+      function Previewbtn_Click(num){
+        handleImgSlider((currSlide+=num));
+      }
+
       function ResetImgbtn(){
         $('.MessageImg_input').remove();
         $('.message_slide_img').remove();
-        $('.Message_form').removeAttr("enctype");
+        $('.message_Imglist').remove();
+        // $('.Message_form').removeAttr("enctype");
         sel_files.splice(0, sel_files.length);
-        prtinput_count = 0;
+        MessageImg_Inputcount = 0;
         $(".messageImg_prevbtn").css("display","none");
         $(".messageImg_nextbtn").css("display","none");
         $(".messageImg_deletebtn").css("display","none");
         $(".message_slide").css("display","none");
       }
+
     </script>
 </body>
 </html>

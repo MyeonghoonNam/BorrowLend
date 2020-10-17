@@ -23,8 +23,8 @@ app.set('views', path.join(__dirname,'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine','html');
 
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({limit: '50mb', extended:false}));
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use(cookieParser());
 
@@ -152,11 +152,12 @@ function connectDB(){
     });
     
     MessageSchema = mongoose.Schema({
-      recv_id:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
-      sent_id:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
+      recv_id:{type : String, required : true},
+      sent_id:{type : String, required : true},
       title:{type : String, required : true},
       content:{type : String, required : true},
-      read_date:{type: Date, index: {unique: false}, 'default': Date.now},
+      Imglist:[{type : String}],
+      read_date:{type: Date, index: {unique: false}},
       sent_date:{type: Date, index: {unique: false}, 'default': Date.now},
       read_recv:{type : String, index: {unique: false}, 'default': "N"},
       del_recv:{type: String, index: {unique: false}, 'default': "N"},
@@ -196,14 +197,14 @@ function connectDB(){
     
     UserModel = mongoose.model('users', UserSchema);
     SchoolModel = mongoose.model('schools', SchoolSchema);
-    ProductModel = mongoose.model('product', ProductSchema);
-    MessageModel = mongoose.model('message', MessageSchema);
+    ProductModel = mongoose.model('products', ProductSchema);
+    MessageModel = mongoose.model('messages', MessageSchema);
     BoardModel = mongoose.model('Board', BoardSchema);
     
     console.log('UserModel Define');
     console.log('SchoolModel Define');
     console.log('ProductModel Define');
-    console.log('MessageSchemaModel Define');
+    console.log('MessageModel Define');
     console.log('BoardModel Define');
 
   });
@@ -226,7 +227,6 @@ var authUser = function(database, id, password, callback){
 		}
 		
 		console.log('아이디 [%s]로 사용자 검색결과', id);
-		console.dir(results);
 		
 		if (results.length > 0) {
 			console.log('아이디와 일치하는 사용자 찾음.');
@@ -249,7 +249,6 @@ var authUser = function(database, id, password, callback){
 //
 
 // User 등록
-
 var addUser = function(database, id, password, name, gender, school, tel, callback){
   var user = new UserModel({
     "id":id,
@@ -293,6 +292,24 @@ var addProduct = function(database, title, price, content, list, userid, check, 
 };
 //
 
+// 쪽지 작성
+var sentMessage = function(database, title, content, Imglist, recv_id, sent_id, callback){
+  
+    var Message = new MessageModel({
+      "title":title,
+      "content":content,
+      "Imglist":Imglist,
+      "recv_id":recv_id,
+      "sent_id":sent_id
+    });
+    Message.save(function(err){
+      if(err) throw err;
+      
+      callback(null, Message);
+    });
+};
+//
+
 // 게시판 등록
 var addBoard = function(database, title, content, userid, callback){
 
@@ -315,6 +332,8 @@ var addBoard = function(database, title, content, userid, callback){
 
 };
 //
+
+app.use(static(__dirname));
 
 app.get('/', function(req,res){
   if(req.session.user){
@@ -669,6 +688,23 @@ app.post('/product_delete', function(req,res){
   }
 });
 
+app.post('/product_message', function(req,res){
+  var title = req.body.title;
+  var content = req.body.content;
+  var Imglist = req.body.message_Imglist;
+  var recv_id = req.body.recv_id;
+  var sent_id = req.session.user.id;
+
+  sentMessage(database, title, content, Imglist, recv_id, sent_id, function(err, result){
+    if(err) throw err;
+
+    if(result) {
+      console.log("Success send message");
+      // res.redirect('/message');
+    }
+  });
+})
+
 app.get('/service-rent', function(req,res){
   if(req.session.user){
     ProductModel.find({userinfo:req.session.user._id}).sort({created_at:-1}).exec(function(err,results){
@@ -818,7 +854,6 @@ app.get('/logout', function(req,res){
   }
 });
 
-app.use(static(__dirname));
 // app.use('/uploads', static(path.join(__dirname + '/src', 'uploads')));
 
 http.createServer(app).listen(app.get('port'), function(){
