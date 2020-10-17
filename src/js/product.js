@@ -47,10 +47,3 @@ $(document).ready(function(){
     });
   });
 });
-
-function MessageModalOpen(element){
-  var btn = $(element).find('.test');
-  $(btn).attr("href", "#ex1");
-  $(btn).attr("rel", "modal:open");
-  btn.click();
-}
