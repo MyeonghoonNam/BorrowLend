@@ -150,7 +150,18 @@ function connectDB(){
     ProductSchema.static('findAll', function(callback){
       return this.find({}, callback);
     });
-
+    
+    MessageSchema = mongoose.Schema({
+      recv_id:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
+      sent_id:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
+      title:{type : String, required : true},
+      content:{type : String, required : true},
+      read_date:{type: Date, index: {unique: false}, 'default': Date.now},
+      sent_date:{type: Date, index: {unique: false}, 'default': Date.now},
+      read_recv:{type : String, index: {unique: false}, 'default': "N"},
+      del_recv:{type: String, index: {unique: false}, 'default': "N"},
+      del_sent:{type: String, index: {unique: false}, 'default': "N"}
+    })
 
     BoardSchema = mongoose.Schema({
       key:{type : Number, unique : true, 'default':0},
@@ -169,13 +180,6 @@ function connectDB(){
       increment:1
     });
 
-    BoardSchema.plugin(autoIncrement.plugin, {
-      model:'BoardModel',
-      field: 'number',
-      startAt:1,
-      increment:1
-    });
-
     BoardSchema.static('findByKey', function(key, callback){
       return this.find({key:key}, callback);
     });
@@ -187,16 +191,19 @@ function connectDB(){
     console.log('UserSchema Define');
     console.log('SchoolSchema Define');
     console.log('ProductSchema Define');
+    console.log('MessageSchema Define');
     console.log('BoardSchema Define');
     
     UserModel = mongoose.model('users', UserSchema);
     SchoolModel = mongoose.model('schools', SchoolSchema);
     ProductModel = mongoose.model('product', ProductSchema);
+    MessageModel = mongoose.model('message', MessageSchema);
     BoardModel = mongoose.model('Board', BoardSchema);
     
     console.log('UserModel Define');
     console.log('SchoolModel Define');
     console.log('ProductModel Define');
+    console.log('MessageSchemaModel Define');
     console.log('BoardModel Define');
 
   });
