@@ -30,15 +30,24 @@
 
 
       .honor-element-name {
-        width:30%;
+        width:15%;
         height:auto;
-        margin-left:29rem;
+        margin-left:10rem;
         /* border:solid 1px #c8c8c8; */
         font-size:1.5rem;
         /* margin-top:0.5rem; */
       }
       
       .honor-element-grade {
+        width:10%;
+        height:auto;
+        margin-left:10rem;
+        /* border:solid 1px #c8c8c8; */
+        font-size:1.5rem;
+        /* margin-top:0.5rem; */
+      }
+
+      .honor-element-score {
         width:10%;
         height:auto;
         margin-left:20rem;
