@@ -27,6 +27,7 @@
                 <div class="honor-element-id"><%=honor[i].id%></div>
                 <div class="honor-element-name"><%=honor[i].name%></div>
                 <div class="honor-element-grade"><%=honor[i].grade%></div>
+                <div class="honor-element-score"><%=honor[i].honorCount*500%></div>
                 <input type="hidden" name="honor_element_token" value="<%=honor[i].key%>">
                 <input type="submit" class="honor_element_btn" style="display:none;">
               </form>

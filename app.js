@@ -101,8 +101,10 @@ function connectDB(){
       tel : {type : String, required : true},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now},
       grade : {type : String, 'default':'시민'},
+      honorCount:{type : Number, 'default':0},
       LikeProduct:[{type:mongoose.Schema.Types.ObjectId, ref:'product'}]
     });
+
 
     UserSchema.static('findByOid', function(oid, callback){
       return this.find({_id:oid}, callback);
@@ -605,6 +607,32 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
     });
   }
 
+  UserModel.findById(userid, function(err, doc1){
+    var query3 = {_id:doc1[0]._id};
+    var update3 = {honorCount:doc1[0].honorCount + 1};
+    var count3 = {grade:'귀족'};
+    var count4 = {grade:'백작'};
+    var count5 = {grade:'왕'};
+
+    UserModel.findOneAndUpdate(query3, update3, {new:true, upsert: true}, function(err, result){
+      console.log(result);
+    });
+
+    if(query3){
+    UserModel.findOneAndUpdate({ honorCount: 5 }, count3, {new:true, new:true}, function(err, result){
+      console.log(result);
+    });
+
+    UserModel.findOneAndUpdate({ honorCount: 10 }, count4, {new:true, new:true}, function(err, result){
+      console.log(result);
+    });
+
+    UserModel.findOneAndUpdate({ honorCount: 15 }, count5, {new:true, new:true}, function(err, result){
+      console.log(result);
+    });
+  }
+ });
+ 
 });
 
 app.get('/product_update', function(req,res){
@@ -927,7 +955,7 @@ app.post('/customer-write', function(req,res){
 
 app.get('/honor', function(req,res){
   if(req.session.user){
-    UserModel.find().sort({created_at:-1}).exec(function(err,results){
+    UserModel.find().sort({honorCount:-1}).exec(function(err,results){
       if(results){
 
         res.render('./pages/honor.html', {
