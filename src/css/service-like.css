@@ -186,8 +186,7 @@
     color: gray;
     font-size: 2rem;
     margin:auto auto;
-
-}
+  }
 }
 
 @media screen and (max-width:900px) and (orientation: landscape){

@@ -56,5 +56,4 @@ function OrderByLike(){
   var token = $('.orderlist_btn');
   $('input[name=store_ordertoken]').attr("value","1");
   token.click();
-
 }

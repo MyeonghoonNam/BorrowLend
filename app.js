@@ -157,12 +157,19 @@ function connectDB(){
       title:{type : String, required : true},
       content:{type : String, required : true},
       Imglist:[{type : String}],
-      read_date:{type: Date, index: {unique: false}},
-      sent_date:{type: Date, index: {unique: false}, 'default': Date.now},
+      // read_date:{type: Date, index: {unique: false}},
+      sent_date:{type: String, required : true},
       read_recv:{type : String, index: {unique: false}, 'default': "N"},
       del_recv:{type: String, index: {unique: false}, 'default': "N"},
       del_sent:{type: String, index: {unique: false}, 'default': "N"}
     })
+
+    MessageSchema.plugin(autoIncrement.plugin, {
+      model:'MessageModel',
+      field: 'key',
+      startAt:1,
+      increment:1
+    });
 
     BoardSchema = mongoose.Schema({
       key:{type : Number, unique : true, 'default':0},
@@ -293,15 +300,17 @@ var addProduct = function(database, title, price, content, list, userid, check, 
 //
 
 // 쪽지 작성
-var sentMessage = function(database, title, content, Imglist, recv_id, sent_id, callback){
+var sentMessage = function(database, title, content, Imglist, recv_id, sent_id, sent_date, callback){
   
     var Message = new MessageModel({
       "title":title,
       "content":content,
       "Imglist":Imglist,
       "recv_id":recv_id,
-      "sent_id":sent_id
+      "sent_id":sent_id,
+      "sent_date":sent_date
     });
+
     Message.save(function(err){
       if(err) throw err;
       
@@ -694,8 +703,28 @@ app.post('/product_message', function(req,res){
   var Imglist = req.body.message_Imglist;
   var recv_id = req.body.recv_id;
   var sent_id = req.session.user.id;
+  const now = new Date();
+  
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  let hour = now.getHours();
+  let minute = now.getMinutes();
+  let second = now.getSeconds();
+  const ampm = hour >= 12 ? 'PM' : 'AM';
 
-  sentMessage(database, title, content, Imglist, recv_id, sent_id, function(err, result){
+  // 12시간제로 변경
+  hour %= 12;
+  hour = hour || 12; // 0 => 12
+
+  // 10미만인 분과 초를 2자리로 변경
+  hour = hour < 10 ? '0' + hour : hour;
+  minute = minute < 10 ? '0' + minute : minute;
+  second = second < 10 ? '0' + second : second;
+
+  const sent_date = `${year}-${month}-${date} ${hour}:${minute}:${second} ${ampm}`;
+
+  sentMessage(database, title, content, Imglist, recv_id, sent_id, sent_date, function(err, result){
     if(err) throw err;
 
     if(result) {
@@ -739,11 +768,91 @@ app.get('/service-like', function(req,res){
 
 app.get('/message', function(req,res){
   if(req.session.user){
-    res.render('./pages/message.html', {user:req.session.user});
+    MessageModel.find({recv_id:req.session.user.id}).sort({read_recv:1, key:-1}).exec(function(err,results){
+      if(err) throw err;
+
+      if(results) {
+        res.render('./pages/message.html', {
+          user:req.session.user,
+          recv_message:results
+        });
+      }
+    });
   } else{
     res.redirect('/');
   }
 });
+
+app.get('/message_recvlist', function(req,res){
+  if(req.session.user){
+    MessageModel.find({recv_id:req.session.user.id}).sort({read_recv:1, key:-1}).exec(function(err,results){
+      if(err) throw err;
+
+      if(results) {
+        res.send({
+          user:req.session.user,
+          recv_message:results
+        });
+      }
+    });
+  }
+})
+
+app.get('/message_sentlist', function(req,res){
+  if(req.session.user){
+    MessageModel.find({sent_id:req.session.user.id}).sort({key:-1}).exec(function(err,results){
+      if(err) throw err;
+
+      if(results) {
+        res.send({
+          user:req.session.user,
+          sent_message:results
+        });
+      }
+    });
+  }
+})
+
+app.post('/message_recvlist', function(req,res){
+  if(req.session.user) {
+    var token = req.body.token;
+    var query = {key:token};
+    var update = {read_recv:"Y"};
+
+    MessageModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, doc){
+      var userid = doc.sent_id;
+      UserModel.find({id:userid}, function(err, result){
+        if(err) throw err;
+        
+        res.send({
+          userinfo:result,
+          message:doc
+        })
+      });
+    });
+  } else {
+    res.redirect('/');
+  }
+})
+
+app.post('/message_sentlist', function(req,res){
+  if(req.session.user) {
+    var token = req.body.token;
+    MessageModel.find({key:token}, function(err, doc){
+      var userid = doc[0]._doc.recv_id;
+      UserModel.find({id:userid}, function(err,result){
+        if(err) throw err;
+
+        res.send({
+          userinfo:result,
+          message:doc
+        })
+      })
+    })
+  } else {
+    res.redirect('/');
+  }
+})
 
 app.get('/customer-notice', function(req,res){
   if(req.session.user){

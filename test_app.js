@@ -49,6 +49,13 @@ app.post('/pos', function(req,res){
  });
 });
 
+app.post('/test', function(req,res){
+  var token = req.body.token;
+  console.log(token);
+  console.log("hi");
+  res.end();
+})
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Connecting Server..');
 })
