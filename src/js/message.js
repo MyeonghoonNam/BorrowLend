@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  $('.message_firstdefault_content').html("받은 쪽지가 없습니다.");
+
   if(document.getElementsByClassName('message_info')[0]){
     $('.message_firstdefault').css("display", "none");
     $('.message_left').css("display", "block");
@@ -33,6 +35,7 @@ $(document).ready(function(){
       url:'/message_recvlist',
       type:'get',
       success:function(result){
+          $('.message_firstdefault_content').html("받은 쪽지가 없습니다.");
           $('.message_default').css("display", "block");
           $('.message_display').css("display", "none");
           $('.message_sent_content_img').remove();
@@ -94,7 +97,7 @@ $(document).ready(function(){
     var token = $(this).find(".message_token").attr("value");
     $(this).css('color', 'darkgray');
     $(this).find(".message_senttitle").css('color', 'darkgray');
-    // var readtoken = "Y";
+    $('.icon_trash').attr('value', token);
 
     $.ajax({
       url:'/message_recvlist',
@@ -137,7 +140,7 @@ $(document).ready(function(){
       url:'/message_sentlist',
       type:'get',
       success:function(result){
-          
+          $('.message_firstdefault_content').html("보낸 쪽지가 없습니다.");
           $('.message_default').css("display", "block");
           $('.message_display').css("display", "none");
           $('.message_sent_content_img').remove();
@@ -187,6 +190,7 @@ $(document).ready(function(){
   //보낸쪽지함 쪽지 선택 시
   $(document).on('click', '.message_recvinfo', function(){
     var token = $(this).find(".message_token").attr("value");
+    $('.icon_trash').attr('value', token);
 
     $.ajax({
       url:'/message_sentlist',
@@ -224,6 +228,48 @@ $(document).ready(function(){
       }
     });
   });
+
+  $(document).on('click', '.icon_trash', function(){
+    var token = $(this).attr('value');
+    var sent_name = $('.sent_name').text();
+    
+    swal({
+      title:'삭제하시겠습니까?',
+      icon: 'warning',
+      closeOnClickOutside:false,
+      closeOnEsc:false,
+      buttons : {
+        confirm : {
+          text:"확인",
+          value:true,
+          className:'message_delete_alert_confirm'
+        },
+        cancle : {
+          text:"취소",
+          value:false,
+          className:'message_delete_alert_cancle'
+        }
+      }
+    }).then(function(value) {
+      if(value){
+        $.ajax({
+          url:'/message_delete',
+          type:'get',
+          data:{
+            token:token,
+            sent_name:sent_name
+          },
+          success:function(result){
+            if(result.status == "recvlist") {
+              $('.message_recvtag').click();
+            } else if(result.status == "sentlist") {
+              $('.message_senttag').click();
+            }
+          }
+        });
+      }
+    });
+  })
 });
 
 let currSlide = 1;

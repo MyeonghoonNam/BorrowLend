@@ -214,15 +214,26 @@
     right:2%;
     text-align:right;
     padding:1rem 1rem;
+    
   }
 
   .icon_trash {
     width:5%;
+    cursor: pointer;
+  }
+
+  .icon_trash:hover{
+    width:6%;
   }
   
   .icon_warning {
     width:5%;
     margin-left:1rem;
+    cursor: pointer;
+  }
+
+  .icon_warning:hover{
+    width:6%;
   }
   
   .message_sent_title_span {
@@ -337,7 +348,16 @@
     width:95%;
     margin:0 auto;
     white-space:pre;
-    
+  }
+
+  .message_delete_alert_confirm {
+    font-size:1.2rem;
+    margin-right:0.5rem;
+  }
+  
+  .message_delete_alert_cancle {
+    font-size:1.2rem;
+    margin-left:0.5rem;
   }
 }
     

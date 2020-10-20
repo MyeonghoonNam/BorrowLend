@@ -796,7 +796,7 @@ app.get('/service-like', function(req,res){
 
 app.get('/message', function(req,res){
   if(req.session.user){
-    MessageModel.find({recv_id:req.session.user.id}).sort({read_recv:1, key:-1}).exec(function(err,results){
+    MessageModel.find({del_recv:"N", recv_id:req.session.user.id}).sort({read_recv:1, key:-1}).exec(function(err,results){
       if(err) throw err;
 
       if(results) {
@@ -813,7 +813,7 @@ app.get('/message', function(req,res){
 
 app.get('/message_recvlist', function(req,res){
   if(req.session.user){
-    MessageModel.find({recv_id:req.session.user.id}).sort({read_recv:1, key:-1}).exec(function(err,results){
+    MessageModel.find({del_recv:"N", recv_id:req.session.user.id}).sort({read_recv:1, key:-1}).exec(function(err,results){
       if(err) throw err;
 
       if(results) {
@@ -828,7 +828,7 @@ app.get('/message_recvlist', function(req,res){
 
 app.get('/message_sentlist', function(req,res){
   if(req.session.user){
-    MessageModel.find({sent_id:req.session.user.id}).sort({key:-1}).exec(function(err,results){
+    MessageModel.find({del_sent:"N", sent_id:req.session.user.id}).sort({key:-1}).exec(function(err,results){
       if(err) throw err;
 
       if(results) {
@@ -879,6 +879,53 @@ app.post('/message_sentlist', function(req,res){
     })
   } else {
     res.redirect('/');
+  }
+})
+
+app.get('/message_delete', function(req,res){
+  if(req.session.user) {
+    var token = req.query.token;
+    var sent_name = req.query.sent_name;
+    
+    MessageModel.find({key:token}, function(err, doc){
+      if(sent_name == doc[0]._doc.sent_id) {
+        var query = {key:token};
+        var update = {del_recv:"Y"}
+
+        MessageModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
+          if(result.del_recv == "Y" && result.del_sent == "Y"){
+            MessageModel.deleteOne({key:token}, function(err, result){
+              console.log("Message Delete");
+              MessageModel.find({recv_id:req.session.user.id}).sort({read_recv:1, key:-1}).exec(function(err,results){
+                res.send({message:results, status:"recvlist"});
+              });
+            });
+          } else {
+            MessageModel.find({del_recv:"N", recv_id:req.session.user.id}, function(err, results){
+              res.send({message:results, status:"recvlist"});
+            })
+          }
+        })
+      } else if(sent_name == doc[0]._doc.recv_id) {
+        var query = {key:token};
+        var update = {del_sent:"Y"};
+
+        MessageModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
+          if(result.del_recv == "Y" && result.del_sent == "Y"){
+            MessageModel.deleteOne({key:token}, function(err, result){
+              console.log("Message Delete");
+              MessageModel.find({recv_id:req.session.user.id}).sort({read_recv:1, key:-1}).exec(function(err,results){
+                res.send({message:results, status:"sentlist"});
+              });
+            });
+          } else {
+            MessageModel.find({del_sent:"N", recv_id:req.session.user.id}, function(err, results){
+              res.send({message:results, status:"sentlist"});
+            })
+          }
+        })
+      }
+    })
   }
 })
 
