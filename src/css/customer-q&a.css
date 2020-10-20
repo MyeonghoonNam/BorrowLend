@@ -31,7 +31,7 @@
       }
 
       .board-first-number {
-        width:10%;
+        width:15%;
         height:auto;
         /* border:solid 1px #c8c8c8; */
         font-size:1.5rem;
@@ -40,16 +40,25 @@
 
 
       .board-first-title {
-        width:30%;
+        width:15%;
         height:auto;
-        margin-left:29rem;
+        margin-left:15rem;
         /* border:solid 1px #c8c8c8; */
         font-size:1.5rem;
         /* margin-top:0.5rem; */
       }
       
       .board-first-id {
-        width:10%;
+        width:15%;
+        height:auto;
+        margin-left:15rem;
+        /* border:solid 1px #c8c8c8; */
+        font-size:1.5rem;
+        /* margin-top:0.5rem; */
+      }
+
+      .board-first-date {
+        width:15%;
         height:auto;
         margin-left:20rem;
         /* border:solid 1px #c8c8c8; */
@@ -66,15 +75,16 @@
         width:10%;
         height:auto;
         /* border:solid 1px #c8c8c8; */
+        margin-left:0.5rem;
         font-size:1.5rem;
         /* margin-top:0.5rem; */
       }
 
 
       .board-element-title {
-        width:30%;
+        width:15%;
         height:auto;
-        margin-left:29rem;
+        margin-left:12rem;
         /* border:solid 1px #c8c8c8; */
         font-size:1.5rem;
         /* margin-top:0.5rem; */
@@ -83,11 +93,20 @@
 
 
       .board-element-id {
-        width:10%;
+        width:15%;
         height:auto;
-        margin-left:20rem;
+        margin-left:10.5rem;
         /* border:solid 1px #c8c8c8; */
         font-size:1.5rem;
+        /* margin-top:0.5rem; */
+      }
+
+      .board-element-date {
+        width:15%;
+        height:auto;
+        margin-left:12rem;
+        /* border:solid 1px #c8c8c8; */
+        font-size:1rem;
         /* margin-top:0.5rem; */
       }
       

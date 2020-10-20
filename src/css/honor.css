@@ -15,45 +15,97 @@
         display: flex;
         width:100%;
         padding:0;
-        cursor: pointer;
         border-bottom:solid 2px #c8c8c8;
         margin-bottom:1rem;
-      }  
+      }
+      
+      .honor_favicon {
+        width: 3.5rem;
+        float:left;
+        border:solid 1px;
+        border-radius:50%;
+        margin-bottom:1rem;
+        margin-left:2.5rem;
+      }
+
+      .honor-element-grade {
+        border-radius:5px;
+        background-color: darkgray;
+        color:white;
+        font-size: 1.5rem;
+        margin-top:0.6rem;
+        margin-left:0.5rem;
+        height:2.5rem;
+        padding-right:0.05rem;
+      }
 
       .honor-element-id {
         width:10%;
-        height:auto;
-        /* border:solid 1px #c8c8c8; */
-        font-size:1.5rem;
-        /* margin-top:0.5rem; */
+        font-size: 1.5rem;
+        height:2.5rem;
+        margin-top:0.6rem;
+        margin-left:0.5rem;
       }
-
 
       .honor-element-name {
-        width:15%;
-        height:auto;
-        margin-left:10rem;
-        /* border:solid 1px #c8c8c8; */
-        font-size:1.5rem;
-        /* margin-top:0.5rem; */
-      }
-      
-      .honor-element-grade {
-        width:10%;
-        height:auto;
-        margin-left:10rem;
-        /* border:solid 1px #c8c8c8; */
-        font-size:1.5rem;
-        /* margin-top:0.5rem; */
+        width:4%;
+        border-radius:5px;
+        background-color: rgb(39, 35, 35);
+        color:white;
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top:0.6rem;
+        margin-left:8rem;
+        height:2.5rem;
+        padding-right:0.05rem;
       }
 
+      .honor-element-name2 {
+        font-size: 2rem;
+        height:2.5rem;
+        margin-top:0.3rem;
+        margin-left:1rem;
+      }
+
+      .honor-element-product {
+        width:6%;
+        border-radius:5px;
+        background-color: rgb(39, 35, 35);
+        color:white;
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top:0.6rem;
+        margin-left:10rem;
+        height:2.5rem;
+        padding-right:0.05rem;
+      }
+
+      .honor-element-product2 {
+        font-size: 2rem;
+        height:2.5rem;
+        margin-top:0.3rem;
+        margin-left:1rem;
+      }
+   
+
       .honor-element-score {
-        width:10%;
-        height:auto;
-        margin-left:20rem;
-        /* border:solid 1px #c8c8c8; */
-        font-size:1.5rem;
-        /* margin-top:0.5rem; */
+        width:4%;
+        border-radius:5px;
+        background-color: rgb(39, 35, 35);
+        color:white;
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top:0.6rem;
+        margin-left:15rem;
+        height:2.5rem;
+        padding-right:0.05rem;
+      }
+
+      .honor-element-score2 {
+        font-size: 2rem;
+        height:2.5rem;
+        margin-top:0.3rem;
+        margin-left:1rem;
       }
   
 }

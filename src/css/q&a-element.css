@@ -40,6 +40,30 @@
       margin:auto 0;
       margin-left:0.5rem;
     }
+
+    .board_userinfo_writer2{
+      order:3;
+      border-radius:5px;
+      background-color: rgb(48, 44, 44);
+      color:white;
+      text-align:center;
+      vertical-align:middle;
+      margin:auto 0;
+      margin-left:20rem;
+      width:4rem;
+      height:1.8rem;
+      line-height: 1.8rem;
+      padding-right:0.05rem;
+      /* border:solid 1px black; */
+    }
+  
+    .board_userinfo_name2{
+      order:4;
+      /* border:solid 1px black; */
+      height:1.8rem;
+      margin:auto 0;
+      margin-left:0.5rem;
+    }
   
   
     .board_info {
@@ -48,6 +72,7 @@
     }
   
     .board_title {
+      color: #ff8a3d;
       font-size: 1.8rem;
     }
   

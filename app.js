@@ -136,7 +136,6 @@ function connectDB(){
       userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now},
       LikeCount:{type : Number, 'default':0},
-      trending_list:{type : Number, 'default':0}
     });
 
     ProductSchema.plugin(autoIncrement.plugin, {
@@ -181,12 +180,20 @@ function connectDB(){
       content:{type : String, required : true},
       usid:{type : String, required : true},
       userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
+      update_date:{type: String, required : true},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now}
     });
 
     BoardSchema.plugin(autoIncrement.plugin, {
       model:'BoardModel',
       field: 'key',
+      startAt:1,
+      increment:1
+    });
+
+    BoardSchema.plugin(autoIncrement.plugin, {
+      model:'BoardModel',
+      field: 'number',
       startAt:1,
       increment:1
     });
@@ -323,7 +330,7 @@ var sentMessage = function(database, title, content, Imglist, recv_id, sent_id, 
 //
 
 // 게시판 등록
-var addBoard = function(database, title, content, userid, callback){
+var addBoard = function(database, title, content, userid, update_date, callback){
 
   UserModel.findById(userid, function(err, result){
     var userinfo = result;
@@ -332,7 +339,8 @@ var addBoard = function(database, title, content, userid, callback){
       "title":title,
       "content":content,
       "userinfo":userinfo[0]._id,
-      "usid":userinfo[0].id
+      "usid":userinfo[0].id,
+      "update_date":update_date
     });
     
     board.save(function(err){
@@ -554,13 +562,6 @@ app.post('/product_like', function(req,res){
         ProductModel.findOneAndUpdate(query2, update2, {new:true, upsert: true}, function(err, result){
           console.log(result);
         });
-
-        var query_2 = {_id:doc2[0]._id};
-        var trending = {trending_list:doc2[0].trending_list + 1};
-
-        ProductModel.findOneAndUpdate(query_2, trending, {new:true, upsert: true}, function(err, result){
-          console.log(result);
-        });
         
         btn = "1";
         res.send({btn:btn});
@@ -650,7 +651,6 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
     });
   }
  });
- 
 });
 
 app.get('/product_update', function(req,res){
@@ -1007,8 +1007,28 @@ app.post('/customer-write', function(req,res){
   var title = req.body.title;
   var content = req.body.content;
   var userid = req.session.user.id;
+  const now = new Date();
+  
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  let hour = now.getHours();
+  let minute = now.getMinutes();
+  let second = now.getSeconds();
+  const ampm = hour >= 12 ? 'PM' : 'AM';
 
-  addBoard(database, title, content, userid, function(err, docs){
+  // 12시간제로 변경
+  hour %= 12;
+  hour = hour || 12; // 0 => 12
+
+  // 10미만인 분과 초를 2자리로 변경
+  hour = hour < 10 ? '0' + hour : hour;
+  minute = minute < 10 ? '0' + minute : minute;
+  second = second < 10 ? '0' + second : second;
+
+  const update_date = `${year}-${month}-${date} ${hour}:${minute}:${second} ${ampm}`;
+
+  addBoard(database, title, content, userid, update_date, function(err, docs){
     if(err) throw err;
 
     if(docs) {
