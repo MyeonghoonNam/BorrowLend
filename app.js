@@ -135,7 +135,8 @@ function connectDB(){
       list:[new mongoose.Schema({name:{type : String, required : true, unique : true}})],
       userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now},
-      LikeCount:{type : Number, 'default':0}
+      LikeCount:{type : Number, 'default':0},
+      trending_list:{type : Number, 'default':0}
     });
 
     ProductSchema.plugin(autoIncrement.plugin, {
@@ -356,11 +357,20 @@ app.get('/', function(req,res){
 
 app.get('/main', function(req,res){
   if(req.session.user){
-    res.render('./pages/main.html', {user:req.session.user});
-  } else {
-    res.redirect('/');
+    ProductModel.find().sort({trending_list:1}).exec(function(err,results){
+      if(results){
+
+        res.render('./pages/main.html', {
+          user:req.session.user,
+          trending:results
+        });
+      } else {
+        res.redirect('/');
+      }
+    })
   }
 });
+
 
 app.post('/main', function(req,res){
   console.log('Access to login louter');
@@ -398,6 +408,7 @@ app.post('/main', function(req,res){
       }  
   }
 });
+
 
 app.get('/signup', function(req,res){
   if(req.session.user){
@@ -541,6 +552,13 @@ app.post('/product_like', function(req,res){
         var update2 = {LikeCount:doc2[0].LikeCount + 1};
 
         ProductModel.findOneAndUpdate(query2, update2, {new:true, upsert: true}, function(err, result){
+          console.log(result);
+        });
+
+        var query_2 = {_id:doc2[0]._id};
+        var trending = {trending_list:doc2[0].trending_list + 1};
+
+        ProductModel.findOneAndUpdate(query_2, trending, {new:true, upsert: true}, function(err, result){
           console.log(result);
         });
         

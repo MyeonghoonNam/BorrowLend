@@ -33,10 +33,25 @@
         학교 생활 속에 나에게 필요한 물품이 나에게 없을 때, 내가 원하는 물품을 찾아 대여하는 서비스.<br>
         나의 물품을 활용하여 경제적 이등을 얻을 수 있는 서비스
       </article>
-    </div>
-    
-    <hr>
 
+      <article class="honor-list">
+        <% for(var i = 0; i < trending.length; i++){ %>
+          <% var j = 0; %>
+          <div class="honor-list-element" onclick="BoardClick(this)">
+            <form method="get" action="/trend" class="qa-element-form">
+              <div class="honor-element-id"><%=trending[i].title%></div>
+              <input type="hidden" name="honor_element_token" value="<%=trending[i].key%>">
+              <input type="submit" class="honor_element_btn" style="display:none;">
+            </form>
+          </div>
+        <% } %>
+      </article>
+             
+    </div>
+
+
+
+    <hr>
     <footer id="footer"></footer>
   </div>
   <script>
