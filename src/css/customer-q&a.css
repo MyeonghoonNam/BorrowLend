@@ -178,7 +178,7 @@
 
   .board-list-element {
     /* border:solid 1px #c8c8c8; */
-    width:90%;
+    width:95%;
     padding:0;
     margin: 0 auto;
     cursor: pointer;
@@ -208,7 +208,7 @@
   .board-first-title {
     width:3rem;
     /* border:solid 1px #c8c8c8; */
-    margin-left:6rem;
+    margin-left:3rem;
     font-size:1rem;
     /* margin-top:0.5rem; */
   }
@@ -216,7 +216,16 @@
   .board-first-id {
     width:3rem;
     /* border:solid 1px #c8c8c8; */
-    margin-left:6.5rem;
+    margin-left:3.5rem;
+    font-size:1rem;
+    /* margin-top:0.5rem; */
+  }
+
+  .board-first-date {
+    width:4rem;
+    height:auto;
+    margin-left:4rem;
+    /* border:solid 1px #c8c8c8; */
     font-size:1rem;
     /* margin-top:0.5rem; */
   }
@@ -227,8 +236,9 @@
   }
 
   .board-element-number {
-    width:10%;
+    width:5%;
     height:auto;
+    margin-left:0.8rem;
     /* border:solid 1px #c8c8c8; */
     font-size:0.8rem;
     /* margin-top:0.5rem; */
@@ -238,7 +248,7 @@
   .board-element-title {
     width:30%;
     height:auto;
-    margin-left:6rem;
+    margin-left:4rem;
     /* border:solid 1px #c8c8c8; */
     font-size:0.8rem;
     /* margin-top:0.5rem; */
@@ -247,11 +257,20 @@
 
 
   .board-element-id {
-    width:10%;
+    width:20%;
     height:auto;
     margin-left:3rem;
     /* border:solid 1px #c8c8c8; */
     font-size:0.8rem;
+    /* margin-top:0.5rem; */
+  }
+
+  .board-element-date {
+    width:30%;
+    height:auto;
+    margin-left:4rem;
+    /* border:solid 1px #c8c8c8; */
+    font-size:0.6rem;
     /* margin-top:0.5rem; */
   }
   
@@ -319,7 +338,7 @@
 
   .board-list-element {
     /* border:solid 1px #c8c8c8; */
-    width:43rem;
+    width:95%;
     padding:0;
     margin: 0 auto;
     cursor: pointer;
@@ -341,7 +360,7 @@
     width:3rem;
     /* border:solid 1px #c8c8c8; */
     font-size:1rem;
-    margin-left:1rem;
+    margin-left:1.5rem;
     /* margin-top:0.5rem; */
   }
 
@@ -349,7 +368,7 @@
   .board-first-title {
     width:3rem;
     /* border:solid 1px #c8c8c8; */
-    margin-left:15rem;
+    margin-left:8rem;
     font-size:1rem;
     /* margin-top:0.5rem; */
   }
@@ -357,7 +376,16 @@
   .board-first-id {
     width:3rem;
     /* border:solid 1px #c8c8c8; */
-    margin-left:18rem;
+    margin-left:9rem;
+    font-size:1rem;
+    /* margin-top:0.5rem; */
+  }
+
+  .board-first-date {
+    width:4rem;
+    height:auto;
+    margin-left:10rem;
+    /* border:solid 1px #c8c8c8; */
     font-size:1rem;
     /* margin-top:0.5rem; */
   }
@@ -368,8 +396,9 @@
   }
 
   .board-element-number {
-    width:10%;
+    width:5%;
     height:auto;
+    margin-left:0.8rem;
     /* border:solid 1px #c8c8c8; */
     font-size:0.8rem;
     /* margin-top:0.5rem; */
@@ -377,9 +406,9 @@
 
 
   .board-element-title {
-    width:60%;
+    width:30%;
     height:auto;
-    margin-left:16.5rem;
+    margin-left:8.3rem;
     /* border:solid 1px #c8c8c8; */
     font-size:0.8rem;
     /* margin-top:0.5rem; */
@@ -388,11 +417,20 @@
 
 
   .board-element-id {
-    width:10%;
+    width:20%;
     height:auto;
-    margin-left:14rem;
+    margin-left:4.5rem;
     /* border:solid 1px #c8c8c8; */
     font-size:0.8rem;
+    /* margin-top:0.5rem; */
+  }
+
+  .board-element-date {
+    width:30%;
+    height:auto;
+    margin-left:6rem;
+    /* border:solid 1px #c8c8c8; */
+    font-size:0.7rem;
     /* margin-top:0.5rem; */
   }
   

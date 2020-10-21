@@ -687,7 +687,7 @@
   }
 
   .modal {
-    width:40%;
+    width:100%;
     max-width:none;
     font-family: 'Noto Sans KR', sans-serif;
   }
@@ -695,6 +695,15 @@
   .modal a.close-modal {
     top: 5px;
     right: 5px;
+  }
+
+  .message_recv {
+    display:flex;
+    width:90%;
+    margin-top:0.5rem;
+    margin-bottom:1rem;
+    cursor: default;
+    /* border:solid 1px black; */
   }
 }
 
