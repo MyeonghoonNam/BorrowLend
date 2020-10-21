@@ -1,13 +1,13 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
-  .article-servicerent {
+  .article-product_userinfo {
     width:70rem;
     margin:0 auto;
     /* margin-top:10rem; */
     /* border:solid 1px black; */
   }
   
-  .servicerent_array {
+  .product_userinfo_array {
     display:flex;
     width:97%;
     margin:0 auto;
@@ -16,37 +16,41 @@
     /* border:solid 1px black; */
   }
   
-  .srvr_productlist {
+  .product_userinfo_productlist {
     order:1;
     width:10%;
     text-align: center;
     font-size:1.5rem;
     cursor: pointer;
+    color:black;
     border-right:solid 2px black;
     
   }
 
-  .srvr_productlist:hover {
+  .product_userinfo_productlist:hover {
     color:black !important;
   }
   
-  .srvr_reveiwlist {
+  .product_userinfo_reveiwlist {
     order:2;
     width:10%;
     text-align: center;
     font-size:1.5rem;
     cursor: pointer;
     color:darkgray;
+
     /* border:solid 1px black; */
   }
 
-  .srvr_reveiwlist:hover {
+  .product_userinfo_reveiwlist:hover {
     color:black !important;
   }
   
-  .servicerent-product{
+  .product_userinfo_product{
     border:solid 2px #c8c8c8;
-    /* height:40rem; */
+    /* min-height:30rem; */
+    width:60rem;
+    margin:0 auto;
     border-radius: 5px;
     display:flex;
     flex-wrap:wrap;
@@ -55,13 +59,14 @@
     padding: 3rem 4rem 1rem 4rem;
   }
 
-  .servicerent_topbox{
+  .product_userinfo_topbox{
     display:flex;
     width:100%;
-    /* border:solid 1px black; */
+    border-bottom:solid 2px #c8c8c8;
+    margin-bottom:1rem;
   }
 
-  .servicerent_userinfo{
+  .product_userinfo2{
     order:1;
     display:flex;
     width:50%;
@@ -69,17 +74,20 @@
     margin-top:1rem;
     margin-bottom:1rem;
     /* border:solid 1px black; */
+    /* margin-right:auto; */
+    flex-direction: row-reverse;
     position: relative;
+    /* justify-content: center; */
   }
 
-  .srvr_userinfo_img{
-    order:1;
+  .product_userinfo_img{
+    order:3;
     width: 2.7rem;
     border:solid 1px black;
     border-radius:50%;
   }
 
-  .srvr_userinfo_grade{
+  .product_userinfo_grade{
     order:2;
     border-radius:5px;
     background-color: darkgray;
@@ -95,21 +103,262 @@
     /* border:solid 1px black; */
   }
   
-  .srvr_userinfo_name{
+  .product_userinfo_name{
+    order:1;
+    /* border:solid 1px black; */
+    height:1.8rem;
+    margin:auto 0;
+    margin-left:0.5rem;
+    margin-right:5rem;
+  }
+  
+  .product_userinfo_userbtn{
+    order:2;
+    /* border:solid 1px black; */
+    width:50%;
+    margin-top:1rem;
+    margin-bottom:1rem;
+    /* text-align:center; */
+  }
+
+  .userbtn_review {
+    box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+    background-color:#3d94f6;
+    border-radius:6px;
+    border:1px solid #337fed;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1570cd;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left:0.5rem;
+    margin-right:0.5rem;
+  }
+  .userbtn_review:hover {
+    background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+    background-color:#1e62d0;
+  }
+  
+  .userbtn_report {
+    box-shadow:inset 0px 1px 0px 0px #f5978e;
+    background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
+    background-color:#f24537;
+    border-radius:6px;
+    border:1px solid #d02718;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #810e05;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left:0.5rem;
+  }
+  .userbtn_report:hover {
+    background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+    background-color:#c62d1f;
+  }
+  
+  .review_wrap{
+    position: relative;
+  }
+  .review_userinfo {
+    display:flex;
+    width:80%;
+    margin-top:0.5rem;
+    margin-bottom:1rem;
+    cursor: default;
+    /* border:solid 1px black; */
+  }
+
+  .review_span {
+    order:1;
+    width:4rem;
+    height:1.5rem;
+    margin:0; 
+    background: #c8c8c8;
+    font-size:1rem;
+    text-align:center;
+    line-height: 1.5rem;
+    border-radius: 5px;
+    cursor: default;
+    /* border:solid 1px black; */
+    background-color:#c7c7c7;
+    display:inline-block;
+    color:#000000;
+    /* font-family:Arial; */
+    padding:5px 20px;
+    text-decoration:none;
+  }
+  
+  .review_img {
+    order:2;
+    width: 2rem;
+    border:solid 1px black;
+    border-radius:50%;
+    margin-left:1rem;
+  }
+
+  .review_grade {
     order:3;
+    border-radius:5px;
+    background-color: darkgray;
+    color:white;
+    text-align:center;
+    vertical-align:middle;
+    margin:auto 0;
+    margin-left:0.5rem;
+    width:2.3rem;
+    height:1.8rem;
+    line-height: 1.8rem;
+    padding-right:0.05rem;
+    /* border:solid 1px black; */
+  }
+
+  .review_name {
+    order:4;
     /* border:solid 1px black; */
     height:1.8rem;
     margin:auto 0;
     margin-left:0.5rem;
   }
-  
-  .servicerent_userbtn{
-    order:2;
+
+  .review_content {
+    width:3rem;
+    height:1.5rem;
+    margin-bottom:0.5rem;
+    cursor: default;
+    background: #c8c8c8;
+    font-size:1rem;
+    text-align:center;
+    line-height: 1.5rem;
+    border-radius: 5px;
     /* border:solid 1px black; */
-    width:50%;
+    background-color:#c7c7c7;
+    /* display:inline-block; */
+    color:#000000;
+    /* font-family:Arial; */
+    padding:5px 20px;
+    text-decoration:none;
   }
 
-  .servicerent-product-element {
+  .review_content_input{
+    border:solid 1px #c8c8c8;
+    outline:none;
+    width:95%;
+    font-size:1rem;
+    height:7rem;
+    border-radius: 5px;
+    padding-top:0.5rem;
+    padding-left:0.5rem;
+  }
+
+  .ratingbox {
+    display: flex;
+  }
+
+  .ratingspan {
+    width:3rem;
+    height:1.5rem;
+    cursor: default;
+    background: #c8c8c8;
+    font-size:1rem;
+    text-align:center;
+    line-height: 1.5rem;
+    border-radius: 5px;
+    /* border:solid 1px black; */
+    background-color:#c7c7c7;
+    /* display:inline-block; */
+    color:#000000;
+    /* font-family:Arial; */
+    padding:5px 20px;
+    text-decoration:none;
+    margin-top:1rem;
+  }
+  
+  .ratingcount{
+    font-size: 2rem;
+    margin-left:1rem;
+    /* color:#DA4949; */
+    margin-top: 0.5rem;
+  }
+
+  .rating {
+    display: grid;
+    grid-template-columns: repeat(5, 3.1rem);
+    width: 42%;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    /* border:solid 1px black; */
+  }
+  
+  .star {
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+  .star-empty {
+    color: lightgrey;
+  }
+  
+  .star-filled {
+    color: black;
+  }
+
+
+  .review_sendbtn {
+    box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+    background-color:#3d94f6;
+    border-radius:6px;
+    border:1px solid #337fed;
+    display:block;
+    cursor:pointer;
+    color:#ffffff;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1570cd;
+    margin:0 auto;
+    margin-top:2rem;
+    font-size:1rem;
+    /* margin-left:44%;
+    margin-right:5rem;
+    margin-top:2rem;
+    margin-bottom:2rem; */
+  }
+  
+  .review_sendbtn:hover {
+    background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+    background-color:#1e62d0;
+  }
+
+  /* .review_sendbtn a {
+    text-decoration: none;
+    color:white;
+  } */
+
+  .product_userinfo_productelementbox{
+    /* height:40rem; */
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    /* justify-content:space-around; */
+  }
+
+  .product_userinfo_productelement {
     /* border:solid 1px #c8c8c8; */
     position: relative;
     width:15.5rem;
@@ -119,7 +368,7 @@
     margin-bottom:2rem;
   }
 
-  .srvr_element_img {
+  .pud_element_img {
     width:100%;
     height:15rem;
     /* min-height:65%; */
@@ -130,14 +379,14 @@
     object-fit: content;
   }
   
-  .srvr_element_title {
+  .pud_element_title {
     width:100%;
     height:auto;
     /* border:solid 1px #c8c8c8; */
     font-size:1.5rem;
     /* margin-top:0.5rem; */
   }
-  .srvr_element_price {
+  .pud_element_price {
     width:50%;
     height:auto;
     font-size:1.3rem;
@@ -145,7 +394,7 @@
     display:inline-block;
     /* border:solid 1px #c8c8c8; */
   }
-  .srvr_element_likebox {
+  .pud_element_likebox {
     display:inline-block;
     height:31px;
     line-height: 31px;
@@ -154,95 +403,119 @@
     right:5px;
     
   }
-  .srvr_element_icon {
+  .pud_element_icon {
     display:inline-block;
     
   }
   
-  .srvr_element_count {
-    display:inline-block;
-  }
-  
-  .srvr_element_btn {
-    /* border:solid 1px black; */
-    text-align:center;
-    margin-top:0.5rem;
-  }
-
-  .srvr_element_udform {
+  .pud_element_count {
     display:inline-block;
   }
 
-  .srvr_element_update {
-    box-shadow:inset 0px 1px 0px 0px #a4e271;
-    background:linear-gradient(to bottom, #1acc35 5%, #379c0f 100%);
-    background-color:#1acc35;
-    border-radius:12px;
-    border:1px solid #74b807;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-size:1rem;
-    padding:2px 13px;
-    text-shadow:0px 1px 0px #528009;
-    margin-right:0.5rem;
-  }
-
-  .srvr_element_update:hover {
-    background:linear-gradient(to bottom, #379c0f 5%, #1acc35 100%);
-    background-color:#379c0f;
-  }
-
-  .srvr_element_update:active {
-    position:relative;
-    top:1px;
-  }
-
-  .srvr_element_delete {
-    font-family: inherit;
-    box-shadow:inset 0px 1px 0px 0px #f5978e;
-    background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
-    background-color:#f24537;
-    border-radius:12px;
-    border:1px solid #d02718;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-size:1rem;
-    padding:2px 13px;
-    text-shadow:0px 1px 0px #810e05;
-    margin-left:0.5rem;
-    
-  }
-  .srvr_element_delete:hover {
-    background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
-    background-color:#c62d1f;
-  }
-  .srvr_element_delete:active {
-    position:relative;
-    top:1px;
-  }
-
-  .servicerent_default {
+  .product_userinfo_defaultreview {
     /* border:solid 1px black; */
     text-align: center;
     color: gray;
     font-size: 2rem;
     height:7rem;
     margin:auto auto;
+    min-height:20rem;
+    /* position: relative;
+    top:50%;
+    transform: translateY(-50%); */
   }
 
-  .product_delete_alert_confirm {
-    font-size:1.2rem;
-    margin-right:0.5rem;
+  .defaultreview_content {
+    position: relative;
+    top:50%;
+    transform: translateY(-50%);
+  }
+  .product_userinfo_review {
+    /* border:solid 1px black; */
+    width:100%;
+    /* padding:2rem 0; */
+    
+  }
+  .product_userinfo_review_element{
+    /* border:solid 1px black; */
+    width:56%;
+    margin:0 auto;
+    margin-bottom:1rem;
+  }
+
+  .review_element_user {
+    display:flex;
+    position: relative;
+    width:100%;
+    /* margin-top:0.5rem; */
+    /* margin-bottom:1rem; */
+    cursor: default;
+    /* border:solid 1px black; */
+    margin-bottom:0.5rem;
+  }
+
+  .review_element_img{
+    order:1;
+    width: 2.7rem;
+    border:solid 1px black;
+    border-radius:50%;
+  }
+
+  .review_element_grade{
+    order:2;
+    border-radius:5px;
+    background-color: darkgray;
+    color:white;
+    text-align:center;
+    vertical-align:middle;
+    margin:auto 0;
+    margin-left:0.5rem;
+    width:2.3rem;
+    height:1.8rem;
+    line-height: 1.8rem;
+    padding-right:0.05rem;
+    /* border:solid 1px black; */
   }
   
-  .product_delete_alert_cancle {
-    font-size:1.2rem;
+  .review_element_id{
+    order:3;
+    /* border:solid 1px black; */
+    height:1.8rem;
+    margin:auto 0;
     margin-left:0.5rem;
+    margin-right:5rem;
   }
 
+  .review_element_date{
+    order:4;
+    position: absolute;
+    right:0;
+    bottom:0;
+    margin-right:0.5rem;
+    color:darkgray;
+  }
+  .review_element_content{
 
+  }
+
+  /* .review_element_star{
+    display:inline-block
+  } */
+
+  .star_fill{
+    color:#DA4949;
+    display:inline-block
+  }
+
+  .star_empty{
+    color:darkgray;
+    display:inline-block
+  }
+
+  .review_element_rate{
+    display:inline-block;
+    margin-left:0.5rem;
+  }
 }
     
     
@@ -275,7 +548,7 @@
   }
 
   .srvr_productlist:hover {
-    color:black !important;
+    color:#f76707;
   }
   
   .srvr_reveiwlist {
@@ -283,13 +556,12 @@
     width:20%;
     text-align: center;
     font-size:1rem;
-    cursor: pointer;;
-    color:darkgray
+    cursor: pointer;
     /* border:solid 1px black; */
   }
 
   .srvr_reveiwlist:hover {
-    color:black !important;
+    color:#f76707;
   }
   
   .servicerent-product{
@@ -301,6 +573,60 @@
     justify-content:space-between;
     /* justify-content:space-around; */
     padding: 1rem 1rem;
+  }
+
+  .servicerent_topbox{
+    display:flex;
+    width:100%;
+    /* border:solid 1px black; */
+  }
+
+  .servicerent_userinfo{
+    order:1;
+    display:flex;
+    width:50%;
+    /* margin:0 auto; */
+    margin-top:1rem;
+    margin-bottom:1rem;
+    /* border:solid 1px black; */
+    position: relative;
+  }
+
+  .srvr_userinfo_img{
+    order:1;
+    width: 1.7rem;
+    /* border:solid 1px black; */
+    border-radius:50%;
+  }
+
+  .srvr_userinfo_grade{
+    order:2;
+    border-radius:5px;
+    background-color: darkgray;
+    color:white;
+    text-align:center;
+    vertical-align:middle;
+    margin:auto 0;
+    margin-left:0.5rem;
+    width:2rem;
+    height:1.5rem;
+    line-height: 1.6rem;
+    padding-right:0.05rem;
+    /* border:solid 1px black; */
+  }
+  
+  .srvr_userinfo_name{
+    order:3;
+    /* border:solid 1px black; */
+    height:1.8rem;
+    margin:auto 0;
+    margin-left:0.5rem;
+  }
+  
+  .servicerent_userbtn{
+    order:2;
+    /* border:solid 1px black; */
+    width:50%;
   }
 
   .servicerent-product-element {

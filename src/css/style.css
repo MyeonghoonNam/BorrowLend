@@ -17,9 +17,11 @@
 @import "store.css";
 @import "product.css";
 @import "product-upload.css";
+@import "product-userinfo.css";
 @import "product-update.css";
 @import "message.css";
 @import "service-like.css";
+@import "service-rent.css";
 @import "customer-write.css";
 @import "customer-q&a.css";
 @import "service-rent.css";

@@ -55,7 +55,6 @@ var upload = multer({
 });
 //
 
-// app.use(static(__dirname));
 
 // DB 정의 및 연결
 var database;
@@ -102,7 +101,8 @@ function connectDB(){
       created_at: {type: Date, index: {unique: false}, 'default': Date.now},
       grade : {type : String, 'default':'시민'},
       honorCount:{type : Number, 'default':0},
-      LikeProduct:[{type:mongoose.Schema.Types.ObjectId, ref:'product'}]
+      LikeProduct:[{type:mongoose.Schema.Types.ObjectId, ref:'products'}],
+      review:[{type:mongoose.Schema.Types.ObjectId, ref:'reviews'}],
     });
 
 
@@ -173,6 +173,22 @@ function connectDB(){
       increment:1
     });
 
+    ReviewSchema = mongoose.Schema({
+      key:{type : Number, unique : true, 'default':0},
+      id : {type : String, required : true},
+      grade:{type : String, required : true},
+      content : {type : String, required : true},
+      rate : {type : Number, required : true},
+      created_at:{type: String, required : true}
+    });
+
+    ReviewSchema.plugin(autoIncrement.plugin, {
+      model:'ReviewModel',
+      field: 'key',
+      startAt:1,
+      increment:1
+    });
+    
     BoardSchema = mongoose.Schema({
       key:{type : Number, unique : true, 'default':0},
       number:{type : Number, 'default':0, max:50},
@@ -197,24 +213,13 @@ function connectDB(){
     BoardSchema.static('findAll', function(callback){
       return this.find({}, callback);
     });
-
-    console.log('UserSchema Define');
-    console.log('SchoolSchema Define');
-    console.log('ProductSchema Define');
-    console.log('MessageSchema Define');
-    console.log('BoardSchema Define');
     
     UserModel = mongoose.model('users', UserSchema);
     SchoolModel = mongoose.model('schools', SchoolSchema);
     ProductModel = mongoose.model('products', ProductSchema);
     MessageModel = mongoose.model('messages', MessageSchema);
+    ReviewModel = mongoose.model('reviews', ReviewSchema);
     BoardModel = mongoose.model('Board', BoardSchema);
-    
-    console.log('UserModel Define');
-    console.log('SchoolModel Define');
-    console.log('ProductModel Define');
-    console.log('MessageModel Define');
-    console.log('BoardModel Define');
 
   });
 
@@ -234,8 +239,6 @@ var authUser = function(database, id, password, callback){
 			callback(err, null);
 			return;
 		}
-		
-		console.log('아이디 [%s]로 사용자 검색결과', id);
 		
 		if (results.length > 0) {
 			console.log('아이디와 일치하는 사용자 찾음.');
@@ -319,7 +322,24 @@ var sentMessage = function(database, title, content, Imglist, recv_id, sent_id, 
       callback(null, Message);
     });
 };
-//
+
+// 리뷰 작성
+var addReview = function(database, id, grade, content, rating, date, callback){
+  
+  var Review = new ReviewModel({
+    "id":id,
+    "grade":grade,
+    "content":content,
+    "rate":rating,
+    "created_at":date
+  });
+
+  Review.save(function(err){
+    if(err) throw err;
+    
+    callback(null, Review);
+  });
+};
 
 // 게시판 등록
 var addBoard = function(database, title, content, userid, callback){
@@ -363,7 +383,7 @@ app.get('/main', function(req,res){
 });
 
 app.post('/main', function(req,res){
-  console.log('Access to login louter');
+  console.log('Access to login');
 
   var paramId = req.body.id;
   var paramPassword = req.body.password;
@@ -384,8 +404,6 @@ app.post('/main', function(req,res){
               LikeProduct:docs[0]._doc.LikeProduct,
               authorized:true
             }
-
-            console.log(docs[0]._doc.name);
             
             res.render('./pages/main.html', {user:req.session.user});
           }
@@ -491,6 +509,56 @@ app.post('/store', function(req,res){
   }
 });
 
+app.post('/add_review', function(req,res){
+  if(req.session.user){
+    var id = req.session.user.id;
+    var grade = req.session.user.grade;
+    var content = req.body.content;
+    var rating = req.body.ratingcount;
+
+    //후기 대상
+    var user = req.body.user;
+    var date = NowDate();
+
+    addReview(database, id, grade, content, rating, date, function(err, doc){
+      if(err) throw err;
+
+      var query = {id:user};
+      var update = {$push:{review:doc._id}}
+      UserModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, userupdoc){
+        var Reviewtoken = userupdoc.review;
+
+        ReviewModel.find({_id:Reviewtoken}).sort({key:-1}).exec(function(err,docs){
+          console.log(docs);
+          res.send({
+            review:docs
+          });
+        })
+      });
+    });
+  }
+});
+
+app.get('/reviewlist', function(req, res){
+  var user = req.query.user;
+
+  UserModel.find({id:user}, function(err,doc){
+    ReviewModel.find({_id:doc[0].review}).sort({key:-1}).exec(function(err, docs){
+      res.send({review:docs});
+    })
+  })
+})
+
+app.get('/productlist', function(req, res){
+  var user = req.query.user;
+
+  UserModel.find({id:user}, function(err,doc){
+    ProductModel.find({userinfo:doc[0]._id}).sort({key:-1}).exec(function(err, docs){
+      res.send({product:docs});
+    })
+  })
+})
+
 app.get('/product', function(req,res){
 
   var index = req.query.element_token;
@@ -499,9 +567,7 @@ app.get('/product', function(req,res){
     ProductModel.findByKey(index, function(err, result){
       if(err) throw err;
       if(result){
-        console.log(result[0].userinfo)
         UserModel.findByOid(result[0].userinfo, function(err, doc){
-          console.log(doc);
           UserModel.findById(req.session.user.id, function(err, doc2){
             var count = 0;
             if(doc2[0]._doc.LikeProduct.includes(result[0]._id)){
@@ -521,6 +587,35 @@ app.get('/product', function(req,res){
     });
   }
 });
+
+app.get('/product_userinfo', function(req,res){
+  if(req.session.user){
+    var usertoken = req.query.product_usertoken;
+    
+    if(usertoken == req.session.user.id){
+      res.redirect('/service-rent');
+    } else {
+      UserModel.find({id:usertoken}, function(err,doc){
+        ReviewModel.find({_id:doc[0].review}, function(err, docs){
+          ProductModel.find({userinfo:doc[0]._id}).sort({key:-1}).exec(function(err,results){
+            if(err) throw err;
+
+            if(results){
+              res.render('./pages/product-userinfo.html',{
+                user:req.session.user,
+                product:results,
+                product_user:doc,
+                review:docs
+              })
+            } else {
+              res.redirect('/');
+            }
+          });
+        })
+      })
+    }
+  }
+})
 
 app.post('/product_like', function(req,res){
   var btn = req.body.count;
@@ -1038,8 +1133,6 @@ app.get('/logout', function(req,res){
   }
 });
 
-// app.use('/uploads', static(path.join(__dirname + '/src', 'uploads')));
-
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Connecting Server..');
 
@@ -1221,5 +1314,28 @@ app.get('/findPSresult', function(req,res){
   }
 });
 
+function NowDate(){
+  var now = new Date();
+  
+  var year = now.getFullYear();
+  var month = now.getMonth() + 1;
+  var date = now.getDate();
+  let hour = now.getHours();
+  let minute = now.getMinutes();
+  let second = now.getSeconds();
+  var ampm = hour >= 12 ? 'PM' : 'AM';
 
+  // 12시간제로 변경
+  hour %= 12;
+  hour = hour || 12; // 0 => 12
+
+  // 10미만인 분과 초를 2자리로 변경
+  hour = hour < 10 ? '0' + hour : hour;
+  minute = minute < 10 ? '0' + minute : minute;
+  second = second < 10 ? '0' + second : second;
+
+  var sent_date = `${year}-${month}-${date} ${hour}:${minute}:${second} ${ampm}`;
+
+  return sent_date;
+}
 //--------------------------------------------------------//

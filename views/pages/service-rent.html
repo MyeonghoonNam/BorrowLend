@@ -31,16 +31,6 @@
         </article>
         
         <article class="servicerent-product">
-          <div class="servicerent_topbox">
-            <article class="servicerent_userinfo">
-              <img class="srvr_userinfo_img" src="../../src/images/user.svg">
-              <div class="srvr_userinfo_grade"><%=user.grade%></div>
-              <div class="srvr_userinfo_name"><%=user.id%></div>
-            </article>
-            <article class="servicerent_userbtn">
-
-            </article>
-          </div>
         <% for(var i = 0; i < product.length; i++){ %>
           <% var j = 0; %>
           <div class="servicerent-product-element">
@@ -64,7 +54,6 @@
               <form class="srvr_element_udform" id="srvr_element_deleteform" method="post" action="/product_delete" onclick="DelbtnClick()">
                 <div class="srvr_element_delete">삭제</div>
                 <input type="hidden" name="element_deltoken" value="<%=product[i].key%>">
-                <!-- <input type="submit" class="element_delbtn" style="display:none;"> -->
               </form>
             </div>
           </div>

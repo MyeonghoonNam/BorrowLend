@@ -32,9 +32,13 @@
     <div class="article-wrap">
       <article class="article-product">
         <div class="product_userinfo">
-          <img class="userinfo_img" src="../../src/images/user.svg">
-          <div class="userinfo_grade"><%=userinfo[0]._doc.grade%></div>
-          <div class="userinfo_name"><%=userinfo[0]._doc.id%></div>
+          <form method="get" class="product_userinfo_form" action="/product_userinfo" onclick="UserinfoClick(this)">
+            <img class="userinfo_img" src="../../src/images/user.svg" >
+            <div class="userinfo_grade"><%=userinfo[0]._doc.grade%></div>
+            <div class="userinfo_name"><%=userinfo[0]._doc.id%></div>
+            <input type="hidden" name="product_usertoken" value="<%=userinfo[0]._doc.id%>">
+            <input type="submit" class="product_usertoken_submit" style="display:none">
+          </form>
           <% if(SetLikecount == 0) { %>
             <i class="product_likebtn far fa-heart fa-3x" value="0"></i>
           <% } else { %>

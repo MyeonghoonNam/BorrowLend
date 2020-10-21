@@ -16,14 +16,18 @@
     /* border:solid 1px black; */
     position: relative;
   }
-
+  
+  .product_userinfo_form{
+    display:flex;
+  }
   .userinfo_img{
     order:1;
     width: 2.7rem;
     border:solid 1px black;
     border-radius:50%;
+    cursor: pointer;
   }
-
+  
   .userinfo_grade{
     order:2;
     border-radius:5px;
@@ -38,23 +42,25 @@
     line-height: 1.8rem;
     padding-right:0.05rem;
     /* border:solid 1px black; */
+    cursor: pointer;
   }
-
+  
   .userinfo_name{
     order:3;
     /* border:solid 1px black; */
     height:1.8rem;
     margin:auto 0;
     margin-left:0.5rem;
+    cursor: pointer;
   }
-
+  
   .product_likebtn {
     order:4;
     position: absolute;
     right:0;
     cursor: pointer;
   }
-
+  
   .fa-heart {
     color:#DA4949;
   }
