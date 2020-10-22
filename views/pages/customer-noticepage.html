@@ -20,18 +20,22 @@
 
     <article class="article-wrap">
       <article class="notice_tag">
-        <div class="notice_tagtitle">글작성</div>
+        <div class="notice_tagtitle">공지사항</div>
       </article>
       <article class="notice_wrap">
         <form action="/customer-notice-upload" method="post" autocomplete="off">
-          <div class="notice_titlespan">제목</div>
-          <input class="notice_uptitle" type="text" name="title" placeholder="제목을 입력해주세요.">
-          <div class="notice_contentspan">내용</div>
-          <textarea class="notice_upcontent" name="content" placeholder="내용을 입력해주세요." spellcheck="false" wrap="hard" style="resize: none;"></textarea>
-          <div class="notice_contentbtn">
-            <button type="submit" class="notice_contentbtn_confirm">작성</button>
-            <button type="button" class="notice_contentbtn_cancle" onclick="location.href='/customer-notice'">취소</button>
+          <div class="notice_titlebox">
+            <div class="notice_titlespan">제목</div>
+            <div class="notice_titleview"><%=notice[0].title%></div>
           </div>
+          <div class="notice_writerbox">
+            <div class="notice_writerspan">작성자</div>
+            <img class="notice_writerimg" src="../../src/images/user.svg">
+            <div class="notice_writerview"><%=notice[0].writer%></div>
+            <div class="notice_dateview"><%=notice[0].created_at%></div>
+          </div>
+          <!-- <div class="notice_contentspan">내용</div> -->
+          <div class="notice_contentview"><%=notice[0].content%></div>
         </form>
       </article>
     </article>

@@ -108,9 +108,9 @@ if(filename == 'product-upload' || 'service-rent' || 'service-like') {
     }
 } 
 
-if(filename == 'product-upload' ||'customer-notice' || 'customer-q&a' || 'q&a-element' || 'customer-write') {
+if(filename == 'product-upload' || 'customer-notice' || 'customer-q&a' || 'q&a-element' || 'customer-write') {
     var mainname = '고객지원';
-    if(filename.startsWith('customer-notice')){
+    if(filename.startsWith('customer-notice') || filename.startsWith('page')){
       var subname = '공지사항';
       l_layout(mainname, subname);
     } else if(filename == 'customer-q&a'){
