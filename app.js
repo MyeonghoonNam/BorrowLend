@@ -189,6 +189,13 @@ function connectDB(){
       increment:1
     });
     
+    NoticeShema = mongoose.Schema({
+      key:{type : Number, unique : true, 'default':0},
+      title:{type : String, required : true},
+      content:{type : String, required : true},
+      created_at: {type : String, required : true}
+    })
+
     BoardSchema = mongoose.Schema({
       key:{type : Number, unique : true, 'default':0},
       number:{type : Number, 'default':0, max:50},
@@ -1071,6 +1078,14 @@ app.get('/message_delete', function(req,res){
 app.get('/customer-notice', function(req,res){
   if(req.session.user){
     res.render('./pages/customer-notice.html', {user:req.session.user});
+  } else{
+    res.redirect('/');
+  }
+});
+
+app.get('/customer-notice-upload', function(req,res){
+  if(req.session.user){
+    res.render('./pages/customer-notice-upload.html', {user:req.session.user});
   } else{
     res.redirect('/');
   }
