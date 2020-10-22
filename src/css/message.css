@@ -364,7 +364,7 @@
 
     
 /* 모바일 뷰 css */
-@media all and (max-width:480px){
+@media all and (max-width:425px){
   .article_message {
     width:25rem;
     margin:0 auto;
@@ -376,7 +376,7 @@
     display:flex;
     /* width:97%;
     margin:0 auto; */
-    margin-top:3rem;
+    margin-top:0.5rem;
     margin-bottom:0.5rem;
     /* border:solid 1px black; */
   }
@@ -750,7 +750,7 @@
     display:flex;
     /* width:97%;
     margin:0 auto; */
-    margin-top:3rem;
+    margin-top:0.5rem;
     margin-bottom:0.5rem;
     /* border:solid 1px black; */
   }

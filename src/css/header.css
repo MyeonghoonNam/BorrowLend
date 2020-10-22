@@ -704,6 +704,7 @@
     vertical-align: middle;
     margin: 0 auto;
     display: flex;
+    z-index: -1;
   }
   
   .logo {
