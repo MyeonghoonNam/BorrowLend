@@ -1,5 +1,13 @@
 /* PC 뷰 css */
 @media all and (max-width:1980px){ 
+
+    .honor-wrap{
+      width:60rem;
+      margin:0 auto;
+      margin-top:2.5rem;
+      margin-bottom:0.5rem;
+    }
+
     .honor-list{
         border:solid 2px #c8c8c8;
         border-radius: 5px;
@@ -7,7 +15,7 @@
         flex-wrap:wrap;
         justify-content:space-between;
         /* justify-content:space-around; */
-        padding: 3rem 4rem 1rem 4rem;
+        padding: 2rem 2rem 2rem 2rem;
       }
 
       .honor-list-element {
@@ -18,94 +26,133 @@
         border-bottom:solid 2px #c8c8c8;
         margin-bottom:1rem;
       }
+
+      .honor_userinfo{
+        order:1;
+        display:flex;
+        width:30%;
+        /* margin:0 auto; */
+        margin-top:0rem;
+        margin-left:2rem;
+        margin-bottom:0rem;
+        /* border:solid 1px black; */
+        /* margin-right:auto; */
+        position: relative;
+        /* justify-content: center; */
+      }
       
       .honor_favicon {
-        width: 3.5rem;
-        float:left;
-        border:solid 1px;
+        order:1;
+        width: 2.7rem;
+        border:solid 1px black;
         border-radius:50%;
-        margin-bottom:1rem;
-        margin-left:2.5rem;
       }
 
       .honor-element-grade {
+        order:2;
         border-radius:5px;
         background-color: darkgray;
         color:white;
-        font-size: 1.5rem;
-        margin-top:0.6rem;
+        text-align:center;
+        vertical-align:middle;
+        margin:auto 0;
         margin-left:0.5rem;
-        height:2.5rem;
+        width:2.3rem;
+        height:1.8rem;
+        line-height: 1.8rem;
         padding-right:0.05rem;
       }
 
       .honor-element-id {
-        width:10%;
-        font-size: 1.5rem;
-        height:2.5rem;
-        margin-top:0.6rem;
+        order:3;
+        height:1.8rem;
+        margin:auto 0;
         margin-left:0.5rem;
+        margin-right:5rem;
+      }
+      
+      .honor_userinfo2{
+        order:2;
+        display:flex;
+        width:60%;
+        font-size: 1rem;
+        margin-top:0rem;
+        margin-left:5rem;
+        margin-bottom:0rem;
+        /* border:solid 1px black; */
+        /* margin-right:auto; */
+        position: relative;
+        /* justify-content: center; */
       }
 
       .honor-element-name {
-        width:4%;
+        order:1;
         border-radius:5px;
-        background-color: rgb(39, 35, 35);
+        background-color: darkgray;
         color:white;
-        text-align: center;
-        font-size: 1.5rem;
-        margin-top:0.6rem;
-        margin-left:8rem;
-        height:2.5rem;
+        text-align:center;
+        vertical-align:middle;
+        margin:auto 0;
+        margin-left:0.5rem;
+        width:2.3rem;
+        height:1.8rem;
+        line-height: 1.8rem;
         padding-right:0.05rem;
       }
 
       .honor-element-name2 {
-        font-size: 2rem;
-        height:2.5rem;
-        margin-top:0.3rem;
-        margin-left:1rem;
+        order:2;
+        height:1.8rem;
+        margin:auto 0;
+        margin-left:0.5rem;
+        margin-right:5rem;
       }
 
       .honor-element-product {
-        width:6%;
+        order:3;
         border-radius:5px;
-        background-color: rgb(39, 35, 35);
+        background-color: darkgray;
         color:white;
-        text-align: center;
-        font-size: 1.5rem;
-        margin-top:0.6rem;
-        margin-left:10rem;
-        height:2.5rem;
+        text-align:center;
+        vertical-align:middle;
+        margin:auto 0;
+        margin-left:0.5rem;
+        width:3.5rem;
+        height:1.8rem;
+        line-height: 1.8rem;
         padding-right:0.05rem;
       }
 
       .honor-element-product2 {
-        font-size: 2rem;
-        height:2.5rem;
-        margin-top:0.3rem;
-        margin-left:1rem;
+        order:4;
+        height:1.8rem;
+        margin:auto 0;
+        margin-left:0.5rem;
+        margin-right:5rem;
       }
    
 
       .honor-element-score {
-        width:4%;
+        order:5;
         border-radius:5px;
-        background-color: rgb(39, 35, 35);
+        background-color: darkgray;
         color:white;
-        text-align: center;
-        font-size: 1.5rem;
-        margin-top:0.6rem;
-        margin-left:15rem;
-        height:2.5rem;
+        text-align:center;
+        vertical-align:middle;
+        margin:auto 0;
+        margin-left:0.5rem;
+        width:2.3rem;
+        height:1.8rem;
+        line-height: 1.8rem;
         padding-right:0.05rem;
       }
 
       .honor-element-score2 {
-        font-size: 2rem;
-        height:2.5rem;
-        margin-top:0.3rem;
-        margin-left:1rem;
+        order:6;
+        height:1.8rem;
+        margin:auto 0;
+        margin-left:0.5rem;
+        margin-right:5rem;
       }
   
 }

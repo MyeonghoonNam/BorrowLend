@@ -24,15 +24,19 @@
           <% for(var i = 0; i < honor.length; i++){ %>
             <% var j = 0; %>
             <div class="honor-list-element">
+              <article class="honor_userinfo">
                 <img class="honor_favicon" src="../../src/images/user.svg" alt="Profile">
                 <div class="honor-element-grade"><%=honor[i].grade%></div>
                 <div class="honor-element-id"><%=honor[i].id%></div>
+              </article>
+              <article class="honor_userinfo2">  
                 <div class="honor-element-name">이름</div>
                 <div class="honor-element-name2"><%=honor[i].name%></div>
                 <div class="honor-element-product">게시물</div>
                 <div class="honor-element-product2"><%=honor[i].honorCount%></div>
                 <div class="honor-element-score">점수</div>
                 <div class="honor-element-score2"><%=honor[i].honorCount*500%></div>
+              </article>  
                 <input type="hidden" name="honor_element_token" value="<%=honor[i].key%>">
                 <input type="submit" class="honor_element_btn" style="display:none;">
               </form>

@@ -1,7 +1,7 @@
 @media all and (max-width:1980px){ 
     .board-upload {
-      width:85rem;
-      min-width:85rem;
+      width:60rem;
+      min-width:60rem;
       margin:0 auto;
       border:solid 2px #c8c8c8;
       margin-top:3rem;

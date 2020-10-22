@@ -1,13 +1,19 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
     .board-list{
+      width:60rem;
+      margin:0 auto;
+      margin-top:2.5rem;
+      margin-bottom:0.5rem;
+    }
+    .board-list{
         border:solid 2px #c8c8c8;
         border-radius: 5px;
         display:flex;
         flex-wrap:wrap;
         justify-content:space-between;
         /* justify-content:space-around; */
-        padding: 3rem 4rem 1rem 4rem;
+        padding: 1rem 1rem 1rem 1rem;
       }
 
       .board-list-element {
@@ -31,7 +37,8 @@
       }
 
       .board-first-number {
-        width:15%;
+        order:1;
+        width:20%;
         height:auto;
         /* border:solid 1px #c8c8c8; */
         font-size:1.5rem;
@@ -40,27 +47,30 @@
 
 
       .board-first-title {
-        width:15%;
+        order:2;
+        width:20%;
         height:auto;
-        margin-left:15rem;
+        margin-left:10rem;
         /* border:solid 1px #c8c8c8; */
         font-size:1.5rem;
         /* margin-top:0.5rem; */
       }
       
       .board-first-id {
-        width:15%;
+        order:3;
+        width:20%;
         height:auto;
-        margin-left:15rem;
+        margin-left:10rem;
         /* border:solid 1px #c8c8c8; */
         font-size:1.5rem;
         /* margin-top:0.5rem; */
       }
 
       .board-first-date {
-        width:15%;
+        order:4;
+        width:20%;
         height:auto;
-        margin-left:20rem;
+        margin-left:10rem;
         /* border:solid 1px #c8c8c8; */
         font-size:1.5rem;
         /* margin-top:0.5rem; */
@@ -72,6 +82,7 @@
       }
 
       .board-element-number {
+        order:1;
         width:10%;
         height:auto;
         /* border:solid 1px #c8c8c8; */
@@ -82,31 +93,34 @@
 
 
       .board-element-title {
-        width:15%;
+        order:2;
+        width:30%;
         height:auto;
-        margin-left:12rem;
+        margin-left:13.5rem;
         /* border:solid 1px #c8c8c8; */
-        font-size:1.5rem;
+        font-size:1.2rem;
         /* margin-top:0.5rem; */
       }
       
 
 
       .board-element-id {
-        width:15%;
+        order:3;
+        width:30%;
         height:auto;
-        margin-left:10.5rem;
+        margin-left:10rem;
         /* border:solid 1px #c8c8c8; */
-        font-size:1.5rem;
+        font-size:1.2rem;
         /* margin-top:0.5rem; */
       }
 
       .board-element-date {
-        width:15%;
+        order:4;
+        width:30%;
         height:auto;
-        margin-left:12rem;
+        margin-left:10rem;
         /* border:solid 1px #c8c8c8; */
-        font-size:1rem;
+        font-size:0.5rem;
         /* margin-top:0.5rem; */
       }
       
