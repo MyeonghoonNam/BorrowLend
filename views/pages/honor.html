@@ -19,29 +19,77 @@
 
     <div id="s-header"></div>
     <div class="article-wrap">
+      <div class="top3">
+        <div class="top3_tag">TOP3</div>
+      </div>
       <div class="honor-wrap">
         <article class="honor-list">
-          <% for(var i = 0; i < honor.length; i++){ %>
-            <% var j = 0; %>
             <div class="honor-list-element">
+              <form method="get" class="product_userinfo_form" action="/product_userinfo" onclick="UserinfoClick(this)">
               <article class="honor_userinfo">
+                <img class="trop" src="../../src/images/trop1.PNG" alt="trop1">
                 <img class="honor_favicon" src="../../src/images/user.svg" alt="Profile">
-                <div class="honor-element-grade"><%=honor[i].grade%></div>
-                <div class="honor-element-id"><%=honor[i].id%></div>
+                <div class="honor-element-grade"><%=honor[0].grade%></div>
+                <div class="honor-element-id"><%=honor[0].id%></div> 
               </article>
               <article class="honor_userinfo2">  
                 <div class="honor-element-name">이름</div>
-                <div class="honor-element-name2"><%=honor[i].name%></div>
-                <div class="honor-element-product">게시물</div>
-                <div class="honor-element-product2"><%=honor[i].honorCount%></div>
+                <div class="honor-element-name2"><%=honor[0].name%></div>
+                <div class="honor-element-product">평균평점</div>
+                <div class="honor-element-product2"><%=honor[0].rate/honor[0].honorCount%></div>
                 <div class="honor-element-score">점수</div>
-                <div class="honor-element-score2"><%=honor[i].honorCount*500%></div>
+                <div class="honor-element-score2"><%=honor[0].honorCount*500%></div>
               </article>  
-                <input type="hidden" name="honor_element_token" value="<%=honor[i].key%>">
+                <input type="hidden" name="honor_element_token" value="<%=honor[0].key%>">
                 <input type="submit" class="honor_element_btn" style="display:none;">
+                <input type="hidden" name="product_usertoken" value="<%=honor[0]._doc.id%>">
+                <input type="submit" class="product_usertoken_submit" style="display:none"> 
               </form>
             </div>
-          <% } %>
+            <div class="honor-list-element">
+              <form method="get" class="product_userinfo_form" action="/product_userinfo" onclick="UserinfoClick(this)">
+              <article class="honor_userinfo">
+                <img class="trop" src="../../src/images/trop2.PNG" alt="trop2">
+                <img class="honor_favicon" src="../../src/images/user.svg" alt="Profile">
+                <div class="honor-element-grade"><%=honor[1].grade%></div>
+                <div class="honor-element-id"><%=honor[1].id%></div>
+              </article>
+              <article class="honor_userinfo2">  
+                <div class="honor-element-name">이름</div>
+                <div class="honor-element-name2"><%=honor[1].name%></div>
+                <div class="honor-element-product">평균평점</div>
+                <div class="honor-element-product2"><%=honor[1].rate/honor[1].honorCount%></div>
+                <div class="honor-element-score">점수</div>
+                <div class="honor-element-score2"><%=honor[1].honorCount*500%></div>
+              </article>  
+                <input type="hidden" name="honor_element_token" value="<%=honor[1].key%>">
+                <input type="submit" class="honor_element_btn" style="display:none;">
+                <input type="hidden" name="product_usertoken" value="<%=honor[1]._doc.id%>">
+                <input type="submit" class="product_usertoken_submit" style="display:none"> 
+              </form>
+            </div>
+            <div class="honor-list-element">
+              <form method="get" class="product_userinfo_form" action="/product_userinfo" onclick="UserinfoClick(this)">
+              <article class="honor_userinfo">
+                <img class="trop" src="../../src/images/trop3.PNG" alt="trop3">
+                <img class="honor_favicon" src="../../src/images/user.svg" alt="Profile">
+                <div class="honor-element-grade"><%=honor[2].grade%></div>
+                <div class="honor-element-id"><%=honor[2].id%></div>
+              </article>
+              <article class="honor_userinfo2">  
+                <div class="honor-element-name">이름</div>
+                <div class="honor-element-name2"><%=honor[2].name%></div>
+                <div class="honor-element-product">평균평점</div>
+                <div class="honor-element-product2"><%=honor[2].rate/honor[2].honorCount%></div>
+                <div class="honor-element-score">점수</div>
+                <div class="honor-element-score2"><%=honor[2].honorCount*500%></div>
+              </article>  
+                <input type="hidden" name="honor_element_token" value="<%=honor[2].key%>">
+                <input type="submit" class="honor_element_btn" style="display:none;">
+                <input type="hidden" name="product_usertoken" value="<%=honor[2]._doc.id%>">
+                <input type="submit" class="product_usertoken_submit" style="display:none"> 
+              </form>
+            </div>
         </article>        
       </div>
     </div>
