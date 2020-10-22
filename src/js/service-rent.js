@@ -157,7 +157,7 @@ function Productlist(e) {
       html += '<input type=\"hidden\" name=\"element_uptoken\" value=\"'+ e.product[i].key +'\">';
       html += '<input type=\"submit\" class=\"element_upbtn\" style=\"display:none\">';
       html += '</form>';
-      html += '<form class=\"srvr_element_udform\" id=\"srvr_element_deleteform\" method=\"post\" action=\"/product_delete\" onclick=\"DelbtnClick()\">';
+      html += '<form class=\"srvr_element_udform\" name=\"srvr_element_deleteform\" method=\"post\" action=\"/product_delete\" onclick=\"DelbtnClick()\">';
       html += '<div class=\"srvr_element_delete\">삭제</div>';
       html += '<input type=\"hidden\" name=\"element_deltoken\" value=\"'+ e.product[i].key +'\">';
       html += '</form>';
@@ -171,7 +171,7 @@ function Productlist(e) {
     
     if(ProductList.length%3 == 2){
       
-      var storebox = document.getElementsByClassName("servicerent-product")[0];
+      var storebox = document.getElementsByClassName("servicerent-product-elementbox")[0];
       var layoutbox = document.createElement('div');
       
       layoutbox.setAttribute("class", "servicerent-product-element");
