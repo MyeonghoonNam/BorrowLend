@@ -189,12 +189,20 @@ function connectDB(){
       increment:1
     });
     
-    NoticeShema = mongoose.Schema({
+    NoticeSchema = mongoose.Schema({
       key:{type : Number, unique : true, 'default':0},
       title:{type : String, required : true},
+      writer:{type : String, 'default':'관리자'},
       content:{type : String, required : true},
       created_at: {type : String, required : true}
-    })
+    });
+
+    NoticeSchema.plugin(autoIncrement.plugin, {
+      model:'NoticeModel',
+      field: 'key',
+      startAt:1,
+      increment:1
+    });
 
     BoardSchema = mongoose.Schema({
       key:{type : Number, unique : true, 'default':0},
@@ -205,13 +213,6 @@ function connectDB(){
       userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
       update_date:{type: String, required : true},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now}
-    });
-
-    BoardSchema.plugin(autoIncrement.plugin, {
-      model:'BoardModel',
-      field: 'key',
-      startAt:1,
-      increment:1
     });
 
     BoardSchema.plugin(autoIncrement.plugin, {
@@ -234,6 +235,7 @@ function connectDB(){
     ProductModel = mongoose.model('products', ProductSchema);
     MessageModel = mongoose.model('messages', MessageSchema);
     ReviewModel = mongoose.model('reviews', ReviewSchema);
+    NoticeModel = mongoose.model('notices', NoticeSchema);
     BoardModel = mongoose.model('Board', BoardSchema);
 
   });
@@ -353,6 +355,22 @@ var addReview = function(database, id, grade, content, rating, date, callback){
     if(err) throw err;
     
     callback(null, Review);
+  });
+};
+
+// 공지 작성
+var addNotice = function(database, title, content, date, callback){
+  
+  var Notice = new NoticeModel({
+    "title":title,
+    "content":content,
+    "created_at":date
+  });
+
+  Notice.save(function(err){
+    if(err) throw err;
+    
+    callback(null, Notice);
   });
 };
 
@@ -1077,11 +1095,41 @@ app.get('/message_delete', function(req,res){
 
 app.get('/customer-notice', function(req,res){
   if(req.session.user){
-    res.render('./pages/customer-notice.html', {user:req.session.user});
+    NoticeModel.find({}).sort({key:-1}).exec(function(err, results){
+      res.render('./pages/customer-notice.html', {
+        user:req.session.user,
+        notice:results
+      });
+    })
   } else{
     res.redirect('/');
   }
 });
+
+app.post('/customer-notice-upload', function(req,res){
+  if(req.session.user){
+    var title = req.body.title;
+    var content = req.body.content;
+    var date = NowDate();
+
+    addNotice(database, title, content, date, function(err, doc){
+      res.redirect('/customer-notice');
+    });
+  } else {
+    res.redirect('/');
+  }
+})
+
+app.get('/customer-notice/page', function(req,res){
+  var token = req.query.pagekey;
+  
+  NoticeModel.find({key:token}, function(err, doc){
+    res.render('./pages/customer-noticepage.html', {
+      user:req.session.user,
+      notice:doc
+    })
+  })
+})
 
 app.get('/customer-notice-upload', function(req,res){
   if(req.session.user){

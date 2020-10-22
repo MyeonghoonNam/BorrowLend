@@ -8,6 +8,7 @@
     <script src="../../src/js/header.js"></script>
     <script src="../../src/js/smallheader.js"></script>
     <script src="../../src/js/footer.js"></script>
+    <script src="../../src/js/customer-notice.js"></script>
     <link rel="stylesheet" href="../../src/css/style.css">
   </head>
 <body>
@@ -30,6 +31,19 @@
           <div class="notice_topwriter">작성자</div>
           <div class="notice_topdate">작성일</div>
         </div>
+        <% var j = notice.length; %>
+        <% for(var i=0; i<notice.length; i++) { %>
+          <form method="get" class="notice_form" action="/customer-notice/page" onclick="$(this).submit()">
+            <div class="notice_box">
+              <div class="notice_num"><%=j%></div>
+              <div class="notice_title"><%=notice[i].title%></div>
+              <div class="notice_writer">관리자</div>
+              <div class="notice_date"><%=notice[i].created_at%></div>
+              <input type="hidden" name="pagekey" value="<%=notice[i].key%>">
+            </div>
+          </form>
+          <% j = j-1 %>
+        <% } %>
       </article>
     </article>
 

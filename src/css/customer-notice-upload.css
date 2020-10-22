@@ -1,7 +1,34 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
-  
+  .notice_titlebox {
+    display:flex;
+    margin-bottom:1rem;
+  }
   .notice_titlespan{
+    order:1;
+    width:5.5rem;
+    height:2.5rem;
+    background: #c8c8c8;
+    font-size:1.4rem;
+    text-align:center;
+    line-height: 2.5rem;
+    border-radius: 5px;
+  }
+  
+  .notice_titleview {
+    order:2;
+    margin-top:0.5rem;
+    /* padding-left:0.5rem; */
+    font-size: 1.3rem;
+    padding:0 1rem;
+  }
+
+  .notice_writerbox {
+    display:flex;
+    margin-bottom:1rem;
+  }
+
+  .notice_writerspan{
     width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
@@ -11,7 +38,33 @@
     border-radius: 5px;
   }
 
-  .notice_title{
+  .notice_writerimg {
+    border:solid 1px black;
+    width:2.5rem;
+    border-radius: 50%;
+    margin-left:1rem;
+    
+  }
+
+  .notice_writerview {
+    margin:auto 0;
+    /* padding-left:0.5rem; */
+    font-size: 1.3rem;
+    padding:0 1rem;
+  }
+
+  .notice_dateview {
+    color:darkgray;
+    margin:auto 0;
+    /* margin-bottom:1rem; */
+  }
+  .notice_contentview {
+    white-space: pre;
+    border-top:solid 2px #c8c8c8;
+    padding-top:1rem;
+  }
+
+  .notice_uptitle{
     width:45%;
     border:solid 1px #c8c8c8;
     outline:none;
@@ -31,8 +84,13 @@
     line-height: 2.5rem;
     border-radius: 5px;
   }
+  .notice_contentview {
+    margin:1rem 0;
+    /* padding-left:0.5rem; */
+    font-size: 1rem;
+  }
 
-  .notice_content {
+  .notice_upcontent {
     border:solid 1px #c8c8c8;
     outline:none;
     margin-top:1rem;

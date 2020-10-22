@@ -145,7 +145,7 @@ function Productlist(e) {
       html += '<div class=\"srvr_element_title\">'+ e.product[i].title +'</div>';
       html += '<div class=\"srvr_element_price\">'+ e.product[i].price +'</div>';
       html += '<div class=\"srvr_element_likebox\">';
-      html += '<i class=\"srvr_element_icon fas fa-heart\"></i>';
+      html += '<i class=\"srvr_element_icon fas fa-heart\"></i> ';
       html += '<div class=\"srvr_element_count\">'+ e.product[i].LikeCount +'</div>';
       html += '</div>';
       html += '<input type=\"hidden\" name=\"element_token\" value=\"'+ e.product[i].key +'\">';
