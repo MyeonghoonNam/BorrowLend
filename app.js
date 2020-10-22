@@ -877,20 +877,46 @@ app.post('/product_message', function(req,res){
 
 app.get('/service-rent', function(req,res){
   if(req.session.user){
-    ProductModel.find({userinfo:req.session.user._id}).sort({created_at:-1}).exec(function(err,results){
-      if(err) throw err;
-
-      if(results){
-        res.render('./pages/service-rent.html',{
-          user:req.session.user,
-          product:results
+    UserModel.find({id:req.session.user.id}, function(err, doc){
+      ReviewModel.find({_id:doc[0].review}, function(err, docs){
+        ProductModel.find({userinfo:req.session.user._id}).sort({created_at:-1}).exec(function(err,results){
+          if(err) throw err;
+    
+          if(results){
+            res.render('./pages/service-rent.html',{
+              user:req.session.user,
+              product:results,
+              review:docs
+            })
+          }
         })
-      }
+      })
+
     })
   } else{
     res.redirect('/');
   }
 });
+
+app.get('/service-rent_reviewlist', function(req, res){
+  var user = req.session.user.id;
+
+  UserModel.find({id:user}, function(err,doc){
+    ReviewModel.find({_id:doc[0].review}).sort({key:-1}).exec(function(err, docs){
+      res.send({review:docs});
+    })
+  })
+})
+
+app.get('/service-rent_productlist', function(req, res){
+  var user = req.session.user.id;
+
+  UserModel.find({id:user}, function(err,doc){
+    ProductModel.find({userinfo:doc[0]._id}).sort({key:-1}).exec(function(err, docs){
+      res.send({product:docs});
+    })
+  })
+})
 
 app.get('/service-like', function(req,res){
   if(req.session.user){

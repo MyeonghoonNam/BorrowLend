@@ -95,7 +95,7 @@ var filename = Page_Title();
 if(filename == 'product-upload' || 'service-rent' || 'service-like') {
   var mainname = '서비스';
     if(filename == 'service-rent'){
-      var subname = '대여내역';
+      var subname = '등록현황';
       l_layout(mainname, subname);
     } else if(filename == 'service-like'){
       // var mainname = '서비스';

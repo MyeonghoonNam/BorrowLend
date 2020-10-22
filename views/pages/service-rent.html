@@ -31,43 +31,56 @@
         </article>
         
         <article class="servicerent-product">
-        <% for(var i = 0; i < product.length; i++){ %>
-          <% var j = 0; %>
-          <div class="servicerent-product-element">
-            <form method="get" action="/product" onclick="ProductClick(this)">
-              <img class="srvr_element_img"src="../../src/uploads/<%=product[i].list[j].name%>" alt="">
-              <div class="srvr_element_title"><%=product[i].title%></div>
-              <div class="srvr_element_price"><%=product[i].price%></div>
-              <div class="srvr_element_likebox">
-                <i class="srvr_element_icon fas fa-heart"></i>
-                <div class="srvr_element_count"><%=product[i].LikeCount%></div>
+          <div class="servicerent-product-elementbox">
+            <% for(var i = 0; i < product.length; i++){ %>
+              <% var j = 0; %>
+              <div class="servicerent-product-element">
+                <form method="get" action="/product" onclick="ProductClick(this)">
+                  <img class="srvr_element_img"src="../../src/uploads/<%=product[i].list[j].name%>" alt="">
+                  <div class="srvr_element_title"><%=product[i].title%></div>
+                  <div class="srvr_element_price"><%=product[i].price%></div>
+                  <div class="srvr_element_likebox">
+                    <i class="srvr_element_icon fas fa-heart"></i>
+                    <div class="srvr_element_count"><%=product[i].LikeCount%></div>
+                  </div>
+                  <input type="hidden" name="element_token" value="<%=product[i].key%>">
+                  <input type="submit" class="element_btn" style="display:none;">
+                </form>
+                <div class="srvr_element_btn">
+                  <form class="srvr_element_udform" method="get" action="/product_update" onclick="UpbtnClick(this)">
+                    <div class="srvr_element_update">수정</div>
+                    <input type="hidden" name="element_uptoken" value="<%=product[i].key%>">
+                    <input type="submit" class="element_upbtn" style="display:none;">
+                  </form>
+                  <form class="srvr_element_udform" name="srvr_element_deleteform" method="post" action="/product_delete" onclick="DelbtnClick(this)">
+                    <div class="srvr_element_delete">삭제</div>
+                    <input type="hidden" name="element_deltoken" value="<%=product[i].key%>">
+                  </form>
+                </div>
               </div>
-              <input type="hidden" name="element_token" value="<%=product[i].key%>">
-              <input type="submit" class="element_btn" style="display:none;">
-            </form>
-            <div class="srvr_element_btn">
-              <form class="srvr_element_udform" method="get" action="/product_update" onclick="UpbtnClick(this)">
-                <div class="srvr_element_update">수정</div>
-                <input type="hidden" name="element_uptoken" value="<%=product[i].key%>">
-                <input type="submit" class="element_upbtn" style="display:none;">
-              </form>
-              <form class="srvr_element_udform" id="srvr_element_deleteform" method="post" action="/product_delete" onclick="DelbtnClick()">
-                <div class="srvr_element_delete">삭제</div>
-                <input type="hidden" name="element_deltoken" value="<%=product[i].key%>">
-              </form>
-            </div>
+            <% } %>
           </div>
-        <% } %>
+
+        <article class="servicerent_review"></article>
           
         <% if(product.length==0){ %>
-          <div class="servicerent_default">
-            <div>
+          <div class="servicerent_default_product">
+            <div class="defaultreview_content">
               <i class="xi-emoticon-smiley-o prt_defaulticon"></i><br>
               등록하신 물품이 없습니다.
             </div>
           </div>
         <% } %>
-        </article>
+  
+        <% if(review.length==0){ %>
+          <div class="servicerent_default_review">
+            <div class="defaultreview_content">
+              <i class="xi-emoticon-smiley-o prt_defaulticon"></i><br>
+              등록된 후기가 없습니다.
+            </div>
+          </div>
+        <% } %>
+      </article>
       </div>
     </div>
 

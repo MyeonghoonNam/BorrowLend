@@ -14,7 +14,7 @@ $(document).ready(function(){
     ProductList[ProductList.length-1].style.border="none";
     ProductList[ProductList.length-1].style.cursor="default";
   }
-
+  
   var div_box = document.getElementsByClassName('product_userinfo_product')[0];
   var div_topbox = document.getElementsByClassName('product_userinfo_topbox')[0];
   var div_default = document.getElementsByClassName('product_userinfo_default')[0];
@@ -23,14 +23,14 @@ $(document).ready(function(){
     div_box.style.height="25rem";
     div_topbox.style.display="none";
   }
-
+  
   //리뷰 평가
   var ratingEl = document.querySelector("#review-rating");
   var stars = createStarElements(ratingEl);
   
   setRating(stars, rating);
   getNewRating(ratingEl);
-
+  
   //리뷰 작성
   $(document).on('click', '.review_sendbtn', function(){
     var content = $('.review_content_input').val();
@@ -56,25 +56,24 @@ $(document).ready(function(){
           $('.ratingcount').empty();
           $('.rating').empty();
           $('input[name=ratingcount]').removeAttr('value');
-
+          
           var ratingEl = document.querySelector("#review-rating");
           var stars = createStarElements(ratingEl);
           setRating(stars,0);
           getNewRating(ratingEl);
           $('a.close-modal').click();
-
+          
           ReviewlistClick();
           Reviewlist(result);
-
+          
         }
       });
     });
-
   });
-
+  
   $(document).on('click', '.product_userinfo_reveiwlist', function(){
     var user = $('.review_name').text();
-
+    
     $.ajax({
       url:'/reviewlist',
       type:'get',
@@ -251,8 +250,6 @@ function Productlist(e) {
       ProductList[ProductList.length-1].style.cursor="default";
     }
   }
-  $('.product_userinfo_default').length
-
 }
 
 function ProductClick(element){
