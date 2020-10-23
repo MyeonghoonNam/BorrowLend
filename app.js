@@ -107,6 +107,7 @@ function connectDB(){
       created_at: {type: Date, index: {unique: false}, 'default': Date.now},
       grade : {type : String, 'default':'시민'},
       honorCount:{type : Number, 'default':0},
+      rate : {type : Number, 'default':0},
       LikeProduct:[{type:mongoose.Schema.Types.ObjectId, ref:'products'}],
       review:[{type:mongoose.Schema.Types.ObjectId, ref:'reviews'}],
     });
@@ -573,6 +574,39 @@ app.post('/add_review', function(req,res){
         })
       });
     });
+    UserModel.findById(user, function(err, doc1){
+      var query2 = {_id:doc1[0]._id};
+      var update2 = {honorCount:doc1[0].honorCount + 1}
+      var count3 = {honorCount:doc1[0].honorCount = 5};
+      var count4 = {honorCount:doc1[0].honorCount = 10};
+      var count5 = {honorCount:doc1[0].honorCount = 15};
+  
+      UserModel.findOneAndUpdate(query2, update2, {new:true, upsert: true}, function(err, result){
+        console.log(result);
+      });
+  
+      if(query2){
+      UserModel.findOneAndUpdate(count3,{grade:'귀족'}, {new:true, new:true}, function(err, result){
+        console.log(result);
+      });
+  
+      UserModel.findOneAndUpdate(count4,{grade:'백작'}, {new:true, new:true}, function(err, result){
+        console.log(result);
+      });
+  
+      UserModel.findOneAndUpdate(count5,{grade:'왕'}, {new:true, new:true}, function(err, result){
+        console.log(result);
+      });
+    }
+   });
+   UserModel.findById(user, function(err, doc2){
+    var query3 = {_id:doc2[0]._id};
+    var update3 = {rate: doc2[0].rate + parseInt(rating)}
+
+    UserModel.findOneAndUpdate(query3, update3, {new:true, upsert: true}, function(err, result){
+      console.log(result);
+    });
+  });
   }
 });
 
@@ -743,32 +777,6 @@ app.post('/product-upload', upload.array('photo', 5) ,function(req,res){
       }
     });
   }
-
-  UserModel.findById(userid, function(err, doc1){
-    var query3 = {_id:doc1[0]._id};
-    var update3 = {honorCount:doc1[0].honorCount + 1};
-    var count3 = {grade:'귀족'};
-    var count4 = {grade:'백작'};
-    var count5 = {grade:'왕'};
-
-    UserModel.findOneAndUpdate(query3, update3, {new:true, upsert: true}, function(err, result){
-      console.log(result);
-    });
-
-    if(query3){
-    UserModel.findOneAndUpdate({ honorCount: 5 }, count3, {new:true, new:true}, function(err, result){
-      console.log(result);
-    });
-
-    UserModel.findOneAndUpdate({ honorCount: 10 }, count4, {new:true, new:true}, function(err, result){
-      console.log(result);
-    });
-
-    UserModel.findOneAndUpdate({ honorCount: 15 }, count5, {new:true, new:true}, function(err, result){
-      console.log(result);
-    });
-  }
- });
 });
 
 app.get('/product_update', function(req,res){
@@ -1222,7 +1230,7 @@ app.post('/customer-write', function(req,res){
 
 app.get('/honor', function(req,res){
   if(req.session.user){
-    UserModel.find().sort({honorCount:-1}).exec(function(err,results){
+    UserModel.find().sort({honorCount:-1}).limit(3).exec(function(err,results){
       if(results){
 
         res.render('./pages/honor.html', {
