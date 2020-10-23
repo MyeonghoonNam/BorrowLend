@@ -37,10 +37,10 @@ $(document).ready(function(){
       success:function(result){
           $("i").remove(".product_likebtn");
           if(result.btn === "1"){
-            var likebtn = "<i class=\"product_likebtn fas fa-heart fa-3x\" value=\"1\">";
+            var likebtn = "<i class=\"product_likebtn fas fa-heart fa-3x\" value=\"1\"><span>"+ result.count +"</span></i>";
             $(".product_userinfo").append(likebtn);
           } else {
-            var likebtn = "<i class=\"product_likebtn far fa-heart fa-3x\" value=\"0\">";
+            var likebtn = "<i class=\"product_likebtn far fa-heart fa-3x\" value=\"0\"><span>"+ result.count +"</span></i>";
             $(".product_userinfo").append(likebtn);
           }
       }

@@ -64,12 +64,18 @@ var autoIncrement = require('mongoose-auto-increment');
 var UserSchema;
 var SchoolSchema;
 var ProductSchema;
-var BoardSchema;
+var MessageSchema;
+var ReviewSchema;
+var NoticeSchema
+var QnaSchema;
 
 var UserModel;
 var SchoolModel;
 var ProductModel;
-var BoardModel;
+var MessageModel;
+var ReviewModel;
+var NoticeModel;
+var QnaModel;
 
 function connectDB(){
   var databaseUrl = 'mongodb://localhost:27017/local';
@@ -159,7 +165,6 @@ function connectDB(){
       title:{type : String, required : true},
       content:{type : String, required : true},
       Imglist:[{type : String}],
-      // read_date:{type: Date, index: {unique: false}},
       sent_date:{type: String, required : true},
       read_recv:{type : String, index: {unique: false}, 'default': "N"},
       del_recv:{type: String, index: {unique: false}, 'default': "N"},
@@ -204,30 +209,19 @@ function connectDB(){
       increment:1
     });
 
-    BoardSchema = mongoose.Schema({
+    QnaSchema = mongoose.Schema({
       key:{type : Number, unique : true, 'default':0},
-      number:{type : Number, 'default':0, max:50},
       title:{type : String, required : true},
       content:{type : String, required : true},
-      usid:{type : String, required : true},
       userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
-      update_date:{type: String, required : true},
-      created_at: {type: Date, index: {unique: false}, 'default': Date.now}
+      created_at: {type : String, required : true}
     });
 
-    BoardSchema.plugin(autoIncrement.plugin, {
-      model:'BoardModel',
-      field: 'number',
+    QnaSchema.plugin(autoIncrement.plugin, {
+      model:'QnaModel',
+      field: 'key',
       startAt:1,
       increment:1
-    });
-
-    BoardSchema.static('findByKey', function(key, callback){
-      return this.find({key:key}, callback);
-    });
-
-    BoardSchema.static('findAll', function(callback){
-      return this.find({}, callback);
     });
     
     UserModel = mongoose.model('users', UserSchema);
@@ -236,7 +230,7 @@ function connectDB(){
     MessageModel = mongoose.model('messages', MessageSchema);
     ReviewModel = mongoose.model('reviews', ReviewSchema);
     NoticeModel = mongoose.model('notices', NoticeSchema);
-    BoardModel = mongoose.model('Board', BoardSchema);
+    QnaModel = mongoose.model('Board', QnaSchema);
 
   });
 
@@ -375,23 +369,22 @@ var addNotice = function(database, title, content, date, callback){
 };
 
 // 게시판 등록
-var addBoard = function(database, title, content, userid, update_date, callback){
+var addQna = function(database, title, content, userinfo, created_at, callback){
 
-  UserModel.findById(userid, function(err, result){
+  UserModel.findById(userinfo, function(err, result){
     var userinfo = result;
 
-    var board = new BoardModel({
+    var Qna = new QnaModel({
       "title":title,
       "content":content,
       "userinfo":userinfo[0]._id,
-      "usid":userinfo[0].id,
-      "update_date":update_date
+      "created_at":created_at
     });
     
-    board.save(function(err){
+    Qna.save(function(err){
       if(err) throw err;
           
-      callback(null, board);
+      callback(null, Qna);
     });
   });
 
@@ -669,6 +662,7 @@ app.post('/product_like', function(req,res){
   UserModel.findById(uid, function(err, doc1){
     ProductModel.find({_id:token}, function(err, doc2){
       if(btn === "0"){
+        var count;
         var query = {_id:doc1[0]._id};
         var update = {$push:{LikeProduct:doc2[0]._id}};
   
@@ -681,11 +675,13 @@ app.post('/product_like', function(req,res){
 
         ProductModel.findOneAndUpdate(query2, update2, {new:true, upsert: true}, function(err, result){
           console.log(result);
+          count=result.LikeCount;
+          btn = "1";
+          res.send({btn:btn, count:count});
         });
         
-        btn = "1";
-        res.send({btn:btn});
       } else {
+        var count;
         var query = {_id:doc1[0]._id};
         var update = {$pull:{LikeProduct:doc2[0]._id}};
         
@@ -698,9 +694,11 @@ app.post('/product_like', function(req,res){
 
         ProductModel.findOneAndUpdate(query2, update2, {new:true, upsert: true}, function(err, result){
           console.log(result);
+          count=result.LikeCount;
+          console.log(count);
+          btn ="0";
+          res.send({btn:btn, count:count});
         });
-        btn ="0";
-        res.send({btn:btn});
       }
     });
   });

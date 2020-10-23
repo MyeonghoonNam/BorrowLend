@@ -18,37 +18,34 @@
     </header>
 
     <div id="s-header"></div>
-    <div class="article-wrap">
-      <div class="board-wrap">
-        <article class="board-list">
-          <div class="board-first-element">
-          <div class="board-first-number">번호</div>
-          <div class="board-first-title">제목</div>
-          <div class="board-first-id">아이디</div>
-          <div class="board-first-date">작성일시</div>
-          </div>
-          <% for(var i = 0; i < board.length; i++){ %>
-            <% var j = 0; %>
-            <div class="board-list-element" onclick="BoardClick(this)">
-              <form method="get" action="/q&a-element" class="qa-element-form">
-                <div class="board-element-number"><%=board[i].number%></div>
-                <div class="board-element-title"><%=board[i].title%></div>
-                <div class="board-element-id"><%=board[i].usid%></div>
-                <div class="board-element-date"><%=board[i].update_date%></div>
-                <input type="hidden" name="board_element_token" value="<%=board[i].key%>">
-                <input type="submit" class="board_element_btn" style="display:none;">
-              </form>
-            </div>
-          <% } %>
-        </article>        
-      </div>
 
-      <div class="board-write-bottom">
-        <div class="board_writebox">
-          <button type="submit" class="boardwrite_btn" onclick="location.href='/customer-write'">글작성</button>
+    <article class="article-wrap">
+      <article class="qna_tag">
+        <div class="qna_tagtitle">Q&A</div>
+        <button type="button" class="qna_tagbtn" onclick="location.href='/customer-qna-upload'">작성</button>
+      </article>
+      <article class="qna_wrap">
+        <div class="qna_top">
+          <div class="qna_topnum">번호</div>
+          <div class="qna_toptitle">제목</div>
+          <div class="qna_topwriter">작성자</div>
+          <div class="qna_topdate">작성일</div>
         </div>
-      </div> 
-    </div>
+        <% var j = qna.length; %>
+        <% for(var i=0; i<qna.length; i++) { %>
+          <form method="get" class="qna_form" action="/customer-qna/page" onclick="$(this).submit()">
+            <div class="qna_box">
+              <div class="qna_num"><%=j%></div>
+              <div class="qna_title"><%=qna[i].title%></div>
+              <div class="qna_writer"><%=qna[i].writer%></div>
+              <div class="qna_date"><%=qna[i].created_at%></div>
+              <input type="hidden" name="pagekey" value="<%=qna[i].key%>">
+            </div>
+          </form>
+          <% j = j-1 %>
+        <% } %>
+      </article>
+    </article>
     <footer id="footer"></footer>
 
     <script>
