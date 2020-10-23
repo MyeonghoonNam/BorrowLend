@@ -1,19 +1,4 @@
 $(document).ready(function(){
-  // 이미지 뷰
-
-  // 백업용
-  // $(".slider").slick({
-  //   dots:true,
-  //   arrows:true,
-  //   slidesToShow: 1,
-  //   slidesToScroll: 1,
-  // }).on('setPosition', function (event, slick) {
-  //   slick.$slides.css('height', slick.$slideTrack.height() + 'px');
-  //   if(slick.$slideTrack.width()==1600){
-  //     slick.$slides.css('height', '288px');
-  //   }
-  // });
-
   $(".slider").slick({
     dots:true,
     arrows:true,
@@ -37,10 +22,10 @@ $(document).ready(function(){
       success:function(result){
           $("i").remove(".product_likebtn");
           if(result.btn === "1"){
-            var likebtn = "<i class=\"product_likebtn fas fa-heart fa-3x\" value=\"1\"><span>"+ result.count +"</span></i>";
+            var likebtn = "<i class=\"product_likebtn fas fa-heart fa-3x\" value=\"1\"><span class=\"product_likecount\">"+ result.count +"</span></i>";
             $(".product_userinfo").append(likebtn);
           } else {
-            var likebtn = "<i class=\"product_likebtn far fa-heart fa-3x\" value=\"0\"><span>"+ result.count +"</span></i>";
+            var likebtn = "<i class=\"product_likebtn far fa-heart fa-3x\" value=\"0\"><span class=\"product_likecount\">"+ result.count +"</span></i>";
             $(".product_userinfo").append(likebtn);
           }
       }

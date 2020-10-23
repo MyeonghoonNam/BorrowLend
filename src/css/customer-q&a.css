@@ -1,7 +1,7 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
   .qna_tag {
-    width:50rem;
+    width:55rem;
     font-size:2rem;
     margin:0 auto;
     margin-top:2.5rem;
@@ -41,10 +41,11 @@
   }
   
   .qna_wrap {
-    width:50rem;
+    width:55rem;
+    /* height:auto; */
     border:solid 2px #c8c8c8;
     margin:0 auto;
-    min-height:30rem;
+    min-height:25rem;
     padding:2rem 2rem;
   }
 
@@ -63,7 +64,7 @@
     /* border:solid 1px black; */
   }
   .qna_toptitle {
-    width:50%;
+    width:40%;
     /* border:solid 1px black; */
   }
   .qna_topwriter {
@@ -72,6 +73,10 @@
   }
   .qna_topdate {
     width:25%;
+    /* border:solid 1px black; */
+  }
+  .qna_topanswer {
+    width:10%;
     /* border:solid 1px black; */
   }
   
@@ -91,7 +96,7 @@
   }
   
   .qna_title {
-    width:50%;
+    width:40%;
     /* border:solid 1px black; */
   }
   .qna_writer {
@@ -99,10 +104,43 @@
     text-align:center;
     /* border:solid 1px black; */
   }
+
   .qna_date {
     width:25%;
     text-align:center;
     /* border:solid 1px black; */
+  }
+
+  .qna_answer_checkN {
+    width:10%;
+    text-align:center;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    background-color:#ffffff;
+    border-radius:6px;
+    border:1px solid #dedede;
+    display:inline-block;
+    color:#666666;
+    font-family:inherit;
+    font-weight:bold;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ffffff;
+  }
+
+  .qna_answer_checkY {
+    width:10%;
+    text-align:center;
+    box-shadow:inset 0px 1px 0px 0px #fce2c1;
+    background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
+    background-color:#ffc477;
+    border-radius:6px;
+    border:1px solid #eeb44f;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #cc9f52;
   }
 }
 

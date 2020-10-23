@@ -40,9 +40,9 @@
             <input type="submit" class="product_usertoken_submit" style="display:none">
           </form>
           <% if(SetLikecount == 0) { %>
-            <i class="product_likebtn far fa-heart fa-3x" value="0"><span><%=product[0].LikeCount%></span></i>
+            <i class="product_likebtn far fa-heart fa-3x" value="0"><span class="product_likecount"><%=product[0].LikeCount%></span></i>
           <% } else { %>
-            <i class="product_likebtn fas fa-heart fa-3x" value="1"><span><%=product[0].LikeCount%></span></i>
+            <i class="product_likebtn fas fa-heart fa-3x" value="1"><span class="product_likecount"><%=product[0].LikeCount%></span></i>
           <% } %>
         </div>
 

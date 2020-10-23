@@ -1,11 +1,14 @@
-// 동적 게시판 리스트 레이아웃 구현
-
-
-function BoardClick(element){
-  var board = $(element).find(".board_element_btn")
+$(document).ready(function(){
+  var checklist = $('.qna_answer');
   
-  console.log(board);
+  for(var i=0; i<checklist.length; i++){
+    if($(checklist[i]).attr('value') == "N"){
+      $(checklist[i]).addClass('qna_answer_checkN');
+      $(checklist[i]).text('대기');
+    } else if($(checklist[i]).attr('value') == "Y"){
+      $(checklist[i]).addClass('qna_answer_checkY');
+      $(checklist[i]).text('답변완료');
 
-  board[0].click();
-}
-
+    }
+  }
+})

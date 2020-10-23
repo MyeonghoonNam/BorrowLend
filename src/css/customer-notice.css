@@ -1,7 +1,7 @@
 /* PC 뷰 css */
 @media all and (max-width:1920px){
   .notice_tag {
-    width:50rem;
+    width:55rem;
     font-size:2rem;
     margin:0 auto;
     margin-top:2.5rem;
@@ -41,10 +41,10 @@
   }
   
   .notice_wrap {
-    width:50rem;
+    width:55rem;
     border:solid 2px #c8c8c8;
     margin:0 auto;
-    min-height:30rem;
+    min-height:25rem;
     padding:2rem 2rem;
   }
 

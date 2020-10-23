@@ -68,6 +68,7 @@ var MessageSchema;
 var ReviewSchema;
 var NoticeSchema
 var QnaSchema;
+var QnaAnswerSchema;
 
 var UserModel;
 var SchoolModel;
@@ -76,6 +77,7 @@ var MessageModel;
 var ReviewModel;
 var NoticeModel;
 var QnaModel;
+var QnaAnswerModel;
 
 function connectDB(){
   var databaseUrl = 'mongodb://localhost:27017/local';
@@ -212,12 +214,15 @@ function connectDB(){
 
     QnaSchema = mongoose.Schema({
       key:{type : Number, unique : true, 'default':0},
+      grade:{type : String, required : true},
+      userid:{type : String, required : true},
       title:{type : String, required : true},
       content:{type : String, required : true},
-      userinfo:{type:mongoose.Schema.Types.ObjectId, ref:'users'},
-      created_at: {type : String, required : true}
+      created_at: {type : String, required : true},
+      answer:[{type:mongoose.Schema.Types.ObjectId, ref:'qna_answers'}],
+      answer_check:{type: String, 'default': "N"}
     });
-
+    
     QnaSchema.plugin(autoIncrement.plugin, {
       model:'QnaModel',
       field: 'key',
@@ -225,13 +230,28 @@ function connectDB(){
       increment:1
     });
     
+    QnaAnswerSchema = mongoose.Schema({
+      key:{type : Number, unique : true, 'default':0},
+      content:{type : String, required : true},
+      created_at: {type : String, required : true},
+      userid:{type : String, required : true}
+    });
+
+    QnaAnswerSchema.plugin(autoIncrement.plugin, {
+      model:'QnaAnswerModel',
+      field: 'key',
+      startAt:1,
+      increment:1
+    });
+
     UserModel = mongoose.model('users', UserSchema);
     SchoolModel = mongoose.model('schools', SchoolSchema);
     ProductModel = mongoose.model('products', ProductSchema);
     MessageModel = mongoose.model('messages', MessageSchema);
     ReviewModel = mongoose.model('reviews', ReviewSchema);
     NoticeModel = mongoose.model('notices', NoticeSchema);
-    QnaModel = mongoose.model('Board', QnaSchema);
+    QnaModel = mongoose.model('qnas', QnaSchema);
+    QnaAnswerModel = mongoose.model('qna_answers', QnaAnswerSchema);
 
   });
 
@@ -370,27 +390,37 @@ var addNotice = function(database, title, content, date, callback){
 };
 
 // 게시판 등록
-var addQna = function(database, title, content, userinfo, created_at, callback){
+var addQna = function(database, grade, userid, title, content, created_at, callback){
 
-  UserModel.findById(userinfo, function(err, result){
-    var userinfo = result;
-
-    var Qna = new QnaModel({
-      "title":title,
-      "content":content,
-      "userinfo":userinfo[0]._id,
-      "created_at":created_at
-    });
-    
-    Qna.save(function(err){
-      if(err) throw err;
-          
-      callback(null, Qna);
-    });
+  var Qna = new QnaModel({
+    "grade":grade,
+    "userid":userid,
+    "title":title,
+    "content":content,
+    "created_at":created_at
   });
-
+    
+  Qna.save(function(err){
+    if(err) throw err;
+          
+    callback(null, Qna);
+  });
 };
 //
+
+var addQnaAnswer = function(database, content, created_at, userid, callback){
+  var QnaAnswer = new QnaAnswerModel({
+    "content":content,
+    "created_at":created_at,
+    "userid":userid
+  });
+    
+  QnaAnswer.save(function(err){
+    if(err) throw err;
+          
+    callback(null, QnaAnswer);
+  });
+}
 
 app.use(static(__dirname));
 
@@ -1112,6 +1142,14 @@ app.get('/customer-notice', function(req,res){
   }
 });
 
+app.get('/customer-notice-upload', function(req,res){
+  if(req.session.user){
+    res.render('./pages/customer-notice-upload.html', {user:req.session.user});
+  } else{
+    res.redirect('/');
+  }
+});
+
 app.post('/customer-notice-upload', function(req,res){
   if(req.session.user){
     var title = req.body.title;
@@ -1126,8 +1164,8 @@ app.post('/customer-notice-upload', function(req,res){
   }
 })
 
-app.get('/customer-notice/page', function(req,res){
-  var token = req.query.pagekey;
+app.get('/customer-notice/noticepage', function(req,res){
+  var token = req.query.key;
   
   NoticeModel.find({key:token}, function(err, doc){
     res.render('./pages/customer-noticepage.html', {
@@ -1137,96 +1175,78 @@ app.get('/customer-notice/page', function(req,res){
   })
 })
 
-app.get('/customer-notice-upload', function(req,res){
+app.get('/customer-qna', function(req,res){
   if(req.session.user){
-    res.render('./pages/customer-notice-upload.html', {user:req.session.user});
-  } else{
-    res.redirect('/');
-  }
-});
-
-app.get('/customer-q&a', function(req,res){
-  if(req.session.user){
-    BoardModel.find().sort({created_at:-1}).exec(function(err,results){
-      if(results){
-        var setToken = "0";
-
-        res.render('./pages/customer-q&a.html', {
-          user:req.session.user,
-          board:results,
-          setToken:setToken
-        });
-      } else {
-        res.redirect('/');
-      }
+    QnaModel.find().sort({created_at:-1}).exec(function(err,results){
+      res.render('./pages/customer-q&a.html', {
+        user:req.session.user,
+        qna:results
+      });
     })
+  } else {
+    res.redirect('/');
   }
 });
 
-app.get('/q&a-element', function(req,res){
-  
-  var index2 = req.query.board_element_token;
-
+app.get('/customer-qna-upload', function(req,res){
   if(req.session.user){
-    BoardModel.findByKey(index2, function(err, result){
-      if(err) throw err;
-      if(result){
-        console.log(result[0].userinfo)
-        UserModel.findByOid(result[0].userinfo, function(err, doc){
-          console.log(doc);
-          res.render('./pages/q&a-element.html', {
-              user:req.session.user,
-              board:result,
-              userinfo:doc
-          });
-        })
-      } 
-    });
-  }
-});
-
-app.get('/customer-write', function(req,res){
-  if(req.session.user){
-    res.render('./pages/customer-write.html', {user:req.session.user});
+    res.render('./pages/customer-q&a-upload.html', {user:req.session.user});
   } else{
     res.redirect('/');
   }
 });
 
-app.post('/customer-write', function(req,res){
-  var title = req.body.title;
-  var content = req.body.content;
-  var userid = req.session.user.id;
-  const now = new Date();
+app.post('/customer-qna-upload', function(req,res){
+  if(req.session.user){
+    UserModel.find({_id:req.session.user._id}, function(err, doc){
+      var grade = doc[0].grade;
+      var userid = doc[0].id;
+      var title = req.body.title;
+      var content = req.body.content;
+      var created_at = NowDate();
   
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const date = now.getDate();
-  let hour = now.getHours();
-  let minute = now.getMinutes();
-  let second = now.getSeconds();
-  const ampm = hour >= 12 ? 'PM' : 'AM';
+      addQna(database, grade, userid, title, content, created_at, function(err, doc){
+        res.redirect('/customer-qna');
+      });
+    })
+  } else {
+    res.redirect('/');
+  }
+})
 
-  // 12시간제로 변경
-  hour %= 12;
-  hour = hour || 12; // 0 => 12
-
-  // 10미만인 분과 초를 2자리로 변경
-  hour = hour < 10 ? '0' + hour : hour;
-  minute = minute < 10 ? '0' + minute : minute;
-  second = second < 10 ? '0' + second : second;
-
-  const update_date = `${year}-${month}-${date} ${hour}:${minute}:${second} ${ampm}`;
-
-  addBoard(database, title, content, userid, update_date, function(err, docs){
-    if(err) throw err;
-
-    if(docs) {
-      res.redirect('customer-q&a');
-    }
+app.get('/customer-qna/qnapage', function(req,res){
+  var token = req.query.key;
+  
+  QnaModel.find({key:token}, function(err, doc){
+    QnaAnswerModel.find({_id:doc[0].answer}).sort({created_at:1}).exec(function(err, docs){
+      res.render('./pages/customer-q&apage.html', {
+        user:req.session.user,
+        qna:doc,
+        qna_answer:docs
+      });
+    })
   });
 });
 
+app.post('/qna_answer_upload', function(req, res){
+  var content = req.body.content;
+  var userid = req.body.userid;
+  var key = req.body.key;
+  var date = NowDate();
+
+  addQnaAnswer(database, content, date, userid, function(err, doc){
+    var update = {$push:{answer:doc._id}};
+
+    QnaModel.findOneAndUpdate({key:key}, update, {new:true, upsert: true}, function(err, result){
+      QnaModel.findOneAndUpdate({key:key}, {answer_check:"Y"}, {new:true, upsert: true}, function(err, result){
+        QnaAnswerModel.find({_id:result.answer}, function(err, docs){
+          console.log(docs);
+          res.send({answer:docs});
+        });
+      });
+    });
+  });
+});
 
 app.get('/honor', function(req,res){
   if(req.session.user){
