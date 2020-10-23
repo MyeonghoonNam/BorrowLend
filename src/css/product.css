@@ -60,6 +60,12 @@
     right:0;
     cursor: pointer;
   }
+
+  .product_likecount{
+    color:black;
+    font-size:2rem;
+    margin-left:0.5rem;
+  }
   
   .fa-heart {
     color:#DA4949;
