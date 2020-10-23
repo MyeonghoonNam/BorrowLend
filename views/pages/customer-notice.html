@@ -33,13 +33,13 @@
         </div>
         <% var j = notice.length; %>
         <% for(var i=0; i<notice.length; i++) { %>
-          <form method="get" class="notice_form" action="/customer-notice/page" onclick="$(this).submit()">
+          <form method="get" class="notice_form" action="/customer-notice/noticepage" onclick="$(this).submit()">
             <div class="notice_box">
               <div class="notice_num"><%=j%></div>
               <div class="notice_title"><%=notice[i].title%></div>
               <div class="notice_writer">관리자</div>
               <div class="notice_date"><%=notice[i].created_at%></div>
-              <input type="hidden" name="pagekey" value="<%=notice[i].key%>">
+              <input type="hidden" name="key" value="<%=notice[i].key%>">
             </div>
           </form>
           <% j = j-1 %>

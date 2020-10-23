@@ -1,19 +1,4 @@
 $(document).ready(function(){
-  // 이미지 뷰
-
-  // 백업용
-  // $(".slider").slick({
-  //   dots:true,
-  //   arrows:true,
-  //   slidesToShow: 1,
-  //   slidesToScroll: 1,
-  // }).on('setPosition', function (event, slick) {
-  //   slick.$slides.css('height', slick.$slideTrack.height() + 'px');
-  //   if(slick.$slideTrack.width()==1600){
-  //     slick.$slides.css('height', '288px');
-  //   }
-  // });
-
   $(".slider").slick({
     dots:true,
     arrows:true,
