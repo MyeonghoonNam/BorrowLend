@@ -37,16 +37,22 @@
     }
     
     .findPSresult-ps{
-        width:8rem;
-        font-size: 2rem;
+        width:12rem;
+        font-size: 1.6rem;
+        text-align: center;
         margin: 0 auto;
     }
     
     .findPS-check{
-        width:6rem;
-        font-size: 2rem;
-        margin: 1rem auto;
-        text-decoration: none;
+        width:100%;
+        margin: 2rem auto 0rem;
+    }
+
+    .findPS-check2{
+        width:30%;
+        margin: 2rem auto 0rem;
+        text-align: center;
+        font-size: 0.8rem;
     }
     
     .findPS-check a{
@@ -112,10 +118,15 @@
         }
         
         .findPS-check{
-            width:6rem;
-            font-size: 2rem;
-            margin: 1rem auto;
-            text-decoration: none;
+            width:100%;
+            margin: 2rem auto 0rem;
+        }
+    
+        .findPS-check2{
+            width:30%;
+            margin: 2rem auto 0rem;
+            text-align: center;
+            font-size: 0.7rem;
         }
         
         .findPS-check a{
@@ -181,10 +192,15 @@
     }
     
     .findPS-check{
-        width:6rem;
-        font-size: 2rem;
-        margin: 1rem auto;
-        text-decoration: none;
+        width:100%;
+        margin: 2rem auto 0rem;
+    }
+
+    .findPS-check2{
+        width:30%;
+        margin: 2rem auto 0rem;
+        text-align: center;
+        font-size: 0.7rem;
     }
     
     .findPS-check a{
