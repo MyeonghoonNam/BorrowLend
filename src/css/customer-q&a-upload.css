@@ -267,6 +267,30 @@
     margin-top:0.5rem;
   }
 
+  .qna_answerlist_element_btnbox {
+    text-align:right;
+  }
+
+  .qna_answerlist_element_deletebtn {
+    box-shadow:inset 0px 1px 3px 0px #91b8b3;
+    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color:#768d87;
+    border-radius:5px;
+    border:1px solid #566963;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    /* font-family:inherit; */
+    /* font-weight:bold; */
+    text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
+  }
+  .qna_answerlist_element_deletebtn:hover {
+    background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color:#6c7c7c;
+  }
+
   .qna_answer_secondbox{
     width:100%;
     /* border:solid 1px black; */
@@ -326,7 +350,7 @@
   }
   .qna_titlespan{
     order:1;
-    width:5rem;
+    width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
     font-size:1rem;
@@ -337,7 +361,8 @@
   
   .qna_titleview {
     order:2;
-    margin-top:0.5rem;
+    width:75.9%;
+    margin-top:0rem;
     /* padding-left:0.5rem; */
     font-size: 1.3rem;
     padding:0 1rem;
@@ -349,7 +374,7 @@
   }
 
   .qna_writerspan{
-    width:5rem;
+    width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
     font-size:1rem;
@@ -387,16 +412,54 @@
   .qna_dateview {
     color:darkgray;
     margin:auto 0;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     /* margin-bottom:1rem; */
   }
   .qna_contentview {
     white-space: pre;
     border-top:solid 2px #c8c8c8;
     padding-top:1rem;
-    padding-bottom:1rem;
-    border-bottom:solid 2px #c8c8c8;
+    padding-bottom:0.5rem;
     margin-top:1rem;
+  }
+
+  .qna_contentview_update {
+    white-space: pre;
+    border:solid 1px #c8c8c8;
+    outline:none;
+    width:97%;
+    min-height:20rem;
+    font-size:1rem;
+    border-radius: 5px;
+    padding-left:0.5rem;
+    padding-top:0.5rem;
+  }
+
+  .qna_updatebox {
+    text-align:right;
+    margin-bottom:0rem;
+  }
+
+  .qna_adminbtn {
+    box-shadow:inset 0px 1px 3px 0px #91b8b3;
+    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color:#768d87;
+    border-radius:5px;
+    border:1px solid #566963;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-family:Arial;
+    /* font-family:inherit; */
+    /* font-weight:bold; */
+    text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
+  }
+  .qna_adminbtn:hover {
+    background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color:#6c7c7c;
   }
 
   .qna_uptitle{
@@ -411,7 +474,7 @@
   }
 
   .qna_contentspan {
-    width:5rem;
+    width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
     font-size:1rem;
@@ -537,6 +600,40 @@
     margin-top:0.5rem;
   }
 
+  .qna_answerlist_element_btnbox {
+    text-align:right;
+  }
+
+  .qna_answerlist_element_deletebtn {
+    box-shadow:inset 0px 1px 3px 0px #91b8b3;
+    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color:#768d87;
+    border-radius:5px;
+    border:1px solid #566963;
+    display:inline-block;
+    cursor:pointer;
+    font-size: 0.9rem;
+    color:#ffffff;
+    font-family:Arial;
+    /* font-family:inherit; */
+    /* font-weight:bold; */
+    text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
+  }
+  .qna_answerlist_element_deletebtn:hover {
+    background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color:#6c7c7c;
+  }
+
+  .qna_answer_secondbox{
+    width:100%;
+    /* border:solid 1px black; */
+    height:17rem;
+    /* margin-top:1rem; */
+    /* padding-top:1rem; */
+    /* border-top:solid 2px #c8c8c8; */
+  }
+
   .qna_answer_secondbox{
     width:100%;
     /* border:solid 1px black; */
@@ -585,6 +682,7 @@
     background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
     background-color:#378de5;
   }
+
 }
 
 @media screen and (max-width:900px) and (orientation: landscape){
@@ -605,7 +703,8 @@
   
   .qna_titleview {
     order:2;
-    margin-top:0.5rem;
+    width:83%;
+    margin-top:0rem;
     /* padding-left:0.5rem; */
     font-size: 1.3rem;
     padding:0 1rem;
@@ -662,8 +761,19 @@
     border-top:solid 2px #c8c8c8;
     padding-top:1rem;
     padding-bottom:1rem;
-    border-bottom:solid 2px #c8c8c8;
     margin-top:1rem;
+  }
+
+  .qna_contentview_update {
+    white-space: pre;
+    border:solid 1px #c8c8c8;
+    outline:none;
+    width:98%;
+    min-height:20rem;
+    font-size:1rem;
+    border-radius: 5px;
+    padding-left:0.5rem;
+    padding-top:0.5rem;
   }
 
   .qna_uptitle{
@@ -763,10 +873,8 @@
 
   
   .qna_answerlist_tag { 
-    font-size:1.5rem;
-    padding-top:1rem;
+    font-size:1.2rem;
     padding-bottom:1rem;
-    border-top:solid 2px #c8c8c8;
     
   }
 
@@ -785,20 +893,20 @@
 
   .qna_answerlist_element_img {
     border:solid 1px black;
-    width:2.5rem;
+    width:2.2rem;
     border-radius: 50%;
     /* margin-left:1rem; */
   }
   .qna_answerlist_element_name {
     margin:auto 0;
     /* padding-left:0.5rem; */
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     padding:0 1rem;
   }
 
   .qna_answerlist_element_date {
     color:darkgray;
-    font-size:0.9rem;
+    font-size:0.8rem;
     /* margin-bottom:1rem; */
   }
 
@@ -820,6 +928,7 @@
     border:1px solid #566963;
     display:inline-block;
     cursor:pointer;
+    font-size: 0.9rem;
     color:#ffffff;
     font-family:Arial;
     /* font-family:inherit; */
@@ -839,20 +948,18 @@
     /* border:solid 1px black; */
     height:17rem;
     /* margin-top:1rem; */
-    padding-top:1rem;
     /* border-top:solid 2px #c8c8c8; */
-    border-top:solid 2px #c8c8c8;
   }
 
   .qna_answer_tag {
-    font-size:1.5rem;
+    font-size:1.2rem;
   }
 
   .qna_answer_content {
     border:solid 1px #c8c8c8;
     outline:none;
     margin-top:1rem;
-    width:99%;
+    width:98%;
     height:58%;
     border-radius: 5px;
     padding-left:0.5rem;
@@ -892,7 +999,7 @@
   }
   .qna_titlespan{
     order:1;
-    width:5rem;
+    width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
     font-size:1rem;
@@ -903,7 +1010,8 @@
   
   .qna_titleview {
     order:2;
-    margin-top:0.5rem;
+    width:75.9%;
+    margin-top:0rem;
     /* padding-left:0.5rem; */
     font-size: 1.3rem;
     padding:0 1rem;
@@ -915,7 +1023,7 @@
   }
 
   .qna_writerspan{
-    width:5rem;
+    width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
     font-size:1rem;
@@ -953,16 +1061,54 @@
   .qna_dateview {
     color:darkgray;
     margin:auto 0;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     /* margin-bottom:1rem; */
   }
   .qna_contentview {
     white-space: pre;
     border-top:solid 2px #c8c8c8;
     padding-top:1rem;
-    padding-bottom:1rem;
-    border-bottom:solid 2px #c8c8c8;
+    padding-bottom:0.5rem;
     margin-top:1rem;
+  }
+
+  .qna_contentview_update {
+    white-space: pre;
+    border:solid 1px #c8c8c8;
+    outline:none;
+    width:97%;
+    min-height:20rem;
+    font-size:1rem;
+    border-radius: 5px;
+    padding-left:0.5rem;
+    padding-top:0.5rem;
+  }
+
+  .qna_updatebox {
+    text-align:right;
+    margin-bottom:0rem;
+  }
+
+  .qna_adminbtn {
+    box-shadow:inset 0px 1px 3px 0px #91b8b3;
+    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color:#768d87;
+    border-radius:5px;
+    border:1px solid #566963;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-family:Arial;
+    /* font-family:inherit; */
+    /* font-weight:bold; */
+    text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
+  }
+  .qna_adminbtn:hover {
+    background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color:#6c7c7c;
   }
 
   .qna_uptitle{
@@ -977,7 +1123,7 @@
   }
 
   .qna_contentspan {
-    width:5rem;
+    width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
     font-size:1rem;
@@ -1101,6 +1247,40 @@
     white-space: pre;
     font-size:1rem;
     margin-top:0.5rem;
+  }
+
+  .qna_answerlist_element_btnbox {
+    text-align:right;
+  }
+
+  .qna_answerlist_element_deletebtn {
+    box-shadow:inset 0px 1px 3px 0px #91b8b3;
+    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color:#768d87;
+    border-radius:5px;
+    border:1px solid #566963;
+    display:inline-block;
+    cursor:pointer;
+    font-size: 0.9rem;
+    color:#ffffff;
+    font-family:Arial;
+    /* font-family:inherit; */
+    /* font-weight:bold; */
+    text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
+  }
+  .qna_answerlist_element_deletebtn:hover {
+    background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color:#6c7c7c;
+  }
+
+  .qna_answer_secondbox{
+    width:100%;
+    /* border:solid 1px black; */
+    height:17rem;
+    /* margin-top:1rem; */
+    /* padding-top:1rem; */
+    /* border-top:solid 2px #c8c8c8; */
   }
 
   .qna_answer_secondbox{

@@ -75,7 +75,12 @@
     }
     
     .findPS_button_class{
-        width:7rem;
+        width:100%;
+        margin: 2rem auto 0rem;
+    }
+
+    .findPS_button_class2{
+        width:12%;
         margin: 2rem auto 0rem;
     }
     
@@ -157,7 +162,7 @@
             font-size: 0.6rem;
             color: #7f7f7f;
             line-height: 130%;
-            margin: 1rem auto;
+            margin: 0.5rem 1rem 0.5rem 4.5rem;
         }
     
     
@@ -188,8 +193,14 @@
         }
         
         .findPS_button_class{
-            width:5rem;
+            width:100%;
             margin: 2rem auto 0rem;
+        }
+    
+        .findPS_button_class2{
+            width:30%;
+            margin: 2rem auto 0rem;
+            text-align: center;
         }
         
         
@@ -266,18 +277,18 @@
     }
 
     .findPS-list-smallcontent{
-        width:20rem;
-        font-size: 0.9rem;
+        width:17rem;
+        font-size: 0.8rem;
         color: #7f7f7f;
         line-height: 130%;
-        margin: 1rem auto;
+        margin: 0.5rem 5rem 0.5rem 1.5rem;
     }
 
 
     
 
     .findPS-list-input{
-        width:15rem;
+        width:14rem;
         margin: 0 auto;
     }
     
@@ -301,8 +312,14 @@
     }
     
     .findPS_button_class{
-        width:6rem;
+        width:100%;
         margin: 2rem auto 0rem;
+    }
+
+    .findPS_button_class2{
+        width:30%;
+        margin: 2rem auto 0rem;
+        text-align: center;
     }
     
     
@@ -382,7 +399,7 @@
         font-size: 0.6rem;
         color: #7f7f7f;
         line-height: 130%;
-        margin: 1rem auto;
+        margin: 0.5rem 1rem 0.5rem 4.5rem;
     }
 
 
@@ -413,8 +430,14 @@
     }
     
     .findPS_button_class{
-        width:5rem;
+        width:100%;
         margin: 2rem auto 0rem;
+    }
+
+    .findPS_button_class2{
+        width:30%;
+        margin: 2rem auto 0rem;
+        text-align: center;
     }
     
     

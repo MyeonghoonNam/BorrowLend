@@ -73,7 +73,12 @@
     }
     
     .findID_button_class{
-        width:7rem;
+        width:100%;
+        margin: 2rem auto 0rem;
+    }
+
+    .findID_button_class2{
+        width:10%;
         margin: 2rem auto 0rem;
     }
     
@@ -185,8 +190,14 @@
     }
     
     .findID_button_class{
-        width:5rem;
+        width:100%;
         margin: 2rem auto 0rem;
+    }
+
+    .findID_button_class2{
+        width:30%;
+        margin: 2rem auto 0rem;
+        text-align: center;
     }
     
     
@@ -270,7 +281,7 @@
 
 
     .findID-list-input{
-        width:15rem;
+        width:14rem;
         margin: 0 auto;
     }
     
@@ -294,8 +305,14 @@
     }
     
     .findID_button_class{
-        width:6rem;
+        width:100%;
         margin: 2rem auto 0rem;
+    }
+
+    .findID_button_class2{
+        width:30%;
+        margin: 2rem auto 0rem;
+        text-align: center;
     }
     
     
@@ -404,8 +421,14 @@
     }
     
     .findID_button_class{
-        width:5rem;
+        width:100%;
         margin: 2rem auto 0rem;
+    }
+
+    .findID_button_class2{
+        width:30%;
+        margin: 2rem auto 0rem;
+        text-align: center;
     }
     
     
