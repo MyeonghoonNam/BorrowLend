@@ -3,32 +3,32 @@
 
 // })
 
+$(document).ready(() => {
+  var burger = $('.menu-trigger');
+
+    burger.each(function(index){
+    var $this = $(this);
+    
+    $this.on('click', function(e){
+        e.preventDefault();
+        $(this).toggleClass('active-' + (index+1));
+    })
+  });
+});
+
 
 function menuopen(){
-  if($("input:checkbox[id='hamburger']").is(":checked") == true){
+  if($(".nav").css("display") == "none"){
     $(".nav").show();
-    $(".nav").animate({
-      left:0
-    });
     $(".userwrap").show();
-    $(".userwrap").animate({
-      left:0
-    });
     $(".logo a").css({color: "white"});
     $('html, body').css({'overflow': 'hidden', 'height': '150%'});
-  }
-  else if($("input:checkbox[id='hamburger']").is(":checked") == false){
+  }else{
     $(".nav").hide();
-    $(".nav").animate({
-      left:'-' + 100 + '%'
-    });
     $(".userwrap").hide();
-    $(".userwrap").animate({
-      left:'-' + 100 + '%'
-    });
     $(".logo a").css({color: "black"});
     $('html, body').css({'overflow': '', 'height': ''});
-  }
+  } 
 }
 
 

@@ -161,10 +161,10 @@
   }
   .notice_titlespan{
     order:1;
-    width:5.5rem;
+    width:5rem;
     height:2.5rem;
     background: #c8c8c8;
-    font-size:1.4rem;
+    font-size:1rem;
     text-align:center;
     line-height: 2.5rem;
     border-radius: 5px;
@@ -184,10 +184,10 @@
   }
 
   .notice_writerspan{
-    width:5.5rem;
+    width:5rem;
     height:2.5rem;
     background: #c8c8c8;
-    font-size:1.4rem;
+    font-size:1rem;
     text-align:center;
     line-height: 2.5rem;
     border-radius: 5px;
@@ -204,13 +204,14 @@
   .notice_writerview {
     margin:auto 0;
     /* padding-left:0.5rem; */
-    font-size: 1.3rem;
+    font-size: 1rem;
     padding:0 1rem;
   }
 
   .notice_dateview {
     color:darkgray;
     margin:auto 0;
+    font-size: 0.7rem;
     /* margin-bottom:1rem; */
   }
   .notice_contentview {
@@ -231,10 +232,10 @@
   }
 
   .notice_contentspan {
-    width:5.5rem;
+    width:5rem;
     height:2.5rem;
     background: #c8c8c8;
-    font-size:1.4rem;
+    font-size:1rem;
     text-align:center;
     line-height: 2.5rem;
     border-radius: 5px;
@@ -317,7 +318,7 @@
     width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
-    font-size:1.4rem;
+    font-size:1rem;
     text-align:center;
     line-height: 2.5rem;
     border-radius: 5px;
@@ -340,7 +341,7 @@
     width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
-    font-size:1.4rem;
+    font-size:1rem;
     text-align:center;
     line-height: 2.5rem;
     border-radius: 5px;
@@ -387,7 +388,7 @@
     width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
-    font-size:1.4rem;
+    font-size:1rem;
     text-align:center;
     line-height: 2.5rem;
     border-radius: 5px;
@@ -468,10 +469,10 @@
   }
   .notice_titlespan{
     order:1;
-    width:5.5rem;
+    width:5rem;
     height:2.5rem;
     background: #c8c8c8;
-    font-size:1.4rem;
+    font-size:1rem;
     text-align:center;
     line-height: 2.5rem;
     border-radius: 5px;
@@ -491,10 +492,10 @@
   }
 
   .notice_writerspan{
-    width:5.5rem;
+    width:5rem;
     height:2.5rem;
     background: #c8c8c8;
-    font-size:1.4rem;
+    font-size:1rem;
     text-align:center;
     line-height: 2.5rem;
     border-radius: 5px;
@@ -511,13 +512,14 @@
   .notice_writerview {
     margin:auto 0;
     /* padding-left:0.5rem; */
-    font-size: 1.3rem;
+    font-size: 1rem;
     padding:0 1rem;
   }
 
   .notice_dateview {
     color:darkgray;
     margin:auto 0;
+    font-size: 0.7rem;
     /* margin-bottom:1rem; */
   }
   .notice_contentview {
@@ -538,10 +540,10 @@
   }
 
   .notice_contentspan {
-    width:5.5rem;
+    width:5rem;
     height:2.5rem;
     background: #c8c8c8;
-    font-size:1.4rem;
+    font-size:1rem;
     text-align:center;
     line-height: 2.5rem;
     border-radius: 5px;
