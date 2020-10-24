@@ -113,8 +113,8 @@ function connectDB(){
       rate : {type : Number, 'default':0},
       LikeProduct:[{type:mongoose.Schema.Types.ObjectId, ref:'products'}],
       review:[{type:mongoose.Schema.Types.ObjectId, ref:'reviews'}],
+      report:{type : Number, 'default':0}
     });
-
 
     UserSchema.static('findByOid', function(oid, callback){
       return this.find({_id:oid}, callback);
@@ -935,6 +935,16 @@ app.post('/product_message', function(req,res){
       // res.redirect('/message');
     }
   });
+})
+
+app.post('/product_report', function(req, res){
+  var userid = req.body.userid;
+  
+  UserModel.find({id:userid}, function(err, doc){
+    UserModel.findOneAndUpdate({id:userid}, {report:doc[0].report+1}, {new:true, upsert: true}, function(err, result){
+      res.send({});
+    })
+  })
 })
 
 app.get('/service-rent', function(req,res){

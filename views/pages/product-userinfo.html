@@ -42,7 +42,8 @@
             </article>
             <article class="product_userinfo_userbtn">
               <a class="userbtn_review" href="#ex1" rel="modal:open">후기작성</a>
-              <button class="userbtn_report">신고하기</button>
+              <button class="userbtn_report" onclick="ReportClick()">신고하기</button>
+              <input type="hidden" class="reportcount" value="<%=product_user[0].report%>">
             </article>
           </div>
           

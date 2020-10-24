@@ -259,3 +259,44 @@ function ProductClick(element){
 
   product[0].click();
 }
+
+function ReportClick() {
+  swal({
+    title:'신고하시겠습니까?',
+    text:'부당한 사유일시 처벌대상이 될 수 있습니다.',
+    icon: 'warning',
+    closeOnClickOutside:false,
+    closeOnEsc:false,
+    buttons : {
+      confirm : {
+        text:"확인",
+        value:true,
+        className:'product_delete_alert_confirm'
+      },
+      cancle : {
+        text:"취소",
+        value:false,
+        className:'product_delete_alert_cancle'
+      }
+    }
+  }).then(function(value) {
+    if(value){
+      var userid = $('.product_userinfo_name').text();
+      
+      $.ajax({
+        url:'/product_report',
+        type:'post',
+        data:{userid:userid},
+        success:function(result){
+          swal({
+            title:'접수되었습니다.',
+            icon: 'success',
+            closeOnClickOutside:false,
+            closeOnEsc:false
+          })
+        }
+      })
+    }
+    
+  })
+}
