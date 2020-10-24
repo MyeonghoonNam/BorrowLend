@@ -22,7 +22,9 @@
     <article class="article-wrap">
       <article class="qna_tag">
         <div class="qna_tagtitle">Q&A</div>
+        <% if(user.admin == "N") { %>
         <button type="button" class="qna_tagbtn" onclick="location.href='/customer-qna-upload'">작성</button>
+        <% } %>
       </article>
 
       <article class="qna_wrap">

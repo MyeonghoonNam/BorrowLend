@@ -22,7 +22,9 @@
     <article class="article-wrap">
       <article class="notice_tag">
         <div class="notice_tagtitle">공지사항</div>
+      <% if(user.admin == "Y") { %>
         <button type="button" class="notice_tagbtn" onclick="location.href='/customer-notice-upload'">작성</button>
+      <% } %>
       </article>
       <article class="notice_wrap">
         <div class="notice_top">

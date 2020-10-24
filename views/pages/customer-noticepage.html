@@ -8,6 +8,7 @@
     <script src="../../src/js/header.js"></script>
     <script src="../../src/js/smallheader.js"></script>
     <script src="../../src/js/footer.js"></script>
+    <script src="../../src/js/customer-noticepage.js"></script>
     <link rel="stylesheet" href="../../src/css/style.css">
   </head>
 <body>
@@ -23,7 +24,7 @@
         <div class="notice_tagtitle">공지사항</div>
       </article>
       <article class="notice_wrap">
-        <form action="/customer-notice-upload" method="post" autocomplete="off">
+        <form action="/customer-notice-delete" method="post" autocomplete="off">
           <div class="notice_titlebox">
             <div class="notice_titlespan">제목</div>
             <div class="notice_titleview"><%=notice[0].title%></div>
@@ -35,6 +36,13 @@
             <div class="notice_dateview"><%=notice[0].created_at%></div>
           </div>
           <div class="notice_contentview"><%=notice[0].content%></div>
+          <input type="hidden" name="notice_updatetoken" class="notice_updatetoken" value="<%=notice[0].key%>">
+        <% if(user.admin == "Y") { %>
+          <div class="notice_updatebox">
+            <button type="button" class="notice_adminbtn notice_updatebtn">수정</button>
+            <button type="submit" class="notice_adminbtn notice_deletebtn">삭제</button>
+          </div>
+        <% } %>
         </form>
       </article>
     </article>
