@@ -107,6 +107,7 @@ function connectDB(){
       school : {type : String, required : true},
       tel : {type : String, required : true},
       created_at: {type: Date, index: {unique: false}, 'default': Date.now},
+      admin: {type: String, 'default': "N"},
       grade : {type : String, 'default':'시민'},
       honorCount:{type : Number, 'default':0},
       rate : {type : Number, 'default':0},
@@ -264,7 +265,6 @@ function connectDB(){
 
 // User 조회
 var authUser = function(database, id, password, callback){
-  console.log('authUser 호출 : ' + id, + ', ' + password);
 
   UserModel.findById(id, function(err, results) {
 		if (err) {
@@ -469,7 +469,8 @@ app.post('/main', function(req,res){
               name:docs[0]._doc.name,
               grade:docs[0]._doc.grade,
               LikeProduct:docs[0]._doc.LikeProduct,
-              authorized:true
+              authorized:true,
+              admin:docs[0]._doc.admin
             }
             
             res.render('./pages/main.html', {user:req.session.user});
@@ -1175,6 +1176,26 @@ app.get('/customer-notice/noticepage', function(req,res){
   })
 })
 
+app.post('/customer-notice-update', function(req, res){
+  var title = req.body.title;
+  var content = req.body.content;
+  var key = req.body.key;
+
+  var query = {key:key};
+  var update = {title:title, content:content};
+  NoticeModel.findOneAndUpdate(query, update, {upsert: true}, function(err, doc){
+    res.send({});
+  })
+})
+
+app.post('/customer-notice-delete', function(req, res){
+  var token = req.body.notice_updatetoken;
+  
+  NoticeModel.deleteOne({key:token}, function(err, doc){
+    res.redirect('/customer-notice');
+  })
+})
+
 app.get('/customer-qna', function(req,res){
   if(req.session.user){
     QnaModel.find().sort({created_at:-1}).exec(function(err,results){
@@ -1228,6 +1249,31 @@ app.get('/customer-qna/qnapage', function(req,res){
   });
 });
 
+app.post('/customer-qna-update', function(req, res){
+  var title = req.body.title;
+  var content = req.body.content;
+  var key = req.body.key;
+
+  var query = {key:key};
+  var update = {title:title, content:content};
+  QnaModel.findOneAndUpdate(query, update, {upsert: true}, function(err, doc){
+    res.send({});
+  })
+})
+
+app.post('/customer-qna-delete', function(req, res){
+  var token = req.body.qna_key;
+
+  QnaModel.find({key:token}, function(err, doc){
+    QnaAnswerModel.deleteMany({_id:doc[0].answer}, function(err, result){
+      
+      QnaModel.deleteOne({key:token}, function(err, result){
+        res.redirect('/customer-qna');
+      })
+    })
+  })
+})
+
 app.post('/qna_answer_upload', function(req, res){
   var content = req.body.content;
   var userid = req.body.userid;
@@ -1240,12 +1286,36 @@ app.post('/qna_answer_upload', function(req, res){
     QnaModel.findOneAndUpdate({key:key}, update, {new:true, upsert: true}, function(err, result){
       QnaModel.findOneAndUpdate({key:key}, {answer_check:"Y"}, {new:true, upsert: true}, function(err, result){
         QnaAnswerModel.find({_id:result.answer}, function(err, docs){
-          console.log(docs);
           res.send({answer:docs});
         });
       });
     });
   });
+});
+
+app.post('/qna_answer_delete', function(req, res){
+  var token = req.body.key;
+  var qnakey = req.body.qnakey;
+  var element_length = req.body.element_length;
+
+  QnaAnswerModel.find({key:token}, function(err, doc){
+    var query = {key:qnakey};
+    var update = {$pull:{answer:doc[0]._id}};
+    QnaModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result) {
+      QnaAnswerModel.deleteOne({key:token}, function(err, doc){
+        if(element_length == 0){
+          var query = {key:qnakey};
+          var update = {answer_check:"N"};
+
+          QnaModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
+            res.send({});
+          })
+        } else {
+          res.send({});
+        }
+      })
+    })
+  })
 });
 
 app.get('/honor', function(req,res){
