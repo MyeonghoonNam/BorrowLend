@@ -19,21 +19,33 @@
     <hr style="width:99.9%;">
 
     <div class="article-wrap">
-      <article class="slide">
-        <ul>
-          <li><img class = slideimg src="../../src/images/3.jpg"></li>
-          <li><img class = slideimg src="../../src/images/2.jpg"></li>
-          <li><img class = slideimg src="../../src/images/3.jpg"></li>
-          <li><img class = slideimg src="../../src/images/2.jpg"></li>
-        </ul>
+
+      <article class="artilce-main">
+        <article class="main_slide">
+          <ul>
+            <li><img class = main_slide_img src="../../src/images/3.jpg"></li>
+            <li><img class = main_slide_img src="../../src/images/2.jpg"></li>
+            <li><img class = main_slide_img src="../../src/images/3.jpg"></li>
+            <li><img class = main_slide_img src="../../src/images/2.jpg"></li>
+          </ul>
+        </article>
+
+        <article class="main_searhlist">
+          <div class="main_searhlist_tag"> 인기검색어</div>
+        <% for(var i=0; i<10; i++) { %>
+          <div class="main_searhlist_element"><%=i+1%>. <%=searchlist[i].word%></div>
+        <% } %>
+        </article>
+
+        <article class="main_slide_message">
+          <div class="main_slide_message_title">"우리의 일상 속 불편함"</div>
+          <br>
+          <div class="main_slide_message_content">
+            학교 생활 속에 나에게 필요한 물품이 나에게 없을 때, 내가 원하는 물품을 찾아 대여하는 서비스.<br>
+            바로랜드를 통해 만나보세요.
+          </div>
+        </article>
       </article>
-  
-      <article class="header-message">
-        <h3>"우리의 일상 속 불편함"<br></h3>
-        학교 생활 속에 나에게 필요한 물품이 나에게 없을 때, 내가 원하는 물품을 찾아 대여하는 서비스.<br>
-        나의 물품을 활용하여 경제적 이등을 얻을 수 있는 서비스
-      </article>
-             
     </div>
     <hr>
     <footer id="footer"></footer>

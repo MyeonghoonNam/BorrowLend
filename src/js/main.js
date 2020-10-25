@@ -1,7 +1,7 @@
 const all = ele => document.querySelectorAll(ele)
 const one = ele => document.querySelector(ele)
 const slide = _ => {
-  const wrap = one('.slide')
+  const wrap = one('.main_slide')
   const target = wrap.children[0]
   const len = target.children.length
   const liStyle = `position:absolute;left:0;right:0;top:0;bottom:0;transition:1s;opacity:0`

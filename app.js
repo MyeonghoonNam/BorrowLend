@@ -69,6 +69,7 @@ var ReviewSchema;
 var NoticeSchema
 var QnaSchema;
 var QnaAnswerSchema;
+var SearchSchema;
 
 var UserModel;
 var SchoolModel;
@@ -78,6 +79,7 @@ var ReviewModel;
 var NoticeModel;
 var QnaModel;
 var QnaAnswerModel;
+var SearchModel;
 
 function connectDB(){
   var databaseUrl = 'mongodb://localhost:27017/local';
@@ -237,12 +239,18 @@ function connectDB(){
       created_at: {type : String, required : true},
       userid:{type : String, required : true}
     });
-
+    
     QnaAnswerSchema.plugin(autoIncrement.plugin, {
       model:'QnaAnswerModel',
       field: 'key',
       startAt:1,
       increment:1
+    });
+    
+    SearchSchema = mongoose.Schema({
+      word:{type : String, required : true},
+      searched_at: {type : String, required : true},
+      count:{type : Number, 'default':1},
     });
 
     UserModel = mongoose.model('users', UserSchema);
@@ -253,6 +261,7 @@ function connectDB(){
     NoticeModel = mongoose.model('notices', NoticeSchema);
     QnaModel = mongoose.model('qnas', QnaSchema);
     QnaAnswerModel = mongoose.model('qna_answers', QnaAnswerSchema);
+    SearchModel = mongoose.model('search_words', SearchSchema);
 
   });
 
@@ -422,6 +431,19 @@ var addQnaAnswer = function(database, content, created_at, userid, callback){
   });
 }
 
+var searchWord = function(database, word, searched_at, callback){
+  var searchWord = new SearchModel({
+    "word":word,
+    "searched_at":searched_at
+  });
+    
+  searchWord.save(function(err){
+    if(err) throw err;
+          
+    callback(null, searchWord);
+  });
+}
+
 app.use(static(__dirname));
 
 app.get('/', function(req,res){
@@ -434,22 +456,21 @@ app.get('/', function(req,res){
 
 app.get('/main', function(req,res){
   if(req.session.user){
-    ProductModel.find().sort({trending_list:1}).exec(function(err,results){
-      if(results){
 
-        res.render('./pages/main.html', {
-          user:req.session.user,
-          trending:results
-        });
-      } else {
-        res.redirect('/');
-      }
+    SearchModel.find({}).sort({count:-1, searched_at:-1}).exec(function(err, docs){
+      console.log(docs);
+      res.render('./pages/main.html', {
+        user:req.session.user,
+        searchlist:docs
+      });
     })
+  } else {
+    res.redirect('/');
   }
 });
 
 
-app.post('/main', function(req,res){
+app.post('/main_login', function(req,res){
   console.log('Access to login');
 
   var paramId = req.body.id;
@@ -473,7 +494,11 @@ app.post('/main', function(req,res){
               admin:docs[0]._doc.admin
             }
             
-            res.render('./pages/main.html', {user:req.session.user});
+            res.redirect('/main');
+          } else {
+            res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+            res.write("<script language=\"javascript\">alert('로그인 실패. 잘못된 정보입니다.')</script>");
+            res.write("<script language=\"javascript\">window.location=\"/\"</script>");
           }
         });
       } else {
@@ -541,20 +566,46 @@ app.get('/store', function(req,res){
 });
 
 app.get('/store/search', function(req,res){
-  var word = req.query.search_word;
+  if(req.session.user){
+    var word = req.query.search_word;
+    var searched_at = NowDate();
+    
+    SearchModel.find({word:word}, function(err, result){
+      if(result.length != 0) {
+        var query = {word:word};
+        var update = {count:result[0].count+1};
   
-  ProductModel.find({title:{$regex:word}}).exec(function(err, results){
-    if(results){
-      var setToken = "3"
-        res.render('./pages/store.html', {
-          user:req.session.user,
-          product:results,
-          setToken:setToken
+        SearchModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
+          ProductModel.find({title:{$regex:word}}).exec(function(err, results){
+            if(results){
+              var setToken = "3"
+                res.render('./pages/store.html', {
+                  user:req.session.user,
+                  product:results,
+                  setToken:setToken
+                });
+            } else {
+              res.redirect('/');
+            }
+          });
         });
-    } else {
-      res.redirect('/');
-    }
-  })
+      } else {
+        searchWord(database, word, searched_at, function(err, result){
+          ProductModel.find({title:{$regex:word}}).exec(function(err, results){
+            var setToken = "3"
+            
+            res.render('./pages/store.html', {
+              user:req.session.user,
+              product:results,
+              setToken:setToken
+            });
+          });
+        });
+      }
+    });
+  } else {
+    res.redirect('/');
+  }
 });
 
 app.post('/store', function(req,res){
