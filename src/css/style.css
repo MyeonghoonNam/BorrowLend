@@ -49,7 +49,7 @@
   }
 
   .article-wrap {
-    position: relative;
+    /* position: relative; */
     width:85rem;
     margin:0 auto;
     margin-bottom:2rem;

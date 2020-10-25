@@ -98,6 +98,9 @@
   .qna_title {
     width:40%;
     /* border:solid 1px black; */
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
   .qna_writer {
     width:15%;

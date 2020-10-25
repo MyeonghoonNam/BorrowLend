@@ -95,9 +95,13 @@ $(document).ready(function(){
   // 받은쪽지함 쪽지 클릭 시
   $(document).on('click', '.message_info', function(){
     var token = $(this).find(".message_token").attr("value");
+    $('.icon_trash').attr('value', token);
+
+    var userid = $(this).find(".message_sentid").text();
+    $('.icon_warning').attr('value', userid);
+
     $(this).css('color', 'darkgray');
     $(this).find(".message_senttitle").css('color', 'darkgray');
-    $('.icon_trash').attr('value', token);
 
     $.ajax({
       url:'/message_recvlist',
@@ -192,6 +196,9 @@ $(document).ready(function(){
     var token = $(this).find(".message_token").attr("value");
     $('.icon_trash').attr('value', token);
 
+    var userid = $(this).find(".message_recvid").text();
+    $('.icon_warning').attr('value', userid);
+
     $.ajax({
       url:'/message_sentlist',
       type:'post',
@@ -270,6 +277,46 @@ $(document).ready(function(){
       }
     });
   })
+
+  $(document).on('click', '.icon_warning', function(){
+    var userid = $(this).attr('value');
+    
+    swal({
+      title:'신고하시겠습니까?',
+      text:'부당한 사유일시 처벌대상이 될 수 있습니다.',
+      icon: 'warning',
+      closeOnClickOutside:false,
+      closeOnEsc:false,
+      buttons : {
+        confirm : {
+          text:"확인",
+          value:true,
+          className:'product_delete_alert_confirm'
+        },
+        cancle : {
+          text:"취소",
+          value:false,
+          className:'product_delete_alert_cancle'
+        }
+      }
+    }).then(function(value) {
+      if(value){
+        $.ajax({
+          url:'/message_report',
+          type:'post',
+          data:{userid:userid},
+          success:function(result){
+            swal({
+              title:'접수되었습니다.',
+              icon: 'success',
+              closeOnClickOutside:false,
+              closeOnEsc:false
+            })
+          }
+        })
+      }
+    })
+  });
 });
 
 let currSlide = 1;

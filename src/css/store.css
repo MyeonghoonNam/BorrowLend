@@ -127,6 +127,9 @@
     /* border:solid 1px #c8c8c8; */
     font-size:1.5rem;
     /* margin-top:0.5rem; */
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .element_check {

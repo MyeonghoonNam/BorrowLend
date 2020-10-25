@@ -262,7 +262,8 @@
   }
 
   .qna_answerlist_element_content {
-    white-space: pre;
+    white-space:pre-wrap;
+    word-break:break-all;
     font-size:1rem;
     margin-top:0.5rem;
   }

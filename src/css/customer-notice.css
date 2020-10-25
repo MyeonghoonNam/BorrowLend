@@ -93,6 +93,9 @@
   .notice_title {
     width:50%;
     /* border:solid 1px black; */
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
   .notice_writer {
     width:15%;

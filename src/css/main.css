@@ -2,7 +2,8 @@
 @media all and (max-width:1920px){
   .artilce-main {
     /* margin:0 auto; */
-    position: relative;
+    /* margin-top:10rem; */
+    /* position: relative; */
     display:flex;
     flex-wrap: wrap;
     /* margin:0 auto; */
@@ -14,7 +15,7 @@
     width:60%;
     height:25rem;
     overflow:hidden;
-    margin-top:4.5rem;
+    margin-top:0.5rem;
     /* border:solid 1px black; */
   }
   
@@ -33,7 +34,7 @@
   .main_searhlist {
     order:2;
     width:20%;
-    margin-top:4.5rem;
+    margin-top:0.5rem;
     /* border:solid 1px black; */
     /* float:left; */
     font-family:Arial, Helvetica, sans-serif;

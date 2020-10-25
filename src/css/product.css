@@ -169,23 +169,32 @@
 
   .info_title {
     font-size: 1.8rem;
-  }
-  
-  .info_price {
-    font-size: 1.5rem;
-    color: #ff8a3d;
+    white-space:pre-wrap;
+    word-break:break-all;
     margin-bottom:1rem;
   }
+  
+  .info_price{
+    margin-bottom:1rem;
+    font-size: 1.5rem;
+  }
+  
+  .info_price span {
+    font-size: 1.5rem;
+    color: #ff8a3d;
+  }
+
   .info_pricecheck {
     font-size: 1rem;
     color: gray;
   }
 
   .info_content {
-    white-space:pre;
-    width:81%;
+    width:100%;
     /* border:solid 1px black; */
     /* font-size: 1.5rem; */
+    white-space:pre-wrap;
+    word-break:break-all;
   }
 
   .product_callbtn {

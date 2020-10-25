@@ -262,6 +262,9 @@
     display:inline-block;
     /* border:solid 1px black; */
     width:84.1%;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .message_sent_content_span {
@@ -290,6 +293,9 @@
     border-radius: 5px;
     margin:0;
     /* padding:1rem 1rem 1rem 1rem; */
+    /* word-break:normal; */
+    /* word-wrap: break-word; */
+    /* white-space:pre-wrap; */
   }
 
   .message_sent_imgbox{
@@ -343,11 +349,14 @@
   }
 
   .message_sent_content {
-    font-size:1.3rem;
+    font-size:1rem;
     /* border:solid 1px black; */
     width:95%;
-    margin:0 auto;
-    white-space:pre;
+    max-width:95%;
+    /* margin:0 auto; */
+    padding:1rem 1rem;
+    white-space:pre-wrap;
+    word-break:break-all;
   }
 
   .message_delete_alert_confirm {

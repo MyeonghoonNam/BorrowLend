@@ -458,7 +458,6 @@ app.get('/main', function(req,res){
   if(req.session.user){
 
     SearchModel.find({}).sort({count:-1, searched_at:-1}).exec(function(err, docs){
-      console.log(docs);
       res.render('./pages/main.html', {
         user:req.session.user,
         searchlist:docs
@@ -1189,6 +1188,17 @@ app.get('/message_delete', function(req,res){
       }
     })
   }
+})
+
+app.post('/message_report', function(req, res){
+  var userid = req.body.userid;
+  
+  console.log(userid);
+  UserModel.find({id:userid}, function(err, doc){
+    UserModel.findOneAndUpdate({id:userid}, {report:doc[0].report+1}, {new:true, upsert: true}, function(err, result){
+      res.send({});
+    })
+  })
 })
 
 app.get('/customer-notice', function(req,res){
