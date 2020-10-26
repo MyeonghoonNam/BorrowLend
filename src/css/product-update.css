@@ -554,7 +554,7 @@
   .prtupdate_imgwrap a {
     display:none;
     position:absolute;
-    color:black;
+    color: #c8c8c8;
     font-size:3em;
     cursor: pointer;
     transform: translateY(-50%);

@@ -567,7 +567,7 @@
   .prtupload_imgwrap a {
     display:none;
     position:absolute;
-    color:black;
+    color: #c8c8c8;
     font-size:3em;
     cursor: pointer;
     transform: translateY(-50%);
@@ -604,6 +604,12 @@
     background-color: transparent !important;
     border:none;
   }
+
+  .prt_prevbtn:hover,
+  .prt_nextbtn:hover,
+  .prt_deletebtn:hover {
+    color: rgba(0, 0, 0, 0.8);
+}
 
   @keyframes fade {
     from {
@@ -1251,11 +1257,10 @@
     object-fit: contain;
   }
   
-
   .prtupload_imgwrap a {
     display:none;
     position:absolute;
-    color:black;
+    color: #c8c8c8;
     font-size:3em;
     cursor: pointer;
     transform: translateY(-50%);
@@ -1292,6 +1297,12 @@
     background-color: transparent !important;
     border:none;
   }
+
+  .prt_prevbtn:hover,
+  .prt_nextbtn:hover,
+  .prt_deletebtn:hover {
+    color: rgba(0, 0, 0, 0.8);
+}
 
   @keyframes fade {
     from {

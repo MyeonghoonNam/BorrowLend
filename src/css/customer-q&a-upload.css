@@ -362,11 +362,12 @@
   
   .qna_titleview {
     order:2;
-    width:75.9%;
+    width:70%;
     margin-top:0rem;
     /* padding-left:0.5rem; */
     font-size: 1.3rem;
-    padding:0 1rem;
+    margin-left: 0.5rem;
+    padding:0 0.2rem;
   }
 
   .qna_writerbox {

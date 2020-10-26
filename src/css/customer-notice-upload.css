@@ -220,7 +220,7 @@
     width:75.9%;
     margin-top:0rem;
     /* padding-left:0.5rem; */
-    font-size: 1.3rem;
+    font-size: 1rem;
     padding:0 1rem;
   }
 
@@ -302,7 +302,7 @@
   }
 
   .notice_contentspan {
-    width:5rem;
+    width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
     font-size:1rem;
@@ -710,7 +710,7 @@
   }
 
   .notice_contentspan {
-    width:5rem;
+    width:5.5rem;
     height:2.5rem;
     background: #c8c8c8;
     font-size:1rem;
