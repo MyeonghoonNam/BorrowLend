@@ -1,0 +1,85 @@
+@media all and (max-width:1920px){
+  .userlist_tag {
+    width:60rem;
+    margin:0 auto;
+    font-size:2rem;
+    margin-top:3rem;
+  }
+
+  .article-admin {
+    width:60rem;
+    border:solid 2px #c8c8c8;
+    margin:0 auto;
+  }
+
+  .userlist_top {
+    display:flex;  
+    text-align: center;
+  }
+
+  .userlist_numtag {
+    width:10%;
+    /* border:solid 1px black; */
+  }
+
+  .userlist_infotag {
+    width:40%;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_nametag {
+    width:20%;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_reporttag {
+    width:10%;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_statustag {
+    width:20%;
+    /* border:solid 1px black; */
+  }
+
+  .userlist_num {
+    width:10%;
+    /* border:solid 1px black; */
+  }
+
+  .userlist_info {
+    width:40%;
+    /* border:solid 1px black; */
+  }
+
+  .userlist_img {
+    width:10%;
+    border:solid 1px black;
+  }
+  
+  .userlist_grade {
+
+  }
+
+  .userlist_id {
+
+  }
+
+  .userlist_name {
+    width:20%;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_report {
+    width:10%;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_status {
+    width:20%;
+    /* border:solid 1px black; */
+  }
+}
+@media all and (max-width:425px){
+  
+}

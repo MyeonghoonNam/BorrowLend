@@ -54,17 +54,6 @@
     text-decoration:none;
     color:black;
   }
-
-  /* .sub-menu {
-    position: absolute;
-    background: #F2F2F2;
-    border:solid 1px;
-    border-radius:5%;
-    font-size:1rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.15s ease-in;
-  } */
   
   .sub-menu {
     opacity: 0;
@@ -178,10 +167,10 @@
 
   .user-info {
     order:3;
-    margin-left:1.5rem;
-    padding-right:0.5rem;
+    /* margin-left:1.5rem; */
+    padding-left:1rem;
   }
-
+  
   .user-info a{
     color:darkgray;
     text-decoration: none;
@@ -192,7 +181,8 @@
   
   .logout{
     order:4;
-    padding-left:0.5rem;
+    /* margin-left:1rem; */
+    padding-left:1rem;
   }
   
   .logout a{
@@ -211,32 +201,6 @@
   .service-menu2{
     display: none;
   }
-
-
-
-  
-  /* .e-mail {
-    order:5;
-    border:solid 1px;
-    color:rgb(49, 49, 49);
-    margin-left:3.5rem;
-    font-size:0.95rem;
-  } 
-
-   .message {
-    order:6;
-    margin-left:3.5rem;
-    width:2rem;
-    border:solid 1px; 
-    font-size:0.95rem;
-  }
-  .message-count {
-    order:7;
-    width:1.5rem;
-    border:solid 1px;
-    font-size:0.95rem;
-    color:red;
-  }  */
 }
 
 /* 모바일 세로뷰 css */

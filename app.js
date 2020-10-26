@@ -115,7 +115,8 @@ function connectDB(){
       rate : {type : Number, 'default':0},
       LikeProduct:[{type:mongoose.Schema.Types.ObjectId, ref:'products'}],
       review:[{type:mongoose.Schema.Types.ObjectId, ref:'reviews'}],
-      report:{type : Number, 'default':0}
+      report:{type : Number, 'default':0},
+      status:{type : String, 'default':'normal'}
     });
 
     UserSchema.static('findByOid', function(oid, callback){
@@ -468,6 +469,18 @@ app.get('/main', function(req,res){
   }
 });
 
+app.get('/admin', function(req, res){
+  if(req.session.user) {
+    UserModel.find({admin:"N"}).sort({report:-1}).exec(function(err, docs){
+      res.render('./pages/admin.html', {
+        user:req.session.user,
+        userlist:docs
+      })
+    })
+  } else {
+    res.redirect('/');
+  }
+});
 
 app.post('/main_login', function(req,res){
   console.log('Access to login');
@@ -1193,7 +1206,6 @@ app.get('/message_delete', function(req,res){
 app.post('/message_report', function(req, res){
   var userid = req.body.userid;
   
-  console.log(userid);
   UserModel.find({id:userid}, function(err, doc){
     UserModel.findOneAndUpdate({id:userid}, {report:doc[0].report+1}, {new:true, upsert: true}, function(err, result){
       res.send({});
