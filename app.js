@@ -483,6 +483,30 @@ app.get('/admin', function(req, res){
   }
 });
 
+app.post('/admin', function(req, res){
+  if(req.session.user) {
+    var userid = req.body.userlist_id;
+
+    UserModel.find({id:userid}, function(err, doc){
+      if(doc[0].status == "normal"){
+        var query = {id:userid};
+        var update = {status:"stop"};
+        UserModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
+          res.redirect('/admin');
+        });
+      } else {
+        var query = {id:userid};
+        var update = {status:"normal"};
+        UserModel.findOneAndUpdate(query, update, {new:true, upsert: true}, function(err, result){
+          res.redirect('/admin');
+        });
+      }
+    })
+  } else {
+    res.redirect('/');
+  }
+});
+
 app.post('/main_login', function(req,res){
   console.log('Access to login');
 
@@ -490,28 +514,35 @@ app.post('/main_login', function(req,res){
   var paramPassword = req.body.password;
 
   if(req.session.user) {
-    
+    res.redirect('/main');
   } else{
       if(database){
         authUser(database, paramId, paramPassword, function(err, docs){
           if(err) throw err;
-    
-          if(docs){
-            req.session.user = {
-              _id:docs[0]._doc._id,
-              id:docs[0]._doc.id,
-              name:docs[0]._doc.name,
-              grade:docs[0]._doc.grade,
-              LikeProduct:docs[0]._doc.LikeProduct,
-              authorized:true,
-              admin:docs[0]._doc.admin
-            }
-            
-            res.redirect('/main');
-          } else {
+          
+          if(docs[0]._doc.status == "stop"){
             res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-            res.write("<script language=\"javascript\">alert('로그인 실패. 잘못된 정보입니다.')</script>");
+            res.write("<script language=\"javascript\">alert('서비스 이용 정지상태입니다.')</script>");
             res.write("<script language=\"javascript\">window.location=\"/\"</script>");
+          } else {
+            if(docs){
+              req.session.user = {
+                _id:docs[0]._doc._id,
+                id:docs[0]._doc.id,
+                name:docs[0]._doc.name,
+                grade:docs[0]._doc.grade,
+                LikeProduct:docs[0]._doc.LikeProduct,
+                authorized:true,
+                admin:docs[0]._doc.admin
+              }
+              
+              res.redirect('/main');
+  
+            } else {
+              res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+              res.write("<script language=\"javascript\">alert('로그인 실패. 잘못된 정보입니다.')</script>");
+              res.write("<script language=\"javascript\">window.location=\"/\"</script>");
+            }
           }
         });
       } else {

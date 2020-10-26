@@ -51,9 +51,10 @@
     /* border:solid 1px black; */
   }
   
-  .main_searhlist_element {
-    /* width:40%; */
+  .main_searhlist_element_num {
+    width:13%;
     /* border:solid 1px black; */
+    display:inline-block;
   }
 
   .main_slide_message{
