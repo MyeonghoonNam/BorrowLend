@@ -144,5 +144,297 @@
   }
 }
 @media all and (max-width:425px){
-  
+  .userlist_tag {
+    width:90%;
+    margin:0 auto;
+    font-size:1.5rem;
+    margin-top:1rem;
+    cursor: default;
+  }
+
+  .article-admin {
+    width:23rem;
+    border:solid 2px #c8c8c8;
+    margin:0 auto;
+    padding:1rem 1rem;
+    cursor: default;
+  }
+
+  .userlist_top {
+    display:flex;  
+    text-align: center;
+    border-top:solid 2px #c8c8c8;
+    border-bottom:solid 2px #c8c8c8;
+    padding:0.5rem 0 ;
+    font-weight: bold;
+  }
+
+  .userlist_numtag {
+    width:10%;
+    /* border:solid 1px black; */
+  }
+
+  .userlist_infotag {
+    width:40%;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_nametag {
+    width:20%;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_reporttag {
+    width:10%;
+    font-size: 0.6rem;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_statustag {
+    width:20%;
+    /* border:solid 1px black; */
+  }
+
+  .userlist_box {
+    display:flex;
+    text-align: center;
+    padding:0.5rem 0;
+    vertical-align: middle;
+  }
+
+  .userlist_num {
+    width:10%;
+    height: 2rem;
+    line-height: 2rem;
+    /* border:solid 1px black; */
+  }
+
+  .userlist_info {
+    width:40%;
+    /* border:solid 1px black; */
+    display:flex;
+    justify-content: center;
+  }
+
+  .userlist_grade {
+    border-radius: 5px;
+    background-color: darkgray;
+    color: white;
+    width:20%;
+    /* text-align: center; */
+    /* vertical-align: middle; */
+    margin-right:0.5rem;
+    padding: 3px 3px;
+  }
+
+  .userlist_id {
+    margin: auto 0;
+  }
+
+  .userlist_name {
+    width:20%;
+    height: 2rem;
+    line-height: 2rem;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_report {
+    width:10%;
+    height: 2rem;
+    line-height: 2rem;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_status {
+    width:20%;
+    height: 2rem;
+    line-height: 2rem;
+  }
+
+  .userlist_status_normal {
+    width:50%;
+    background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+    background-color:#77b55a;
+    border-radius:4px;
+    border:1px solid #4b8f29;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #5b8a3c;
+    margin:0 auto;
+    padding:1px 1px;
+  }
+
+  .userlist_status_normal:hover {
+    background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+    background-color:#72b352;
+  }
+
+  .userlist_status_stop {
+    width:50%;
+    box-shadow:inset 0px 39px 0px -24px #e67a73;
+    background-color:#e4685d;
+    border-radius:4px;
+    border:1px solid #ffffff;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #b23e35;
+    margin:0 auto;
+    padding:1px 1px;
+  }
+
+  .userlist_status_stop:hover {
+    background-color:#eb675e;
+  }
+}
+
+/* 모바일 가로뷰 css */
+@media all and (max-width:900px) and (orientation: landscape){
+  .userlist_tag {
+    width:90%;
+    margin:0 auto;
+    font-size:2rem;
+    margin-top:1rem;
+    cursor: default;
+  }
+
+  .article-admin {
+    width:45rem;
+    border:solid 2px #c8c8c8;
+    margin:0 auto;
+    padding:2rem 2rem;
+    cursor: default;
+  }
+
+  .userlist_top {
+    display:flex;  
+    text-align: center;
+    border-top:solid 2px #c8c8c8;
+    border-bottom:solid 2px #c8c8c8;
+    padding:0.5rem 0 ;
+    font-weight: bold;
+  }
+
+  .userlist_numtag {
+    width:10%;
+    /* border:solid 1px black; */
+  }
+
+  .userlist_infotag {
+    width:40%;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_nametag {
+    width:20%;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_reporttag {
+    width:10%;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_statustag {
+    width:20%;
+    /* border:solid 1px black; */
+  }
+
+  .userlist_box {
+    display:flex;
+    text-align: center;
+    padding:0.5rem 0;
+    vertical-align: middle;
+  }
+
+  .userlist_num {
+    width:10%;
+    height: 2rem;
+    line-height: 2rem;
+    /* border:solid 1px black; */
+  }
+
+  .userlist_info {
+    width:40%;
+    /* border:solid 1px black; */
+    display:flex;
+    justify-content: center;
+  }
+
+  .userlist_grade {
+    border-radius: 5px;
+    background-color: darkgray;
+    width:15%;
+    color: white;
+    /* text-align: center; */
+    /* vertical-align: middle; */
+    margin-right:0.5rem;
+    padding: 3px 5px;
+  }
+
+  .userlist_id {
+    margin: auto 0;
+  }
+
+  .userlist_name {
+    width:20%;
+    height: 2rem;
+    line-height: 2rem;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_report {
+    width:10%;
+    height: 2rem;
+    line-height: 2rem;
+    /* border:solid 1px black; */
+
+  }
+  .userlist_status {
+    width:20%;
+    height: 2rem;
+    line-height: 2rem;
+  }
+
+  .userlist_status_normal {
+    width:50%;
+    background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+    background-color:#77b55a;
+    border-radius:4px;
+    border:1px solid #4b8f29;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #5b8a3c;
+    margin:0 auto;
+    padding:1px 2px;
+  }
+
+  .userlist_status_normal:hover {
+    background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+    background-color:#72b352;
+  }
+
+  .userlist_status_stop {
+    width:50%;
+    box-shadow:inset 0px 39px 0px -24px #e67a73;
+    background-color:#e4685d;
+    border-radius:4px;
+    border:1px solid #ffffff;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #b23e35;
+    margin:0 auto;
+    padding:1px 2px;
+  }
+
+  .userlist_status_stop:hover {
+    background-color:#eb675e;
+  }
 }
