@@ -275,7 +275,7 @@
   
   .element_title {
     display: inline-block;
-    vertical-align: 2rem;
+    vertical-align: 1.6rem;
     margin-left:2rem;
     width:5rem;
     /* border:solid 1px #c8c8c8; */
@@ -416,11 +416,11 @@
   
   .element_title {
     display: inline-block;
-    vertical-align: 3rem;
+    vertical-align: 2.3rem;
     margin-left:5.5rem;
-    width:5rem;
+    width:7rem;
     /* border:solid 1px #c8c8c8; */
-    font-size:1.5rem;
+    font-size:1.3rem;
     /* margin-top:0.5rem; */
   }
   .element_price {
@@ -439,7 +439,7 @@
     line-height: 31px;
     /* border:solid 1px black; */
     position: absolute;
-    margin-top: 3.5rem;
+    margin-top: 3.2rem;
     right:5px;
 
   }
@@ -557,7 +557,7 @@
   
   .element_title {
     display: inline-block;
-    vertical-align: 2rem;
+    vertical-align: 1.6rem;
     margin-left:2rem;
     width:5rem;
     /* border:solid 1px #c8c8c8; */
