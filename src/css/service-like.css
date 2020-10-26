@@ -148,7 +148,7 @@
     height:auto;
     display: inline-block;
     /* border:solid 1px #c8c8c8; */
-    vertical-align: 2rem;
+    vertical-align: 1.6rem;
     margin-left:2rem;
     font-size:1rem;
     /* margin-top:0.5rem; */
@@ -238,13 +238,13 @@
   }
   
   .srv_element_title {
-    width:5rem;
+    width:7.5rem;
     height:auto;
     display: inline-block;
     /* border:solid 1px #c8c8c8; */
-    vertical-align: 3rem;
-    margin-left:5.5rem;
-    font-size:1.5rem;
+    vertical-align: 2.4rem;
+    margin-left:4rem;
+    font-size:1.3rem;
     /* margin-top:0.5rem; */
   }
   .srv_element_price {

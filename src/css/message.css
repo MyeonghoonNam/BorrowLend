@@ -437,7 +437,7 @@
   }
 
   .message_left {
-    width: 18%;
+    width: 24%;
     font-size: 0.7rem;
     border-right:solid 2px #c8c8c8;
     padding: 0.5rem 0.5rem;
@@ -470,9 +470,7 @@
   }
 
   .message_senttitle {
-    margin-left:0.3rem;
-    width:100%;
-    color:#424242;
+    display: none;
   }
 
   .message_recvinfo {
@@ -502,9 +500,7 @@
   }
 
   .message_recvtitle {
-    margin-left:0.3rem;
-    width:100%;
-    color:#424242;
+    display: none;
   }
   
   .message_right {
@@ -729,11 +725,12 @@
   }
 
   .message_sent_content {
-    font-size:1.3rem;
+    font-size:0.9rem;
     /* border:solid 1px black; */
-    width:95%;
+    width:88%;
     margin:0 auto;
     white-space:pre;
+    padding: 0.5rem 0.5rem;
   }
 
   .message_delete_alert_confirm {
@@ -811,7 +808,7 @@
   }
 
   .message_left {
-    width: 23%;
+    width: 40%;
     font-size: 1rem;
     border-right:solid 2px #c8c8c8;
     padding: 1rem 0.5rem;
@@ -835,7 +832,7 @@
   
   .message_sentdate{
     position: absolute;
-    right:0;
+    right:15%;
     top:50%;
     display:inline-block;
     /* border:solid 1px black; */
@@ -845,7 +842,7 @@
   }
 
   .message_senttitle {
-    margin-left:1.5rem;
+    margin-left:0.7rem;
     width:100%;
     color:#424242;
   }
@@ -868,7 +865,7 @@
   
   .message_recvdate{
     position: absolute;
-    right:0;
+    right:15%;
     top:50%;
     display:inline-block;
     /* border:solid 1px black; */
@@ -878,7 +875,7 @@
   }
 
   .message_recvtitle {
-    margin-left:1.5rem;
+    margin-left:0.8rem;
     width:100%;
     color:#424242;
   }
@@ -1105,9 +1102,9 @@
   }
 
   .message_sent_content {
-    font-size:1.3rem;
+    font-size:1.1rem;
     /* border:solid 1px black; */
-    width:95%;
+    width:90%;
     margin:0 auto;
     white-space:pre;
   }

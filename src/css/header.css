@@ -379,6 +379,17 @@
     display: block;
   }
 
+  .sub-menu:after, .sub-menu:before {
+    display: none;
+  }
+  
+  .sub-menu:after {
+    display: none;
+  }
+  .sub-menu:before {
+    display: none;
+  }
+
   .service-menu1{
     display: inline-block;
     font-size: 1rem;
@@ -634,6 +645,17 @@
     display: block;
   }
 
+  .sub-menu:after, .sub-menu:before {
+    display: none;
+  }
+  
+  .sub-menu:after {
+    display: none;
+  }
+  .sub-menu:before {
+    display: none;
+  }
+
   .service-menu1{
     display: inline-block;
     font-size: 2rem;
@@ -886,6 +908,17 @@
   
   .logout {
     display: block;
+  }
+
+  .sub-menu:after, .sub-menu:before {
+    display: none;
+  }
+  
+  .sub-menu:after {
+    display: none;
+  }
+  .sub-menu:before {
+    display: none;
   }
 
   .service-menu1{
