@@ -463,7 +463,7 @@
  
 
 /* 모바일 가로뷰 */
-@media screen and (max-width:900px) and (orientation: landscape){
+@media screen and (max-height:425px) and (max-width:900px) and (orientation: landscape){
 
   .body{
     background-color: black;

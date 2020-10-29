@@ -809,7 +809,7 @@
 
   .message_left {
     width: 40%;
-    font-size: 1rem;
+    font-size: 0.8rem;
     border-right:solid 2px #c8c8c8;
     padding: 1rem 0.5rem;
   }
@@ -875,7 +875,7 @@
   }
 
   .message_recvtitle {
-    margin-left:0.8rem;
+    margin-left:0.6rem;
     width:100%;
     color:#424242;
   }
