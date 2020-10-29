@@ -81,6 +81,7 @@
   }
 
   .userlist_id {
+    width: 20%;
     margin: auto 0;
   }
 
@@ -213,7 +214,7 @@
     width:40%;
     /* border:solid 1px black; */
     display:flex;
-    justify-content: center;
+    justify-content: left;
   }
 
   .userlist_grade {
@@ -228,6 +229,8 @@
   }
 
   .userlist_id {
+    width: 15%;
+    font-size: 1rem;
     margin: auto 0;
   }
 
@@ -376,6 +379,7 @@
   }
 
   .userlist_id {
+    width:20%;
     margin: auto 0;
   }
 
