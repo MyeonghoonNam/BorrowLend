@@ -112,7 +112,8 @@ $(document).ready(function(){
         if($('.qna_answerlist_element').length == 0) {
           $('.qna_answerlist_tag').remove();
         } else {
-          var length = $('.qna_answer_length').val()-1; 
+          var length = $('.qna_answer_length').val()-1;
+          $('.qna_answer_length').val(length); 
           var tagtext = "댓글(" + String(length) + ")";
 
           $('.qna_answerlist_tag').text(tagtext);
