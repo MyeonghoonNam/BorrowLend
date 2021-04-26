@@ -248,12 +248,12 @@
   }
   
   .qna_title {
-    width:35%;
+    width:30%;
     font-size: 1rem;
     /* border:solid 1px black; */
   }
   .qna_writer {
-    width:15%;
+    width:20%;
     text-align:center;
     font-size: 0.8rem;
     /* border:solid 1px black; */
@@ -550,12 +550,12 @@
   }
   
   .qna_title {
-    width:35%;
+    width:30%;
     font-size: 1rem;
     /* border:solid 1px black; */
   }
   .qna_writer {
-    width:15%;
+    width:20%;
     text-align:center;
     font-size: 0.8rem;
     /* border:solid 1px black; */

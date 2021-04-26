@@ -1313,7 +1313,7 @@ app.post('/customer-notice-delete', function(req, res){
 
 app.get('/customer-qna', function(req,res){
   if(req.session.user){
-    QnaModel.find().sort({created_at:-1}).exec(function(err,results){
+    QnaModel.find().sort({key:-1}).exec(function(err,results){
       res.render('./pages/customer-q&a.html', {
         user:req.session.user,
         qna:results
