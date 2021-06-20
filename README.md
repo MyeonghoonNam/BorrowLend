@@ -5,24 +5,21 @@
 ### ❓ Wiki
 
 - 요구사항분석
-  - [기능 요구사항]()
-  - [비기능 요구사항]()
-  - [유스케이스 다이어그램]()
-  - [유스케이스 명세서]()<br>
+  - [기능 요구사항](https://github.com/MyeonghoonNam/BorrowLend/wiki/%EA%B8%B0%EB%8A%A5-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD)
+  - [비기능 요구사항](https://github.com/MyeonghoonNam/BorrowLend/wiki/%EB%B9%84%EA%B8%B0%EB%8A%A5-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD)
+  - [유스케이스 다이어그램](https://github.com/MyeonghoonNam/BorrowLend/wiki/%EC%9C%A0%EC%8A%A4%EC%BC%80%EC%9D%B4%EC%8A%A4-%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8)<br>
     <br>
 - 시스템설계
-  - [개요]()
-  - [시스템 구조]()
-  - [DB 설계]()
-  - [프로토타입 - PC]()
-  - [프로토타입 - Mobile]()
+  - [개요](https://github.com/MyeonghoonNam/BorrowLend/wiki/%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%AA%A9%ED%91%9C%EC%99%80-%EA%B8%B0%EB%8A%A5)
+  - [시스템 구조](https://github.com/MyeonghoonNam/BorrowLend/wiki/%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%A1%B0)
+  - [DB 설계](https://github.com/MyeonghoonNam/BorrowLend/wiki/DB-%EC%84%A4%EA%B3%84)
+  - [프로토타입 - PC](https://ovenapp.io/view/OhmhFIWqxn7G7wlCXlKthWvISlKIFyeZ/)
+  - [프로토타입 - Mobile](https://ovenapp.io/view/OhmhFIWqxn7G7wlCXlKthWvISlKIFyeZ/)
     <br><br>
 
 ### 🎬 시연영상
 
 Link : https://drive.google.com/file/d/1sdU6J6d1PkfRcqrONebsLe-NgXqVWyRW/view?usp=sharing
-
----
 
 <br>
 
